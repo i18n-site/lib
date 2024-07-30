@@ -1,0 +1,18 @@
+{
+  "name": "@3-/reverse",
+  "version": "0.1.1",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/reverse",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module"
+}

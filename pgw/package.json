@@ -1,0 +1,25 @@
+{
+  "name": "@3-/pgw",
+  "version": "0.1.4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/pgw",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "postgres": "^3.4.4"
+  }
+}

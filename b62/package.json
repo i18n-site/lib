@@ -1,0 +1,23 @@
+{
+  "name": "@3-/b62",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/b62",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "base-x": "^4.0.0"
+  }
+}

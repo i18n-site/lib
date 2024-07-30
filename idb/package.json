@@ -1,0 +1,19 @@
+{
+  "name": "@3-/idb",
+  "version": "0.0.1",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/idb",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "idb": "^8.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@3-/req",
+  "version": "0.0.1",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/req",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@3-/retry": "^0.0.1",
+    "https-proxy-agent": "^7.0.4",
+    "msgpackr": "^1.10.1",
+    "node-fetch": "^3.3.2"
+  }
+}

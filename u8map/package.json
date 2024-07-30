@@ -1,0 +1,22 @@
+{
+  "name": "@3-/u8map",
+  "version": "0.1.1",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/u8map",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/pair": "^0.0.2",
+    "@3-/u8": "^0.1.1",
+    "@3-/utf8": "^0.0.3"
+  }
+}

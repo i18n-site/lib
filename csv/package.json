@@ -1,0 +1,21 @@
+{
+  "name": "@3-/csv",
+  "version": "0.1.2",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/csv",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@fast-csv/parse": "^5.0.0"
+  }
+}

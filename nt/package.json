@@ -1,0 +1,20 @@
+{
+  "name": "@3-/nt",
+  "version": "0.1.2",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/nt",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@3-/read": "^0.0.1",
+    "@3-/write": "^0.0.1"
+  }
+}

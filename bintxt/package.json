@@ -1,0 +1,19 @@
+{
+  "name": "@3-/bintxt",
+  "version": "0.0.1",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/bintxt",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@3-/utf8": "^0.0.3"
+  }
+}

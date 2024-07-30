@@ -1,0 +1,22 @@
+{
+  "name": "@3-/urle",
+  "version": "0.1.6",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/urle",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "base-x": "^4.0.0"
+  },
+  "devDependencies": {
+    "@3-/intbin": "^0.1.2"
+  }
+}

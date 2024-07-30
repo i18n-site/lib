@@ -1,0 +1,31 @@
+{
+  "name": "@3-/cf_work_secret",
+  "version": "0.1.3",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/cf_work_secret",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/read": "^0.1.3",
+    "@3-/u8": "^0.1.1",
+    "dotenv": "^16.4.5",
+    "js-toml": "^1.0.0",
+    "yargs": "^17.7.2"
+  },
+  "bin": {
+    "cf_work_secret": "./lib/cf_work_secret.js"
+  }
+}

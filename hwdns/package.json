@@ -1,0 +1,26 @@
+{
+  "name": "@3-/hwdns",
+  "version": "0.1.17",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/hwdns",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@huaweicloud/huaweicloud-sdk-core": "^3.1.92",
+    "@huaweicloud/huaweicloud-sdk-dns": "^3.1.92",
+    "lodash-es": "^4.17.21"
+  }
+}

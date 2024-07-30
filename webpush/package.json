@@ -1,0 +1,24 @@
+{
+  "name": "@3-/webpush",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/webpush",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": { "@3-/dbq": "^0.1.32", "@3-/utf8": "^0.0.3" },
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "web-push": "^3.6.7"
+  }
+}

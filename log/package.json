@@ -1,0 +1,23 @@
+{
+  "name": "@3-/log",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/log",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/write": "^0.0.1"
+  },
+  "scripts": {},
+  "type": "module"
+}

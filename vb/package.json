@@ -1,0 +1,18 @@
+{
+  "name": "@3-/vb",
+  "version": "0.1.5",
+  "repository": "git+https://atomgit.com/i18n/lib.git",
+  "homepage": "https://github.com/wactax/3TiSite/tree/main/vb",
+  "author": "3Ti.Site@Gmail.Com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module"
+}

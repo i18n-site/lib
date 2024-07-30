@@ -1,0 +1,20 @@
+{
+  "name": "@3-/cache",
+  "version": "0.1.1",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/cache",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@3-/msgpack": "^0.1.2",
+    "@3-/jsmap": "^0.1.3"
+  }
+}

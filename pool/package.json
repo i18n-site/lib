@@ -1,0 +1,19 @@
+{
+  "name": "@3-/pool",
+  "version": "0.1.2",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/pool",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/sleep": "^0.0.3"
+  },
+  "type": "module"
+}

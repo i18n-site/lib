@@ -1,0 +1,30 @@
+# @3-/npmv
+
+cdn 架构设计
+
+## ./cf
+
+* 获取最新的npm包的版本号
+* 上传最新的版本号到 backblaze
+* 刷新 cloudflare 的 cdn
+* 插入到 neon.tech 的postgresql 数据库, 并发送 notify 通知
+
+## ../npmv_refresh
+
+用 postgresql 的 listen refresh_pkg 来监听更新, 刷新 nginx 的 proxy cache
+
+## upv.i18n.site
+
+调用 cf 的 api
+
+用华为云的地域解析, 中国大陆走阿里云的代理
+
+~/i18n/ops/nginx/conf/vps/a1/upv.i18n.site.conf
+
+## v.i18n.site
+
+~/i18n/ops/nginx/conf/vps/a1/v.i18n.site.conf
+
+获取最新 npm 包的版本号, 过期时间为6秒
+
+用华为云的地域解析, 中国大陆走阿里云的代理

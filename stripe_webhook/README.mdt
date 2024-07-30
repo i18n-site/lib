@@ -1,0 +1,17 @@
+# @3-/stripe_webhook
+
+监听
+
+```
+payment_intent.canceled
+payment_intent.created
+payment_intent.partially_funded
+payment_intent.payment_failed
+payment_intent.processing
+payment_intent.succeeded
+payment_method.automatically_updated
+payment_method.detached
+setup_intent.canceled
+setup_intent.setup_failed
+setup_intent.succeeded
+```

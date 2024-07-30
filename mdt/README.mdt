@@ -1,0 +1,15 @@
+# @3-/mdt : 渲染 markdown 模板
+
+模板文件参见 [./README.mdt](./README.mdt)
+
+[test code](./test/main.coffee) :
+
+```coffee
+<+ ./test/main.coffee >
+```
+
+output :
+
+```
+<+ ./out.txt >
+```

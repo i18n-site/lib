@@ -1,0 +1,15 @@
+[‼️]: ✏️README.mdt
+
+# @3-/mysqlha
+
+安装
+
+```
+curl -sSL https://raw.githubusercontent.com/i18n-site/lib/main/mysqlha/setup.sh | sudo bash
+```
+
+查看日志
+
+```
+journalctl --no-hostname -o cat -xefu mysqlha
+```

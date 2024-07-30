@@ -1,0 +1,15 @@
+# @3-/u8map
+
+把字符串字典转为一个 Uint8Array（用 0 分隔，因为字符串不包含 0）
+
+[test/main.coffee](./test/main.coffee) :
+
+```coffee
+<+ ./test/main.coffee >
+```
+
+output :
+
+```
+<+ ./out.txt >
+```

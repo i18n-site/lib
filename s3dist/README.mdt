@@ -1,0 +1,30 @@
+# @3-/s3dist
+
+```psql
+-- 清空表
+DO $$ DECLARE
+    r RECORD;
+begin
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
+        EXECUTE 'DROP TABLE IF EXISTS public.' || quote_ident(r.tablename) || ' CASCADE';
+    END LOOP;
+END $$;
+
+-- 清空函数
+DO $$
+DECLARE
+    rec record;
+    sql text;
+BEGIN
+    FOR rec IN
+        SELECT ns.nspname || '.' || proname || '(' || oidvectortypes(proargtypes) || ')' AS func_name
+        FROM pg_proc
+        INNER JOIN pg_namespace ns ON (pg_proc.pronamespace = ns.oid)
+        WHERE ns.nspname NOT IN ('pg_catalog', 'information_schema')
+    LOOP
+        sql := 'DROP FUNCTION ' || rec.func_name || ' CASCADE;';
+        EXECUTE sql;
+    END LOOP;
+END;
+$$;
+```
