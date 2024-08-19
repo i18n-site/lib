@@ -1,0 +1,24 @@
+{
+  "name": "tmpl",
+  "version": "0.1.1",
+  "devDependencies": {
+    "esbuild": "^0.22.0",
+    "wrangler": "^3.62.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/tmpl",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {}
+}
