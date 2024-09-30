@@ -3,8 +3,8 @@
   ./B2.js
   ./PG.js
   ./fastly.js > purge:purgeFastly
-  ./Res.js
-  @3-/token/decode.js:tokenDecode
+  @3-/cw/Res.js
+  @3-/cw/Token.js
 
 class TooBigError extends Error
   constructor: (size) ->
@@ -13,26 +13,7 @@ class TooBigError extends Error
 
 MAX_LEN = 512
 
-export default ({url, headers},env,ctx)=>
-  TOKEN = headers.get('t')
-  if not TOKEN
-    return Res(
-      400
-      'headers : miss t:token'
-    )
-  token = await tokenDecode env.TOKEN_SK, TOKEN
-
-  if not token
-    return Res(
-      401
-      'invalid token'
-    )
-
-  [
-    uid
-    # token_id ts
-  ] = token
-
+export default Token ({url, headers},env,ctx,[uid])=>
   pkg = new URL(url).pathname.slice(1)
   v = await ver pkg
   if not v

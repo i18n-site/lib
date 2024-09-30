@@ -1,6 +1,6 @@
 > ./GET.js
   ./HEAD.js
-  ./Res.js
+  @3-/cw/Res.js
   ./init.js
 
 METHOD = HEAD {

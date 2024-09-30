@@ -1,6 +1,6 @@
 > @huaweicloud/huaweicloud-sdk-core:core
   @huaweicloud/huaweicloud-sdk-dns/v2/public-api.js:dns
-  lodash-es > chunk
+  @3-/chunk
 
 ###
 

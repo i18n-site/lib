@@ -111,7 +111,7 @@ gen = (mod, dir, proto, to)=>
 },
 "peerDependencies": {
   "@3-/proto": "^2.0.43"
-  #{if import_set.has('C') then ',"@8p/captcha": "^0.3.2"' else ''}
+  #{if import_set.has('C') then ',"@8p/captcha": "^0.3.13"' else ''}
 },
 "type": "module"
 }"""

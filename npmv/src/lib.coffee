@@ -1,4 +1,4 @@
-> ./Res.js
+> @3-/cw/Res.js
   @3-/sleep
 
 _f = (url)=>

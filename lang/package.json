@@ -1,6 +1,6 @@
 {
   "name": "@3-/lang",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "repository": "https://atomgit.com/i18n/lib.git",
   "homepage": "https://atomgit.com/i18n/lib/tree/dev/lang",
   "author": "i18n.site@gmail.com",
@@ -22,9 +22,5 @@
     "@3-/yml": "^0.1.4",
     "json5": "^2.2.3"
   },
-  "type": "module",
-  "dependencies": {
-    "@3-/pair": "^0.0.2",
-    "@3-/uridir": "^0.1.1"
-  }
+  "type": "module"
 }

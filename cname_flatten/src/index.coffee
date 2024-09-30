@@ -4,7 +4,7 @@
   @3-/sleep
   @3-/cdncheck
   @3-/err:Err
-  lodash-es > chunk
+  @3-/chunk
   @3-/u8/u8eq.js
   ./doh.js
   ./DNS.js:@ > DEFAULT_EDNS
