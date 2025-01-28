@@ -1,0 +1,13 @@
+{
+  "name": "@3-/binmap",
+  "version": "0.0.0",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/binmap",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@3-/loader": "^0.0.2",
+    "wasm-opt": "^1.4.0"
+  },
+  "type": "module"
+}

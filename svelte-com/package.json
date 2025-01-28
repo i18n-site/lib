@@ -1,0 +1,38 @@
+{
+  "name": "@3-/svelte-com",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/svelte-com",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "tape": "^5.9.0"
+  },
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/coffee_plus": "^0.1.15",
+    "@3-/extract": "^0.1.8",
+    "@3-/snake": "^0.0.3",
+    "@3-/walk": "^0.0.2",
+    "@eslint/js": "^9.19.0",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@swc/core": "^1.10.9",
+    "browserslist": "^4.24.4",
+    "coffeescript": "^2.7.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-prefer-arrow-functions": "^3.6.2",
+    "lightningcss": "^1.29.1",
+    "pug": "^3.0.3"
+  }
+}

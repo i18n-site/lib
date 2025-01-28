@@ -1,0 +1,21 @@
+{
+  "name": "@3-/loader",
+  "version": "0.0.2",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/loader",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@3-/jsext": "^0.0.5",
+    "@3-/coffee_plus": "^0.1.2",
+    "coffeescript": "^2.7.0"
+  }
+}
