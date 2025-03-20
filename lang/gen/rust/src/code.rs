@@ -1,0 +1,1 @@
+pub const CODE: &[&str] = &["en","zh","fr","de","ja","es","ar","it","pt","ru","ko","hi","id","zh-TW","nl","tr","pl","sv","bn","iw","no","th","da","mr","vi","cs","fi","te","el","ta","kn","ro","sw","ur","gu","hu","uk","sk","ml","sr","bg","hr","sl","lt","et","lv"];

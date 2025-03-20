@@ -1,0 +1,20 @@
+{
+  "name": "@3-/xxhash3",
+  "version": "0.1.7",
+  "type": "module",
+  "main": "_.js",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/xxhash3",
+  "license": "Apache-2.0",
+  "author": "i18n.site@gmail.com",
+  "exports": {
+    ".": "./index.js",
+    "./*": "./*"
+  },
+  "files": [
+    "*.wasm",
+    "*.ts",
+    "*.cjs",
+    "*.js"
+  ]
+}
