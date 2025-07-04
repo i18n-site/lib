@@ -1,6 +1,6 @@
 export default new Map([
   ['en', ['英语', 'English', 'English']],
-  ['zh', ['简体中文', 'Simplified Chinese', '中文']],
+  ['zh', ['简体中文', 'Chinese', '中文']],
   ['zh-TW', ['正體中文', 'Traditional Chinese', '正體中文']],
   ['es', ['西班牙语', 'Spanish', 'Español']],
   ['ja', ['日语', 'Japanese', '日本語']],
