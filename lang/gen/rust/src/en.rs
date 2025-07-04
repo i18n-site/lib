@@ -1,6 +1,6 @@
 pub const EN: &[&str] = &[
   "English",
-  "Simplified Chinese",
+  "Chinese",
   "Traditional Chinese",
   "Spanish",
   "Japanese",

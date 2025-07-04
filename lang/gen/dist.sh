@@ -4,6 +4,7 @@ DIR=$(realpath $0) && DIR=${DIR%/*}
 cd $DIR
 set -ex
 
+./gen.coffee
 cd rust
 cargo fmt
 cargo v patch -y
