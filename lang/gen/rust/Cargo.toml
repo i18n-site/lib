@@ -1,6 +1,6 @@
 [package]
 name = "lang"
-version = "0.2.11"
+version = "0.2.12"
 edition = "2024"
 license = "MulanPSL-2.0"
 repository = "https://github.com/i18n-site/lib.git"
