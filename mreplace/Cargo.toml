@@ -1,0 +1,16 @@
+[package]
+name = "_"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+js-sys = "0.3.69"
+mreplace = "0.1.5"
+wasm-bindgen = "0.2.92"
+
+[profile.release]
+opt-level = 's'
+lto = true

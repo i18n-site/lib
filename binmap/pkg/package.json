@@ -1,0 +1,14 @@
+{
+  "name": "@3-/binmap",
+  "version": "0.0.1",
+  "main": "_.js",
+  "license": "Apache-2.0",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/binmap",
+  "author": "i@wac.tax",
+  "exports": {
+    ".": "./_.js",
+    "./*": "./*"
+  },
+  "files": ["*.wasm", "*.ts"]
+}

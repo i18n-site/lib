@@ -1,0 +1,17 @@
+{
+  "name": "@3-/mreplace",
+  "version": "0.1.2",
+  "main": "_.js",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/mreplace",
+  "license": "Apache-2.0",
+  "author": "i18n.site@gmail.com",
+  "exports": {
+    ".": "./_.js",
+    "./*": "./*"
+  },
+  "files": [
+    "*.wasm",
+    "*.ts"
+  ]
+}

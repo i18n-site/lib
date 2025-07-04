@@ -1,0 +1,24 @@
+{
+  "name": "@3-/aiapi",
+  "version": "0.1.4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/aiapi",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/read": "^0.1.4"
+  },
+  "scripts": {},
+  "type": "module",
+  "dependencies": {}
+}

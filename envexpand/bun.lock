@@ -1,0 +1,23 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/envexpand",
+      "dependencies": {
+        "@3-/read": "^0.1.4",
+        "dotenv": "^16.4.7",
+        "dotenv-expand": "^12.0.1",
+        "envfile": "^7.1.0",
+      },
+    },
+  },
+  "packages": {
+    "@3-/read": ["@3-/read@0.1.4", "", {}, "sha512-PZDRfIFuaFNAW6VjWupa7+g/3GbhES6shAgETN/RXtTdJxcIwl9HSBMy2sdfRqAc/FUeUJFL3F8PfpsdZbC8xg=="],
+
+    "dotenv": ["dotenv@16.4.7", "", {}, "sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ=="],
+
+    "dotenv-expand": ["dotenv-expand@12.0.1", "", { "dependencies": { "dotenv": "^16.4.5" } }, "sha512-LaKRbou8gt0RNID/9RoI+J2rvXsBRPMV7p+ElHlPhcSARbCPDYcYG2s1TIzAfWv4YSgyY5taidWzzs31lNV3yQ=="],
+
+    "envfile": ["envfile@7.1.0", "", { "bin": { "envfile": "bin.cjs" } }, "sha512-dyH4QnnZsArCLhPASr29eqBWDvKpq0GggQFTmysTT/S9TTmt1JrEKNvTBc09Cd7ujVZQful2HBGRMe2agu7Krg=="],
+  }
+}
