@@ -1,0 +1,12 @@
+{
+  "name": "@8v/redis",
+  "exports": {
+    ".": "./index.js",
+    "./R.js": "./R.js"
+  },
+  "license": "MulanPSL-2.0",
+  "imports": {
+    "@3-/split": "npm:@3-/split@^0.1.4",
+    "ioredis": "npm:ioredis@^5.6.0"
+  }
+}
