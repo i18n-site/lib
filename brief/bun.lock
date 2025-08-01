@@ -1,0 +1,29 @@
+{
+  "lockfileVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/brief",
+      "dependencies": {
+        "@3-/aiapi": "^0.1.4",
+        "@3-/retry": "^0.0.2",
+      },
+      "devDependencies": {
+        "@3-/read": "^0.1.4",
+        "@3-/txt_li": "^0.1.4",
+      },
+    },
+  },
+  "packages": {
+    "@3-/aiapi": ["@3-/aiapi@0.1.4", "", {}, "sha512-oqykCsmnBi0LvaBySvM8y7ioUtwKU1xoeChjFmYY5e2qNZbBvM5mDBHqDeS+Pnq4DdyCVkyfsdqwVAP7YvEtPA=="],
+
+    "@3-/caller_line": ["@3-/caller_line@0.0.1", "", {}, "sha512-ABXNqaN3kT4CBAdi43yjQQk7gbv7wkUAvlUIk+EC6DKptfiRSJtsRnYAjX17qYprdtpnYd5o8uESbS4xEP1hSw=="],
+
+    "@3-/read": ["@3-/read@0.1.4", "", {}, "sha512-PZDRfIFuaFNAW6VjWupa7+g/3GbhES6shAgETN/RXtTdJxcIwl9HSBMy2sdfRqAc/FUeUJFL3F8PfpsdZbC8xg=="],
+
+    "@3-/retry": ["@3-/retry@0.0.2", "", { "dependencies": { "@3-/caller_line": "^0.0.1", "@3-/sleep": "^0.0.3" } }, "sha512-HK3CxwBGwiD+1iduCiaXtZfS66A5B06ECi9ZHatkVrWwZGjv7tL80cXucw6wkh0QIUM5eZ3RG76Bo0k6HWXlww=="],
+
+    "@3-/sleep": ["@3-/sleep@0.0.3", "", {}, "sha512-QcbMvCjN1iylVzOv8VGuAwHKFtRxbNmAenYc9OfvxA/Dl9vyBoSGO3bRovLkYL2jm4lx/R33SPJ8f6JwpKbC+w=="],
+
+    "@3-/txt_li": ["@3-/txt_li@0.1.4", "", {}, "sha512-fb53cXUHnNzfeQ2YDDKzclxMWwhORB5Y0awkoaW2I2Hh2TplQ+y7WNl7dUJDZKEU43eOkYLuf6yl4hpuWE7HkQ=="],
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@3-/bar",
+  "version": "0.1.5",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/bar",
+  "author": "i18n.site@gmail.com",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/sleep": "^0.0.3"
+  },
+  "type": "module",
+  "dependencies": {
+    "ansis": "^3.2.0",
+    "progress": "^2.0.3"
+  }
+}
