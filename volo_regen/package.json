@@ -1,0 +1,24 @@
+{
+  "name": "@3-/volo_regen",
+  "version": "0.1.9",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/volo_regen",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "bin": {
+    "volo_regen": "./lib/volo_regen.js"
+  },
+  "dependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/write": "^0.0.2"
+  }
+}
