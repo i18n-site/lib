@@ -9,10 +9,9 @@ export default (
 )=>
   body = new FormData()
   body.append('grant_type','password')
-
   for [k,v] from Object.entries(conf)
     body.append(k,v)
-
+  console.log body
   {
     access_token
   } = await reqJson(
