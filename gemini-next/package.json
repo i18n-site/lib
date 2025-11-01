@@ -1,6 +1,6 @@
 {
   "name": "gemini-next",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "Easily switch between multiple Gemini CLI accounts to bypass daily quotas. / 轻松切换多个 Gemini CLI 账号，绕过每日配额限制。",
   "keywords": [
     "gemini",
