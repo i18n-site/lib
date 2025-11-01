@@ -2,6 +2,7 @@
 
 > uuid > v4:uuid
   @3-/req/reqJson.js
+  @3-/req/reqTxt.js
 
 export default (
   # { client_id, client_secret, username, password }
@@ -11,16 +12,15 @@ export default (
   body.append('grant_type','password')
   for [k,v] from Object.entries(conf)
     body.append(k,v)
-  console.log new URLSearchParams body
   {
     access_token
-  } = await reqJson(
+  } = JSON.parse(await reqTxt(
     'https://auth.contabo.com/auth/realms/contabo/protocol/openid-connect/token'
     {
       method: 'POST'
       body:new URLSearchParams body
     }
-  )
+  ))
   return (url, opt={})=>
     reqJson(
       'https://api.contabo.com/v1/'+url

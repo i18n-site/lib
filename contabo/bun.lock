@@ -4,13 +4,13 @@
     "": {
       "name": "@3-/contabo",
       "dependencies": {
-        "@3-/req": "^0.1.15",
+        "@3-/req": "^0.1.16",
         "uuid": "^13.0.0",
       },
     },
   },
   "packages": {
-    "@3-/req": ["@3-/req@0.1.15", "", { "dependencies": { "https-proxy-agent": "^7.0.4", "lodash-es": "^4.17.21", "msgpackr": "^1.10.1", "node-fetch": "^3.3.2" } }, "sha512-u+byFjim7q/5Z714+g1T7V1DL6DU5XCBCU3wVA+u33VYW70cnn7NL9R14hI1yE6WjxC17uIopi/LvxLETINWFQ=="],
+    "@3-/req": ["@3-/req@0.1.16", "", { "dependencies": { "https-proxy-agent": "^7.0.4", "lodash-es": "^4.17.21", "msgpackr": "^1.10.1", "node-fetch": "^3.3.2" } }, "sha512-5nD7qK19FlJwwrERieuhz/EhPyqDCUwEqSqdf3Cvfas+k8fX6S5OksHGm+ADsvxGrHMLWWMbal+6FIljvnXBag=="],
 
     "@msgpackr-extract/msgpackr-extract-darwin-arm64": ["@msgpackr-extract/msgpackr-extract-darwin-arm64@3.0.3", "", { "os": "darwin", "cpu": "arm64" }, "sha512-QZHtlVgbAdy2zAqNA9Gu1UpIuI8Xvsd1v8ic6B2pZmeFnFcMWiPLfWXh7TVw4eGEZ/C9TH281KwhVoeQUKbyjw=="],
 

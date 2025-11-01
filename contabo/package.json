@@ -21,7 +21,7 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
-    "@3-/req": "^0.1.15",
+    "@3-/req": "^0.1.16",
     "uuid": "^13.0.0"
   }
 }
