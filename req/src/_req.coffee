@@ -31,9 +31,9 @@ export default (url, option)=>
 
   try
     r = await fetch(url, option)
-    switch r.status
-      when 200, 301, 304, 404
-        return r
+    {status} = r
+    if status > 199 and status < 300
+      return r
 
     throw r
   finally

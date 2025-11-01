@@ -1,6 +1,7 @@
 #!/usr/bin/env coffee
 
 > uuid > v4:uuid
+  @3-/req/reqJson.js
 
 {default:KEY} = await import(process.env.CONTABO_KEY_JS)
 body = new FormData()
