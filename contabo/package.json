@@ -21,6 +21,6 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
-    "@3-/req": "^0.1.14"
+    "@3-/req": "^0.1.15"
   }
 }

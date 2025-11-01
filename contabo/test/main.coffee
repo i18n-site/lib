@@ -1,7 +1,14 @@
 #!/usr/bin/env coffee
 
 > @3-/contabo
+  os > homedir
+  path > join
+  ../lib/lib.js:contabo
 
-# ROOT = import.meta.dirname
+api = await (
+  await import(join(homedir(), '.config/contabo/js0.json'))
+)
 
-console.log await contabo 123
+li = await api('compute/instances')
+
+console.log(li)
