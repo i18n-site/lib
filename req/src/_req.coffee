@@ -19,6 +19,9 @@ export default (url, option)=>
       option.method = 'POST'
     if not (
       (
+        body instanceof URLSearchParams
+      ) or
+      (
         body instanceof FormData
       ) or
       body.constructor == String or body instanceof Buffer
