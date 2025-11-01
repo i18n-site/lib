@@ -3,7 +3,6 @@
 > @3-/contabo
   os > homedir
   path > join
-  ../lib/lib.js:contabo
 
 api = await (
   await import(join(homedir(), '.config/contabo/js0.json'))
