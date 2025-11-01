@@ -10,7 +10,7 @@ export default (
   body = new FormData()
   body.append('grant_type','password')
 
-  for [k,v] from Object.entries(key)
+  for [k,v] from Object.entries(conf)
     body.append(k,v)
 
   {

@@ -4,8 +4,8 @@
   os > homedir
   path > join
 
-api = await (
-  await import(join(homedir(), '.config/contabo/js0.json'))
+api = await contabo(
+  await import(join(homedir(), '.config/contabo/js0.js'))
 )
 
 li = await api('compute/instances')
