@@ -59,6 +59,6 @@ export default (name, args...)=>
   try
     return await sync tmp, name, ...args
   finally
-    rmSync(tmp, {recursive: true, force: true})
+    # rmSync(tmp, {recursive: true, force: true})
 
   return
