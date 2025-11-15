@@ -1,0 +1,33 @@
+{
+  "name": "@3-/qwen",
+  "version": "0.1.5",
+  "keywords": [
+    "qwen",
+    "llm",
+    "agent",
+    "ai",
+    "qwen-code"
+  ],
+  "description": "JavaScript wrapper for Qwen-Code, simplifying the integration of large language models in code generation and application development. Qwen-Code 的 JavaScript 封装，简化大型语言模型在代码生成和应用开发中的集成。",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/qwen",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/qwen-code": "^0.1.10",
+    "@3-/qwen-code-core": "^0.1.7"
+  }
+}

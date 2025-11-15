@@ -1,0 +1,23 @@
+{
+  "name": "@3-/mark",
+  "version": "0.1.19",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/mark",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "peerDependencies": {
+    "@3-/md__": "workspace:^",
+    "micromark": "^4.0.0",
+    "micromark-extension-gfm-footnote": "^2.1.0",
+    "micromark-extension-gfm-table": "^2.1.0",
+    "micromark-extension-gfm-task-list-item": "^2.1.0"
+  }
+}
