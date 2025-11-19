@@ -12,7 +12,7 @@
         "@3-/read": "^0.1.4",
         "@3-/walk": "^0.2.1",
         "lodash-es": "^4.17.21",
-        "zx": "^8.8.4",
+        "zx": "^8.8.5",
       },
     },
   },
@@ -191,7 +191,7 @@
 
     "yargs-parser": ["yargs-parser@22.0.0", "", {}, "sha512-rwu/ClNdSMpkSrUb+d6BRsSkLUq1fmfsY6TOpYzTwvwkg1/NRG85KBy3kq++A8LKQwX6lsu+aWad+2khvuXrqw=="],
 
-    "zx": ["zx@8.8.4", "", { "bin": { "zx": "build/cli.js" } }, "sha512-44GcD+ZlM/v1OQtbwnSxLPcoE1ZEUICmR+RSbJZLAqfIixNLuMjLyh0DcS75OyfJ/sWYAwCWDmDvJ4hdnANAPQ=="],
+    "zx": ["zx@8.8.5", "https://mirrors.cloud.tencent.com/npm/zx/-/zx-8.8.5.tgz", { "bin": { "zx": "build/cli.js" } }, "sha512-SNgDF5L0gfN7FwVOdEFguY3orU5AkfFZm9B5YSHog/UDHv+lvmd82ZAsOenOkQixigwH2+yyH198AwNdKhj+RA=="],
 
     "@3-/coffee_plus/@3-/walk": ["@3-/walk@0.0.2", "", {}, "sha512-S+A0a7HO1aB3E/iaqvWYaBnMfN/CLmHzdQDI8+AwMfHM3rzs2XAIYQ79j/cuSEKR8UW2qx3rhqtzMXPlMnJlvA=="],
 
