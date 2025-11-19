@@ -1,0 +1,29 @@
+{
+  "name": "@8v/pg",
+  "version": "0.1.4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/pg",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/PG.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {
+    "@3-/write": "^0.0.2",
+    "postgres": "^3.4.7"
+  },
+  "dependencies": {
+    "ansis": "^3.12.0",
+    "prexit": "^2.3.0"
+  }
+}

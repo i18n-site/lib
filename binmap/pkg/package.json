@@ -1,0 +1,19 @@
+{
+	"name": "@3-/binmap",
+	"version": "0.1.4",
+	"main": "_.js",
+	"license": "MulanPSL-2.0",
+	"repository": "https://atomgit.com/i18n/lib.git",
+	"homepage": "https://atomgit.com/i18n/lib/tree/dev/binmap",
+	"author": "i18n.site@gmail.com",
+	"exports": {
+		".": "./_.js",
+		"./*": "./*"
+	},
+	"type": "module",
+	"files": [
+		"*.wasm",
+		"*.js",
+		"*.ts"
+	]
+}

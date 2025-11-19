@@ -1,0 +1,27 @@
+{
+  "name": "@3-/uws",
+  "version": "0.1.24",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/uws",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/err": "^0.1.4",
+    "@3-/log": "^0.1.2",
+    "@3-/utf8": "^0.0.3",
+    "uWebSockets.js": "uNetworking/uWebSockets.js#v20.44.0"
+  }
+}
