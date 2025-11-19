@@ -2,10 +2,12 @@
 
 > ./fmtSeg.js
   ./partition.js
+  @3-/rm_cn_space
 
 export default (chat, txt)=>
   if not txt
     return []
+  txt = RmCnSpace txt
   pli = await partition(
     chat
     txt
