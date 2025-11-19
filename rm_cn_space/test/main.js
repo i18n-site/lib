@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node
 
-import RmCnSpace from "@3-/rm_cn_space";
+import RmCnSpace from "../src/lib.js";
 
 console.log(
   RmCnSpace(
