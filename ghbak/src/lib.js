@@ -23,7 +23,7 @@ User root`,
 
   $.verbose = 0;
   const p =
-    $`ssh -F ${ssh_config} -o ConnectTimeout=10 -o BatchMode=yes vps bash -c '"nix-shell -p openssl zstd gnutar --run \\"export PASSWORD=${PASSWORD} && set -ex && cd ${dir} && tar --remove-files -C backup -cf - . | zstd -18 -T0 | openssl enc -aes-256-cbc -pbkdf2 -salt -pass env:PASSWORD -out ${fname} && set +x\\""'`.pipe(
+    $`ssh -F ${ssh_config} -o ConnectTimeout=10 -o BatchMode=yes vps bash -c '"nix-shell -p openssl zstd gnutar --run \\"export PASSWORD=${PASSWORD} && set -ex && tar --remove-files -C ${dir} -cf - . | zstd -18 -T0 | openssl enc -aes-256-cbc -pbkdf2 -salt -pass env:PASSWORD -out ${fname} && set +x\\""'`.pipe(
       process.stdout,
     );
   $.verbose = 1;
