@@ -1,3 +1,3 @@
-const RE = /(\p{Unified_Ideograph})\s+(\p{Unified_Ideograph})/gu;
+const RE = /([\p{Script=Han}])\s+([\p{Script=Han}])/gu;
 
 export default (txt) => txt.replaceAll(RE, "$1$2");
