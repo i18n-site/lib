@@ -5,6 +5,7 @@ import int from "@3-/int";
 import sleep from "@3-/sleep";
 import { $ } from "zx";
 import write from "@3-/write";
+import ymd from "@3-/ymd";
 
 const { PASSWORD } = process.env;
 

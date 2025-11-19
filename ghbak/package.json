@@ -22,6 +22,7 @@
   "type": "module",
   "dependencies": {
     "@3-/write": "^0.0.2",
+    "@3-/ymd": "^0.1.1",
     "zx": "^8.8.5"
   }
 }
