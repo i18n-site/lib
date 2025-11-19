@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node
+#!/usr/bin/env bun
 
 import RmCnSpace from "../src/lib.js";
 
