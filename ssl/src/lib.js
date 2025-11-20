@@ -36,11 +36,12 @@ export default async (domain, setTxt, rmTxt) => {
     termsOfServiceAgreed: true,
     challengePriority: ["dns-01"],
     challengeCreateFn: async (authz, challenge, key_auth) => {
+      console.log({ authz, challenge });
       await setTxt("_acme-challenge", '"' + key_auth + '"');
       await sleep(3e3);
     },
     challengeRemoveFn: async (authz, challenge, key_auth) => {
-      await 清理挑战(authz, challenge, key_auth, rmTxtById, txt_id_map);
+      await rmTxt("_acme-challenge");
     },
   });
 
