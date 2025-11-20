@@ -16,18 +16,10 @@ host = await zone(cf, domain)
 
 cert = await ssl(
   domain
-  (k,v)=>
-    console.log('SET CNAME', k,v)
-    host.set('CNAME',k,v)
+  (domain,val)=>
+    console.log('SET CNAME', domain, val)
+    host.set('CNAME', domain, val)
   host.rmById
 )
 
 console.log(cert)
-
-# rid = await host.set(
-#   'CNAME',
-#   'x'
-#   'val'
-# )
-# console.log rid
-# console.log 'rm',await host.rmById rid
