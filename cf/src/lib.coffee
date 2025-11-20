@@ -9,8 +9,8 @@ export default (key,mail)=>
         data = {
           method
           headers: {
-            'X-Auth-Email': mail
             'X-Auth-Key': key
+            'X-Auth-Email': mail
             'Content-Type': 'application/json'
           }
         }
