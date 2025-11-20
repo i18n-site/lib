@@ -1,10 +1,13 @@
 import { Client, forge } from "acme-client";
-import { generateKeyPair } from "crypto";
+import { generateKeyPair, createPublicKey, createHmac } from "crypto";
 import { promisify } from "util";
 import sleep from "@3-/sleep";
 
 const _dir = import.meta.dirname;
 const generate_key_pair = promisify(generateKeyPair);
+
+const url_b64 = (str) => Buffer.from(str).toString('base64url');
+const json_b64 = (obj) => url_b64(JSON.stringify(obj));
 
 const 生成密钥 = async () => {
   const { privateKey } = await generate_key_pair("ec", {
@@ -41,19 +44,49 @@ const 获取eab = async (email) => {
   return { kid: eab_kid, hmacKey: eab_hmac_key };
 };
 
+const 生成eab_jws = (account_key_pem, kid, hmac_key_b64, new_account_url) => {
+  const public_key = createPublicKey(account_key_pem);
+  const public_jwk = public_key.export({ format: 'jwk' });
+
+  const mac_key = Buffer.from(hmac_key_b64, 'base64url');
+
+  const protected_header = {
+    alg: 'HS256',
+    kid: kid,
+    url: new_account_url
+  };
+
+  const payload = JSON.stringify(public_jwk);
+  const payload_b64 = url_b64(payload);
+  const protected_b64 = json_b64(protected_header);
+
+  const data_to_sign = `${protected_b64}.${payload_b64}`;
+  const signature = createHmac('sha256', mac_key).update(data_to_sign).digest('base64url');
+
+  return {
+    protected: protected_b64,
+    payload: payload_b64,
+    signature: signature
+  };
+};
+
 export default async (host, set_cname, rm_by_id) => {
   const email = "i18n.site@gmail.com";
   const account_key = await 生成密钥();
+  const directory_url = 'https://acme.zerossl.com/v2/DV90';
+
   const client = new Client({
-    directoryUrl: "https://acme.zerossl.com/v2/DV90",
+    directoryUrl: directory_url,
     accountKey: account_key,
   });
 
+  // Fetch directory to get newAccount URL
+  const directory_res = await fetch(directory_url);
+  const directory = await directory_res.json();
+  const new_account_url = directory.newAccount;
+
   const { kid, hmacKey } = await 获取eab(email);
-  const external_account_binding = await client.createAccountKeyBinding(
-    kid,
-    hmacKey,
-  );
+  const external_account_binding = 生成eab_jws(account_key, kid, hmacKey, new_account_url);
 
   await client.createAccount({
     termsOfServiceAgreed: true,
