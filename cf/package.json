@@ -19,6 +19,6 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
-    "@3-/req": "^0.1.18"
+    "@8v/curl": "^0.1.7"
   }
 }

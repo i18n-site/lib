@@ -1,4 +1,4 @@
-> @3-/req/reqTxt.js
+> @8v/curl/cJson.js
 
 export default (key,mail)=>
   new Proxy(
@@ -16,14 +16,11 @@ export default (key,mail)=>
         }
         if body
           data.body = JSON.stringify(body)
-        text = await reqTxt(
+
+        r = await cJson(
           api_url
           data
         )
-        try
-          r = JSON.parse(text)
-        catch
-          throw new Error('NOT JSON:' + text)
 
         if r.success
           return r.result
