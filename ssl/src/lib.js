@@ -1,6 +1,4 @@
 import { Client, crypto } from "acme-client";
-import sleep from "@3-/sleep";
-import { set } from "lodash-es";
 
 const 创建客户端 = async (email) => {
   const account_key = await crypto.createPrivateKey();
@@ -37,7 +35,6 @@ export default async (domain, setTxt, rmTxt) => {
     challengeCreateFn: async (authz, challenge, key_auth) => {
       console.log({ authz, challenge key_auth});
       await setTxt("_acme-challenge", '"' + key_auth + '"');
-      await sleep(3e3);
     },
     challengeRemoveFn: async (authz, challenge, key_auth) => {
       await rmTxt("_acme-challenge");
