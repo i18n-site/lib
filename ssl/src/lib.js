@@ -36,10 +36,10 @@ const 清理挑战 = async (authz, challenge, key_auth, rmTxtById, txt_id_map) =
 };
 
 export default async (domain, setTxt, rmTxtById) => {
-  const domain_li = ["*." + domain, domain];
-  const email = "ssl@" + domain;
-  const client = await 创建客户端(email);
-  const txt_id_map = new Map();
+  const domain_li = ["*." + domain, domain],
+    email = "ssl@" + domain,
+    client = await 创建客户端(email),
+    txt_id_map = new Map();
 
   const [cert_key, csr] = await 生成证书签名请求(domain_li);
 
