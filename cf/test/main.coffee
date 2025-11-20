@@ -11,7 +11,11 @@ cf = Cf(
 )
 
 host = await zone(cf, 'js0.site')
-
+await host.set(
+  'CNAME',
+  'x'
+  'xxx.c.com'
+)
 
 # @3-/cf/purgeCache.js
 
