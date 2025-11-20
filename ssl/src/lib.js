@@ -28,9 +28,9 @@ const 清理挑战 = async (authz, challenge, key_auth, rmTxtById, txt_id_map) =
 };
 
 export default async (domain, setTxt, rmTxtById) => {
-  ((email = "ssl@" + domain),
-    (client = await 创建客户端(email)),
-    (txt_id_map = new Map()));
+  const email = "ssl@" + domain,
+    client = await 创建客户端(email),
+    txt_id_map = new Map();
 
   const [cert_key, csr] = await crypto.createCsr({
     commonName: domain,
