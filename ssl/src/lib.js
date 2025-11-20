@@ -11,9 +11,10 @@ export default async (
     waited = 0;
   try {
     while (waited < 120) {
-      // 等待cname生效
+      // TODO 等待cname生效
       await sleep(1e3);
     }
+    // TODO 获取证书
     return [key, crt];
   } finally {
     await rmById(id);
