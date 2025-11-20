@@ -103,9 +103,17 @@ export default async (host_obj, set_cname, rm_by_id) => {
 
   const create_challenge = async (authz, challenge, key_authorization) => {
     if (challenge.type === 'dns-01') {
+      console.log('Creating challenge for', challenge.identifier.value);
       const digest = createHash('sha256').update(key_authorization).digest('base64url');
-      const id = await host_obj.set('TXT', '_acme-challenge', digest);
-      challenge_ids.set(challenge.token, id);
+      console.log('Digest:', digest);
+      try {
+        const id = await host_obj.set('TXT', '_acme-challenge', digest);
+        console.log('Challenge set, id:', id);
+        challenge_ids.set(challenge.token, id);
+      } catch (e) {
+        console.error('Error setting challenge:', e);
+        throw e;
+      }
       await sleep(10000);
     }
   };
