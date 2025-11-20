@@ -14,13 +14,10 @@ cf = Cf(
 domain = 'js0.site'
 host = await zone(cf, domain)
 
-cert = await ssl(
-  env.EAB_KID
-  env.EAB_HMAC
-)(
+r = await ssl(
   domain
   host.set.bind(host,'TXT')
   host.rmByName
 )
 
-console.log(cert)
+console.log(r)
