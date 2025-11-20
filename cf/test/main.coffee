@@ -17,6 +17,7 @@ rid = await host.set(
   'xxx.c.com'
 )
 console.log rid
+console.log 'rm',await host.rmById rid
 
 # @3-/cf/purgeCache.js
 
