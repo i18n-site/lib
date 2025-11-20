@@ -23,7 +23,6 @@ const 清理挑战 = async (authz, challenge, key_auth, rmTxtById, txt_id_map) =
 export default async (domain, setTxt, rmTxt) => {
   const email = "ssl@" + domain,
     client = await 创建客户端(email),
-    txt_id_map = new Map();
 
   const [cert_key, csr] = await crypto.createCsr({
     commonName: domain,
@@ -36,7 +35,7 @@ export default async (domain, setTxt, rmTxt) => {
     termsOfServiceAgreed: true,
     challengePriority: ["dns-01"],
     challengeCreateFn: async (authz, challenge, key_auth) => {
-      console.log({ authz, challenge });
+      console.log({ authz, challenge key_auth});
       await setTxt("_acme-challenge", '"' + key_auth + '"');
       await sleep(3e3);
     },
