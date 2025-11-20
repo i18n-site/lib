@@ -1,5 +1,3 @@
-import debug from "@3-/console/debug.js";
-
 export default async ({ DELETE, GET, POST }, host) => {
   const zone_id = (await GET("zones?name=" + host))[0].id,
     getName = (name) => (name ? name + "." + host : host),
@@ -21,16 +19,15 @@ export default async ({ DELETE, GET, POST }, host) => {
       DELETE(dns_records + "/" + (await idByName(type, name)));
   return {
     set: async (type, name, content, proxied = false) => {
-      let n = 0;
-      for (;;) {
-        try {
-          return await set(type, name, content, proxied);
-        } catch (e) {
-          if (++n > 1 || !e.message?.includes(" already exists")) {
-            throw e;
-          }
-          console.log(await rmByName(type, name));
+      const _set = () => set(type, name, content, proxied);
+      try {
+        return await _set();
+      } catch (e) {
+        if (!e.message?.includes(" already exists")) {
+          throw e;
         }
+        await rmByName(type, name);
+        return _set();
       }
     },
   };
