@@ -2,18 +2,20 @@ import { Client, crypto } from "acme-client";
 
 const ACME_CHALLENGE = "_acme-challenge";
 
-export default (directoryUrl,eab_kid,eab_mac)=> async (domain, setTxt, rmTxt) => {
-  const email = "ssl@" + domain,
-    client = new Client({
-      directoryUrl
-      accountKey: await crypto.createPrivateKey(),
-    }),
-    [cert_key, csr] = await crypto.createCsr({
-      commonName: domain,
-      altNames: [domain, "*." + domain],
-    });
+export default (directoryUrl, externalAccountBinding) =>
+  async (domain, setTxt, rmTxt) => {
+    const email = "ssl@" + domain,
+      client = new Client({
+        directoryUrl,
+        accountKey: await crypto.createPrivateKey(),
+        externalAccountBinding,
+      }),
+      [cert_key, csr] = await crypto.createCsr({
+        commonName: domain,
+        altNames: [domain, "*." + domain],
+      });
 
-  /*
+    /*
   返回 [证书私钥, 证书内容]
 
   nginx 配置:
@@ -22,22 +24,22 @@ export default (directoryUrl,eab_kid,eab_mac)=> async (domain, setTxt, rmTxt) =>
 
   cert_key 转换: cert_key.toString() 即可得到 nginx 需要的 PEM 格式
   */
-  try {
-    return [
-      cert_key.toString(),
-      await client.auto({
-        csr,
-        email,
-        // skipChallengeVerification: true,
-        termsOfServiceAgreed: true,
-        challengePriority: ["dns-01"],
-        challengeCreateFn: async (_authz, _challenge, key_auth) => {
-          await setTxt(ACME_CHALLENGE, key_auth);
-        },
-        challengeRemoveFn: async () => {},
-      }),
-    ];
-  } finally {
-    await rmTxt(ACME_CHALLENGE);
-  }
-};
+    try {
+      return [
+        cert_key.toString(),
+        await client.auto({
+          csr,
+          email,
+          // skipChallengeVerification: true,
+          termsOfServiceAgreed: true,
+          challengePriority: ["dns-01"],
+          challengeCreateFn: async (_authz, _challenge, key_auth) => {
+            await setTxt(ACME_CHALLENGE, key_auth);
+          },
+          challengeRemoveFn: async () => {},
+        }),
+      ];
+    } finally {
+      await rmTxt(ACME_CHALLENGE);
+    }
+  };

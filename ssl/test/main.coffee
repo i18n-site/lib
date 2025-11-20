@@ -2,7 +2,7 @@
 
 > @3-/cf:Cf
   @3-/cf/zone.js
-  @3-/ssl
+  @3-/ssl/freessl.js
 
 {env} = process
 
