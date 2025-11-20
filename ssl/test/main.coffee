@@ -12,13 +12,13 @@ cf = Cf(
   env.CF_MAIL
 )
 
-domain = '018007.xyz'
-host = await zone(cf, domain)
-freessl = Freessl(...FREESSL)
-r = await freessl(
-  domain
-  host.set.bind(host,'TXT')
-  host.rmByName
-)
-
-console.log(r)
+# domain = '018007.xyz'
+# host = await zone(cf, domain)
+# freessl = Freessl(...FREESSL)
+# r = await freessl(
+#   domain
+#   host.set.bind(host,'TXT')
+#   host.rmByName
+# )
+#
+# console.log(r)

@@ -1,4 +1,4 @@
-import ssl from "./index.js";
+import ssl from "./lib.js";
 
 export default (kid, hmacKey) =>
   ssl("https://acme.litessl.com/acme/v2/directory", {
