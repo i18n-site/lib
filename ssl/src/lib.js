@@ -13,8 +13,17 @@ export default async (domain, setTxt, rmTxt) => {
       altNames: [domain, "*." + domain],
     });
 
+  /*
+  返回 [证书私钥, 证书内容]
+
+  nginx 配置:
+    ssl_certificate_key 使用第一个 (证书私钥)
+    ssl_certificate 使用第二个 (证书内容)
+
+  cert_key 转换: cert_key.toString() 即可得到 nginx 需要的 PEM 格式
+  */
   return [
-    cert_key,
+    cert_key.toString(),
     await client.auto({
       csr,
       email,
