@@ -1,15 +1,16 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "@3-/gitsync",
       "dependencies": {
-        "@3-/gitapi": "^0.1.7",
+        "@3-/gitapi": "^0.1.8",
       },
     },
   },
   "packages": {
-    "@3-/gitapi": ["@3-/gitapi@0.1.7", "", { "dependencies": { "@3-/int": "^0.1.1", "@3-/mktmp": "^0.1.3", "@3-/pageiter": "^0.1.2", "@3-/qwen": "^0.1.5", "@3-/reset": "^0.1.2", "@3-/yml": "^0.1.14", "simple-git": "^3.30.0" } }, "sha512-+6mu/2KOOR1arMOP8eGbqcI6kFqnnWvnQ6hTN2FMpekkMNULm9yAxns+r+Fb310usji4BtX4KVQPvuXWRiwqeA=="],
+    "@3-/gitapi": ["@3-/gitapi@0.1.8", "https://mirrors.cloud.tencent.com/npm/@3-/gitapi/-/gitapi-0.1.8.tgz", { "dependencies": { "@3-/int": "^0.1.1", "@3-/mktmp": "^0.1.3", "@3-/pageiter": "^0.1.2", "@3-/qwen": "^0.1.5", "@3-/reset": "^0.1.2", "@3-/yml": "^0.1.14", "simple-git": "^3.30.0" } }, "sha512-+WrXHGYgYlIEjp4k9/yX/qDKGXvPq0KrnKIhm5kzf8MiY6/Jnelg12BHK388ac088EZ7ozF7RqOe8R/cFSNU5g=="],
 
     "@3-/int": ["@3-/int@0.1.1", "", {}, "sha512-hBH7ZmKIwSH4URleqo6U0ovTXGXGMEi2Xgr2KxPPcxSlxtoi3Mdsx6MFQz9U484bXpovJulXXwK/aUye0Gqzkw=="],
 

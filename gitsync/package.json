@@ -21,6 +21,6 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
-    "@3-/gitapi": "^0.1.7"
+    "@3-/gitapi": "^0.1.8"
   }
 }
