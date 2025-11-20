@@ -1,5 +1,3 @@
-#!/usr/bin/env coffee
-
 > @3-/req/reqTxt.js
 
 export default (key,mail)=>
@@ -11,8 +9,8 @@ export default (key,mail)=>
         data = {
           method
           headers: {
-            'X-Auth-Email': CLOUDFLARE_EMAIL
-            'X-Auth-Key': CLOUDFLARE_KEY
+            'X-Auth-Email': mail
+            'X-Auth-Key': key
             'Content-Type': 'application/json'
           }
         }

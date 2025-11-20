@@ -2,10 +2,9 @@
 
 DIR=$(dirname $(realpath "$0"))
 set -e
-# set -a
-# cd ~/.config/token
-# . atomgit.js0.env
-# set +a
+set -a
+. ~/js0/conf/cron/cf.env
+set +a
 cd $DIR
 set -x
 
