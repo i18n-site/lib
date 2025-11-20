@@ -11,10 +11,12 @@ cf = Cf(
   env.CF_MAIL
 )
 
-host = await zone(cf, 'js0.site')
+domain = 'js0.site'
+host = await zone(cf, domain)
 
 cert = await ssl(
-  host.set
+  host
+  host.set.bind(host,'CNAME')
   host.rmById
 )
 

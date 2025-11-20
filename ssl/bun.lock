@@ -5,6 +5,7 @@
     "": {
       "name": "@3-/ssl",
       "dependencies": {
+        "@3-/sleep": "^0.0.4",
         "acme-client": "^5.4.0",
       },
       "devDependencies": {
@@ -16,6 +17,8 @@
     "@3-/cf": ["@3-/cf@0.1.21", "https://mirrors.cloud.tencent.com/npm/@3-/cf/-/cf-0.1.21.tgz", { "dependencies": { "@3-/console": "^0.1.2", "@8v/curl": "^0.1.7" } }, "sha512-rHrbpssYah/Cr77soo5zGZPR6fF/njUv1F2kgmtt2b1U9uuOGNlzCihkZRXlvqhsouLhz3ScDbPS3AN3I2rlNA=="],
 
     "@3-/console": ["@3-/console@0.1.2", "https://mirrors.cloud.tencent.com/npm/@3-/console/-/console-0.1.2.tgz", {}, "sha512-zRLjCSwKPBmThI2FslcoX7GQDm3kwKyTulVbwrbIyuI3yBJPnEU1iTqeVjFKbhvEznHRQWqQ2gA4DB03kq0TIg=="],
+
+    "@3-/sleep": ["@3-/sleep@0.0.4", "https://mirrors.cloud.tencent.com/npm/@3-/sleep/-/sleep-0.0.4.tgz", {}, "sha512-hxWtyS7EX7efFJyJeMfEZ/csPIklA4EtYFSRKOy29E7RyPOHxRhopYlgmiPs8K4X7XrODj2P3NTJsuhGKlDYPQ=="],
 
     "@8v/curl": ["@8v/curl@0.1.7", "https://mirrors.cloud.tencent.com/npm/@8v/curl/-/curl-0.1.7.tgz", {}, "sha512-JmS4lp5BqHFQe23zWG+NP72gQClmFaBj8mnjoheAU60hK9AIRdtD6B19wX78vhHgaBPySt6FO5wc/84/WGY9Bg=="],
 
