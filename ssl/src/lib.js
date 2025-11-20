@@ -2,10 +2,10 @@ import { Client, crypto } from "acme-client";
 
 const ACME_CHALLENGE = "_acme-challenge";
 
-export default async (domain, setTxt, rmTxt) => {
+export default (directoryUrl,eab_kid,eab_mac)=> async (domain, setTxt, rmTxt) => {
   const email = "ssl@" + domain,
     client = new Client({
-      directoryUrl: "https://acme-v02.api.letsencrypt.org/directory",
+      directoryUrl
       accountKey: await crypto.createPrivateKey(),
     }),
     [cert_key, csr] = await crypto.createCsr({
