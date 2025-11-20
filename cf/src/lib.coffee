@@ -24,6 +24,6 @@ export default (key,mail)=>
 
         if r.success
           return r.result
-        throw new Error(r.errors[0].message)
+        throw new Error(JSON.stringify(r,null,2))
         return
   )
