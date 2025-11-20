@@ -1,34 +1,12 @@
 import { Client, crypto } from "acme-client";
 import sleep from "@3-/sleep";
 
-const 获取EAB凭证 = async (email) => {
-  const api_key = process.env.ZEROSSL_API_KEY;
-  if (!api_key) {
-    return null;
-  }
-  const url = `https://api.zerossl.com/acme/eab-credentials?access_key=${api_key}`;
-  const resp = await fetch(url, { method: "POST" });
-  const data = await resp.json();
-  return {
-    kid: data.eab_kid,
-    hmacKey: data.eab_hmac_key,
-  };
-};
-
 const 创建客户端 = async (email) => {
   const account_key = await crypto.createPrivateKey();
-  const eab = await 获取EAB凭证(email);
-
-  const client_options = {
-    directoryUrl: "https://acme.zerossl.com/v2/DV90",
+  return new Client({
+    directoryUrl: "https://acme-v02.api.letsencrypt.org/directory",
     accountKey: account_key,
-  };
-
-  if (eab) {
-    client_options.externalAccountBinding = eab;
-  }
-
-  return new Client(client_options);
+  });
 };
 
 const 生成证书签名请求 = async (domain_li) => {
@@ -41,8 +19,7 @@ const 生成证书签名请求 = async (domain_li) => {
 
 const 处理挑战 = async (authz, challenge, key_auth, setTxt, txt_id_map) => {
   if (challenge.type === "dns-01") {
-    const dns_record = `_acme-challenge.${authz.identifier.value}`;
-    const id = await setTxt(dns_record, key_auth);
+    const id = await setTxt("_acme-challenge", key_auth);
     txt_id_map.set(dns_record, id);
   }
 };
