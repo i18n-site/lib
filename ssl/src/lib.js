@@ -20,17 +20,16 @@ const 生成证书签名请求 = async (domain_li) => {
 const 处理挑战 = async (authz, challenge, key_auth, setTxt, txt_id_map) => {
   if (challenge.type === "dns-01") {
     const id = await setTxt("_acme-challenge", key_auth);
-    txt_id_map.set(dns_record, id);
+    txt_id_map.set(authz.identifier.value, id);
   }
 };
 
 const 清理挑战 = async (authz, challenge, key_auth, rmTxtById, txt_id_map) => {
   if (challenge.type === "dns-01") {
-    const dns_record = `_acme-challenge.${authz.identifier.value}`;
-    const id = txt_id_map.get(dns_record);
+    const id = txt_id_map.get(authz.identifier.value);
     if (id) {
       await rmTxtById(id);
-      txt_id_map.delete(dns_record);
+      txt_id_map.delete(authz.identifier.value);
     }
   }
 };
