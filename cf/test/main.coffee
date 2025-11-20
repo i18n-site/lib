@@ -1,25 +1,39 @@
 #!/usr/bin/env coffee
 
-> @3-/cf:CF
-  @3-/cf/purgeCache.js
+> @3-/cf:Cf
+  @3-/cf/zone.js
 
-# 获取所有域名
-# await CF.GET()
+{env} = process
 
-# 获取单个域名x
-host = 'xxai.eu.org'
-
-{id} = (await CF.GET('?name='+host))[0]
-
-console.log id
-
-console.log await purgeCache(
-  id
-  host
-  [
-    "https://#{host}i18n.site/bin/_/v"
-  ]
+cf = Cf(
+  env.CF_Key
+  env.CF_Mail
 )
+
+host = await zone(cf, 'js0.site')
+
+
+# @3-/cf/purgeCache.js
+
+
+
+# # 获取所有域名
+# # await CF.GET()
+#
+# # 获取单个域名x
+# host = 'xxai.eu.org'
+#
+# {id} = (await CF.GET('?name='+host))[0]
+#
+# console.log id
+#
+# console.log await purgeCache(
+#   id
+#   host
+#   [
+#     "https://#{host}i18n.site/bin/_/v"
+#   ]
+# )
 
 
 # console.log name, id
