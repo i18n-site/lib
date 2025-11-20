@@ -1,3 +1,3 @@
 export default async ({ GET }, host) => {
-  console.log(await GET("zones?name=" + host));
+  const zone_id = (await GET("zones?name=" + host))[0].id;
 };
