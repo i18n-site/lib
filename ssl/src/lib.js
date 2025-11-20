@@ -10,14 +10,6 @@ const 创建客户端 = async (email) => {
   });
 };
 
-const 生成证书签名请求 = async (domain_li) => {
-  const [cert_key, csr] = await crypto.createCsr({
-    commonName: domain_li[domain_li.length - 1],
-    altNames: domain_li,
-  });
-  return [cert_key, csr];
-};
-
 const 处理挑战 = async (authz, challenge, key_auth, setTxt, txt_id_map) => {
   if (challenge.type === "dns-01") {
     const id = await setTxt("_acme-challenge", '"' + key_auth + '"');
@@ -41,7 +33,10 @@ export default async (domain, setTxt, rmTxtById) => {
     client = await 创建客户端(email),
     txt_id_map = new Map();
 
-  const [cert_key, csr] = await 生成证书签名请求(domain_li);
+  const [cert_key, csr] = await crypto.createCsr({
+    commonName: domain,
+    altNames: domain_li,
+  });
 
   const cert = await client.auto({
     csr,
