@@ -26,19 +26,21 @@ export default (kid, hmacKey) => async (domain, setTxt, rmTxt) => {
 
   cert_key 转换: cert_key.toString() 即可得到 nginx 需要的 PEM 格式
   */
-  return [
-    cert_key.toString(),
-    await client.auto({
-      csr,
-      email,
-      termsOfServiceAgreed: true,
-      challengePriority: ["dns-01"],
-      challengeCreateFn: async (_authz, _challenge, key_auth) => {
-        await setTxt(ACME_CHALLENGE, key_auth);
-      },
-      challengeRemoveFn: async () => {
-        await rmTxt(ACME_CHALLENGE);
-      },
-    }),
-  ];
+  try {
+    return [
+      cert_key.toString(),
+      await client.auto({
+        csr,
+        email,
+        termsOfServiceAgreed: true,
+        challengePriority: ["dns-01"],
+        challengeCreateFn: async (_authz, _challenge, key_auth) => {
+          await setTxt(ACME_CHALLENGE, key_auth);
+        },
+        challengeRemoveFn: async () => {},
+      }),
+    ];
+  } finally {
+    await rmTxt(ACME_CHALLENGE);
+  }
 };
