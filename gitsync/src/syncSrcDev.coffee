@@ -37,7 +37,6 @@ export default (
 
   { id:sha } = commit
 
-  console.log src.gitUrl(src_org,name) ,src_org,name
   args.push(
     src.gitUrl src_org, name
     commit_ts
