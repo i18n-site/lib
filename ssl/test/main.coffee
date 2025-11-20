@@ -15,6 +15,9 @@ domain = 'js0.site'
 host = await zone(cf, domain)
 
 cert = await ssl(
+  env.EAB_KID
+  env.EAB_HMAC
+)(
   domain
   host.set.bind(host,'TXT')
   host.rmByName

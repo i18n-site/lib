@@ -4,6 +4,7 @@ DIR=$(dirname $(realpath "$0"))
 set -e
 set -a
 . ~/js0/conf/cron/cf.env
+. ~/js0/conf/cron/zerossl.env
 set +a
 cd $DIR
 set -x
