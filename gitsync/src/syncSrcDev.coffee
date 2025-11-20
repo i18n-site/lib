@@ -33,10 +33,11 @@ export default (
 
   { commit } = dev
 
-  commit_ts = int(new Date(commit.commit.author.date)/1e3)
+  commit_ts = int(new Date(commit.authored_date)/1e3)
 
-  { sha } = commit
+  { id:sha } = commit
 
+  console.log src.gitUrl(src_org,name) ,src_org,name
   args.push(
     src.gitUrl src_org, name
     commit_ts
