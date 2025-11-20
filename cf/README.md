@@ -24,6 +24,10 @@ rid = await host.set(
 console.log rid
 console.log 'rm',await host.rmById rid
 
+await host.rmByName '_acme-challenge'
+# for await i from host.ls()
+#   console.log i
+
 # @3-/cf/purgeCache.js
 
 
@@ -88,8 +92,8 @@ https://dash.cloudflare.com/api/v4/accounts/3532021fc25349684e9d77545ec45784/wor
 output :
 
 ```
-33070242f4bfe9f61f00830851dc89e1
-rm { id: '33070242f4bfe9f61f00830851dc89e1' }
+f983d15896de99536be07269db890488
+rm { id: 'f983d15896de99536be07269db890488' }
 ```
 
 ## About
