@@ -1,5 +1,6 @@
 import { Client, crypto } from "acme-client";
 import sleep from "@3-/sleep";
+import { set } from "lodash-es";
 
 const 创建客户端 = async (email) => {
   const account_key = await crypto.createPrivateKey();
@@ -19,7 +20,7 @@ const 生成证书签名请求 = async (domain_li) => {
 
 const 处理挑战 = async (authz, challenge, key_auth, setTxt, txt_id_map) => {
   if (challenge.type === "dns-01") {
-    const id = await setTxt("_acme-challenge", key_auth);
+    const id = await setTxt("_acme-challenge", '"' + key_auth + '"');
     txt_id_map.set(authz.identifier.value, id);
   }
 };
