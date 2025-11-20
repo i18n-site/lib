@@ -15,9 +15,12 @@ export default async ({ DELETE, GET, POST }, host) => {
     },
     idByName = async (type, name) =>
       (await GET(dns_records + `?name=${getName(name)}&type=${type}`))[0].id,
-    rmByName = async (type, name) =>
-      DELETE(dns_records + "/" + (await idByName(type, name)));
+    rmById = async (id) => DELETE(dns_records + "/" + id),
+    rmByName = async (type, name) => rmById(await idByName(type, name));
+
   return {
+    rmById,
+    rmByName,
     set: async (type, name, content, proxied = false) => {
       const _set = () => set(type, name, content, proxied);
       try {
