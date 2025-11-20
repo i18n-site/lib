@@ -11,11 +11,12 @@ cf = Cf(
 )
 
 host = await zone(cf, 'js0.site')
-await host.set(
+rid = await host.set(
   'CNAME',
   'x'
   'xxx.c.com'
 )
+console.log rid
 
 # @3-/cf/purgeCache.js
 
