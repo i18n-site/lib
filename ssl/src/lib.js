@@ -1,4 +1,5 @@
 import { Client, crypto } from "acme-client";
+import sleep from "@3-/sleep";
 
 const ACME_CHALLENGE = "_acme-challenge";
 
@@ -28,11 +29,12 @@ export default async (domain, setTxt, rmTxt) => {
       await client.auto({
         csr,
         email,
-        // skipChallengeVerification: true,
+        skipChallengeVerification: true,
         termsOfServiceAgreed: true,
         challengePriority: ["dns-01"],
         challengeCreateFn: async (_authz, _challenge, key_auth) => {
           await setTxt(ACME_CHALLENGE, key_auth);
+          await sleep(1e3);
         },
         challengeRemoveFn: async () => {},
       }),
