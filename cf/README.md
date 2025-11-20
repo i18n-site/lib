@@ -5,26 +5,46 @@
 ```coffee
 #!/usr/bin/env coffee
 
-> @3-/cf:CF
-  @3-/cf/purgeCache.js
+> @3-/cf:Cf
+  @3-/cf/zone.js
 
-# 获取所有域名
-# await CF.GET()
+{env} = process
 
-# 获取单个域名x
-host = 'xxai.eu.org'
-
-{id} = (await CF.GET('?name='+host))[0]
-
-console.log id
-
-console.log await purgeCache(
-  id
-  host
-  [
-    "https://#{host}i18n.site/bin/_/v"
-  ]
+cf = Cf(
+  env.CF_KEY
+  env.CF_MAIL
 )
+
+host = await zone(cf, 'js0.site')
+rid = await host.set(
+  'CNAME',
+  'x'
+  'xxx.c.com'
+)
+console.log rid
+console.log 'rm',await host.rmById rid
+
+# @3-/cf/purgeCache.js
+
+
+
+# # 获取所有域名
+# # await CF.GET()
+#
+# # 获取单个域名x
+# host = 'xxai.eu.org'
+#
+# {id} = (await CF.GET('?name='+host))[0]
+#
+# console.log id
+#
+# console.log await purgeCache(
+#   id
+#   host
+#   [
+#     "https://#{host}i18n.site/bin/_/v"
+#   ]
+# )
 
 
 # console.log name, id
@@ -68,7 +88,8 @@ https://dash.cloudflare.com/api/v4/accounts/3532021fc25349684e9d77545ec45784/wor
 output :
 
 ```
-./out.txt
+33070242f4bfe9f61f00830851dc89e1
+rm { id: '33070242f4bfe9f61f00830851dc89e1' }
 ```
 
 ## About
