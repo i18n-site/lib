@@ -2,6 +2,4 @@
 
 > @3-/ssl
 
-# ROOT = import.meta.dirname
-
-console.log await ssl 123
+console.log await ssl('js0.site')

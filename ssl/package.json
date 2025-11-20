@@ -1,7 +1,7 @@
 {
   "name": "@3-/ssl",
   "version": "0.1.0",
-  "keywords":[],
+  "keywords": [],
   "description": "",
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   ],
   "devDependencies": {},
   "scripts": {},
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "acme-client": "^5.4.0"
+  }
 }
