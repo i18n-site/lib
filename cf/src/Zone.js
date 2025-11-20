@@ -3,15 +3,15 @@ export default async ({ DELETE, GET, POST }, host) => {
     getName = (name) => (name ? name + "." + host : host),
     prefix = `zones/${zone_id}/`,
     dns_records = prefix + "dns_records",
-    set = async (type, name, content, proxied) => {
-      return (
-        await POST(dns_records, {
-          type,
-          name: getName(name),
-          content,
-          proxied: !!proxied,
-        })
-      ).id;
+    set = async (type, name, content, ttl, proxied) => {
+      const conf = {
+        type,
+        name: getName(name),
+        content,
+      };
+      if (proxied) conf.proxied = true;
+      if (ttl) conf.ttl = ttl;
+      return (await POST(dns_records, conf)).id;
     },
     idByName = async (type, name) =>
       (await GET(dns_records + `?name=${getName(name)}&type=${type}`))[0].id,
@@ -40,8 +40,8 @@ export default async ({ DELETE, GET, POST }, host) => {
     ls,
     rmById,
     rmByName,
-    set: async (type, name, content, proxied = false) => {
-      const _set = () => set(type, name, content, proxied);
+    set: async (type, name, content, ttl, proxied) => {
+      const _set = () => set(type, name, content, ttl, proxied);
       try {
         return await _set();
       } catch (e) {
