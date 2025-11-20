@@ -32,6 +32,7 @@ export default (kid, hmacKey) => async (domain, setTxt, rmTxt) => {
       await client.auto({
         csr,
         email,
+        skipChallengeVerification: true,
         termsOfServiceAgreed: true,
         challengePriority: ["dns-01"],
         challengeCreateFn: async (_authz, _challenge, key_auth) => {
