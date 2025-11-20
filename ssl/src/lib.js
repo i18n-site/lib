@@ -1,7 +1,7 @@
-import { Client, forge } from "acme-client";
-import { generateKeyPair, createPublicKey, createHmac } from "crypto";
-import { promisify } from "util";
-import sleep from "@3-/sleep";
+import { Client, crypto as acme_crypto } from 'acme-client';
+import { generateKeyPair, createPublicKey, createHmac } from 'crypto';
+import { promisify } from 'util';
+import sleep from '@3-/sleep';
 
 const _dir = import.meta.dirname;
 const generate_key_pair = promisify(generateKeyPair);
@@ -10,19 +10,18 @@ const url_b64 = (str) => Buffer.from(str).toString('base64url');
 const json_b64 = (obj) => url_b64(JSON.stringify(obj));
 
 const 生成密钥 = async () => {
-  const { privateKey } = await generate_key_pair("ec", {
-    namedCurve: "P-384",
-    publicKeyEncoding: { type: "spki", format: "pem" },
-    privateKeyEncoding: { type: "pkcs8", format: "pem" },
+  const { privateKey } = await generate_key_pair('ec', {
+    namedCurve: 'P-384',
+    publicKeyEncoding: { type: 'spki', format: 'pem' },
+    privateKeyEncoding: { type: 'pkcs8', format: 'pem' },
   });
   return privateKey;
 };
 
 const 生成请求 = async (key_pem, domains) => {
-  const private_key = forge.pki.privateKeyFromPem(key_pem);
   const [common_name, ...alt_names] = domains;
-  const [_, csr] = await forge.createCsr({
-    key: private_key,
+  const [_, csr] = await acme_crypto.createCsr({
+    key: key_pem,
     commonName: common_name,
     altNames: alt_names,
   });
@@ -116,14 +115,17 @@ export default async (host, set_cname, rm_by_id) => {
     }
   };
 
+  console.log('CSR:', csr.toString());
   const certificate = await client.auto({
     csr,
+    identifiers: domains.map(d => ({ type: 'dns', value: d })),
     email,
     termsOfServiceAgreed: true,
-    challengePriority: ["dns-01"],
+    challengePriority: ['dns-01'],
     challengeCreateFn: create_challenge,
     challengeRemoveFn: remove_challenge,
   });
 
   return [certificate_key, certificate];
 };
+
