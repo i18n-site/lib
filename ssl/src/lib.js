@@ -1,15 +1,5 @@
 import { Client, crypto } from "acme-client";
 
-const 清理挑战 = async (authz, challenge, key_auth, rmTxtById, txt_id_map) => {
-  if (challenge.type === "dns-01") {
-    const id = txt_id_map.get(authz.identifier.value);
-    if (id) {
-      await rmTxtById(id);
-      txt_id_map.delete(authz.identifier.value);
-    }
-  }
-};
-
 export default async (domain, setTxt, rmTxt) => {
   const email = "ssl@" + domain,
     client = new Client({
