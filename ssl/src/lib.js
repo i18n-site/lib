@@ -1,11 +1,4 @@
-import { Client, crypto as acme_crypto } from "acme-client";
-import {
-  generateKeyPair,
-  createPublicKey,
-  createHmac,
-  createHash,
-} from "crypto";
-import { promisify } from "util";
+import { Client, crypto } from "acme-client";
 import sleep from "@3-/sleep";
 
 export default async (domain, setCname, rmCnameById) => {
