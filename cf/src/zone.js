@@ -1,3 +1,5 @@
+import debug from "@3-/console/debug.js";
+
 export default async ({ DELETE, GET, POST }, host) => {
   const zone_id = (await GET("zones?name=" + host))[0].id,
     getName = (name) => (name ? name + "." + host : host),
@@ -13,16 +15,10 @@ export default async ({ DELETE, GET, POST }, host) => {
         })
       ).id;
     },
-    idByName = async (type, name) => {
-      const r = await GET(dns_records + `?name=${getName(name)}&type=${type}`);
-      console.log(r)
-      return r.id,
-    },
-    rmByName = async (type, name) => {
-      const url = dns_records + "/" + (await idByName(type, name));
-      console.log(url);
-      return DELETE(url);
-    };
+    idByName = async (type, name) =>
+      (await GET(dns_records + `?name=${getName(name)}&type=${type}`))[0].id,
+    rmByName = async (type, name) =>
+      DELETE(dns_records + "/" + (await idByName(type, name)));
   return {
     set: async (type, name, content, proxied = false) => {
       let n = 0;

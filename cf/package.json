@@ -19,6 +19,7 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
+    "@3-/console": "^0.1.2",
     "@8v/curl": "^0.1.7"
   }
 }
