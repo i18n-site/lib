@@ -27,27 +27,33 @@ const 生成请求 = async (key_pem, domains) => {
 };
 
 const 获取eab = async (email) => {
-  const res = await fetch('https://api.zerossl.com/acme/eab-credentials-email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
+  const res = await fetch(
+    "https://api.zerossl.com/acme/eab-credentials-email",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({ email }),
     },
-    body: new URLSearchParams({ email }),
-  });
+  );
   const { eab_kid, eab_hmac_key } = await res.json();
   return { kid: eab_kid, hmacKey: eab_hmac_key };
 };
 
 export default async (host, set_cname, rm_by_id) => {
-  const email = 'i18n.site@gmail.com';
+  const email = "i18n.site@gmail.com";
   const account_key = await 生成密钥();
   const client = new Client({
-    directoryUrl: 'https://acme.zerossl.com/v2/DV90',
+    directoryUrl: "https://acme.zerossl.com/v2/DV90",
     accountKey: account_key,
   });
 
   const { kid, hmacKey } = await 获取eab(email);
-  const external_account_binding = await client.createAccountKeyBinding(kid, hmacKey);
+  const external_account_binding = await client.createAccountKeyBinding(
+    kid,
+    hmacKey,
+  );
 
   await client.createAccount({
     termsOfServiceAgreed: true,
@@ -62,7 +68,7 @@ export default async (host, set_cname, rm_by_id) => {
   const challenge_ids = new Map();
 
   const create_challenge = async (authz, challenge, key_authorization) => {
-    if (challenge.type === 'dns-01') {
+    if (challenge.type === "dns-01") {
       const id = await set_cname(key_authorization);
       challenge_ids.set(challenge.token, id);
       await sleep(10000);
@@ -81,7 +87,7 @@ export default async (host, set_cname, rm_by_id) => {
     csr,
     email,
     termsOfServiceAgreed: true,
-    challengePriority: ['dns-01'],
+    challengePriority: ["dns-01"],
     challengeCreateFn: create_challenge,
     challengeRemoveFn: remove_challenge,
   });
