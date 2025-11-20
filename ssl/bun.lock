@@ -5,13 +5,13 @@
     "": {
       "name": "@3-/ssl",
       "dependencies": {
-        "@3-/cf": "^0.1.19",
+        "@3-/cf": "^0.1.20",
         "acme-client": "^5.4.0",
       },
     },
   },
   "packages": {
-    "@3-/cf": ["@3-/cf@0.1.19", "https://mirrors.cloud.tencent.com/npm/@3-/cf/-/cf-0.1.19.tgz", { "dependencies": { "@3-/req": "^0.1.18" } }, "sha512-gcz5BwI363ELi/+80NURE2B6fX4xcAm4ll42OMsaMJcy9d9qzIg1Phef8X8QB+iAwyjEKZ6ngTcmpWbXRHIPNw=="],
+    "@3-/cf": ["@3-/cf@0.1.20", "https://mirrors.cloud.tencent.com/npm/@3-/cf/-/cf-0.1.20.tgz", { "dependencies": { "@3-/req": "^0.1.18" } }, "sha512-jOd4jiWdmaJx2psasaWLScfkInUsV19RJ1J+e9FLSSTv+W/rLRE1e/4WdxPGfj9kYm7YA/FvYP/WD5eREDAowA=="],
 
     "@3-/req": ["@3-/req@0.1.18", "https://mirrors.cloud.tencent.com/npm/@3-/req/-/req-0.1.18.tgz", { "dependencies": { "@3-/sleep": "^0.0.4", "https-proxy-agent": "^7.0.4", "lodash-es": "^4.17.21", "msgpackr": "^1.10.1", "node-fetch": "^3.3.2" } }, "sha512-uq9+K9eRVW9cInB7Wg/ONQDaAHWYFHm7/+hNp+6Rz3dbhwWWxLiIqh+QqnIKBwpLn8bGtl2PNBM6V3e2ELT5Og=="],
 
