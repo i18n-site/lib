@@ -1,10 +1,11 @@
 import write from "@3-/write";
 import { tmpdir } from "node:os";
-import { mkdtemp } from "node:fs";
+import { mkdtempSync } from "node:fs";
 import { join } from "node:path";
 
 export default (name_ip_li) => {
-  const ssh_config = mkdtemp(join(tmpdir(), "ssh_config-"));
+  const ssh_config = mkdtempSync(join(tmpdir(), "ssh_config-"));
+  console.log(ssh_config);
   write(
     ssh_config,
     "Host *\nStrictHostKeyChecking accept-new\n" +
