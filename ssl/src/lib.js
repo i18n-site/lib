@@ -5,7 +5,7 @@ export default async (
   setCname, // prefix value
   rmById,
 ) => {
-  const cname = await xxx(host);
+  const cname = await 申请证书(host);
 
   const id = await setCname(cname),
     waited = 0;
