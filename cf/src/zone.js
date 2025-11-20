@@ -14,10 +14,15 @@ export default async ({ DELETE, GET, POST }, host) => {
     };
   return {
     set: async (type, name, content, proxied = false) => {
-      try {
-        return await set(type, name, content, proxied);
-      } catch (e) {
-        console.log(e);
+      let n = 0;
+      for (;;) {
+        try {
+          return await set(type, name, content, proxied);
+        } catch (e) {
+          if (++n > 1 || !e.message?.includes("already exists")) {
+            throw e;
+          }
+        }
       }
     },
     rm: (type, name) => DELETE(prefix),
