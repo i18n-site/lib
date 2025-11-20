@@ -17,11 +17,12 @@
   "files": [
     "lib/*"
   ],
-  "devDependencies": {},
+  "devDependencies": {
+    "@3-/cf": "^0.1.21"
+  },
   "scripts": {},
   "type": "module",
   "dependencies": {
-    "@3-/cf": "^0.1.20",
     "acme-client": "^5.4.0"
   }
 }
