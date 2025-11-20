@@ -28,7 +28,7 @@ export default async (domain, setTxt, rmTxt) => {
       await client.auto({
         csr,
         email,
-        skipChallengeVerification: true,
+        // skipChallengeVerification: true,
         termsOfServiceAgreed: true,
         challengePriority: ["dns-01"],
         challengeCreateFn: async (_authz, _challenge, key_auth) => {
