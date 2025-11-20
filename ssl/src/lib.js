@@ -5,7 +5,7 @@ const ACME_CHALLENGE = "_acme-challenge";
 export default async (domain, setTxt, rmTxt) => {
   const email = "ssl@" + domain,
     client = new Client({
-      directoryUrl: "https://acme-v02.api.letsencrypt.org/directory",
+      directoryUrl: "https://acme.zerossl.com/v2/DV90",
       accountKey: await crypto.createPrivateKey(),
     }),
     [cert_key, csr] = await crypto.createCsr({
