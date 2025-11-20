@@ -15,7 +15,7 @@ domain = 'js0.site'
 host = await zone(cf, domain)
 
 cert = await ssl(
-  host
+  domain
   (k,v)=>
     console.log('SET CNAME', k,v)
     host.set('CNAME',k,v)

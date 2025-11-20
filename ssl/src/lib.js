@@ -1,5 +1,5 @@
 import { Client, crypto as acme_crypto } from 'acme-client';
-import { generateKeyPair, createPublicKey, createHmac } from 'crypto';
+import { generateKeyPair, createPublicKey, createHmac, createHash } from 'crypto';
 import { promisify } from 'util';
 import sleep from '@3-/sleep';
 
@@ -69,8 +69,10 @@ const 生成eab_jws = (account_key_pem, kid, hmac_key_b64, new_account_url) => {
   };
 };
 
-export default async (host, set_cname, rm_by_id) => {
-  const email = "i18n.site@gmail.com";
+export default async (host_obj, set_cname, rm_by_id) => {
+  console.log('HOST OBJ:', host_obj);
+  const host = host_obj.name || 'js0.site'; // Temporary fallback
+  const email = 'i18n.site@gmail.com';
   const account_key = await 生成密钥();
   const directory_url = 'https://acme.zerossl.com/v2/DV90';
 
@@ -100,8 +102,9 @@ export default async (host, set_cname, rm_by_id) => {
   const challenge_ids = new Map();
 
   const create_challenge = async (authz, challenge, key_authorization) => {
-    if (challenge.type === "dns-01") {
-      const id = await set_cname(key_authorization);
+    if (challenge.type === 'dns-01') {
+      const digest = createHash('sha256').update(key_authorization).digest('base64url');
+      const id = await host_obj.set('TXT', '_acme-challenge', digest);
       challenge_ids.set(challenge.token, id);
       await sleep(10000);
     }
@@ -110,7 +113,7 @@ export default async (host, set_cname, rm_by_id) => {
   const remove_challenge = async (authz, challenge) => {
     const id = challenge_ids.get(challenge.token);
     if (id) {
-      await rm_by_id(id);
+      await host_obj.rmById(id);
       challenge_ids.delete(challenge.token);
     }
   };
