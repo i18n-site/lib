@@ -14,7 +14,8 @@ cf = Cf(
 host = await zone(cf, 'js0.site')
 
 cert = await ssl(
-  host
+  host.set
+  host.rmById
 )
 
 console.log(cert)
@@ -22,7 +23,7 @@ console.log(cert)
 # rid = await host.set(
 #   'CNAME',
 #   'x'
-#   'xxx.c.com'
+#   'val'
 # )
 # console.log rid
 # console.log 'rm',await host.rmById rid
