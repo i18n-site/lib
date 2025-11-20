@@ -18,7 +18,7 @@
     "lib/*"
   ],
   "devDependencies": {
-    "@3-/cf": "^0.1.21"
+    "@3-/cf": "^0.1.22"
   },
   "scripts": {},
   "type": "module",
