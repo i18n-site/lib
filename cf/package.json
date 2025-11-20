@@ -9,7 +9,7 @@
   "author": "i18n.site@gmail.com",
   "license": "MulanPSL-2.0",
   "exports": {
-    ".": "./lib/index.js",
+    ".": "./lib/lib.js",
     "./*": "./lib/*"
   },
   "files": [
@@ -19,6 +19,6 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
-    "@3-/req": "^0.0.2"
+    "@3-/req": "^0.1.18"
   }
 }
