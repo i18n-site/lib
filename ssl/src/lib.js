@@ -10,13 +10,6 @@ const 创建客户端 = async (email) => {
   });
 };
 
-const 处理挑战 = async (authz, challenge, key_auth, setTxt, txt_id_map) => {
-  if (challenge.type === "dns-01") {
-    const id = await setTxt("_acme-challenge", '"' + key_auth + '"');
-    txt_id_map.set(authz.identifier.value, id);
-  }
-};
-
 const 清理挑战 = async (authz, challenge, key_auth, rmTxtById, txt_id_map) => {
   if (challenge.type === "dns-01") {
     const id = txt_id_map.get(authz.identifier.value);
@@ -27,7 +20,7 @@ const 清理挑战 = async (authz, challenge, key_auth, rmTxtById, txt_id_map) =
   }
 };
 
-export default async (domain, setTxt, rmTxtById) => {
+export default async (domain, setTxt, rmTxt) => {
   const email = "ssl@" + domain,
     client = await 创建客户端(email),
     txt_id_map = new Map();
@@ -43,7 +36,7 @@ export default async (domain, setTxt, rmTxtById) => {
     termsOfServiceAgreed: true,
     challengePriority: ["dns-01"],
     challengeCreateFn: async (authz, challenge, key_auth) => {
-      await 处理挑战(authz, challenge, key_auth, setTxt, txt_id_map);
+      await setTxt("_acme-challenge", '"' + key_auth + '"');
       await sleep(3e3);
     },
     challengeRemoveFn: async (authz, challenge, key_auth) => {
