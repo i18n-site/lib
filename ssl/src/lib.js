@@ -21,7 +21,7 @@ export default async (domain, setTxt, rmTxt) => {
     challengePriority: ["dns-01"],
     challengeCreateFn: async (authz, challenge, key_auth) => {
       console.log({ authz, challenge, key_auth });
-      await setTxt(ACME_CHALLENGE, '"' + key_auth + '"');
+      await setTxt(ACME_CHALLENGE, key_auth);
     },
     challengeRemoveFn: async (authz, challenge, key_auth) => {
       await rmTxt(ACME_CHALLENGE);
