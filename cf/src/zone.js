@@ -16,10 +16,17 @@ export default async ({ DELETE, GET, POST }, host) => {
     idByName = async (type, name) =>
       (await GET(dns_records + `?name=${getName(name)}&type=${type}`))[0].id,
     rmById = async (id) => DELETE(dns_records + "/" + id),
-    rmByName = async (type, name) => rmById(await idByName(type, name)),
+    rmByName = async (name) => {
+      name = getName(name);
+      for await (const record of ls()) {
+        if (record.name == name) {
+          await rmById(record.id);
+        }
+      }
+    },
     ls = async function* () {
       let page = 0;
-      const per_page = 5;
+      const per_page = 20;
       for (;;) {
         const li = await GET(
           dns_records + "?per_page=" + per_page + "&page=" + ++page,

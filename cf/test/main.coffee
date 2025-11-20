@@ -19,8 +19,9 @@ rid = await host.set(
 console.log rid
 console.log 'rm',await host.rmById rid
 
-for await i from host.ls()
-  console.log i
+await host.rmByName '_acme-challenge'
+# for await i from host.ls()
+#   console.log i
 
 # @3-/cf/purgeCache.js
 
