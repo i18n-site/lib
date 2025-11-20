@@ -92,8 +92,7 @@ https://dash.cloudflare.com/api/v4/accounts/3532021fc25349684e9d77545ec45784/wor
 output :
 
 ```
-f983d15896de99536be07269db890488
-rm { id: 'f983d15896de99536be07269db890488' }
+./out.txt
 ```
 
 ## About
