@@ -28,7 +28,7 @@ export default (
   now = int new Date / 1e3
 
   task = (meta)=>
-    {git_url:src_git} = meta
+    src_git = 'git@gitcode.com:' + meta.full_name.replace(' / ','/')
     name = getName(src_git)
     try
       if await syncSrcDev(
