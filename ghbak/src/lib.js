@@ -1,25 +1,15 @@
 #!/usr/bin/env bun
 
 import { $ } from "zx";
-import write from "@3-/write";
 import ymd from "@3-/ymd";
+import sshConfig from "@3-/ssh_config";
 
 const { PASSWORD } = process.env;
 
 export default async (name, ip, dir) => {
-  const ssh_config = `/tmp/ssh_config/${name}`,
-    fname = `/tmp/${name}.tar.zst.enc`,
-    today = ymd();
-  write(
-    ssh_config,
-    `
-Host *
-StrictHostKeyChecking accept-new
-
-Host vps
-HostName ${ip}
-User root`,
-  );
+  const fname = `/tmp/${name}.tar.zst.enc`,
+    today = ymd(),
+    ssh_config = sshConfig([["vps", ip]]);
 
   $.verbose = 0;
   const p =
