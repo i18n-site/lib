@@ -16,10 +16,8 @@ host = await zone(cf, domain)
 
 cert = await ssl(
   domain
-  (domain,val)=>
-    console.log('SET TXT', domain, val)
-    host.set('TXT', domain, val)
-  host.rmById
+  host.set.bind(host,'TXT')
+  host.rmByName
 )
 
 console.log(cert)
