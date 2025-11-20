@@ -6,7 +6,7 @@ export default async ({ GET, POST }, host) => {
         type,
         name: name == "@" ? name : name + "." + host,
         content,
-        proxied,
+        proxied: !!proxied,
       }),
     rm: () => {},
   };
