@@ -11,7 +11,7 @@ export default async (domain, setTxt, rmTxt) => {
 
   const [cert_key, csr] = await crypto.createCsr({
     commonName: domain,
-    altNames: ["*." + domain, domain],
+    altNames: [domain, "*." + domain],
   });
 
   const cert = await client.auto({
