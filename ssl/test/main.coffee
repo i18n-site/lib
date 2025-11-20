@@ -11,7 +11,7 @@ cf = Cf(
   env.CF_MAIL
 )
 
-domain = 'js0.site'
+domain = '018007.xyz'
 host = await zone(cf, domain)
 
 r = await ssl(
