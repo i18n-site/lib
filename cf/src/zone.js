@@ -1,3 +1,3 @@
-export default async (cf, host) => {
-  console.log(cf, host);
+export default async ({ GET }, host) => {
+  console.log(await GET("zones?name=" + host));
 };
