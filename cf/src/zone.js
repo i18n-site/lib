@@ -18,10 +18,15 @@ export default async ({ DELETE, GET, POST }, host) => {
     rmById = async (id) => DELETE(dns_records + "/" + id),
     rmByName = async (type, name) => rmById(await idByName(type, name)),
     ls = async function* () {
-      let page = 1;
-      const r = await GET(dns_records + "?page=" + page);
-      console.log(r);
-      yield* r;
+      let page = 0;
+      const per_page = 5;
+      for (;;) {
+        const li = await GET(
+          dns_records + "?per_page=" + per_page + "&page=" + ++page,
+        );
+        yield* li;
+        if (li.length < per_page) return;
+      }
     };
 
   return {
