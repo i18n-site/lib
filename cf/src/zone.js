@@ -16,9 +16,16 @@ export default async ({ DELETE, GET, POST }, host) => {
     idByName = async (type, name) =>
       (await GET(dns_records + `?name=${getName(name)}&type=${type}`))[0].id,
     rmById = async (id) => DELETE(dns_records + "/" + id),
-    rmByName = async (type, name) => rmById(await idByName(type, name));
+    rmByName = async (type, name) => rmById(await idByName(type, name)),
+    ls = async function () {
+      let page = 1;
+      const r = await GET(dns_records + "?page=" + page);
+      console.log(r);
+      yield r;
+    };
 
   return {
+    ls,
     rmById,
     rmByName,
     set: async (type, name, content, proxied = false) => {
