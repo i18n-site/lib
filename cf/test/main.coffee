@@ -6,8 +6,8 @@
 {env} = process
 
 cf = Cf(
-  env.CF_Key
-  env.CF_Mail
+  env.CF_KEY
+  env.CF_MAIL
 )
 
 host = await zone(cf, 'js0.site')
