@@ -34,7 +34,7 @@
   end = site.indexOf('/')
   git_url_prefix = 'git@'+site.slice(
     site.indexOf('.')+1
-    end<0?undefined:end
+    if end<0 then undefined else end
   )+':'
 
   {
