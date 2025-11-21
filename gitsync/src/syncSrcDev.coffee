@@ -29,6 +29,8 @@ export default (
   try
     dev = await src.branch(src_org, name, 'dev')
   catch err
+    if err.status == 400
+      return
     console.error err
     return
 

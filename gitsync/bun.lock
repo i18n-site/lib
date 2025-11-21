@@ -5,12 +5,12 @@
     "": {
       "name": "@3-/gitsync",
       "dependencies": {
-        "@3-/gitapi": "^0.1.9",
+        "@3-/gitapi": "^0.1.10",
       },
     },
   },
   "packages": {
-    "@3-/gitapi": ["@3-/gitapi@0.1.9", "https://mirrors.cloud.tencent.com/npm/@3-/gitapi/-/gitapi-0.1.9.tgz", { "dependencies": { "@3-/int": "^0.1.1", "@3-/mktmp": "^0.1.3", "@3-/pageiter": "^0.1.2", "@3-/qwen": "^0.1.5", "@3-/reset": "^0.1.2", "@3-/yml": "^0.1.14", "simple-git": "^3.30.0" } }, "sha512-YpNPea0pfv6sW6A/MLpcUOaJ9RrOzAUUR7cJQvsN48Hdf1HSP7P6RsdPHQr7ZOqwC5V5lHbb6mbxptfyLz+kGg=="],
+    "@3-/gitapi": ["@3-/gitapi@0.1.10", "https://mirrors.cloud.tencent.com/npm/@3-/gitapi/-/gitapi-0.1.10.tgz", { "dependencies": { "@3-/int": "^0.1.1", "@3-/mktmp": "^0.1.3", "@3-/pageiter": "^0.1.2", "@3-/qwen": "^0.1.5", "@3-/reset": "^0.1.2", "@3-/yml": "^0.1.14", "simple-git": "^3.30.0" } }, "sha512-tYD6d3GSxva1olZ/lM6hBZD6AdIGDBr+t1gPPYpiiPzhVCo4aTjd8d4T7wCIGhnXlke3CN5VNySliogntAOBYg=="],
 
     "@3-/int": ["@3-/int@0.1.1", "", {}, "sha512-hBH7ZmKIwSH4URleqo6U0ovTXGXGMEi2Xgr2KxPPcxSlxtoi3Mdsx6MFQz9U484bXpovJulXXwK/aUye0Gqzkw=="],
 
