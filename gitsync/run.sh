@@ -16,8 +16,8 @@ set -x
 ./build.sh
 
 # rm -f test/sync.yml
-# if [ ! -n "$1" ]; then
-#   exec mise exec -- ./test/main.js | tee out.txt
-# else
-#   exec ./${@:1}
-# fi
+if [ ! -n "$1" ]; then
+  exec mise exec -- ./test/main.js | tee out.txt
+else
+  exec ./${@:1}
+fi

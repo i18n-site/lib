@@ -26,8 +26,12 @@ export default (
     to_org
   ] = args
 
+  try
+    dev = await src.branch(src_org, name, 'dev')
+  catch err
+    console.error err
+    return
 
-  dev = await src.branch(src_org, name, 'dev')
   if not dev
     return
 
