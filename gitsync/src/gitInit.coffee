@@ -10,14 +10,14 @@ export default (
   await git.addRemote('origin', to_git)
   await git.addRemote('src', from_git)
 
-  if pre_sync_sha
-    await raw('fetch --depth=1 src', pre_sync_sha)
-    await git.checkout('FETCH_HEAD')
-    since = '--shallow-since="' + (await raw 'show -s --format=%ci') + '"'
+  # if pre_sync_sha
+  #   await raw('fetch --depth=1 src', pre_sync_sha)
+  #   await git.checkout('FETCH_HEAD')
+  #   since = '--shallow-since="' + (await raw 'show -s --format=%ci') + '"'
 
   fetch = (...args)=>
-    if since
-      args.push(since)
+    # if since
+    #   args.push(since)
     console.log 'git fetch',...args
     git.fetch args
 
