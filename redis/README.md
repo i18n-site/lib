@@ -14,7 +14,7 @@ process.exit()
 output :
 
 ```
-[Function (anonymous)]
+./out.txt
 ```
 
 ## About

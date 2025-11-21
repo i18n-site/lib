@@ -1,5 +1,3 @@
-#!/usr/bin/env bun
-
 import { createSentinel } from "redis";
 
 export default (conf) => {
