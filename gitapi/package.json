@@ -1,6 +1,6 @@
 {
   "name": "@3-/gitapi",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "Git API wrapper for repo synchronization; works with gitsync to sync AtomGit repos to GitHub. / Git API 封装，用于仓库同步；配合 gitsync 将 AtomGit 仓库同步到 GitHub。",
   "keywords": [
     "git",
