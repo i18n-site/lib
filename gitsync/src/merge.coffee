@@ -28,7 +28,13 @@ export default (
     await git 'merge --squash --ff --no-edit', merge_to
   catch
     await git 'fetch --unshallow'
-    await git 'merge --squash --ff --no-edit', merge_to
+    await git 'checkout dev'
+    await git 'fetch --unshallow'
+    await git 'checkout main'
+    try
+      await git 'merge --squash --ff --no-edit', merge_to
+    catch
+      await git 'checkout --theirs .'
 
   diff = await git 'diff main'
   if diff
