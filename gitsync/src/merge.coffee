@@ -32,11 +32,11 @@ export default (
     await git 'fetch --unshallow'
     await git 'checkout main'
     await git 'merge --squash --ff --no-edit', merge_to
-    try
-      await git 'checkout --theirs .'
-      await git 'add .'
-    catch err
-      console.error err
+  try
+    await git 'checkout --theirs .'
+    await git 'add .'
+  catch err
+    console.error err
 
   diff = await git 'diff main'
   if diff
