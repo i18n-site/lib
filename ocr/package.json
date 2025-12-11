@@ -1,0 +1,27 @@
+{
+  "name": "@3-/ocr",
+  "version": "0.1.1",
+  "keywords": [],
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/ocr",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/u8": "^0.1.2",
+    "@3-/utf8": "^0.0.4"
+  }
+}

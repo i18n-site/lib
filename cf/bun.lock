@@ -1,0 +1,18 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/cf",
+      "dependencies": {
+        "@3-/console": "^0.1.2",
+        "@8v/curl": "^0.1.7",
+      },
+    },
+  },
+  "packages": {
+    "@3-/console": ["@3-/console@0.1.2", "https://mirrors.cloud.tencent.com/npm/@3-/console/-/console-0.1.2.tgz", {}, "sha512-zRLjCSwKPBmThI2FslcoX7GQDm3kwKyTulVbwrbIyuI3yBJPnEU1iTqeVjFKbhvEznHRQWqQ2gA4DB03kq0TIg=="],
+
+    "@8v/curl": ["@8v/curl@0.1.7", "https://mirrors.cloud.tencent.com/npm/@8v/curl/-/curl-0.1.7.tgz", {}, "sha512-JmS4lp5BqHFQe23zWG+NP72gQClmFaBj8mnjoheAU60hK9AIRdtD6B19wX78vhHgaBPySt6FO5wc/84/WGY9Bg=="],
+  }
+}
