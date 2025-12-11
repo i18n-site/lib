@@ -14,7 +14,7 @@ export default (
     md_li.push '# '+title
     for {题,问,答} from li
       答 = txtFmt(答).trim()
-      if 答.startsWith '1. '
+      if (答.startsWith '1. ') or 答.endsWith(':') or 答.endsWith('：')
         答 = '\n'+答
       md_li.push '## '+ 题 + '\n问: ' + txtFmt(问).trimEnd() + '\n\n答: ' + 答 + '\n'
 
