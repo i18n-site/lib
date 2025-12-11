@@ -5,7 +5,7 @@
 
 export default retry (chat, txt)=>
   await chat(
-    '''将以下语音对话转为JSON数组,确保所有对话都被覆盖,不可遗漏。优化换行、排版，删除语气助词，让行文流畅。术语要忠于原文，严禁脑补。:\n'''+txt
+    '''将以下语音对话转为JSON数组,确保所有对话都被覆盖,不可遗漏。优化换行、排版，删除语气助词，在忠于原文的基础上增强可读性，严禁脑补术语。:\n'''+txt
     TOPIC_SCHEMA
     "你是专业资深的秘书"
     generationConfig:
