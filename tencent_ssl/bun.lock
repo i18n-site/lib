@@ -5,7 +5,7 @@
     "": {
       "name": "@3-/tencent_ssl",
       "dependencies": {
-        "@3-/cert": "^0.1.1",
+        "@3-/cert": "^0.1.2",
         "tencentcloud-sdk-nodejs-ssl": "^4.1.138",
         "tencentcloud-sdk-nodejs-teo": "^4.1.154",
       },
@@ -15,7 +15,7 @@
     },
   },
   "packages": {
-    "@3-/cert": ["@3-/cert@0.1.1", "", {}, "sha512-vr8RbIy7UPwKnpCj4+lA+Nr1eSxDNGs1T+dBWbP10Ke/R53nJtYNGjN65Hb4dpxDk8yesogr4x8YidTdSRpVng=="],
+    "@3-/cert": ["@3-/cert@0.1.2", "", {}, "sha512-WrTf5NyXjogMZLUyrR55fwg4692cAheL/QJSqUUQAkF6zZtiupY0V9T79zIbkPupHKTuVZOnIHWDf6zV+Er30w=="],
 
     "@3-/redis": ["@3-/redis@0.1.17", "", { "dependencies": { "redis": "^5.10.0" } }, "sha512-OvP40HtDV3D3Yd5WgyIc4q9A37yjyuuvus6CGv5jj1UFeR4OgD2odnwXj3RLXceP9zLOnZh5n30DW5+VGYKivg=="],
 
