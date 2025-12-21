@@ -1,6 +1,6 @@
 {
   "name": "@3-/alissl",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": {
     "type": "git",
     "url": "git+https://atomgit.com/i18n/lib.git"
@@ -9,7 +9,7 @@
   "author": "i18n.site@gmail.com",
   "license": "MulanPSL-2.0",
   "exports": {
-    ".": "./lib/index.js",
+    ".": "./lib/lib.js",
     "./*": "./lib/*"
   },
   "files": [
