@@ -35,7 +35,7 @@ const uploadCert = async (ssl, alias, key, crt) => {
     });
   };
 
-export default (secretId, secretKey) => {
+export default ([secretId, secretKey]) => {
   const conf = {
       credential: {
         secretId,

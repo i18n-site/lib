@@ -4,11 +4,9 @@
   ./conf.js
   ./R.js
 
-sslSet = TencentSsl(
-  ...conf
-)
+[CONF, [domain]] = conf
 
-domain = 'js0.site'
+sslSet = TencentSsl(CONF)
 
 key_cert = JSON.parse await R.get("ssl:"+domain)
 
