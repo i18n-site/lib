@@ -1,10 +1,10 @@
 js:
-  - 0eb6218e4a7f20aa69814a01609a272f42aea114
+  - 38c21c3db72d2c3f5dfe012736038d87455179d0
   - 1765771816
   - c28686d7a731dac582ecbb0c107e7cd5a21b13e4
 rust:
   - null
-  - 1766000790
+  - 1766244900
 note:
   - b1bcda0e1c52868959bd745583627b505fe3dbdf
   - 1765675367
@@ -12,15 +12,9 @@ note:
 kvrocks_lua:
   - 85c01bbbce179cf4ffbf042df0938edd582d3c2a
   - 1765947302
-conf:
-  - null
-  - 1765861361
 nix.vps:
   - null
-  - 1765963876
-nix:
-  - null
-  - 1766025928
+  - 1766320070
 mod:
   - 6ad6bc560babf704771abc5ae0e2d384d68f55b9
   - 1765766670
