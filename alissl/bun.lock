@@ -5,7 +5,7 @@
     "": {
       "name": "@3-/alissl",
       "dependencies": {
-        "@3-/cert": "^0.1.1",
+        "@3-/cert": "^0.1.2",
       },
       "devDependencies": {
         "@3-/redis": "^0.1.17",
@@ -20,7 +20,7 @@
     },
   },
   "packages": {
-    "@3-/cert": ["@3-/cert@0.1.1", "", {}, "sha512-vr8RbIy7UPwKnpCj4+lA+Nr1eSxDNGs1T+dBWbP10Ke/R53nJtYNGjN65Hb4dpxDk8yesogr4x8YidTdSRpVng=="],
+    "@3-/cert": ["@3-/cert@0.1.2", "", {}, "sha512-WrTf5NyXjogMZLUyrR55fwg4692cAheL/QJSqUUQAkF6zZtiupY0V9T79zIbkPupHKTuVZOnIHWDf6zV+Er30w=="],
 
     "@3-/pageiter": ["@3-/pageiter@0.1.2", "", {}, "sha512-adRY6wAMeGBPoPDeXr5CB9fkbvO3TK7EjqnkLhxGuK9zXBF3irGffUPhFZERdE6Ojn2a3o3soEvWsGAfg+c89w=="],
 

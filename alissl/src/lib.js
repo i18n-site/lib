@@ -162,13 +162,11 @@ export default ([id, secret]) => {
       });
 
   return async (_, key, crt, opt) => {
-    const { expire, host_li, name } = Cert(crt),
-      cert_id = await upload(cas, `${name}-${expire}`, key, crt),
+    const { expire, host_li, host } = Cert(crt),
+      cert_id = await upload(cas, `${host}-${expire}`, key, crt),
       tasks = [];
 
-    console.log(
-      `cert uploaded: ${name} (id: ${cert_id}) host_li: ${host_li.join(", ")}`,
-    );
+    console.log(`cert uploaded: ${host_li.join(" ")}`);
 
     if (opt?.oss) {
       for (const [bucket, domain, endpoint] of opt.oss) {
