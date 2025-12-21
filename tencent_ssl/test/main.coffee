@@ -12,6 +12,6 @@ domain = 'js0.site'
 
 key_cert = JSON.parse await R.get("ssl:"+domain)
 
-await sslSet domain, ...key_cert
+await sslSet key_cert
 console.log 'done'
 process.exit()

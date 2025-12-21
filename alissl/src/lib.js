@@ -161,7 +161,7 @@ export default ([id, secret]) => {
         if (e.code !== "Certificate.Duplicated") throw e;
       });
 
-  return async (_, key, crt, opt) => {
+  return async ([key, crt], opt) => {
     const { expire, host_li, host } = Cert(crt),
       cert_id = await upload(cas, `${host}-${expire}`, key, crt),
       tasks = [];

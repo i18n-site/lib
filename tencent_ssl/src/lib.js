@@ -45,7 +45,7 @@ export default (secretId, secretKey) => {
     teo = new Teo(conf),
     ssl = new Ssl(conf);
 
-  return async (key, crt) => {
+  return async ([key, crt]) => {
     const { host, expire } = Cert(crt),
       zones = (
         await teo.DescribeZones({

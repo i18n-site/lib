@@ -6,8 +6,7 @@ import R from "./R.js";
 
 const SITE_LI = CONF.pop();
 for (const site of SITE_LI) {
-  const alissl = Alissl(...CONF),
-    [key, crt] = JSON.parse(await R.get("ssl:" + site));
-  await alissl(site, key, crt);
+  const alissl = Alissl(...CONF);
+  await alissl(JSON.parse(await R.get("ssl:" + site)));
 }
 process.exit();
