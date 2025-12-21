@@ -4,7 +4,8 @@
 
 export default (
   token_li
-  model='gemini-3-pro-preview'
+  model='gemini-3-flash-preview'
+  # model='gemini-3-pro-preview'
   # model='gemini-2.5-pro'
 )=>
   generate_content_url = 'https://generativelanguage.googleapis.com/v1beta/models/'+model+':generateContent'

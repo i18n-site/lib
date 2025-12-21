@@ -9,5 +9,6 @@ export default retry (chat, txt)=>
     TOPIC_SCHEMA
     "你是专业资深的秘书"
     generationConfig:
-      temperature: 0
+      # 谷歌不建议用这个参数了
+      # temperature: 0
   )
