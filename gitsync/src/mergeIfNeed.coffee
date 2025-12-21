@@ -49,7 +49,7 @@ sync = (
     need_sync = await needSync raw
 
   if expire_async or need_sync
-    await merge(tmp, db, name, raw, dev_sha, ...need_sync)
+    await merge(tmp, db, name, raw, dev_sha, ...(need_sync or []))
   else
     pre[0] = dev_sha
   return 1
