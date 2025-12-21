@@ -14,7 +14,7 @@ import Esa, {
   ListSitesRequest,
 } from "@alicloud/esa20240910";
 import pageiter from "@3-/pageiter";
-import Cert from "./Cert.js";
+import Cert from "@3-/cert";
 
 const REGION = "cn-hangzhou",
   CAS = "cas";

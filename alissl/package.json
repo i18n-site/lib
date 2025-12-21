@@ -28,5 +28,6 @@
     "@3-/pageiter": "^0.1.2"
   },
   "dependencies": {
+    "@3-/cert": "^0.1.1"
   }
 }
