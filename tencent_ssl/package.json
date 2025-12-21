@@ -23,6 +23,7 @@
   "scripts": {},
   "type": "module",
   "dependencies": {
+    "@3-/cert": "^0.1.1",
     "tencentcloud-sdk-nodejs-ssl": "^4.1.138",
     "tencentcloud-sdk-nodejs-teo": "^4.1.154"
   }

@@ -16,7 +16,7 @@ export default (crt) => {
   return {
     expire: `${y}${m}${d}`,
     host_li,
-    name: host_li.reduce(
+    host: host_li.reduce(
       (a, b) => (a.length <= b.length ? a : b),
       host_li[0] || "",
     ),
