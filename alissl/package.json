@@ -22,7 +22,11 @@
   "type": "module",
   "peerDependencies": {
     "@alicloud/cas20180713": "^1.0.0",
-    "@alicloud/cdn20180510": "^7.0.1"
+    "@alicloud/cdn20180510": "^8.0.0",
+    "@alicloud/esa20240910": "^2.36.1",
+    "@alicloud/openapi-client": "^0.4.15",
+    "@3-/pageiter": "^0.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+  }
 }
