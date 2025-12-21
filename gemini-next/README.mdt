@@ -1,0 +1,144 @@
+[English](#english) | [中文](#chinese)
+
+<a id="english"></a>
+
+# @3-/gemini-next: Quick Account Switching for gemini-cli
+
+`gemini-cli` has a limited daily quota. This project allows you to quickly switch between `gemini-cli` accounts without repeatedly logging in again.
+
+## Usage Guide
+
+1.  **Global Installation**
+    ```sh
+    npm i -g gemini-next
+    ```
+
+2.  **Account Configuration**
+    Create a YAML file at `~/.config/gemini-cli/google_cloud_project.yml` with the following format, mapping username prefixes to their `PROJECT_ID`:
+    ```yml
+    # For example, if your Google account is `abcde@gmail.com`, your username prefix is `abcde`
+    username_prefix_1: YOUR_PROJECT_ID_1
+    username_prefix_2: YOUR_PROJECT_ID_2
+    ```
+
+3.  **Update Your Shell Environment**
+    For a smoother experience, add the following to your shell's configuration file (e.g., `~/.bashrc`, `~/.zshrc`):
+    ```bash
+    alias gemini="gemini-next && . ~/.config/gemini-cli/project.env && $(command which gemini) --yolo"
+    ```
+    After updating, please run `. ~/.bashrc`.
+
+    From now on, running `gemini` will automatically switch to the least recently used account each time.
+
+    The `gemini --yolo` command automatically accepts any confirmation prompts from Gemini CLI, streamlining its use in scripts or quick commands.
+
+    If you want `gemini` to use a proxy, you can also include it in the `alias`, for example:
+
+    ```bash
+    alias gemini="gemini-next && . ~/.config/gemini-cli/project.env && https_proxy=http://127.0.0.1:7890 $(command which gemini) --yolo"
+    ```
+
+4.  **Switch Accounts**
+    Run the `gemini` command in your terminal. The tool will automatically switch to the least recently used account.
+    ```sh
+    gemini
+    ```
+    Each account requires a login on its first use; subsequent switches are automatic. Please ensure the account you log into matches the one prompted by the tool.
+
+## Design Philosophy and Tech Stack
+
+The script's design is rooted in simplicity and efficiency. It operates by "hot-swapping" authentication credentials.
+
+-   **Core Mechanism**: The script backs up the `oauth_creds.json` file currently used by `gemini-cli` to a dedicated directory (`~/.config/gemini-cli/auth`), naming it after the active username. It then restores the credentials for the next target account.
+-   **Account Rotation**: It employs a "Least Recently Used" (LRU) strategy to cycle through accounts, ensuring even usage distribution. This logic is managed by tracking timestamps in `~/.config/gemini-cli/use_time.json`.
+-   **Environment Management**: It dynamically updates an environment file (`~/.config/gemini-cli/project.env`) to set the correct `GOOGLE_CLOUD_PROJECT` for the active account.
+
+## Tech Stack
+
+*   **Runtime**: Bun (A fast JavaScript runtime)
+*   **Language**: JavaScript
+*   **Dependencies**: Helper modules for file system operations (`@3-/read`, `@3-/write`), YAML parsing (`@3-/yml`), and timestamp generation (`@3-/nowts`).
+
+## File Structure (src/**)
+
+*   `src/lib.js`: The application's sole core script. It contains all the logic for managing paths, handling authentication files, reading user configurations, selecting the next account based on the LRU strategy, and updating the necessary files and environment variables to effect the account switch.
+*   `src/i18n/*.js`: These files provide internationalized string templates for the console output, allowing the tool to display messages in different languages (English, Chinese, Japanese).
+
+## A Little Story
+
+The concept of managing multiple identities or contexts is as old as computing itself. In the 1960s, the advent of time-sharing operating systems like Multics was revolutionary. It allowed multiple users to access a single mainframe computer simultaneously. Each user had their own private workspace and context, and the system would rapidly switch between them, giving the illusion that each person had the machine to themselves. This fundamental idea of context switching—saving one state and loading another—is precisely what `gemini-next` does for your `gemini-cli` accounts, albeit on a much smaller and more specialized scale. It's a modern echo of a foundational concept in computing.
+
+---
+
+<a id="chinese"></a>
+
+# @3-/gemini-next : gemini-cli 多账号快捷切换
+
+`gemini-cli` 每日配额有限。本项目让你快速切换 `gemini-cli` 的账号，无需反复重新登录。
+
+## 使用指南
+
+1.  **全局安装**
+    ```sh
+    npm i -g gemini-next
+    ```
+
+2.  **账号配置**
+    在 `~/.config/gemini-cli/google_cloud_project.yml` 创建一个 YAML 文件，格式如下，将用户名前缀映射到 `PROJECT_ID`：
+    ```yml
+    # 例如, 如果你的谷歌账号是 `abcde@gmail.com`, 那么你的用户名前缀是 `abcde`
+    用户名前缀1: YOUR_PROJECT_ID_1
+    用户名前缀2: YOUR_PROJECT_ID_2
+    ```
+
+3.  **更新你的 Shell 环境**
+    为了获得更流畅的体验，您可以将以下内容添加到您 shell 的配置文件中（例如 `~/.bashrc`, `~/.zshrc`）。
+
+    ```bash
+    alias gemini="gemini-next && . ~/.config/gemini-cli/project.env && $(command which gemini) --yolo"
+    ```
+
+    更新完成后请 `. ~/.bashrc`。
+
+    以后运行`gemini`，每次都会自动切换到最久未使用的账号。
+
+    `gemini --yolo` 命令会自动接受 Gemini CLI 的任何确认提示，从而简化在脚本或快速命令中的使用。
+
+
+    如果你想让 `gemini` 使用代理，也可以写到 `alias` 中，比如:
+
+    ```bash
+    alias gemini="gemini-next && . ~/.config/gemini-cli/project.env && https_proxy=http://127.0.0.1:7890 $(command which gemini) --yolo"
+    ```
+
+4.  **切换账号**
+    在您的终端中运行 `gemini` 命令。该工具将自动切换到最久未使用的账号。
+    ```sh
+    gemini
+    ```
+    每个账号首次使用需要登录，后续切换会自动完成。请确保您登录的账号和工具提示的当前账号一致。
+
+## 设计思路和技术栈
+
+该脚本的设计植根于简洁与高效。它通过对身份验证凭证进行“热插拔”来运作。
+
+-   **核心机制**: 脚本将 `gemini-cli` 当前使用的 `oauth_creds.json` 文件备份到一个专用目录 (`~/.config/gemini-cli/auth`) 中，并以活跃用户名命名。然后，它会恢复下一个目标账号的凭证。
+-   **账号轮换**: 它采用“最久未使用”（LRU）策略来循环切换账号，确保使用量的均匀分布。此逻辑通过在 `~/.config/gemini-cli/use_time.json` 中跟踪时间戳来管理。
+-   **环境管理**: 它会动态更新一个环境文件 (`~/.config/gemini-cli/project.env`)，为活动账号设置正确的 `GOOGLE_CLOUD_PROJECT`。
+
+## 技术堆栈
+
+*   **运行时**: Bun (一个快速的 JavaScript 运行时)
+*   **语言**: JavaScript
+*   **依赖**: 用于文件系统操作 (`@3-/read`, `@3-/write`)、YAML 解析 (`@3-/yml`) 和时间戳生成 (`@3-/nowts`) 的辅助模块。
+
+## 文件结构 (src/**)
+
+*   `src/lib.js`: 这是该应用的唯一核心脚本。它包含了管理路径、处理身份验证文件、读取用户配置、基于 LRU 策略选择下一个账号，以及更新必要文件和环境变量以使账号切换生效的所有逻辑。
+*   `src/i18n/*.js`: 这些文件为控制台输出提供了国际化的字符串模板，使工具能够以不同语言（英语、中文、日语）显示消息。
+
+## 技术小故事
+
+管理多个身份或上下文的概念与计算本身一样古老。在 1960 年代，像 Multics 这样的分时操作系统的出现是一场革命。它首次允许多个用户同时访问一台大型主机。每个用户都有自己私有的工作区和上下文，系统会在它们之间快速切换，给人的错觉是每个人都独占了这台机器。这种上下文切换——保存一个状态并加载另一个状态——的基本思想，正是 `gemini-next` 为您的 `gemini-cli` 账号所做的事情，尽管规模要小得多，也更专业化。它是计算领域一个基础概念在现代的回响。
+
+<+ ../about.md >

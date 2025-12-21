@@ -1,0 +1,15 @@
+cnameFlatten:
+  - i18n.site
+    - i18n.site.a.bdydns.com/user0.cf
+  - 3ti.site
+    - 3ti.site.s2-web.dogedns.com/u-01.eu.org
+
+smtp:
+  - u1-mail.i18n.site
+  - u2-mail.i18n.site
+  - u3-mail.i18n.site
+
+ipv6_proxy:
+  - u1
+  - u2
+  - u3
