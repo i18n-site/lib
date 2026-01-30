@@ -1,0 +1,125 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/alissl",
+      "dependencies": {
+        "@3-/cert": "^0.1.2",
+      },
+      "devDependencies": {
+        "@3-/redis": "^0.1.17",
+      },
+      "peerDependencies": {
+        "@3-/pageiter": "^0.1.2",
+        "@alicloud/cas20180713": "^1.0.0",
+        "@alicloud/cdn20180510": "^8.0.0",
+        "@alicloud/esa20240910": "^2.36.1",
+        "@alicloud/openapi-client": "^0.4.15",
+      },
+    },
+  },
+  "packages": {
+    "@3-/cert": ["@3-/cert@0.1.2", "", {}, "sha512-WrTf5NyXjogMZLUyrR55fwg4692cAheL/QJSqUUQAkF6zZtiupY0V9T79zIbkPupHKTuVZOnIHWDf6zV+Er30w=="],
+
+    "@3-/pageiter": ["@3-/pageiter@0.1.2", "", {}, "sha512-adRY6wAMeGBPoPDeXr5CB9fkbvO3TK7EjqnkLhxGuK9zXBF3irGffUPhFZERdE6Ojn2a3o3soEvWsGAfg+c89w=="],
+
+    "@3-/redis": ["@3-/redis@0.1.17", "", { "dependencies": { "redis": "^5.10.0" } }, "sha512-OvP40HtDV3D3Yd5WgyIc4q9A37yjyuuvus6CGv5jj1UFeR4OgD2odnwXj3RLXceP9zLOnZh5n30DW5+VGYKivg=="],
+
+    "@alicloud/cas20180713": ["@alicloud/cas20180713@1.0.0", "", { "dependencies": { "@alicloud/endpoint-util": "^0.0.1", "@alicloud/openapi-client": "^0.2.1", "@alicloud/tea-typescript": "latest", "@alicloud/tea-util": "^1.4.0" } }, "sha512-N5Q1JWfvNqZ12EZ6cz/Yhc4D8LtYMfXQNxxPIfbiQoDX9zFxwET/Hj9G9nA+fm9bHAJh7ip+Eh7Dxrz0uFlEeg=="],
+
+    "@alicloud/cdn20180510": ["@alicloud/cdn20180510@8.0.0", "", { "dependencies": { "@alicloud/openapi-core": "^1.0.0", "@darabonba/typescript": "^1.0.0" } }, "sha512-aqm8fs50DB9nAfs0S7OXMyf2B3M6WWH/3pWtIrH8qMSCj1a6MQEduTfroS9dm5sj64zy4vQ6OckX41glVxzYPA=="],
+
+    "@alicloud/credentials": ["@alicloud/credentials@2.4.4", "", { "dependencies": { "@alicloud/tea-typescript": "^1.8.0", "httpx": "^2.3.3", "ini": "^1.3.5", "kitx": "^2.0.0" } }, "sha512-/eRAGSKcniLIFQ1UCpDhB/IrHUZisQ1sc65ws/c2avxUMpXwH1rWAohb76SVAUJhiF4mwvLzLJM1Mn1XL4Xe/Q=="],
+
+    "@alicloud/darabonba-array": ["@alicloud/darabonba-array@0.1.2", "", { "dependencies": { "@alicloud/tea-typescript": "^1.7.1" } }, "sha512-ZPuQ+bJyjrd8XVVm55kl+ypk7OQoi1ZH/DiToaAEQaGvgEjrTcvQkg71//vUX/6cvbLIF5piQDvhrLb+lUEIPQ=="],
+
+    "@alicloud/darabonba-encode-util": ["@alicloud/darabonba-encode-util@0.0.2", "", { "dependencies": { "moment": "^2.29.1" } }, "sha512-mlsNctkeqmR0RtgE1Rngyeadi5snLOAHBCWEtYf68d7tyKskosXDTNeZ6VCD/UfrUu4N51ItO8zlpfXiOgeg3A=="],
+
+    "@alicloud/darabonba-map": ["@alicloud/darabonba-map@0.0.1", "", { "dependencies": { "@alicloud/tea-typescript": "^1.7.1" } }, "sha512-2ep+G3YDvuI+dRYVlmER1LVUQDhf9kEItmVB/bbEu1pgKzelcocCwAc79XZQjTcQGFgjDycf3vH87WLDGLFMlw=="],
+
+    "@alicloud/darabonba-signature-util": ["@alicloud/darabonba-signature-util@0.0.4", "", { "dependencies": { "@alicloud/darabonba-encode-util": "^0.0.1" } }, "sha512-I1TtwtAnzLamgqnAaOkN0IGjwkiti//0a7/auyVThdqiC/3kyafSAn6znysWOmzub4mrzac2WiqblZKFcN5NWg=="],
+
+    "@alicloud/darabonba-string": ["@alicloud/darabonba-string@1.0.3", "", { "dependencies": { "@alicloud/tea-typescript": "^1.5.1" } }, "sha512-NyWwrU8cAIesWk3uHL1Q7pTDTqLkCI/0PmJXC4/4A0MFNAZ9Ouq0iFBsRqvfyUujSSM+WhYLuTfakQXiVLkTMA=="],
+
+    "@alicloud/endpoint-util": ["@alicloud/endpoint-util@0.0.1", "", { "dependencies": { "@alicloud/tea-typescript": "^1.5.1", "kitx": "^2.0.0" } }, "sha512-+pH7/KEXup84cHzIL6UJAaPqETvln4yXlD9JzlrqioyCSaWxbug5FUobsiI6fuUOpw5WwoB3fWAtGbFnJ1K3Yg=="],
+
+    "@alicloud/esa20240910": ["@alicloud/esa20240910@2.36.1", "", { "dependencies": { "@alicloud/credentials": "^2.4.2", "@alicloud/openapi-core": "^1.0.0", "@darabonba/typescript": "^1.0.0" } }, "sha512-8OCJoaHPitgv7pmnjxGglbkSfbWofp6myFSgsQuj3MM7bDh7aUs8pR38CATAm/Au2KKMSdf4vCUYCx1+DT1NoA=="],
+
+    "@alicloud/gateway-pop": ["@alicloud/gateway-pop@0.0.6", "", { "dependencies": { "@alicloud/credentials": "^2", "@alicloud/darabonba-array": "^0.1.0", "@alicloud/darabonba-encode-util": "^0.0.2", "@alicloud/darabonba-map": "^0.0.1", "@alicloud/darabonba-signature-util": "^0.0.4", "@alicloud/darabonba-string": "^1.0.2", "@alicloud/endpoint-util": "^0.0.1", "@alicloud/gateway-spi": "^0.0.8", "@alicloud/openapi-util": "^0.3.2", "@alicloud/tea-typescript": "^1.7.1", "@alicloud/tea-util": "^1.4.8" } }, "sha512-KF4I+JvfYuLKc3fWeWYIZ7lOVJ9jRW0sQXdXidZn1DKZ978ncfGf7i0LBfONGk4OxvNb/HD3/0yYhkgZgPbKtA=="],
+
+    "@alicloud/gateway-spi": ["@alicloud/gateway-spi@0.0.8", "", { "dependencies": { "@alicloud/credentials": "^2", "@alicloud/tea-typescript": "^1.7.1" } }, "sha512-KM7fu5asjxZPmrz9sJGHJeSU+cNQNOxW+SFmgmAIrITui5hXL2LB+KNRuzWmlwPjnuA2X3/keq9h6++S9jcV5g=="],
+
+    "@alicloud/openapi-client": ["@alicloud/openapi-client@0.4.15", "", { "dependencies": { "@alicloud/credentials": "^2.4.2", "@alicloud/gateway-spi": "^0.0.8", "@alicloud/openapi-util": "^0.3.2", "@alicloud/tea-typescript": "^1.7.1", "@alicloud/tea-util": "1.4.9", "@alicloud/tea-xml": "0.0.3" } }, "sha512-4VE0/k5ZdQbAhOSTqniVhuX1k5DUeUMZv74degn3wIWjLY6Bq+hxjaGsaHYlLZ2gA5wUrs8NcI5TE+lIQS3iiA=="],
+
+    "@alicloud/openapi-core": ["@alicloud/openapi-core@1.0.6", "", { "dependencies": { "@alicloud/credentials": "^2.4.2", "@alicloud/gateway-pop": "0.0.6", "@alicloud/gateway-spi": "^0.0.8", "@darabonba/typescript": "^1.0.2" } }, "sha512-E5meOaZmdMHgvrSuSVRjMkrvttvW1aDfnzUnO+fjloYak/o/S6F8C3NXfPuhVVO/1GRfP6vf/4Vxo+tuus1UwA=="],
+
+    "@alicloud/openapi-util": ["@alicloud/openapi-util@0.3.2", "", { "dependencies": { "@alicloud/tea-typescript": "^1.7.1", "@alicloud/tea-util": "^1.3.0", "kitx": "^2.1.0", "sm3": "^1.0.3" } }, "sha512-EC2JvxdcOgMlBAEG0+joOh2IB1um8CPz9EdYuRfTfd1uP8Yc9D8QRUWVGjP6scnj6fWSOaHFlit9H6PrJSyFow=="],
+
+    "@alicloud/tea-typescript": ["@alicloud/tea-typescript@1.8.0", "", { "dependencies": { "@types/node": "^12.0.2", "httpx": "^2.2.6" } }, "sha512-CWXWaquauJf0sW30mgJRVu9aaXyBth5uMBCUc+5vKTK1zlgf3hIqRUjJZbjlwHwQ5y9anwcu18r48nOZb7l2QQ=="],
+
+    "@alicloud/tea-util": ["@alicloud/tea-util@1.4.11", "", { "dependencies": { "@alicloud/tea-typescript": "^1.5.1", "@darabonba/typescript": "^1.0.0", "kitx": "^2.0.0" } }, "sha512-HyPEEQ8F0WoZegiCp7sVdrdm6eBOB+GCvGl4182u69LDFktxfirGLcAx3WExUr1zFWkq2OSmBroTwKQ4w/+Yww=="],
+
+    "@alicloud/tea-xml": ["@alicloud/tea-xml@0.0.3", "", { "dependencies": { "@alicloud/tea-typescript": "^1", "@types/xml2js": "^0.4.5", "xml2js": "^0.6.0" } }, "sha512-+/9GliugjrLglsXVrd1D80EqqKgGpyA0eQ6+1ZdUOYCaRguaSwz44trX3PaxPu/HhIPJg9PsGQQ3cSLXWZjbAA=="],
+
+    "@darabonba/typescript": ["@darabonba/typescript@1.0.3", "", { "dependencies": { "@alicloud/tea-typescript": "^1.5.1", "httpx": "^2.3.2", "lodash": "^4.17.21", "moment": "^2.30.1", "moment-timezone": "^0.5.45", "xml2js": "^0.6.2" } }, "sha512-/y2y6wf5TsxD7pCPIm0OvTC+5qV0Tk7HQYxwpIuWRLXQLB0CRDvr6qk4bR6rTLO/JglJa8z2uCGZsaLYpQNqFQ=="],
+
+    "@redis/bloom": ["@redis/bloom@5.10.0", "", { "peerDependencies": { "@redis/client": "^5.10.0" } }, "sha512-doIF37ob+l47n0rkpRNgU8n4iacBlKM9xLiP1LtTZTvz8TloJB8qx/MgvhMhKdYG+CvCY2aPBnN2706izFn/4A=="],
+
+    "@redis/client": ["@redis/client@5.10.0", "", { "dependencies": { "cluster-key-slot": "1.1.2" } }, "sha512-JXmM4XCoso6C75Mr3lhKA3eNxSzkYi3nCzxDIKY+YOszYsJjuKbFgVtguVPbLMOttN4iu2fXoc2BGhdnYhIOxA=="],
+
+    "@redis/json": ["@redis/json@5.10.0", "", { "peerDependencies": { "@redis/client": "^5.10.0" } }, "sha512-B2G8XlOmTPUuZtD44EMGbtoepQG34RCDXLZbjrtON1Djet0t5Ri7/YPXvL9aomXqP8lLTreaprtyLKF4tmXEEA=="],
+
+    "@redis/search": ["@redis/search@5.10.0", "", { "peerDependencies": { "@redis/client": "^5.10.0" } }, "sha512-3SVcPswoSfp2HnmWbAGUzlbUPn7fOohVu2weUQ0S+EMiQi8jwjL+aN2p6V3TI65eNfVsJ8vyPvqWklm6H6esmg=="],
+
+    "@redis/time-series": ["@redis/time-series@5.10.0", "", { "peerDependencies": { "@redis/client": "^5.10.0" } }, "sha512-cPkpddXH5kc/SdRhF0YG0qtjL+noqFT0AcHbQ6axhsPsO7iqPi1cjxgdkE9TNeKiBUUdCaU1DbqkR/LzbzPBhg=="],
+
+    "@types/node": ["@types/node@12.20.55", "", {}, "sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ=="],
+
+    "@types/xml2js": ["@types/xml2js@0.4.14", "", { "dependencies": { "@types/node": "*" } }, "sha512-4YnrRemBShWRO2QjvUin8ESA41rH+9nQGLUGZV/1IDhi3SL9OhdpNC/MrulTWuptXKwhx/aDxE7toV0f/ypIXQ=="],
+
+    "cluster-key-slot": ["cluster-key-slot@1.1.2", "", {}, "sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA=="],
+
+    "debug": ["debug@4.4.3", "", { "dependencies": { "ms": "^2.1.3" } }, "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA=="],
+
+    "httpx": ["httpx@2.3.3", "", { "dependencies": { "@types/node": "^20", "debug": "^4.1.1" } }, "sha512-k1qv94u1b6e+XKCxVbLgYlOypVP9MPGpnN5G/vxFf6tDO4V3xpz3d6FUOY/s8NtPgaq5RBVVgSB+7IHpVxMYzw=="],
+
+    "ini": ["ini@1.3.8", "", {}, "sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew=="],
+
+    "kitx": ["kitx@2.2.0", "", { "dependencies": { "@types/node": "^22.5.4" } }, "sha512-tBMwe6AALTBQJb0woQDD40734NKzb0Kzi3k7wQj9ar3AbP9oqhoVrdXPh7rk2r00/glIgd0YbToIUJsnxWMiIg=="],
+
+    "lodash": ["lodash@4.17.21", "", {}, "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="],
+
+    "moment": ["moment@2.30.1", "", {}, "sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how=="],
+
+    "moment-timezone": ["moment-timezone@0.5.48", "", { "dependencies": { "moment": "^2.29.4" } }, "sha512-f22b8LV1gbTO2ms2j2z13MuPogNoh5UzxL3nzNAYKGraILnbGc9NEE6dyiiiLv46DGRb8A4kg8UKWLjPthxBHw=="],
+
+    "ms": ["ms@2.1.3", "", {}, "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="],
+
+    "redis": ["redis@5.10.0", "", { "dependencies": { "@redis/bloom": "5.10.0", "@redis/client": "5.10.0", "@redis/json": "5.10.0", "@redis/search": "5.10.0", "@redis/time-series": "5.10.0" } }, "sha512-0/Y+7IEiTgVGPrLFKy8oAEArSyEJkU0zvgV5xyi9NzNQ+SLZmyFbUsWIbgPcd4UdUh00opXGKlXJwMmsis5Byw=="],
+
+    "sax": ["sax@1.4.3", "", {}, "sha512-yqYn1JhPczigF94DMS+shiDMjDowYO6y9+wB/4WgO0Y19jWYk0lQ4tuG5KI7kj4FTp1wxPj5IFfcrz/s1c3jjQ=="],
+
+    "sm3": ["sm3@1.0.3", "", {}, "sha512-KyFkIfr8QBlFG3uc3NaljaXdYcsbRy1KrSfc4tsQV8jW68jAktGeOcifu530Vx/5LC+PULHT0Rv8LiI8Gw+c1g=="],
+
+    "undici-types": ["undici-types@6.21.0", "", {}, "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ=="],
+
+    "xml2js": ["xml2js@0.6.2", "", { "dependencies": { "sax": ">=0.6.0", "xmlbuilder": "~11.0.0" } }, "sha512-T4rieHaC1EXcES0Kxxj4JWgaUQHDk+qwHcYOCFHfiwKz7tOVPLq7Hjq9dM1WCMhylqMEfP7hMcOIChvotiZegA=="],
+
+    "xmlbuilder": ["xmlbuilder@11.0.1", "", {}, "sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA=="],
+
+    "@alicloud/cas20180713/@alicloud/openapi-client": ["@alicloud/openapi-client@0.2.1", "", { "dependencies": { "@alicloud/credentials": "^2", "@alicloud/openapi-util": "^0.1.3", "@alicloud/tea-typescript": "latest", "@alicloud/tea-util": "^1.4.0" } }, "sha512-QjtnXzjR+fK84rB55T36jHF2xbLYdBkXnsD2IYqYsx6vMeu08ViNNxRTu2N6S+2hUUJDJh2mSTUJ1lOd8Et8UA=="],
+
+    "@alicloud/darabonba-signature-util/@alicloud/darabonba-encode-util": ["@alicloud/darabonba-encode-util@0.0.1", "", { "dependencies": { "@alicloud/tea-typescript": "^1.7.1", "moment": "^2.29.1" } }, "sha512-Sl5vCRVAYMqwmvXpJLM9hYoCHOMsQlGxaWSGhGWulpKk/NaUBArtoO1B0yHruJf1C5uHhEJIaylYcM48icFHgw=="],
+
+    "@alicloud/openapi-client/@alicloud/tea-util": ["@alicloud/tea-util@1.4.9", "", { "dependencies": { "@alicloud/tea-typescript": "^1.5.1", "kitx": "^2.0.0" } }, "sha512-S0wz76rGtoPKskQtRTGqeuqBHFj8BqUn0Vh+glXKun2/9UpaaaWmuJwcmtImk6bJZfLYEShDF/kxDmDJoNYiTw=="],
+
+    "@types/xml2js/@types/node": ["@types/node@22.19.3", "", { "dependencies": { "undici-types": "~6.21.0" } }, "sha512-1N9SBnWYOJTrNZCdh/yJE+t910Y128BoyY+zBLWhL3r0TYzlTmFdXrPwHL9DyFZmlEXNQQolTZh3KHV31QDhyA=="],
+
+    "httpx/@types/node": ["@types/node@20.19.27", "", { "dependencies": { "undici-types": "~6.21.0" } }, "sha512-N2clP5pJhB2YnZJ3PIHFk5RkygRX5WO/5f0WC08tp0wd+sv0rsJk3MqWn3CbNmT2J505a5336jaQj4ph1AdMug=="],
+
+    "kitx/@types/node": ["@types/node@22.19.3", "", { "dependencies": { "undici-types": "~6.21.0" } }, "sha512-1N9SBnWYOJTrNZCdh/yJE+t910Y128BoyY+zBLWhL3r0TYzlTmFdXrPwHL9DyFZmlEXNQQolTZh3KHV31QDhyA=="],
+
+    "@alicloud/cas20180713/@alicloud/openapi-client/@alicloud/openapi-util": ["@alicloud/openapi-util@0.1.3", "", { "dependencies": { "@alicloud/tea-typescript": "latest", "@alicloud/tea-util": "^1.3.0", "kitx": "^2.1.0" } }, "sha512-udoNZnjBizSWeHcize6HWPqfYdfHcEx5+G1xTpOPPTIzZaUjX2Qynun7MTLwlxPdY2gyzn5eBAI01p+rHU+bbg=="],
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@3-/doge",
+  "version": "0.1.9",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/utf8": "^0.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/doge",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0"
+}
