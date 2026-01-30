@@ -1,0 +1,15 @@
+# @3-/md__
+
+[test/main.js](./test/main.js) :
+
+```js
+<+ ./test/main.js >
+```
+
+output :
+
+```
+<+ ./out.txt >
+```
+
+<+ ../about.md >

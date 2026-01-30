@@ -1,0 +1,722 @@
+this new wave of AI companies is is growing revenue like just like actual customer revenue, actual demand translated through to dollars showing up in bank accounts at like an absolutely unprecedented takeoff rate.
+ We're seeing companies grow much faster.
+ I'm very skeptical that the form and shape of the products that people are using today is what they're going to be using in 5 or 10 years.
+ I think things are going to get much more sophisticated from here.
+ And so I think we probably have a long way to go.
+ These are trillion dollar questions, not answers.
+ But once somebody proves that it's capable, it seems to not be that hard for other people to be able to catch up, even people with far less resources.
+ When a company is confronted with fundamentally open strategic or economic questions, it's often a big problem.
+ Companies like need to answer these questions and if they get the answers wrong, they're really in trouble.
+ Venture, we can bet on multiple strategies at the same time.
+ We are aggressively investing behind every strategy that we've identified that we think has a plausible chance of working.
+ If you want to understand people, there's basically two ways to understand what people are doing and thinking.
+ One is to ask them and then the other is to watch them.
+ And what you often see in many areas of human activity, including politics and many different aspects of society, the answers that you get when you ask people are very different than the answers that you get when you watch them.
+ If you run a survey or a poll of what, for example, American voters think about AI, it's just like they're all in a total panic.
+ It's like, "Oh my god, this is terrible.
+ This is awful.
+ It's going to kill all the jobs.
+ It's going to ruin everything.
+" If you watch the revealed preferences, they're all using AI.
+ A lot of folks have sent questions ahead of time and and what I what I've done is kind of curated into a few different sections uh in in an AMA this morning with uh with Mark.
+ So, what we thought we'd do is cover uh four big topics.
+ So, AI and what's happening in the markets, policy and regulation, um all things 816Z, and then we've got a a fun catchall which we're we're calling sandbox of things if we get to it.
+ So, starting first maybe with uh with the biggest question.
+ We're sitting in the middle of the AI revolution.
+ Mark, what inning do you think we're in and and what are you most excited about?
+> First of all, I I would say this is the biggest tech technological revolution of my life.
+ Um and you know, hopefully I'll see more like this in the next whatever 30 years, but I I mean this is the big one.
+ Um and just in terms of order of magnitude, like this is clearly bigger than the internet.
+ Um like the the the comps on this are things like the microprocessor and the steam engine and electricity.
+ So that this is a really this is a really big one.
+ um the wheel.
+ Um the reason this is so big, I mean maybe obvious to folks at this point, but I'll just go through it quickly.
+ So um if you kind of trace all the way back to the 1930s, uh there's a great book called Rise of the Machines that kind of goes through this.
+ Um if you trace all the way back to the 1930s, there was actually a debate among the people who actually invented the computer.
+ Um and it was this this sort of debate between whether computer they kind of understood the theory of computation before they before they they actually built the things.
+ Um and um they they had this big debate over whether the computer should be basically built in the image of what at the time were called adding machines or calculating machines where you know think of sort of essentially cash registers.
+ Um IBM is actually the successor company to the national cash register company uh of America.
+ Um and so like and and and that was of course the path that the industry took which was building these kind of hyper literal you know mathematical machines you know that could execute mathematical operations billions of times per second but of course had no ability to kind of deal with human beings the way humans like to be dealt with and so you know couldn't understand you know human speech human language um and so forth and and that's the computer industry that got built over the last 80 years and that's the computer industry that's built all the wealth of uh uh and and financial returns of the computer industry uh over the last 80 years you know across all the generations of computers from mainframes through to smartphones.
+ Um but but they knew at the time they knew in the 30s actually they understood the basic structure of the human brain.
+ They understood they had a theory of sort of human cognition and and and actually they had the theory of neural networks.
+ Um and so they they had this theory that um the there's actually the first neural network uh paper academic paper was published in 1943 you know which was over 80 years ago which is extremely amazing.
+ Um there's an interview you can read an interview or you can watch an interview on YouTube with uh these two authors Makulla and Pitts and you can watch an interview I think with Makulla on YouTube from like I don't know 1946 or something.
+ He was like on TV you know in the in the ancient past and it's literally like it's amazing interview because it's like him in his beach house and for some reason he's not wearing a shirt um and he's like you know talking about like this future in which computers are going to be you know built on on the model of a human brain through through neural networks.
+ Um and and that was the path not taken.
+ And basically what happened was right the computer industry got built in the in the image of of like the adding machine.
+ Um but and the neural network basically didn't happen but the neural network as an idea continued to be explored in academia um and sort of advanced research by sort of a rump you know movement that was originally called cybernetics and then became known as as artificial intelligence uh basically for the last 80 years and and and essentially it didn't work like essentially it was basically decade after decade after decade of excessive optimism uh followed by disappointment.
+ When I was in college in the 80s, there had been a famous kind of AI boom bust uh cycle in the 80s in venture and in Silicon Valley.
+ Um I mean it was tiny by by modern standards, but it it at the time was a big deal.
+ Um and um you know by the time I got to college in '89 um in computer science departments, AI was kind of a backwater field and everybody kind of assumed that it was never going to happen.
+ But the scientists kept working on it to their credit and they they they built up this kind of enormous reservoir of of concepts and ideas and then basically we all saw what happened with the CHIGPT uh moment.
+ all of a sudden it it sort of crystallized.
+ It's like oh my god, right? It turns out it works.
+ Um and and so you know that that's the moment we're in now.
+ And then you know really significantly that was what you that was less than three years ago, right? That was the summer of 20 it was the the Christmas of 22.
+ So, we're sort of three year we're we're sort of three years in um to, you know, basically what is effectively effectively an 80-year revolution um of actually being able to deliver on all the promise that the that the people on the all the on the alternate path, the sort of human cognition model path, you know, kind of saw from the very beginning and and then, you know, the great news with this technology is it's already it's kind of ultra democratized.
+ you know, the best AI in the world is available.
+ Launch at GPD or Grock or Gemini or or um you know, these other you know, these other products that you can just use um and you can just kind of see how they work and you know, same thing for video, you can see with Sora and VO kind of state-of-the-art uh with that you can see with music, you can see you know uh Suno and IDO and so forth.
+ Um and so like you know we're basically seeing that happen and now and now Silicon Valley is responding with this just like incredible rush of enthusiasm.
+ And you know, really critically this gets to the magic of Silicon Valley, which is, you know, Silicon Valley long since has ceased to be a place where people make silicon that, you know, that's that not long ago moved out out of the out out of California and then ultimately out of the US, although we're trying to bring it back now.
+ Um but but but the great kind of virtue of Silicon Valley o over the last you know over the last you know 80 years of its existence is its ability to kind of uh recycle talent from previous waves of technology and new waves of technology uh and then inspire an entire new generation of talent you know to basically come join the you know join the project.
+ Um and so Silicon Valley has this recurring pattern of being able to reallocate capital and talent and build enthusiasm and build critical mass and build funding support and build you know human capital and build you know everything enthusiasm um you know for each new wave of technology.
+ So, so that's what's happening with AI.
+ Um, you know, I I think probably the biggest thing I could just say is like I'm surprised I think essentially on a daily basis of what I'm seeing.
+ Um, uh, and and you know, we we're we're in the fortunate position to kind of get to see it from from two angles.
+ Uh, you know, one one is we track the underlying science and and, uh, and kind of research work very carefully.
+ And so I would say like every day I see a new AI research paper that just like completely floores me um of some new capability um or some new discovery uh or some new development that I that I would have never anticipated that I I'm just like wow I you know I can't believe this is happening.
+ And then um on the other side of course you know we see the flow of all of the new uh products uh and all the new startups.
+ Um and you know I would say we're routinely um you know kind of seeing things and again kind of have my my jaw on the floor.
+ Um, and so, you know, it feels like we we we've unlocked this giant vista.
+ Um, I do think it's going to kind of come in fits and starts.
+ Um, you know, the these things are messy processes.
+ Um, you know, you know, this is an industry that kind of routinely gets out over risks and overpromises.
+ Um, and and so, you know, there, you know, there will certainly be points where it's like, wow, you know, this isn't working as well as people thought, or you know, wow, this turns out to be too expensive and the economics don't work or whatever.
+ But, you know, against that, I would just say the capabilities are truly magical.
+ And and by the way, I think that's the experience that consumers are having when they use it.
+ And I think that's the experience that businesses are having for the most part when they uh you know, when when they're working on their pilots and and looking at adoption and and and then and then it translates to the underlying numbers.
+ I mean, we're we're just seeing a this new wave of AI companies is is growing revenue like just like actual customer revenue, actual demand uh translated through to dollars showing up in bank accounts.
+ Um you know, at like an absolutely unprecedented takeoff rate.
+ We're seeing companies grow much faster.
+ um uh you the the key leading AI companies and the companies that have real breakthroughs um and have real have very compelling products are growing revenues that you know kind of faster than any any way I've certainly ever seen before.
+ Um and so like just just from all that it kind of feels like it has to be early.
+ Like it it's kind of hard to imagine that we've like we we've topped out in any way.
+ It feels like everything is still developing.
+ I mean quite frankly it feels like the products to me it feels like the products are still super early.
+ Like I'm I'm I'm very skeptical that the form and shape of the products that people are using today is what they're going to be using in five or 10 years.
+ I think I think things are going to get much more sophisticated from here.
+ Um and so I think we probably have a long way to go.
+
+> Maybe on that that topic.
+ So one of the big knocks is yes the revenue is immense but the expenses seem to also be keeping pace.
+ So like what are people missing as a part of that discussion and topic?
+> Yeah.
+ So just start with just like core business models, right? Um and so you're right.
+ There's basically this industry basically has two two core business models.
+ consumer business model and the quote unquote enterprise uh or infrastructure business model.
+ Um you know look on the on the consumer side we we just live in a very interesting world now where where the internet exists and is fully deployed right.
+ Um, and so I'll give you an example.
+ Sometimes people ask us like, "Is AI like the internet revolution?" It's like, well, a little bit, but like the thing with the internet was we had to build the internet.
+ Like we we like we had we had to actually build the network and we actually had to, you know, and ultimately it involved enormous amount of fiber in the ground and it involved enormous numbers of like mobile cell towers and, you know, enormous number of, you know, shipments of of of smartphones and tablets and and and laptops in order to get people on the internet.
+ Like there was this like just like incredible physical lift um, you know, to do that.
+ And and by the way, people forget how long that took.
+ Uh right, the the the you know, the internet itself is a invention of the 1960s, 1970s.
+ Um the consumer internet, you know, was a new phenomenon in the early '90s.
+ Um but, you know, we didn't really get broadband to the home until the 2000s.
+ You know, that really didn't start rolling out actually until after the com crash, which is fairly amazing.
+ And then we didn't get mobile broadband until like 2010.
+ And and people actually forget the original iPhone dropped in 2007.
+ It didn't have broadband.
+ it was on a it was on a narrowband 2G network.
+ Um it did not have high speed like it did not have anything resembling high-speed data.
+ Um and so it wasn't really until you know really about 15 years ago that we even had mobile broadband.
+ So so the internet was this massive lift but but the internet got built right and smartphones proliferated.
+ And so the point is now you have 5 billion people on planet earth that are on some version of you know mobile broadband internet right um and you know smartphones all over the world are selling for you know as little as like 10 bucks.
+ Um and you know you have these you know amazing projects like geo and India that are bringing you know you know the sort of the remaining you know kind of the remaining population of of planet earth that hasn't been online until now is coming online.
+ So, you know, so we're talking five billion, six billion, you know, people and and then the consumer, the reason I go through that is the consumer AI products could basically deploy to all of those people basically as quickly as they want to adopt, right? Um, and so sort of the internet's the carrier wave for AI to be able to proliferate at kind of light speed uh uh into the broad base of the global population.
+ And and that's a let's just say that's a potential rate of proliferation of a new technology that's just far faster than has ever been possible before.
+ Like what you know, like you couldn't download electricity, right? you you couldn't download, you know, you couldn't download indoor plumbing.
+ Um, you know, you couldn't download television, but you can download AI.
+ Um, and and and this is what we're seeing, which is the AI consumer, you know, the AI consumer killer applications are growing at at at an incredible rate.
+ Um, and then and then they're monetizing really well.
+ Um, and and again, you know, we we I mentioned this already, but like generally speaking, the monetization is is very good.
+ Um, by the way, including at higher price points.
+ Um, one of the things I like about the um, you know, about watching the AI wave is the AI companies I think are are more creative on pricing than the SAS companies and the consumer internet companies were.
+ And so it's it's for example now becoming routine to have $200 or $300 t per month tiers uh, for consumer AI which I which I think is very positive because I I think the I think a lot of companies cap their kind of opportunity by by capping their pricing uh, kind of too low and I think the AI companies are more willing to push that which I think is good.
+ So anyway, so that you know I think that's reason for like I would say you know considerable rational optimism for the scope of of consumer revenues that we're going to be talking about here.
+ And then on the enterprise side, you know, there the question is basically just, you know, what is intelligence worth, right? Um, and you know, if you have the ability to like inject more intelligence into your business and you have the ability to do, you know, even the most prosaic things like raise your customer service scores, uh, you know, increase upsells, um, uh, you know, or reduce churn or if you have the ability to, um, you know, run marketing campaigns more effectively, um, you know, all of which AI is directly relevant to, like, you know, these are like direct business payoffs, um, you know, that people are seeing already.
+ Um, and then if you have the opportunity to infuse AI into new products and all of a sudden, you know, all of a sudden your car talks to you, um, and everything in the world kind of lights up and starts to get really smart.
+ Um, you know, you know, what's that worth? And and again there you just you you kind of observe it and you're like, wow, the the leading AI infrastructure companies are growing revenues incredibly quickly.
+ Um, you know, the pull is really tremendous.
+ Um, and so, you know, again there it's just it feels like this just like incredible uh, you know, product market fit.
+ Um and and and the core business model, right, is is is actually quite quite interesting.
+ The core business model is is is basically is basically tokens by the drink, right? And so it's it's sort of tokens of intelligence uh you know, per dollar.
+ And oh, and then by the way, this is the other fun thing is if you look at what's happening with uh the price of AI, the price of AI is falling much faster than Moore's law.
+ And when I could go through that in great detail, but basically like all of the inputs into AI on a perunit basis, the costs are collapsing.
+ Um and and and and then as a consequence there's kind of this hyperdelation of per unit cost and then that is like driving you know just like you know a more than corresponding level of demand growth you know with with with elasticity.
+ Um and so you know even there we're like it feels like we're just at the very beginning of kind of you know figuring out exactly how you know expensive or cheap this stuff is getting.
+ I mean look there's just no question tokens by the drink are going to get a lot cheaper from here.
+ Um that's just going to drive I think enormous demand.
+ Um and then everything in the cost structure is going to get optimized right? Um and so you know when when people talk about like you know the chips or you know whatever you know kind of the unit input costs for building AI you know you now have these like m the losses of blind demand are are going to are going to kick in right um what's the you know in any market that has sort of commodity like characteristics you know the number one cause of a of a of of a glut is a shortage and the number one cause of a shortage is the glut right um and so you have you know to the extent you have like shortage of GPUs or shortage of whatever infest chips or shortage of you know whatever data center case, you know, if you look at just the history of humanity building things in response to demand, you know, if there's a shortage of something that can be physically replicated, it it does get replicated.
+ Um, and so there's going to be like just enormous build out of all I mean there is there's just hundreds of billions or at this point trillions of dollars maybe going into the ground um in all these things.
+ And so the the per unit cost of the AI companies are going to drop like a rock um you know over the course of the next decade.
+ Um and so like I yeah I mean the economic questions of course are very real and of course there's you know microeconomic questions around around all these businesses but the the sort of macro forces have been at least here I think are very strong um and and yeah I I just given the underlying value of the of of this technology to both the consumers the enterprise users.
+ Um, and given the just like incredibly aggressive discovery that's happening of of all the ways that people can use this in their lives and in their businesses, like it's just it's really hard for me to see how it both doesn't grow a lot and generate just enormous revenue.
+
+> Yeah.
+ And actually, I think it was like two or three weeks ago where AWS was saying like the the GPUs that they've been using, they've been able to extend back to even like seven plus years.
+ So like the shelf life also of the GPUs that they're using is now extending in ways of which they can optimize better than maybe perhaps the last couple of of cycles.
+ as well.
+ Is that the right way to think about it as well?
+> Yeah, that's right.
+ And then and then that's one that's that's one really important question and observation and and then by the way that also gets to this other kind of question um where there's different theories on it.
+ Um which is basically big models versus small models.
+
+> Um and so a a lot of the data a lot of the data center build is oriented around hosting um training and and and and serving the the big the big models, you know, for for all the obvious reasons.
+ Um but there's also the small the small model revolution is happening at the same time and and and and if you just kind of track you know you can get get the various research firms have these charts you can get um but if you just kind of track the if you track the capability of the leading edge models over time what you find is after 6 or 12 months there's a small model that's just as capable um and so there there there's this kind of chase function that's happening which is the capabilities of the big models are basically being shrunk shrunk down uh and provided at at at at smaller size and then therefore smaller cost you know quite quickly.
+ So, I I'll just give you the the most recent example that just got hit over the last two weeks.
+ And again, this is a thing that's just kind of shocking.
+ Um is there's this Chinese company that has a um well, I forget the name of the company, but it's it's uh the company that produces the model called Kimmy, which is spelled Kim Mi, which is one of the leading open source models out of China.
+ Um and uh the new version of Kimmy is a reasoning model that is at least according to the benchmark so far is basically a replication of the reasoning capabilities of GPT5, right? and and and these new models of GPT5 were a big advance over GPT4 and of course GPT5 costs a tremendous amount of money to to develop and to serve and all of a sudden you know here we are whatever 6 months later and you have an open source model called Kimmy and I think I don't know if they had it's either shrunk down to be able to run on either it's like one MacBook or two MacBooks um right um and so you can all of a sudden if you have like an applica you if you're a business and you want to have a reasoning model that's GPT5 capable um but you you know you're whatever you're not going to pay the whatever GPT5 cost or you're not going to want to have it be hosted and you want to run it locally, um, you know, you can do that.
+ Um, and and and again, that's just like another just it's just like another, you know, it's another breakthrough.
+ Like it's just it's another another Tuesday, another huge advance.
+ It's like, oh my god.
+ And then of course, it's like, all right, well, what is OpenAI going to do? Well, obviously they're going to go to GPT6, right? Uh, and you know, right? And so there there's this kind of lattering that's happening where the entire industry is moving forward.
+ Um, the big models are getting more capable.
+ The small models are kind of chasing them.
+ Um uh and then um and then the small models provide you know completely different way to deploy um you know at at at at very low price points.
+ Um and so yeah I think and and you know we'll we'll see what happens.
+ I mean there there are some very smart people in the industry who think that ultimately everything only runs in the big models because obviously the big models are always going to be the smartest and so therefore you're always you know you're always going to want the most intelligent thing because why would you ever want something that's not the most intelligent thing for any application.
+ You know the counterargument is just there's a huge number of tasks that take place in the economy and in the world that don't require Einstein.
+ you know, where, you know, where, you know, 120 IQ person is great.
+ You don't need a, you know, 160 IQ, you know, PhD in, you know, string theory.
+ You just like have somebody who's competent and capable and it's great.
+ Um, and so, you know, I I, you know, and I we've talked about this before.
+ I tend to think the AI industry is going to be structured a lot like the computer industry ended up getting structured, which is you're going to have a small handful of basically the equivalent of supercomputers, which are these like giant, you know, kind of we call god models that are, you know, running in these giant data centers.
+ Um and then and then you know I I I I I'm not like convinced on this but my my kind of working assumption is what happens is then you have this cascade down of smaller models all ultimately all the way the very small models that run on embedded systems right run on run on individual chips inside every you know physical item in the world.
+ Um and that you know the smartest models will always be at the top but the volume of models will actually be the smaller models that proliferate out and right that's what happened with microchips.
+ uh it's what happened with computers which became microchips and then it's what happened with operating systems and with with a lot of everything else that we built in software.
+ Um so you know I tend to think that's what will happen.
+ Um just quickly on the chip side um again like chips you if you look at the entire history of the chip industry uh uh shortages become gluts um and you get just you know like anytime there's a giant profit pool in a in a new chip category um you know somebody has a lead for a while and kind of gets you know um let's say the the the profits appropriate to what we u what we call robust market share um but in time what happens right is that that draws competition and of course you know that that that's happening right now.
+ So Nvidia's, you know, Nvidia is an absolutely fantastic company, fully deserves the position that they're in, fully deserves the profits that they're generating, but they're now so valuable, generating so many profits that it's the bat signal of all time to the rest of the chip industry to figure out how to advance the state-of-the-art AI chips.
+ Um, and that's, by the way, and that's already happening, right? And so you've got other major companies like AMD coming at them, and then you've got really significantly, you've got the hyperscalers building their own chips.
+ Um, and so, you know, a bunch of the big a bunch of those kind of big tech companies are building their own ships.
+ Um, and of course then the Chinese are building their own ships as well.
+ Um and so it's just it's like pretty likely in 5 years that that you know AI chips will be you know cheap and plentiful at least in comparison to the situation today.
+ Uh which again I think will you know will tend to be extremely positive for the economics of of the kinds of companies that we invest in.
+
+> Yep.
+ And that startups are also starting to go after new chip design as well which is exciting.
+
+> Yeah.
+ Well, that's the other thing is yeah, you have these disruptive startups and actually that just for a moment on the chips, they were not really big investors in chips because it's kind of a big it's kind of a big company thing, but um it's a little bit of historical happen stance that AI is running on quote unquote GPUs um you know which GPU stands for graphical processing unit.
+ So um and basically just for people who haven't tracked this there were basically two kinds of chips that made the personal computer happen.
+ the so-called CPU central processing unit which classically was the Intel x86 x86 chip that's kind of the brain of the computer and then there was this other kind of chip called the GPU or graphical processing unit that was the sort of second chip in every PC that does all the graphics um and you know and this is graphics you know 3D graphics for gaming or for CAD CAM or for you know anything else you know Photoshop or for anything that involves you know lots of visuals and so the the kind of canonical architecture for a personal computer was a CPU and a GPU by the way same thing for smartphones um but by the way.
+ And over time, you know, these have kind of merged and so like a lot of CPUs now have GPU capability built in.
+ Actually, a lot of GPUs now have CPU capability built in.
+ So this, you know, this has gotten fuzzy over time, but like that that was like the classic breakdown.
+ But the fact that that was the classic breakdown, you know, kind of meant that while Intel had a you know, monopoly for a long time on CPUs, um there was this other market of GPUs which Nvidia um you know basically fought the GPU wars for 30 years and and and came out the winner like what was the best company in the space.
+ But it was like a hyper competitive market for graphics processors.
+ it was actually not that high margin and it was actually not that big.
+ And then basically it just it turned out that there were two other um forms of computation that were incredibly valuable that happened to be massively parallel uh in how they operate which which happened to be very good fits for the GPU architecture.
+ And those two basically highly lucrative additional applications were cryptocurrency starting about you know 15 years ago and then AI starting about you know whatever four years ago.
+ Um, and so and and Nvidia like I would say very cleverly set itself up with an architecture that works very well for this, but it's also just a little bit of a twist of fate that it just turns out that if AI is the killer app, it just turns out that the GPU architecture is the best legacy architecture is devoted to it.
+ And I go through that to say like if you were designing AI chips from scratch today, you wouldn't build a full GPU.
+ you would build dedicated AI chips that were much more much more specifically adapted to AI um and would have I I think would just be much more economically efficient and you know John to your point there there there are startups that are actually building entirely new kinds of chips uh oriented specifically for AI and you know we'll have to see what happens there you know it's hard to build a new chip company from scratch um you know it's possible that one or more of those startups makes it on their own um and some of them are you know doing very well um it's also possible of course that they get bought um you know by big companies that that have the ability to scale them.
+ Um, and so, you know, you know, we'll see exactly how that unfolds.
+ Um, and of course, we'll also, by the way, see, you know, the Koreans are going to play here for sure.
+ Um, uh, the Japanese are going to play.
+ Um, and then, you know, the Chinese in a major way, uh, as well.
+ And, you know, they have their own, you know, native chip ecosystem that they're that they're building up.
+ And so there there there there are going to be many choices of AI chips in the future.
+ Um, and it's going to be that, you know, that'll be a giant battle that'll be a giant battle that we observe very carefully.
+ um and that we uh make sure that our our companies basically are able to take full advantage of.
+
+> While while on the topic of of international um we you mentioned Kimmy earlier.
+ So it seems like some of the best open source models today are from China.
+ Should this be worrisome to to folks? How are you thinking and talking about this topic with with folks in DC? I know you were just there last week.
+ How much of this is a concern for uh US companies particularly just having seen the rise of China do unnatural things in solar markets, car markets? Um are they kind of flooding the ecosystem so that they can eventually kind of take share and and increasingly uh own the the ecosystem?
+> Yeah.
+ So uh you know a couple things.
+ So one is you know you know you want to start these discussions by just kind of saying like you know look there's there's vigorous debate in in the US and around the world of look like you know how much are we in a new cold war with China you know and exactly like how hostile you know should should we view them and it you know it's very tempting by the way it's very tempting and I think it's a very good case made that we're in like a new cold war that's like that in a lot of ways is like the US versus USSR um in the in the 20th century um you know it is the counter argument would be it is more complicated than that because the US and the USSR were never really intertwined from a trade standpoint Um and and a big part of that quite frankly was the USSR never really made anything that anybody else needed I guess other than weapons.
+ Um but like you know the USSR's primary exports were literally like you know literally like wheat and and oil.
+ Um whereas of course China exports just a tremendous number of physical things right um including like a huge part of like the entire supply chain of parts that basically go into everything that American manufacturers you know kind of make right and so by the time a US you know whatever by the time an American company brings a toy to market right or a uh you know or a car um or anything or a computer or a smartphone or whatever like it's got a lot of componentry in it that was made in China so there so there is a much tighter in interlinkage between the the American and Chinese economies than there as the American and Soviet economies and you know may maybe you know Adam Smith or whatever might say you know that's good news for peace and that you know both countries need each other by the way the other part of that argument is that the Chinese basically the Chinese you know the Chinese governance model is based on high employment um you know because you know if if if you know at least all the geopolitical people say if China ended up with like 25 or 50% unemployment that would cause civil unrest which is the one thing that the CCP doesn't want and so the corresponding part of the trade pressure is China needs the American export market you know the American consumer is like a third of the global economy.
+ Uh a third of global consumer demand.
+ Um and so you know China needs the US export market or it has high all of a sudden a lot of its factories would go kind of instantly bankrupt and you know would cause mass unemployment and unrest in China.
+ So so anyway like you know we there is this complicated it's a it's a complicated intertwined um relationship.
+ Um having said that you know the the mood in DC basically for the last 10 years on a bipartisan basis um has been that we need to take we the US need to take China more seriously as a geopolitical foe.
+ And you know under under under that school of thought there's sort of the sort of you know there's there's the military dimension which is you know the sort of the you know the the risk of some kind of war in the South China Sea the risk of some kind of war around around Taiwan and so that you know that that has everybody in Washington on high alert um you know there's also this this economic question around the kind of de-industrialization of the US potential re-industrialization and what that means about you know dependence on China and then and then there's and then there's this this this AI question um and and the AI question is an economic question but It's also like a geopolitical question which is okay you know basically AI is essentially only being built in the US and in China.
+ Um you know the rest of the world either you know can't build it or doesn't want to which which we could talk about.
+ So it's basically US versus China.
+ Um and then AI is going to proliferate all over the world and is it going to be American AI that proliferates all over the world or is it going to be Chinese AI that proliferates all over the world and so and I was saying just generally across party lines in DC this you know the the things I just went through are kind of how they look at it.
+ Um and and the Chinese are in the game and so the you know the Chinese are in the game for sure you know with software u you know deepseek you know was kind of the big you know kind of fire the starting gun in the software race and now you've got I think it's I think you've got four it's like deepsek uh which is a deep so deepseek is an AI model from actually a hedge fund um in uh in China um it's a little bit uh kind of took a lot of people by surprise um then Quen is the model from Alibaba.
+ Kimmy is from another startup.
+ Oh, called Moonshot.
+ The company's called Moonshot.
+ Um, and then there's, you know, and then, um, you know, there's also Tencent and BU.
+ Um, and, um, by Dance, um, you know, that are all primary, you know, companies doing a lot of work in AI.
+ Um, and so, you know, there's somewhere between three to six, you know, kind of primary AI companies.
+ And then there's, you know, tremendous numbers of of startups.
+ Um, and so, you know, they're in the race on on, uh, you know, they're in the race on on on software.
+ Um, they are, you know, working to catch up on chips.
+ They're not there yet, but they're working incredibly hard to catch up.
+ And just as an example of that, you know, the at least the common understanding um you know, in the US is that the reason you haven't seen the new version of DeepSeek yet is that basically the Chinese government has instructed them to build it only on Chinese chips um as a as a motivator to get the Chinese chip ecosystem up and running.
+ Um and and then the main chip company there is Huawei, although there could be more in the future.
+ Um and then there's um so you know, so so so there's that and then and then there's everything to follow which is basically AI in kind of robotic form, right? And so there there's this basically global technological economic robotics competition that's kicking off.
+ Um and u you know China kind of starts out ahead on robotics because they're just ahead on so many of the so many of the components that go into robots u because the you know the sort of like I said this the kind of entire supply chain of like electromechanical things you know basically moved from the US to China 30 years ago and and has never come back.
+ So so so that's kind of the the the the DC lens on it.
+ Um and and I would say you know DC is watching it uh you know quite carefully.
+ Um uh the the the the big kind of supernova moment this year was the deepseek release.
+ The deepseek release was surprising on a number of fronts.
+ Um one was just how good it was and again along this line of it took the capability set that were running in large models in the cloud and kind of shrunk it um onto a um you know into into a uh into a a sort of a a reduced size you know a smaller version of sort of equivalent capabilities that you could run on small amounts of local hardware.
+ Um and so there was that and then it was also a surprise that it was released as open source uh and particularly open source from China because China China does not have a long history of open source.
+ Um and then um it was also a surprise um that it actually came from a hedge fund.
+ Um so it didn't come from a big R&D you know sort of university research lab.
+ It didn't come from a you know from a big tech company.
+ it it came from a hedge fund and it it like as as far as we can tell it it basically is this somewhat idiosyncratic situation where you just have this incredibly successful quant hedge fund with all these you know super geniuses um and the the founder of that hedge fund you know basically decided to build AI um and you know at least external indications are this was a surprise to even even the Chinese government it's it's impossible to prove you know what the Chinese government was surprised by or not but you know there's at least the atmospherics are that this was not exactly planned this was not a national champion tech company at the time that Deepseek was released it was it sort of came out of left field which by the way is very encouraging for the field that it was possible for somebody to do that kind of who was unknown right because it kind of means that maybe you don't need all these you know super genius superstar researchers maybe actually smart kids can just build this stuff which I think is is the direction things are headed um and so that kicked off I would say like this kind of I I don't know copycat's the wrong word but that that was sort of it feels like the success of deepseek and the success of deepseek from China as open source kind of kicked off a sort of trend in China releasing these open source models um you know Look, the cynics, you know, in DC would say, you know, yeah, like they're dumping, right? The the they're obviously dumping.
+ They're trying to, you know, they see that the West has this opportunity to build this China industry.
+ You know, they're trying to commoditize it right out of the gate.
+ You know, there's probably something to that.
+ Um, you know, the the Chinese industrial economy does have a history of, you know, sort of, let's say, subsidized production that leads to selling, you know, selling things below cost in some cases.
+ Um, but I think also it's it like I think that's almost too cynical of a view also because it's just like all right wow like they're really in the race like open source closed source whatever like that you know they're actually really in the race.
+ Um, you know, we we've talked in the past, I think, on on on LP calls about, you know, these policy fights that, you know, we've been having in DC for the last two years.
+ And, you know, there was a big pretty pretty big push within the US government, you know, two years ago to basically, you know, restrict, uh, you know, or outright ban, you know, a lot of AI.
+ Um, and, you know, it's very easy for a country that is the only game in town to have those conversations.
+ It's quite another thing if you're actually in a foot race with China.
+ Um, and so I think actually the the the the policy landscape in DC has I would say has improved dramatically as a consequence of sort of an awareness now that this is actually a two- horse race, not a one-horse race.
+
+> For sure.
+ Yeah.
+ Actually on on the point I'll I'll jump ahead here to policy and regulation just because it seems like uh the current stance on on 50 different set of AI laws by state seems like a catastrophic uh way to to put us effectively with a uh or one of our our hands tied behind our our back here in terms of the the AI race.
+ What's a state of plan on that? Are folks recognizing that that would be catastrophic for progress and development? Where do most people at least stand on that topic today? Yeah.
+ So it's a little bit complicated.
+ So I'll rewind to say like two years ago I was very worried about like really ruinous federal federal legislation on AI and there was there was we you know we engaged you know kind of very heavily at that point which we've talked about in the past and I think the good news on that is I think the risk of that sitting here today is very low.
+ Um I there's very little mood in DC on either side of the aisle uh to really you know essentially there's very little there's very little interest in doing anything that would prevent us from beating China.
+ Um so so you know on the federal side things things are much better now.
+ There there will there will be issues and there are tensions in the system but like things are looking looking pretty good.
+ Um that has translated Jen to your point that's translated a lot of the attention to the states and basically what's happened is you know under our system of of federalism uh you know the states get to pass their own laws on a lot of things.
+ Um and so uh yeah, basically you know a lot of you know and and you know with these things it's always a combination.
+ A lot of well-meaning people are trying to figure out what to do at the state level and then of course there's a lot of opportunism where AI is just the hot topic.
+ And so if you're a you know aggressive up and cominging state legislator or whatever in some state and you want to run for governor and then president you know you want to kind of attach yourself to the heat.
+ Um and so there's like a political motivation to to do state level stuff.
+ Um yeah and sitting here today like we're tracking on the order of, 200 bills across the 50 states.
+ And by the way, um, not just the blue states, also the red states.
+ Um, and so, you know, I'm I've, you know, for the last like 5 years or whatever, I spent a lot of time complaining about, uh, you know, kind of what Democratic politicians are threatening to do to attack.
+ There's also a lot of Republicans, like Republicans are not a block on this.
+ And there are quite a few like local Republican officials in different states, um, that that also, I think, have, you know, let's say, you know, misinformed or ill-advised, um, views and are trying to put together, uh, put out bad bills.
+ um you know it's a little bit weird that this is happening and that you know the federal government does have regulation of interstate commerce um and you know technology AI kind of by definition is interstate like you know there's there's no AI company that just operates in California or just operates in you know Colorado or Texas um you know AI of all technologies AI is obviously something this this sort of national in scope um you know it's sort it's sort of obvious that the federal government should be the regulator not not not the states um but but the federal government need needs to assert itself needs to step in.
+ There there was actually an attempt to do that.
+ There was a um there was an attempt to add a moratorium of state level AI regulation that basically would would reserve the right of the federal government to regulate AI and sort of prevent the states from moving forward with these bills.
+ That was I think part of the negotiation for the quote one big beautiful bill and then that that there was a deal behind that and that deal kind of blew up at the at the last minute and that moratorium didn't happen and and you know in fairness the critics of that moratorum it probably was a was it was probably too much of a stretch.
+ Well, it was I'm sorry.
+ It was definitely too much of a stretch to get enough support to pass, but it was also probably too much of a stretch in terms of restricting the states from certain kinds of regulation that they really should be able to do.
+ So, so it just it didn't quite come together.
+ Um, there's a very active we're having very active discussions in DC right now about kind of the next, you know, the kind of the next turn on that.
+ Um, you know, the administration is I would say the administration is very supportive of of the idea of of the federal government being in charge of this as part of it being an actual, you know, 50-st state issue.
+ Um, and and and an issue of national importance.
+ Um, and then, you know, I'd say most most Congress people on both sides of the aisle, you know, kind of get this.
+ Um, so we just we we kind of have to figure out a way to, you know, to land this, but but I think that'll happen.
+ Um, some of the state level bills are wild.
+ Um, the the Colorado passed a very draconian uh regulation bill uh last year.
+ Um, and against like furious objections from the local startup ecosystem in in in around Denver and Boulder.
+ Um, and actually they're they're now actually trying to reverse their way out of that bill.
+ um you know a year later some of the the nuance of it like the algorithmic discrimination and like how to mitigate like what were some of the the extreme versions of what they they had proposed.
+
+> Yeah.
+ So the really draconian one was the the one that we really fought hard was the one in California which was called SB1047 and it wasn't it it it was basically it was modeled basically after the was called the EU AI act.
+ So the European Union's AI act.
+ Okay.
+ And this is the backdrop to all the US stuff which is the EU passed this bill called the AI act I don't know whatever two years ago and it basically has killed AI development in well it's actually killed AI development in Europe to a large extent.
+ Um and then it even it it's so draconian that even even big American companies like Apple and Meta are not launching leading edge AI capabilities in their products in Europe.
+ Like that that's how that's how like draconian that bill was.
+ And it's it's sort of a classic it's a classic kind of European thing where they like you know like they just thought that you know they they have this kind of view that it's just like well you know we if we can't be the leader they literally say this by the way if we can't be the leaders in innovation at least we can be the leaders in regulation.
+ Um and and and then they pass this like incredibly you know kind of ruinous uh selfharm you know kind of thing and then you know a few years pass and they're like oh my god what have we done and so they're you know they're kind of going through their own version of that.
+ Um, by the way, you know, I I you know, when I talk about Europe, I I tend to be very dark about the whole thing.
+ I will tell you the darkest people I know about Europe are the European entrepreneurs who moved to the US.
+ Um, are just like absolutely furious about what's happening in in in Europe on this stuff.
+ Um, but but even there, like it it's it's so bad in Europe, like they they shot themselves in the foot so badly that there's actually a process now at the at the EU to try to unwind that.
+ They're trying to unwind the GDPR.
+ So u anyway for people tracking Europe uh Mario Draghi um is the former I guess prime minister of Italy did this thing about a year ago called the Draghy report which is the report on European competitiveness and he kind of outlined kind of in great detail all the ways that Europe was holding itself back and part of it was overregulation areas like AI.
+ So so they're trying to reverse out of that or making gestures you know we'll we'll see what happens.
+ Um it in the middle of all that, California sort of inexplicably decided to basically copycat the EU AI act and try to apply it to California.
+ Um which might strike you as completely insane.
+ To which I would say yes, welcome to California.
+ Um uh and um you know, it was this basically this like Sacramento political dynamic that kind of got got crazy.
+ Um it would have you know completely killed you know AI development in California.
+ Um unfortunately our governor vetoed it at the last minute.
+ Um it did pass both houses legislature that he vetoed at the last minute.
+ Um it to Jen to your point it would have done for it would have done a whole bunch of things that were ruinously uh bad.
+ But one of the things it would have done is it would have assigned downstream liability um uh to open source developers.
+ Um and so you know we talked about you know this Chinese open source thing.
+ Okay so you got Chinese out there with open source.
+ Now you're gonna have American companies that have open source AI.
+ And by the way you're also going to have American academics and just like independent people in their nights and weekends developing open source.
+ um you know which is a key way that all this technology proliferates and and so this this law would have assigned downstream liability to any misuse of open source to the original developer of the open source and so you know you're an independent developer or you're an academic or you're a startup you develop and release an AI model the AI model works fine the day you release it it's great but like 5 years later it gets built into a nuclear power plant and then there's a meltdown of the nuclear power plant and then somebody says oh it's the fault of the AI um the the the the legal liability for that nuclear meltdown or for anything any other practical real world thing that would follow in the out years would then be assigned back to that open source developer.
+ Of course, this is completely insane.
+ It would completely kill open source.
+ It would completely kill startups doing open source.
+ It would completely kill academic research like in its entirety.
+ Um, you know, anything in the field.
+ Um, and so, you know, that like that's the level of playing with fire.
+ Um, you know, kind of that these state level politicians have become enamored with.
+ Um, like I said, I think the good news is the feds understand this.
+ I suspect that this is going to get resolved, but it but it does need to get resolved because, you know, just as a country, it just doesn't make any sense to let let the states kind of operate suicidally like this.
+ Um, and so that's what we're doing.
+ You know, we we talk about this, we call this our little tech agenda.
+ Um, we're extremely focused on on on the freedom and starters innovate.
+ We are not trying to argue, you know, many many other issues.
+ We operate in a completely bipartisan fashion.
+ We have extensive um support, you know, on both sides of the aisle and for both sides of the aisle.
+ Um, so it's it's a truly bipartisan effort.
+ um very policy based and you know I think very much aligned with the interests of the country uh broadly um and so that is what we're doing and then and then the other question we get we we get actually you know in some cases from LP but in a lot of cases actually from employees um is like okay why us right like you know you know with with any sort of you know policy question like this there's always this collective action question which is just like you know tragedy of the commons which is in theory like everybody every venture firm every tech company whatever should be weighing in on these things in practice what happens is mo most them just simply don't.
+ Um, and so at some point it falls on somebody's shoulders to fight these things.
+ And we we we Ben and I just basically concluded that the stakes here were just way too high.
+ You know, if if we're going to be the industry leader, we just have to take responsibility for our own destiny.
+ You know, for better or for worse, I think that's the cost of doing business uh for being the leader in the field right now.
+
+> Before we get off the topic of of AI, I want to go back to one question that that was submitted in.
+ So, do you think usage based or utility is a right way to price an AI compared to seeds? Ah that is a fantastic question.
+ So this is one of these giant this is in my my list of what I call the trillion dollar questions u where you know depending on how this is answered will drive you know trillions of dollars of market value.
+ So yeah so usage based pricing it's it's actually it's actually fairly amazing if you think about this from a startup standpoint from a venture standpoint it's actually fairly amazing what's happened and I'm trying I'm not really talking about this in public because I don't really I because I don't want it to stop.
+ I think it's actually quite amazing.
+ Um, which is you have these technology companies, you know, these big tech companies with these like incredible R&D capabilities that are building these big models, these big AI models with this incredible, you know, new new kind of new new kind of intelligence.
+ And then it it turns out that they were already in a war.
+ They were already in the cloud war, right? And so they were already in the war for kind of cloud services.
+ And this is like AWS versus Azure versus uh Google Cloud.
+ Um, you know, and then all the all these other all these other cloud efforts.
+ And so what what what what actually happened was they sort of like there's an alternate universe in which they basically just kept all of their magic AI secret and captive and just used it in their own business um or used it to just compete with more companies um you know in more in more categories but instead what they've done is they've basically you know if I commod commoditize is too strong a word but they they have they have proliferated their magic new technology through their cloud business um which is which is this business that just has these like incredible scale you know kind of kind of components to But um you know and sort of this hyper competition between the providers and these you know these these prices that that come down very fast.
+ Um, and so you've got like the most magic new technology in the world and then it's basically being served up by those companies in in in a as a cloud business and made made basically available to everybody on the planet to just click and use and for like relatively small amounts of money and then on on a usage basis which means and usage is great for startups because you it means you can start easily right you the the the you know there's very you know there's basically no fixed co for a startup building an AI app they don't have giant fixed cost because they could just tap into the open AI or anthropic or Google or Microsoft or whatever you know cloud you know tokens by the you know, intelligence tokens by the drink offering and just get going.
+ Um, and so it's it's kind of this this from this from the startup standpoint, it's like this marvelous thing where like the most magical thing in the world is available by the drink.
+ You know, it's absolutely amazing.
+ Um, uh, I, you know, and, you know, that model, you know, by the way, that model's working and those companies are happy and they're growing really fast and they're, you know, happily reporting massive cloud revenue growth and, you know, they they're happy with the margins and so forth and so, you know, I think generally it's working.
+ Um, and those businesses are, I think, likely to get much larger.
+ Um and so I think you know generally that's going to work but but to to to the question like that doesn't mean that the optimal pricing model for for example all of the applications should be tokens by the drink and in fact very much I think not the case.
+ Um you know we spend a lot of time working we actually have you know dedicated you know experts on on pricing in our firm.
+ We spend a lot of time with our companies working on pricing because it's you know it's really this magical art and science that that a lot of companies don't take don't take seriously enough.
+ So we spend a lot of time with other companies on this.
+ And of course, you know, a core principle of pricing is you don't want to price by cost if you can avoid it.
+ You want to price by value, right? Like you want to price you price where you're getting a percentage of the business value um of, you know, especially when you're selling two businesses, you want to price as a percentage of the business value that you're getting.
+ And so so you do have some AI startups that are that are pricing by the drink for certain things that they're doing, but you have many others that are exploring other pricing models.
+ uh you know some that are just like replications of SAS pricing models but you also have other companies are explor exploring pricing models for example of well if the AI can actually do the job of a coder or the AI could do the job of a doctor or a nurse or a radiologist or a lawyer or a parallegal right or whatever or a teacher.
+ Um you know basically can you can could can you price by value and can you get a percentage of the value of what of what of of of what otherwise would would would have been you know would have been literally a person.
+ um you know or or by the way equivalently can you price by marginal productivity.
+ So if you can take a human doctor and make them much more productive because you give them AI, you know, can you price as a percentage of kind of the productivity uplift, uh, you know, from the from from the from the augment, you know, the comb symbiotic relationship between the the human being and and the AI.
+ Um, and so I I think what we see in startup land is like a lot of experimentation happening on on these pricing models.
+ And I and I and I think again I I think that's like super healthy.
+ Um, I I you know, I was in this little speech on this is like high prices are really underappreciated.
+ High prices are often a favorite of the customer.
+ It's actually really funny.
+ A lot of like the naive view on pricing is the lower the price, the better it is for the customer.
+ The the more sophisticated looking at it is higher prices are often good for the customer because a higher price means that the vendor can make the product better faster, right? Like you can actually companies with higher prices, higher margins can actually invest more in R&D and they can actually make the product better.
+ Um and you know most people who buy things aren't just looking for the cheapest price.
+ They want something that's really that's going to work really well.
+ Um and so often high prices, you know, the customer doesn't ever say this.
+ it'll never show up in a survey.
+ Um, but but the high price can actually be a gift for the customer because it can make the vendor better, can make the product better, and ultimately make the customer better off.
+ And so I I'm I'm very encouraged by the degree to which the AI entrepreneurs are willing to run these experiments.
+ And I, you know, we'll have to see where it pans out.
+ But at least so far, I feel I feel good about the the uh, you know, at least the attitude of the industry about it.
+
+> Awesome.
+ I actually uh I was, as you were gone through, I had probably 10 more follow-up questions, but I'm actually going to go back to um a topic you had uh briefly, the trillion dollar questions.
+ Will open source or close source win? Feels like we we've come out on this this debate or where do you where do you put that?
+> No, I think this is still open.
+ I I think this is still very open.
+ Um you know that like the the the closed source models keep getting better.
+ Um uh by the way if you generally if you just like take the temperature of the people working at the big labs who work on the big proprietary models like generally what they'll tell you is progress is continuing at a very rapid pace.
+ Um you know there's there's this you know there's this periodic concern that kind of shows up on online which is or in the in the market which is like you know maybe the capabilities these models are topping out um and you know there's certain there's there's certain areas in which you know there's there's you know people are working but like the people working at the big labs are like oh no we have like 800 new idea like we have tons of new ideas we have tons of new ways of doing things.
+ We we might need to find new ways to scale but like we we have a lot of ideas on how to do that.
+ We know a lot of ways to make these things better and you know we're basically making new discoveries all the time.
+ So like I would say you know generally the people working in the like across all the big labs are are pretty optimistic.
+ Um and so like I I think the big models are going to continue to get better you know very quickly here and then you know overall um and then the open source models continue to get better.
+ Um and like I said you know you know every every every I don't know every month or something there's like another big release of like something like this Kimmy thing.
+ Um where it's just like wow like you know that's amazing and you know wow they really like shrunk that down and got that capability on a very small form factor.
+ Um uh and so um yeah that's the case and then you know I maybe just the third kind of thing to bring up is um the other really nice benefit of open source um is that uh open source is the thing that's easy to learn from right um and so if you're a you know computer sc if you're a computer science professor who wants to teach a class on on CS on AI or if you're a computer science student that's trying to learn about it or if you're just like a normal engineer in a normal company trying to learn this new thing um or just somebody in your you know by the way somebody in basement at night with a startup idea.
+ Um the existence of these of these state-of-the-art open source models is amazing because that's the education that you need.
+ Like they actually these open source models actually show you how to do everything.
+ Um right.
+ Um and so like and and what that's leading to right is the proliferation of the knowledge about how to build AI is like expanding very fast.
+ Um again as compared to a counterfactual world in which it was all basically bottled up in two or three big companies.
+ And so, you know, the open source thing is also just proliferating knowledge and then that knowledge is generating a lot of new people.
+ Um, and so I I you know, you know, as you guys have all seen sitting here today, AI researchers are at an enormous premium.
+ You know, AI researchers today are getting paid more than professional athletes.
+ Um, right? Like, you know, and that's right, that's a supply demand imbalance there.
+ There aren't enough of them to go around.
+ But, you know, again, shortages create glut.
+ um the the number of the number of smart people in the world who are coming up to speed very quickly on how to build these things u I mean some of the best AI people in the world are like 22 23 24 like they you know kind of by definition they haven't been in the field that long you know you know they they can't have been experts their whole lives right so you know they they kind of have to have come up to speed over the course of the last four or five years and and if if they if they've been able to do that then then there's going to be a lot more in the future that are going to do that um and so just the the the sort of spread of the level of expertise on this technology is happening now very quickly Um, so I yeah, I mean I think it's still like I said, I think it's I think it's still a race.
+ And and by the way, you know, look, the long-term answer may well just be both.
+ Um, you know, like I said, if you if you believe my pyramid industry structure, then there will then there will certainly be a large business of whatever is the smartest thing almost regardless of how of how much it costs.
+ Um, and then there but there will also be this just giant volume market of of smaller models everywhere, which which is what we're also seeing.
+
+> Yep.
+ Yep.
+ The another question you had posed at at that point in time was will incumbents versus startups went and at that point in time I think there was a mixed bag of where the incumbents were approaching AI.
+ I think that's radically changed in the last two years.
+ Um and then on the counter example the the blossoming of startups increasingly now maybe migrating into the incumbent category just how big they since that time.
+ You you want to take that uh question and and give uh your assessment of where where the state of the world is?
+> Yeah.
+ Yeah.
+ So, I mean, look, you know, big companies that are definitely, you know, playing hard.
+ You know, Google's playing hard.
+ Meta's playing hard.
+ Um, Amazon, um, Microsoft, um, you know, there's a bunch of these companies that are, you know, that are kind of in in in there, um, you know, very aggressively.
+ And then you've got these, you know, what we call the new incumbents like Anthropic and and, uh, and Open AI.
+ Um, but you also have like, you know, even in the last two years, you've had this birth of all of a sudden like brand new companies that are almost instant incumbents.
+ And you, you could say XAI is one of those.
+ Uh, ML, by the way, ML is the great outlier to my Europe thing from earlier.
+ like Mald is actually doing very well as sort of the European kind of uh you know French national European uh continental you know kind of AI champion um sort of the you know the exception that proves the rule um but you know there's there's a bunch of these now that are like you know doing quite well and are kind of becoming new incumbents um and then of course there's tons of startups by the way there's and then there's there's actual foundation model startups right and so you know we funded uh you know we funded Ilas out of open AAI to do a new foundation model company we funded Miriam Maratti also out of open AI we funded Faith Ali out of Stanford to do a world foundation model company and so you know there you know there's there are new swings all all you know all early but very promising um for to kind of build you know new incumbents quickly um and so you know that's all happening and then and then you know what and then on top of that there's just this giant explosion of AI application companies right and so there there's basically companies that then usually startups that basically take the technology and then you know field it in a specific domain whether that's law or medicine or education or you know creativity um or or or or whatever Um but again here it's just like it's amazing kind of how how sophisticated things are getting very quickly.
+ So talk about the application companies for a moment.
+ So like an application company like classic example is like a cursor is like an application company.
+ So they take the core AI capability which they purchase by the drink from you know anthropic or open AI or Google um you know to tokens by the drink and then they they they build a code basically a code editor what we used to call an IDE um integrated development environment or basically like a a software creation system um so they build like an AI coding system um on on top of the anthropic or open AAI or whatever you know kind of kind of big models feel that and that the the critique of those companies in the industry has been oh those are what are called called GPT rappers is kind of the pjorative And the idea basically being is well they're not actually like they're not actually doing anything that's going to preserve value because the the actual the the whole point of what they're doing is they're surfacing AI but it's not their AI.
+ The the AI that's being surfaced is from somebody else.
+ And so these are kind of these pass pass through shell things that ultimately won't have value.
+ It actually turns out what's happening is kind of the opposite of that which is the the leading uh AI application companies like Cursor I mean f first of all what they're discovering is they they're not just using a single AI model.
+ they're actually they actually as these products get more sophisticated they actually end up using many different kinds of models that are kind of customtailored to the specific aspects of how these products work.
+ Um and so they may start out using one model but they end up using a dozen models and then in the fullness of time it might be 50 or 100 different models for different aspects of the product.
+ A and then B they end up building a lot of their own models.
+ Um and so they they a lot of these the leading edge application companies are actually backward integrating and actually building their own AI models because because they have the deepest understanding of their domain.
+ and they're able to build the model that's best suited to that.
+ Um, and then by the way, also AI open source, they're also able to pick up and run an open source models.
+ Um, and so if they don't like the economics of of buying intelligence, you know, by the drink from a from a from a cloud service provider, you know, they can pick up one of these open source models and implement it instead, which, you know, which these companies are also doing.
+ Um, and so the the best of the best of the AI application companies are they are actually full-fledged deep technology companies actually building their own AI.
+ Um and so that you know that's I think
+> small models though right Mark when you think about god models versus small models as you were describing that but that would be small would you categorize that as a small
+> well some of them I mean we I will let them I will let them announce you know whatever they're doing whenever it's appropriate but some of them are now also doing big model development um and again this this is also part of what this is also part of the learning just in the last two years well so like here's a big learning just from the last two years which is very interesting which is two years ago or three years ago for sure you would have said wow open AI is like way out ahead um and like it's probably going to be impossible for anybody to catch up and then it's like okay well Anthropic caught up and so but you know they came out of open AI and so they had all the secrets you know whatever and so knew how to do it and so okay they caught up but surely nobody can catch up after them and then very quickly after that there were a raft of other companies that caught up very fast and and XAI is maybe the best example of that which is like you know XAI you know Elon's company XAI is the company name gro is the consumer product version of it um XAI basically caught up to you know state-of-the-art openai anthropic level in in like less than 12 months from a standing start right and So, and again that that kind of argues against any kind of permanent lead, right, by by any one incumbent that's just going to basically be able to lock the entire market down like if you can catch up like that.
+ And then and then as we as we've discussed the you know the China part is all new in the last year, right? The deepseek uh this the deepseek moment I think was in January or February of this year, right? So less than 12 months ago.
+ Um and so and now you've got like four Chinese companies that have effectively caught up.
+ And so, you know, so it's like, all right, I mean, again, this is these are these are trillion dollar questions, not answers.
+ But it's just like, wow, okay, like it's one of these things where once somebody proves that it's capable, it seems to not be that hard for other people to be able to catch up, even people with far less resources.
+ Um, and so, you know, I don't know what that does.
+ Maybe it makes you slightly more skeptical in the long run economics of of the big players.
+ On the other hand, maybe it makes you like more bullish about the startup ecosystem.
+ Uh, it certainly should make you more bullish about uh startup application companies, right? being able to do interesting things, which is why we're so excited about that.
+ Um, you know, it should make you probably, you know, a bit more excited about about certainly about China.
+ Um, on the other hand, the Chinese competition putting pressure on the American system to not screw itself up is very positive.
+ So, it should probably make you a little bit more bullish on the US.
+ Um, and so, yeah, I think, you know, the these are, yeah, these are yeah, these are are live dynamics and I I think we still need more time to pass before we know the exact answer.
+ I should say this, but sometime because sometimes I don't sometimes I freak people out when I say these are open questions.
+ Um, when a company is confronted with fundamentally open strategic or economic questions, it's often a big problem because a company needs to have a strategy and the strategy needs to be very specific.
+ Um, and a company has to make like very specific concrete choices about where it like deploys investment dollars and personnel and like the strategy has to be like logical and coherent or the company kind of collapses into chaos.
+ And so like companies like need to answer these questions and if they get the answers wrong, they're really in trouble.
+ Um, venture We have our issues and venture but a huge advantage that we have is we don't have to we we can bet on multiple strategies at the same time right um and and we are doing this so we are betting on big models and small models and prepared train models and open source models right and and you know and foundation models and applications right uh and consumer and enterprise and so the portfolio approach the nature of it is like we we are aggressively basically uh we we are aggressively investing behind every strategy that we've identified that we think has a plausible chance of even when that even when that's contradictory to another strategy that we're investing in and one is just like the world's messy and probably a bunch of things are going to work and so like there's not going to be clean yes or no answers to a bunch of this like a lot a lot of the answers to this I think are just going to be and answers but the other is like if one of these strategies doesn't work like you know we're not we're not trying to hedge per se but you know we're going to have representation in the portfolio of the alternate strategy and and so we're going to have mult multiple ways to win.
+ So anyway, that's that's the goal.
+ That's the theory of why we are, you know, kind of taking the approach in the space that we're taking.
+ Um, and that's why I have a big smile on my face when I say that there are these big open questions because I think that actually works to our advantage.
+
+> It's a good seg uh to A16Z questions because we we've gotten a few in so far and and uh we had a few that uh were were sent in ahead as well.
+ So uh I'll start one with a with a broad topic.
+ What is something you and Ben disagree and commit on? disagree commit.
+ Um, you know, we agree.
+ I mean, we we Ben I was going to say, you know, we're an old married couple, so we argue argue constantly, but we've been
+> where the romance is dead.
+
+> The romance is long dead.
+ Yes.
+ Yes.
+ Yes.
+ Yes.
+ The light the fire the fire has long since gone out.
+ Um, but um uh yes, if you Yes.
+ We're in the park squabbling all the time.
+ Um so, um yeah, I mean, so look, we debate everything.
+ We we argue about everything.
+ We that that said like you know one of the things that's made our partnership work is like we do we do tend to come to the same conclusion like each of us is open to being persuaded by the other one and so we we end up coming you know we end up coming to the same conclusion most of the time.
+ Um so I would say there there aren't like a there aren't I said specifically sitting here today there are like zero issues where I'm sitting here and I'm like I can't believe you know I just I can't believe I'm you know I'm putting up with this crazy thing on on his on his part that he's doing um that I really disagree with but I feel like I have to commit to or I I don't think vice versa.
+ Um and so so we don't have any of those.
+ Um, you know, quite honestly, the biggest thing I say the biggest thing that I that he and I the biggest thing that he and I discuss, this this by the way, this is not this is not the most important thing we're doing, but it is a topic since somebody asked the question.
+ The biggest thing he and I discuss where I I don't know, maybe I'm always like second guessing myself or I I I never quite know where I should come out on it that he and I talk about a lot is just like basically the public footprint of the company.
+ Um so like our pres our presence in the our presence in the world in terms of like public statements uh controversy um uh you know uh how we vocalize and express our views on things um and I would just say there like you know there's a real there's a tension there's a real it's you know maybe obvious but like a very important tension like generally speaking the more out there we are and the more outspoken we are and the more controversial we are the better for the better for the business in the sense of the entrepreneurs love it.
+ Uh the the the founders want to work with is very clear at this point.
+ The founders want to work with uh uh people who basically are brave and controversial and take controversial stands uh and articulate things clearly and and they want that for a bunch of reasons.
+ One is because it's a demonstration of courage which they appreciate.
+ But the other is because it it it it teaches them who we are before they even meet us.
+ Um and and and that has just proven to be just like this incredible competitive advantage.
+ you know, long long-term LPs will know like this is why we started with a very active marketing strategy from the very beginning and like it completely worked.
+ Like the the whole thing was if we're able to broadcast our message and we're able to basically be very clear in what we believe even to the point where it's controversial, like the best founders in the world are going to understand us before they even walk in the door, right? And they're going to they're going to know us even before they've met us as opposed to everybody else in venture, at least at the time, that was basically just like keeping everything quiet.
+ Um where they, you know, the founder just has no idea who these people are and what they believe.
+ And so that that like worked incredibly well.
+ It continues to work incredibly well.
+ Um it's by the way it's you know it's generally true across the industry.
+ It's it's it's like generally the case.
+ On the other hand, there are externalities to being you know publicly visible and and and and to being controversial um on many fronts.
+ Um we are I would say this we are we're very much we're trying very hard to thread this needle.
+ So like we're we're not backing off of generally being a a company that does a lot of outbound.
+ we, you know, we Eric Worenberg and the team that he's built, you know, that we've talked to you guys about in the past, um, you know, is I is already off to the races.
+ Um, you know, we're we're going to, you know, we're tripling down on the idea of basically being the leaders and articulating the tech and business issues that matter.
+ You know, the, you know, the issues for sure that people need to be able to understand.
+ Um, and and that's proven to be very effective.
+ By the way, a fair amount of our coms are actually aimed at Washington.
+ Um because again it's like if you're a policy maker in Washington and you're sitting there 3, 000 mi away and your entire information source is like East Coast newspapers that hate Silicon Valley.
+ Like that's bad.
+ Um and so you know our ability to like broadcast, you know, inform points of view on technology.
+ We just we meet people in DC all the time um who say, "Yeah, I you know, most of what I know about this topic I learned from you guys because I listened to the podcast, I read the articles, I watched the YouTube channel.
+" Um and so, you know, we're we're going to continue to do that.
+ And so we, you know, over over over overall we have a, you know, we're kind of on our front foot on that stuff.
+ But yeah, he he and I do he and I do go back and forth a bit on exactly how, yeah, how many third rail topics should we touch? Um, and uh and how frequently.
+ And I I would say we're we're we are trying to we are trying to moderate that.
+
+> As Elizabeth Taylor said, as long as I spell our name right, um, it's oftentimes could be good in most scenarios, particularly when it comes to little tech.
+ uh double uh and also I think embedded in that question is probably uh some degree of of uh uh the relationship that you and Ben have which is now going on 30 plus years at this point.
+ Uh so much so that that Mark has become uh one person representing both uh some people refer to Mark as Andre and Horowitz no lost the mark have combined just into one person.
+ Uh
+> yes
+> that's the result of 30 plus years working together.
+ Okay.
+ Um, so it's been 2 years since you've reorganized around AI, launched AD.
+ What do you think you got most right? Uh, and in hindsight, is there anything that you underestimated or or missed in that decisioning process?
+> No, I mean, look, we made we made plenty of mistakes.
+ I think those were I think those were the right calls.
+ I mean, AI was like I said, like you know, the whole theor back up the whole theory of venture the whole theory of venture that we've had from the beginning is that you know, many people before us have had as well.
+ that's very correct I think is the whole theory is like the money adventure is made when there's like a a fundamental architecture shift like when there's like a fundamental change in the technology landscape.
+ Um and and that's been true for you know adventure basically forever.
+ Um uh and and the reason is because if you have a fundamental change in technology then you have this period of creativity in which you can have basically aggressive you know very aggressive kind of people you know kind of start these new companies and and they have this kind of shot to kind of come in and you kind of win categories before big companies can respond.
+ um if there's no fundamental change in technology, it's very hard to make startups work because the big companies just end up doing everything.
+ And so you so venture kind of, you know, sort of lives or dies on on the basis of these of these waves of these transitions.
+ Um and and so there's always there there's always this question.
+ It's always this question.
+ I mean, I would just say the best venture capital firms in history, I I think are the ones that were the most aggressive at being able to navigate from wave to wave, right? And and and look, I was a beneficiary of this when I came to Silicon Valley in ' 904.
+ you know that there was no venture firm in 1994 that was like the internet venture capital firm like that it just didn't exist.
+ Um, but there were a set of venture capital firms at the time, you know, at the time our our firm Kleiner Perkins that said, "Oh, this is a new architecture.
+ This is a new technology change.
+ It seems totally crazy.
+ Everybody says you can't make money on it.
+ Whatever, whatever.
+ These kids are nuts.
+" But like, we're going to make those bets.
+ Um, and so they were willing to invest.
+ And by the way, you know, KP in the in the in the '90s invested not only in us, but also in Amazon and then Google and like in, you know, company after company after company.
+ They invested in at home, which basically made made home broadband work.
+ um you know they invested in in a fleet of companies and they were a venture capital firm that had started in the 1970s around really around what was at the time called Minicomputers which was like a you know three generations of techn technology back and they had navigated from wave to wave um and and you know the same thing is true for Sequoia the same thing is true for basically any successful venture firm has been in business for you know 30 or 40 or 50 years and so I I think in this business like of all businesses like you you just you need you need to get onto the new thing um you know it it was I mean quite honestly it was I pretty amazing that most of the venture ecosystem just decided to sit crypto out.
+ Um and and the number of VCs that we talked to between call it, you know, the release of the Bitcoin white paper in 2009 to the beginning of the crypto war in 2021 who just basically said, "Oh, we're not going to do crypto.
+" It was fairly it's I I like I don't I I never quite know what to do with the VC who says, "Oh, there's a new wave of technology and I'm very deliberately not going to participate in it.
+" And I'm always like like, "Is that not the job?" Right? Like so so so like I was fairly amazed by the VCs that didn't make the jump uh to crypto.
+ You know they they looked briefly smart during the crypto wars I would say of the last you know three or four years and I think they they probably look maybe a little bit less smart now.
+ Um you know AI is another one of these where there are certain firms that are are jumping all over it and there are certain firms that are just kind of sitting back and letting it happen.
+ Um and um and and by the way there were certain firms that never made it to the internet.
+ I mean there were there were firms that were very well known in the 80s um and very successful that just like did not make the jump uh to the internet and basically just petered out.
+ And so anyway long-winded way of saying I think I think in this business of all businesses you have to jump you have to jump on the new wave.
+ Um and I and I think we got the magnitude of it of it right that this is like a fundamental fundamental transformation inside the firm.
+ Um you know AD is you know AD is doing great.
+ Um AD AD itself I believe is also a beneficiary of AI.
+ um right because in in two ways one is a lot of the kinds of products that AD companies build themselves benefit from AI and then also AI is a driver of demand in other sectors of AD like like energy and materials.
+ Um and so I you know I think that that generally is is very consistent and you know is working well.
+ Um by the way you know crypto's back back to being a you know I would say an exciting industry as a consequence of all the policy changes.
+ Um and then and then there's even going to be I think intersections.
+ I I think there's actually going to be quite a few intersections between AI and crypto.
+ Um and then and then biote you know biotech also bio and healthcare I think are obviously going to be transformed by AI both on the healthcare side and on the actual drug discovery side and you know and that's underway.
+ And so any anyway so like the the the individual efforts in the firm feel good um and suitable for the time the inter the interactions between the teams um and the kind the the hybrid ideas you know the companies that are coming at these things from multiple angles uh you know feels really good um you know maybe the correlarying question is like you know what do we feel like we're missing right now um and I I think the answer is really not like I don't I don't think like right now we're not missing a vertical like I I don't like as of right now like there there's not like a specific vertical of like I don't know whatever that like where we just like, oh, we just need, you know, we need the equivalent of a new of a new unit or the equivalent of a new um you know, new fund or whatever.
+ I don't I don't see that at the moment.
+ I think it's more executing extremely well in the verticals that we have in front of us.
+ Um and um and then, you know, being the best possible partner to the to the portfolio companies.
+
+> Yeah.
+ Actually, on the point of of AD, um because uh AI is creating and there's a lot of talk around AI taking jobs, etc.
+ Ironically enough, the jobs in AD sectors have never been more in demand in the physical world related to energy, related obviously to data center build, etc.
+ So like the the pendulum it seems like also is uh is swinging from just an accelerant standpoint from from a society uh point of view.
+ Um you talked about the importance of society also needing to be ready for tech adoption.
+ Like have you seen that accelerating of recently? what's your sentiment of of how to actually um increase that just to also make sure the convergence of of adoption also falls in line with with how quickly tech is is actually being implemented.
+
+> Yeah.
+ So, you know, look, we've talked about this before, but um you know, look, for a very long time, tech was just not a very relevant look, if you go back over like whatever 300 years, like there's just like recurring waves of like total panic and freakout caused by new technology.
+ Or even you go back 500 years, you go back to the printing press, you know, which basically was handin-hand with the the sort of creation of Protest Pro Protestantism, which really changed things.
+ Um, and then um, you know, you you go back to um, you know, there there were just always kind of, you know, continuous panics there.
+ You know, there have been m there have been multiple ways of automation panics for the last 200 years.
+ You know, a lot of the foundational panic under Marxism was basically a fear of of of of the elimination of jobs through the application of automation.
+ um uh you know a lot of the same arguments you hear today about like AI is going to centralize all the wealth in a handful of a few people and everybody else is going to be poor and emiserated like that that basically is what Markx used to say um which I think was by the way wrong then is wrong now we can talk about but um you know and then even like in the 1960s there was this whole panic around around AI um uh replacing all the jobs there was this there's this great uh it's long long forgotten but it was a big deal at the time during the Johnson administration you read these AI pause letters today you know that this one that just came out a few weeks ago that Prince Harry uh headlined of all people.
+ Um and um uh uh you know he talks about AI is going to ruin everything and it's like and 1964 there was basically a group of like the leading lights in academia science and uh you know um kind of public affairs that there was this thing called the triple committee or the committee for the triple revolution.
+ If you do a Google search on it's like committee for the triple revolution Johnson white house or whatever you'll this thing will pop up.
+ Um and you know it was a very similar kind of manifesto of like we need to stop the march of technology today or we're going to ruin everything.
+ Um and and then you know even in the course of the last 20 years there was like a big panic around um actually outsourcing in the 2000s was going to take all the jobs and then it was actually robots weirdly enough in the 2010s which is amazing because robots didn't even work in the 2010s and they kind of you know still don't.
+ Um but uh you know there's a panic around that and now there's kind of whatever level of AI panic.
+ Um and so like you know I would just say like look that you know the way I would describe it is you know we in Silicon Valley have always wanted the work that we do to matter.
+ Um you know we spend most of our time quite honestly with people telling us that everything that we're doing is stupid and won't work.
+ Um like that's the default position.
+ Um you know and then basically that flips at some point into panic about how it's going to ruin everything.
+ Um you know it's it's easy sitting out here to be cynical about that.
+ Um especially when you kind of see the patterns over time.
+ I you know my view is we need to be actually very respectful of that and we need to be very aware of that and and basically that we you know I use the metaphor with the dog that caught the bus like we always wanted to work on things that matter we are working on things that matter uh people in the rest of society actually really do care about these things um and you know and it's our responsibility to think that all through very carefully and to do a good job um you know both not just building the technology but also explaining it you know look you know I think we have a real obligation to uh you know to to really explain ourselves and engage on these issues um in terms of how to measure how going you know it's it's sort of the classic social science question um uh which is like okay if you want to understand basically you know patterns of people there's basically two ways to understand what people are doing and thinking um one is to ask them and and then the other is to watch them um and like every social every social scientist like every sociologist will will will will tell you this which basically is you can you can ask people right and and the way you do that right is like you know surveys focus groups polls um you know what they think Um but then but then you can watch them and you can do what's you know called reveal preferences.
+ They're just observe behavior which is you can actually watch their behavior and and and what you often see in many areas of human activity including politics and many different aspects of society and culture over time is the answers that you get when you ask people are very different than the answers that you get when you watch them.
+ Um and the reason is because like I mean you could have a bunch of theories as to why this is the Marxists claim that people have false consciousness.
+ the the the the somewhat the explanation I believe is just people have opinions on all kinds of things particularly when they're in a context where they get to express themselves um and they'll have a tendency to kind of express themselves in very heated ways and then if you just watch their behavior they're often a lot calmer um and a lot more measured and a lot more rational in in what they do and so the AI that's playing out in AI right now which is if you pull if you run a survey or a poll of what for example American voters think about AI it's just like they're all in a total panic it's like oh my god this is terrible this is awful it's going to kill all the jobs it's going to ruin thing.
+ The whole thing, if you watch the revealed preferences, they're all using AI.
+ So, they're like, they're downloading the apps.
+ They're using chat GPT in their job.
+ They're, you know, having an argument.
+ You You see this online all the time now.
+ I'm having an argument with my boyfriend or girlfriend.
+ I don't understand what's happening.
+ I take the text exchange.
+ I cut and paste it into chat GPT and I have chat GPT explain to me what my partner is thinking and tell me how I should answer so that he's, you know, he or she is not mad at me anymore, right? So, or like, you know, I have this thing, you know, I have a skin, you know, I have a skin condition and doctors, you know, da da da, and I take a photo and I and I'm finally like learning about my own health or I use it in my job like I, you know, I had to get this report ready for Monday morning and I ran out of time and like it, you know, chat GPT really saved my bacon.
+ Um, and so people in their daily lives are I would, you know, just you just look at the just look at the data you just like they are not only using this technology, they love this technology.
+ Um, and they love it and they're adopting as fast as they possibly can.
+ So I I tend to think we're going to the public discussion of this is going to ping pong back and forth for a while because there is this divergence between what people are saying what people are doing.
+ Um but but I do think that the what people are doing part is is is obviously the part the part ultimately that wins and and and I think this by the way I think this technology is going to be exactly the same as every other one.
+ Um which is the thing that's going to happen here is this is just going to proliferate really broadly.
+ It's going to freak everybody out and then you know 20 years from now everybody's going to be like oh thank god we've got it.
+ Like wouldn't life be miserable if we didn't have this? um and or you know 5 years from now or or one year from now you know people are going to reach that conclusion.
+ Um so I'm I'm very optimistic about where this lands.
+ It's just that you know there will be turbulence along the way.
+
+> I'm I'm smiling because I also witnessed that in the wild.
+ Literally late last week I was on the plane.
+ The guy next to me was talking to his chat.
+ I could see him and he was like help me draft an escalation letter to United for the delay on this flight.
+ I was like sir you are on the flight right now.
+ Like at least wait until it's over.
+ It was very good though.
+ I'm sure he had a great email crafted as a as a part of that.
+ Uh so, okay, I'm going to switch gears to uh a few fun questions that that were sent in uh that uh is intended to be a lightning round.
+ So, so uh what what is something you've changed your mind on recently? Bonus points if it was someone younger than you.
+
+> I mean, it's like every day.
+ Um it's just like it's just a constant, you know, it's it's almost all like what's in the realm of the possible.
+ Um, I I'm I'm terrible at specific examples, so I don't I don't have one like ready at hand, but like like I said, it's just it's it's always Yeah.
+ No, it's it's often somebody showing up.
+ It's either something somebody writes or something somebody says.
+ Um, and yeah, it's almost Yeah, it's very frequently somebody who's very young.
+ Um, and um, yeah, it's just like I would say it's a it's a routine experience.
+
+> Good way to stay young.
+ Um, do you plan, speaking of young, do you plan to be cryogenically frozen? Not with current not with current cryogenic technology.
+ Um the uh the the the track record of that is not great.
+ Um uh and um the stories are somewhat horrifying, but uh you know, we'll see.
+
+> We'll see.
+ You got we still got some time.
+
+> Um how do you stay grounded when your influence itself may distort reality around you?
+> Yeah.
+ So I was just say the good news, you know, I would say the good news on several front.
+ So one is look the concern is real.
+ Um, and it's hard for me to it's hard for me to talk about with sort of my Midwestern, you know, kind of, you know, Midwesterners, we we either are very humble or we we're really good at faking it, but um, uh, you know, it's hard to talk about, but requires some introspection.
+ But yeah, I mean, look, the the reality warping effect is definitely real.
+ Um, by the way, there is a very big advantage to the reality warping effect, um, which is being able to get people to do what you want them to do.
+ Um, so that, you know, there is there is another side to it.
+ Um but it you know it is a concern in terms of like having an actual accurate understanding of what's happening.
+ I guess I would say two things.
+ I would say one is um you know I mean one is just you know my partners I think are quite you know including Ben are quite forthright um in telling me when I'm wrong but you know more generally like we're just we are very exposed to reality.
+ Um and so and this and again you know you mentioned I don't know it's a way to stay younger, make sure their hair never grows back or whatever.
+ It's just like you know we run these experiments you know cuz we make these decisions about whether to invest or not invest and we work with these companies and all their things and like you know reality kicks in quickly.
+ You know the the the delusions don't last very long in this business.
+ Um because like you know these these things either work or they don't.
+ Um and you know you have these like long elaborate you know discussions about you know theories on this and that and the other thing and then reality just like completely smacks you square in the face you know like you idiot right you know like you know what were you you like you know this is like the you know the ultimate frustration of the business which is also very motivating which is the number of times that you think that you've applied superior analysis and then you've either invested or not invested based on that analysis and it turns out it was just you the analysis was just completely wrong right um and you know you just like completely overrated your ability to epistemically you know kind of analyze these things you just you know basically inflicted harm like I always the question is always you know it's sort of you know any activity that we do is it value add or is it actually value subtract right and and and I think in this business of all businesses is kind of like that and and that applies to all of my own contributions as well so so there is that and then and then I would say um you know maybe the final thing is just like I do have the entire internet ready to tell me that I'm an idiot so that also that also doesn't doesn't hurt and it and it does on a regular basis on on the point of uh your alluding to earlier about uh decisions on investing in companies.
+ My favorite line I think it was from the uh the Cheeky Point interview that you did uh was you know when you invest in a company it doesn't go well at least it goes bankrupt right if it does if it does well and it does fantastically well you hear about it every single day
+> for the rest of your life.
+ Yeah.
+ For the next for the next 30 years.
+ validity smacking you in the face saying you fool.
+
+> You had it.
+ It's literally It's literally you had it in your office.
+ All you had to do is say yes.
+ And by the way, and this is the thing like every great VC like if you this is this is the stories that you know the VCs tell each other.
+ Every great VC basically has this history of like my god I had it was in my office.
+ The thing was in my office and I said no and if I had just said yes.
+ Um and so it's yeah it's very hard to um yes the constant reminders in the Wall Street Journal and on CNBC every day that you made a giant mistake um is yes very good very good for the the old humility factor.
+
+> Yeah very humbling helps you stay grounded uh all the time.
+ Uh last question do you plan to go to Mars if and when that opportunity presents itself?
+> Probably not.
+
+> My subliminal Zoom background wasn't uh sending the positive vibes.
+ This is what it
+> Well, I'm not even willing to leave California.
+ Um, so I'm barely willing to leave my house.
+ So, um, uh, yeah, I may maybe by maybe by VR.
+
+> Yeah.
+
+> Um, and then we'll see what happens.
+ I mean, look, having said that, I think Elon's going to pull it off.
+ Um, and so I think, you know, I don't know.
+ I don't know.
+ I don't want to predict.
+ This is not a prediction, but I, you know, I would not be surprised if within a decade there's routine trips back and forth.
+ Um, so, uh, yeah, we may, uh, this this may actually become a a practical question.
+ And and by the way, I do know a lot of people who are probably going to go,
+> myself included.
+ Put me on that.
+
+> Oh, fantastic.
+
+> The the flights around the world have prepared me for the six-month journey to Mars, so I will be just fine.

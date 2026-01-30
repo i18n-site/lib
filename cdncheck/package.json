@@ -1,0 +1,26 @@
+{
+  "name": "@3-/cdncheck",
+  "version": "0.1.18",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/cdncheck",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {
+    "@3-/ipreq": "^0.1.14"
+  },
+  "dependencies": {
+    "@3-/err": "^0.1.4"
+  }
+}
