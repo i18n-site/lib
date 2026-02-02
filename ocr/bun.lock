@@ -1,0 +1,18 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/ocr",
+      "dependencies": {
+        "@3-/u8": "^0.1.2",
+        "@3-/utf8": "^0.0.4",
+      },
+    },
+  },
+  "packages": {
+    "@3-/u8": ["@3-/u8@0.1.2", "", {}, "sha512-FBto/4tgnBnfSf/oesX5fq4mC6IXnzCzdb1w/CQpJEHBl2jLckloVrxvPAOfFTFXxPsd3U56swE7kvNQHI8pAA=="],
+
+    "@3-/utf8": ["@3-/utf8@0.0.4", "", {}, "sha512-hoVIOCX70JteiRPzRZ8Yw51kb/H9dWxx55oW+RQ38hHE8+/uOIriJZ024HhCYaLDKykUyDoknRbzKjjMQ++new=="],
+  }
+}

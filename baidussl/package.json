@@ -1,0 +1,25 @@
+{
+  "name": "@3-/baidussl",
+  "version": "0.1.6",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/baidussl",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {
+    "@3-/empty": "^0.1.1",
+    "@baiducloud/sdk": "^1.0.0-rc.42",
+    "cdnssl": "^0.1.7"
+  }
+}

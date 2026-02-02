@@ -1,0 +1,5 @@
+password:
+  too_short: "密码太短"
+address:
+  exist: "此账户已注册，请直接登录"
+  disable_tempmail: "禁用一次性邮箱注册"

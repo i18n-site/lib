@@ -1,0 +1,28 @@
+{
+  "name": "@3-/brief",
+  "version": "0.1.12",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/brief",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/txt_li": "^0.1.4"
+  },
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/aiapi": "^0.1.4",
+    "@3-/retry": "^0.0.2"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@3-/tencent_ssl",
+  "version": "0.1.7",
+  "keywords": [],
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/tencent_ssl",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/redis": "^0.1.17"
+  },
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/cert": "^0.1.2",
+    "tencentcloud-sdk-nodejs-ssl": "^4.1.138",
+    "tencentcloud-sdk-nodejs-teo": "^4.1.154"
+  }
+}

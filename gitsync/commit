@@ -1,0 +1,4 @@
+feat: add Tencent cloud environment variables / 添加腾讯云环境变量
+
+- add TENCENT_ID and TENCENT_SK to env file (env/tencent.xpure.env)
+- 新增腾讯云ID和密钥到环境配置文件 (env/tencent.xpure.env)

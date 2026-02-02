@@ -1,0 +1,21 @@
+[package]
+name = "_"
+version = "0.0.1"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+js-sys = "0.3.69"
+prost = "0.12.3"
+wasm-bindgen = "0.2.92"
+
+[profile.release]
+opt-level = 's'
+lto = true
+
+[build-dependencies]
+aok = "0.1.3"
+genv = "0.1.7"
+prost-build = "0.12.3"

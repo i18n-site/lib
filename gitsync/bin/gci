@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+set -e
+branch=$(git symbolic-ref --short -q HEAD)
+set -x
+
+root=$(git rev-parse --show-toplevel)
+cd $root
+
+if ! git log --oneline -n1 >/dev/null 2>&1; then
+  git checkout -b main
+  git add .
+  git commit -minit
+  git push --set-upstream origin main
+  git checkout -b dev
+  git push --set-upstream origin dev
+  exit 0
+fi
+
+git add .
+
+if [ -z "$1" ]; then
+  MSG=.
+else
+  MSG="$@"
+fi
+
+git commit -m"$MSG" || true
+
+if [ "$branch" == "main" ]; then
+  if ! git checkout dev 2>/dev/null; then
+    if git fetch origin dev 2>/dev/null; then
+      git checkout -b dev origin/dev
+    else
+      git checkout -b dev
+      git push --set-upstream origin dev
+    fi
+  fi
+
+  git merge --ff --no-edit main
+  git checkout main
+  git reset --hard HEAD~1
+  git checkout dev
+fi
+
+if [ -z "$NO_PUSH" ]; then
+  git push 2>/dev/null || (git fetch origin $branch && git merge --ff --no-edit origin/$branch && git push) || true
+fi

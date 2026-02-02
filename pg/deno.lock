@@ -1,0 +1,33 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@y0/postgres@^3.4.5": "3.4.5",
+    "npm:ansis@^3.12.0": "3.12.0",
+    "npm:prexit@^2.3.0": "2.3.0"
+  },
+  "jsr": {
+    "@y0/postgres@3.4.5": {
+      "integrity": "f492bde63a811acc0caac0c9294a329472a8b38834660287ffac20a29f02774b"
+    }
+  },
+  "npm": {
+    "ansis@3.12.0": {
+      "integrity": "sha512-SxhlInpMkv9QCyI2yHyrhVrTF8dH93M/S86DT5f9brFgr92uJLOCg0RNmtx3YKWKcRmNAaU+gyUfHMdUiqxvFw=="
+    },
+    "prexit@2.3.0": {
+      "integrity": "sha512-mX+LIbtS0anKtl2PykYabxninwloblUQMRO6CubeSmjxb+kKlATuJoH9UeN8NLE4TgIEFWfBXw7V3GkWbBrSmg=="
+    }
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@y0/postgres@^3.4.5",
+      "npm:ansis@^3.12.0"
+    ],
+    "packageJson": {
+      "dependencies": [
+        "npm:ansis@^3.12.0",
+        "npm:prexit@^2.3.0"
+      ]
+    }
+  }
+}

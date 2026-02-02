@@ -1,0 +1,12 @@
+{
+  "name": "@3-/blake",
+  "type": "module",
+  "devDependencies": {
+    "@3-/read": "^0.0.1",
+    "@3-/uridir": "^0.1.1",
+    "@3-/utf8": "^0.0.3",
+    "@3-/write": "^0.0.1",
+    "source-map-support": "^0.5.21",
+    "wasm-opt": "^1.4.0"
+  }
+}

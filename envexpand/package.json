@@ -1,0 +1,29 @@
+{
+  "name": "@3-/envexpand",
+  "version": "0.1.8",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/envexpand",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "bin": {
+    "envexpand": "./lib/lib.js"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/read": "^0.1.4",
+    "dotenv": "^16.4.7",
+    "dotenv-expand": "^12.0.1"
+  }
+}

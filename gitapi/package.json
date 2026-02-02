@@ -1,0 +1,38 @@
+{
+  "name": "@3-/gitapi",
+  "version": "0.1.11",
+  "description": "Git API wrapper for repo synchronization; works with gitsync to sync AtomGit repos to GitHub. / Git API 封装，用于仓库同步；配合 gitsync 将 AtomGit 仓库同步到 GitHub。",
+  "keywords": [
+    "git",
+    "api",
+    "sync",
+    "atomgit",
+    "github"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitapi.com/i18n/lib.git"
+  },
+  "homepage": "https://gitapi.com/i18n/lib/tree/dev/gitapi",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/int": "^0.1.1",
+    "@3-/mktmp": "^0.1.3",
+    "@3-/pageiter": "^0.1.2",
+    "@3-/qwen": "^0.1.5",
+    "@3-/reset": "^0.1.2",
+    "@3-/yml": "^0.1.14",
+    "simple-git": "^3.30.0"
+  }
+}

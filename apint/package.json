@@ -1,0 +1,33 @@
+{
+  "name": "@3-/apint",
+  "version": "0.1.27",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/apint",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/camel": "^0.0.4",
+    "@3-/extract": "^0.0.2",
+    "@3-/nt": "^0.1.3",
+    "@3-/read": "^0.1.4",
+    "@3-/walk": "^0.0.2",
+    "@3-/write": "^0.0.2",
+    "zx": "^8.1.5"
+  },
+  "bin": {
+    "apint": "./lib/bin.js"
+  }
+}

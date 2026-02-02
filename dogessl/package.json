@@ -1,0 +1,25 @@
+{
+  "name": "@3-/dogessl",
+  "version": "0.1.5",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/dogessl",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {
+    "@3-/doge": "^0.1.8",
+    "cdnssl": "^0.1.7"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@3-/biasedrng",
+  "version": "0.1.4",
+  "description": "Biased random number generator. 可偏向的随机数生成器。",
+  "keywords": [
+    "random",
+    "rng",
+    "biased",
+    "weighted",
+    "随机",
+    "随机数",
+    "偏向",
+    "权重"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/biasedrng",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module"
+}

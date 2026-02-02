@@ -1,0 +1,30 @@
+{
+  "name": "@3-/vite-base",
+  "version": "0.1.40",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/vite-base",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "peerDependencies": {
+    "@3-/coffee_plus": "^0.1.15",
+    "@3-/svelte-preprocess": "^5.0.22",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "coffeescript": "^2.7.0",
+    "html-minifier-terser": "^7.2.0",
+    "lightningcss": "^1.28.1",
+    "svelte": "^5.16.0",
+    "vite": "^6.0.5",
+    "vite-plugin-mkcert": "^1.17.6",
+    "lodash-es": "^4.17.21"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

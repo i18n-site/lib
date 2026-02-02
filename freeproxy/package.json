@@ -1,0 +1,36 @@
+{
+  "name": "@3-/freeproxy",
+  "version": "0.1.12",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/freeproxy",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/dbq": "^0.1.35",
+    "@3-/extract": "^0.1.8",
+    "@3-/net": "^0.1.1",
+    "@3-/nowts": "^0.1.1",
+    "@3-/pool": "^0.1.4",
+    "@3-/req": "^0.1.11",
+    "@3-/sleep": "^0.0.4",
+    "@3-/txt_li": "^0.1.5",
+    "axios": "^1.12.2",
+    "https-proxy-agent": "^7.0.6"
+  },
+  "bin": {
+    "proxy_fetch": "./lib/bin.js"
+  }
+}

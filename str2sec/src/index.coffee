@@ -1,0 +1,17 @@
+< (s)=>
+  if s.constructor==String
+    if s.endsWith('s')
+      return +s.slice(0,-1)
+    if s.endsWith('m')
+      return 60*s.slice(0,-1)
+    if s.endsWith('h')
+      return 3600*s.slice(0,-1)
+    if s.endsWith('d')
+      return 86400*s.slice(0,-1)
+    if s.endsWith('w')
+      return 604800*s.slice(0,-1)
+    if s.endsWith('M')
+      return 2592000*s.slice(0,-1)
+    if s.endsWith('y')
+      return 31536000*s.slice(0,-1)
+  return +s

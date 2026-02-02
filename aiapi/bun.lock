@@ -1,0 +1,39 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/aiapi",
+      "dependencies": {
+        "@3-/retry": "^0.0.2",
+        "@3-/rm_cn_space": "^0.1.3",
+        "@3-/sleep": "^0.0.4",
+        "@3-/txt_li": "^0.1.6",
+        "@3-/utf8": "^0.0.4",
+        "lodash-es": "^4.17.23",
+      },
+      "devDependencies": {
+        "@3-/read": "^0.1.4",
+      },
+    },
+  },
+  "packages": {
+    "@3-/caller_line": ["@3-/caller_line@0.0.1", "https://mirrors.cloud.tencent.com/npm/@3-/caller_line/-/caller_line-0.0.1.tgz", {}, "sha512-ABXNqaN3kT4CBAdi43yjQQk7gbv7wkUAvlUIk+EC6DKptfiRSJtsRnYAjX17qYprdtpnYd5o8uESbS4xEP1hSw=="],
+
+    "@3-/read": ["@3-/read@0.1.4", "https://mirrors.cloud.tencent.com/npm/@3-/read/-/read-0.1.4.tgz", {}, "sha512-PZDRfIFuaFNAW6VjWupa7+g/3GbhES6shAgETN/RXtTdJxcIwl9HSBMy2sdfRqAc/FUeUJFL3F8PfpsdZbC8xg=="],
+
+    "@3-/retry": ["@3-/retry@0.0.2", "https://mirrors.cloud.tencent.com/npm/@3-/retry/-/retry-0.0.2.tgz", { "dependencies": { "@3-/caller_line": "^0.0.1", "@3-/sleep": "^0.0.3" } }, "sha512-HK3CxwBGwiD+1iduCiaXtZfS66A5B06ECi9ZHatkVrWwZGjv7tL80cXucw6wkh0QIUM5eZ3RG76Bo0k6HWXlww=="],
+
+    "@3-/rm_cn_space": ["@3-/rm_cn_space@0.1.3", "", {}, "sha512-vfIMtsYk2qjiF6B0oBuVSANRqCtU+VANci4xOOt8euwj+X2gxjZvL9f72R4oEydy8bMU09KJL7JCjBb6Iavbjg=="],
+
+    "@3-/sleep": ["@3-/sleep@0.0.4", "https://mirrors.cloud.tencent.com/npm/@3-/sleep/-/sleep-0.0.4.tgz", {}, "sha512-hxWtyS7EX7efFJyJeMfEZ/csPIklA4EtYFSRKOy29E7RyPOHxRhopYlgmiPs8K4X7XrODj2P3NTJsuhGKlDYPQ=="],
+
+    "@3-/txt_li": ["@3-/txt_li@0.1.6", "", {}, "sha512-E9YT/qgXc8OCbdIx5ktBJckqN2Lb0fayN+4LoK+sX6cAsCf1u+LLjAzBMilA6CFc/qVqfdiso4I4ZEBIPCJcjg=="],
+
+    "@3-/utf8": ["@3-/utf8@0.0.4", "https://mirrors.cloud.tencent.com/npm/@3-/utf8/-/utf8-0.0.4.tgz", {}, "sha512-hoVIOCX70JteiRPzRZ8Yw51kb/H9dWxx55oW+RQ38hHE8+/uOIriJZ024HhCYaLDKykUyDoknRbzKjjMQ++new=="],
+
+    "lodash-es": ["lodash-es@4.17.23", "", {}, "sha512-kVI48u3PZr38HdYz98UmfPnXl2DXrpdctLrFLCd3kOx1xUkOmpFPx7gCWWM5MPkL/fD8zb+Ph0QzjGFs4+hHWg=="],
+
+    "@3-/retry/@3-/sleep": ["@3-/sleep@0.0.3", "https://mirrors.cloud.tencent.com/npm/@3-/sleep/-/sleep-0.0.3.tgz", {}, "sha512-QcbMvCjN1iylVzOv8VGuAwHKFtRxbNmAenYc9OfvxA/Dl9vyBoSGO3bRovLkYL2jm4lx/R33SPJ8f6JwpKbC+w=="],
+  }
+}

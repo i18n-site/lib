@@ -1,0 +1,12 @@
+{
+  "name": "@3-/mreplace",
+  "type": "module",
+  "devDependencies": {
+    "@3-/loader": "^0.0.2",
+    "@3-/read": "^0.0.1",
+    "@3-/uridir": "^0.1.1",
+    "@3-/write": "^0.0.1",
+    "source-map-support": "^0.5.21",
+    "wasm-opt": "^1.4.0"
+  }
+}

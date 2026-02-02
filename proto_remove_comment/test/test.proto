@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+// This is a single-line comment.
+package test;
+
+option url = "https://google.golang.org/protobuf/types/known/emptypb";
+option str_with_escape = "\"https://google.golang.org/protobuf/types/known/empty\"";
+
+/*
+ * This is a multi-line comment.
+ * It spans multiple lines.
+ */
+
+message SearchRequest {
+  string query = 1; // Field comment
+  int32 page_number = 2;
+  /* Block comment for a field */
+  int32 result_per_page = 3;
+  string url = 4; // url with "http://example.com"
+  string text = 5; // text with "/* comment */"
+}
+
+// Another single-line comment.
+
+service SearchService {
+  /*
+   * Another multi-line comment.
+   */rpc Search(SearchRequest) returns (SearchResponse);
+}
+
+message SearchResponse {
+  string results = 1; // "these are the results"
+  string another_string = 2; // 'a string with single quotes'
+}

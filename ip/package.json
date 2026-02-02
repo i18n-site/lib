@@ -1,0 +1,28 @@
+{
+  "name": "@3-/ip",
+  "version": "0.1.2",
+  "keywords": [
+    "ip",
+    "ipv4",
+    "ipv6",
+    "binary",
+    "converter"
+  ],
+  "description": "Bidirectional IP address binary converter / IP 地址二进制双向转换器",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/ip",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module"
+}

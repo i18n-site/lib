@@ -1,0 +1,9 @@
+node_modules/
+pnpm-lock.yaml
+target/
+__pycache__/
+.DS_Store
+lib/
+*.wasm
+Cargo.lock
+out.txt

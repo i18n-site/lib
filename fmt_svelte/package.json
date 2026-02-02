@@ -1,0 +1,32 @@
+{
+  "name": "fmt_svelte",
+  "version": "0.1.4",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/fmt_svelte",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/write": "^0.0.2",
+    "@prettier/plugin-pug": "^3.4.0",
+    "prettier": "^3.6.2",
+    "stylus-supremacy": "^4.0.0",
+    "yargs": "^18.0.0"
+  },
+  "bin": {
+    "fmt_svelte": "./lib/fmt_svelte.js"
+  }
+}

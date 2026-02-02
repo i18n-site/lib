@@ -1,0 +1,38 @@
+{
+  "name": "gemini-next",
+  "version": "0.1.18",
+  "description": "Easily switch between multiple Gemini CLI accounts to bypass daily quotas. / 轻松切换多个 Gemini CLI 账号，绕过每日配额限制。",
+  "keywords": [
+    "gemini",
+    "cli",
+    "account",
+    "quota",
+    "lru"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/gemini-next",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/nowts": "^0.1.1",
+    "@3-/read": "^0.1.4",
+    "@3-/write": "^0.0.2",
+    "@3-/yml": "^0.1.12"
+  },
+  "bin": {
+    "gemini-next": "./lib/lib.js"
+  }
+}

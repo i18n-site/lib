@@ -1,0 +1,22 @@
+{
+  "name": "@3-/vite-conf",
+  "version": "0.1.56",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/vite-conf",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "peerDependencies": {
+    "@3-/read": "workspace:^",
+    "@3-/vite-base": "workspace:^",
+    "ansis": "^3.3.2"
+  },
+  "dependencies": {}
+}

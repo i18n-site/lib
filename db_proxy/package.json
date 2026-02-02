@@ -1,0 +1,27 @@
+{
+  "name": "@3-/db_proxy",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/db_proxy",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/dbq": "^0.1.35",
+    "@3-/net": "^0.1.1",
+    "axios": "^1.12.2",
+    "https-proxy-agent": "^7.0.6"
+  }
+}

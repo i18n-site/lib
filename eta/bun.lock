@@ -1,0 +1,15 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/eta",
+      "devDependencies": {
+        "@3-/sleep": "^0.0.4",
+      },
+    },
+  },
+  "packages": {
+    "@3-/sleep": ["@3-/sleep@0.0.4", "https://registry.npmmirror.com/@3-/sleep/-/sleep-0.0.4.tgz", {}, "sha512-hxWtyS7EX7efFJyJeMfEZ/csPIklA4EtYFSRKOy29E7RyPOHxRhopYlgmiPs8K4X7XrODj2P3NTJsuhGKlDYPQ=="],
+  }
+}

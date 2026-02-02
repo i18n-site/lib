@@ -1,0 +1,26 @@
+{
+  "name": "@3-/zx",
+  "version": "0.1.18",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/zx",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {
+    "zx": "^8.7.2"
+  },
+  "dependencies": {
+    "ansis": "^4.2.0"
+  }
+}

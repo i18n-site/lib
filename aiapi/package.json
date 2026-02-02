@@ -1,0 +1,31 @@
+{
+  "name": "@3-/aiapi",
+  "version": "0.1.85",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/aiapi",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/read": "^0.1.4"
+  },
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/retry": "^0.0.2",
+    "@3-/rm_cn_space": "^0.1.3",
+    "@3-/sleep": "^0.0.4",
+    "@3-/txt_li": "^0.1.6",
+    "@3-/utf8": "^0.0.4",
+    "lodash-es": "^4.17.23"
+  }
+}

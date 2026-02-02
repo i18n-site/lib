@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "@8v/cron": "jsr:@8v/cron@^0.1.0"
+  }
+}

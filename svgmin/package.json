@@ -1,0 +1,30 @@
+{
+  "name": "@3-/svgmin",
+  "version": "0.1.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/svgmin",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "bin": {
+    "svgmin": "./lib/svgmin.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/walk": "^0.0.2",
+    "@3-/write": "^0.0.2",
+    "svgo": "^3.3.2"
+  }
+}

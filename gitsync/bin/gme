@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -ex
+
+branch=$(git symbolic-ref --short -q HEAD)
+root=$(git rev-parse --show-toplevel)
+
+NO_PUSH=1 gci || true
+
+cd $root
+
+msg="🔹"
+
+if [ ! -z "$1" ]; then
+  msg="🔹 $@"
+fi
+
+git commit --amend -m"$msg"
+git fetch origin main
+git merge origin/main --no-edit --ff
+git push --force-with-lease origin 2>/dev/null || (git fetch origin $branch && git merge --ff --no-edit origin/$branch && git push) || true

@@ -1,0 +1,27 @@
+{
+  "name": "@3-/protojs",
+  "version": "0.1.25",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/protojs",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/proto": "^2.0.43",
+    "@3-/read": "^0.1.4",
+    "@3-/uridir": "^0.1.2",
+    "ansis": "^3.3.2"
+  },
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/snake": "^0.0.3",
+    "protobufjs": "^7.4.0"
+  }
+}

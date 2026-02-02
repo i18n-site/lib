@@ -1,0 +1,15 @@
+# @3-/pug
+
+[test/main.coffee](./test/main.coffee) :
+
+```
+<+ ./run.sh >
+```
+
+output :
+
+```
+<+ ./out.txt >
+```
+
+<+ ../about.md >

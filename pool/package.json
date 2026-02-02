@@ -1,0 +1,27 @@
+{
+  "name": "@3-/pool",
+  "version": "0.1.15",
+  "description": "A lightweight, dynamic async task pool for controlling concurrency. 一个轻量级、动态的异步任务池，用于控制并发。",
+  "keywords": [
+    "pool",
+    "async",
+    "concurrency",
+    "queue",
+    "throttle"
+  ],
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/pool",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "@3-/sleep": "^0.0.3"
+  },
+  "type": "module"
+}
