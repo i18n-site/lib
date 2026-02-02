@@ -9,6 +9,7 @@
 export default (chat, txt)=>
   [
     文章标题
+    user
     pli
   ] = await partition(
     chat
@@ -17,7 +18,7 @@ export default (chat, txt)=>
   if not pli.length
     return []
 
-  fmt = fmtJson(chat, pli)
+  fmt = fmtJson(chat, pli, user)
 
   gen_txt = pli.map(
     ([title,li])=>

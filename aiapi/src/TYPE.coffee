@@ -1,4 +1,5 @@
 export default {
+  'BOOLEAN'
   'ARRAY'
   'OBJECT'
   'STRING'

@@ -4,8 +4,22 @@ OPT = {
   type: TYPE.OBJECT
   required: [
     'li'
+    'user'
   ]
   properties:
+    user:
+      type: TYPE.ARRAY
+      minItems: 1
+      description: '对话中出现过的发言人'
+      items:
+        type: TYPE.OBJECT
+        properties:
+          name:
+            type: TYPE.STRING
+            description: '发言人的名称'
+          role:
+            type: TYPE.STRING
+            description: '猜测此人的身份（如创业者、投资人）'
     li:
       type: TYPE.ARRAY
       description: '拆分文章为多个章节，每个章节包含一系列问答对'
@@ -60,7 +74,12 @@ export segWithTitle = (chat, txt_li)=>
   r = (
     await gen(OPT_WITH_TITLE, chat, txt_li)
   )
+
+  r.user.forEach (i,pos)=>
+    i.id = pos+1
+    return
   [
     r.题
+    r.user
     r.li
   ]

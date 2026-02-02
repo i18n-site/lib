@@ -6,6 +6,7 @@
 < (chat, txt) =>
   [
     题
+    user
     pli
   ] = await partition(
     chat
@@ -15,5 +16,5 @@
     return [题,'']
   [
     题
-    await fmtJson(chat, pli)
+    await fmtJson(chat, pli, user)
   ]

@@ -46,6 +46,10 @@ export default async (chat, txt) => {
     return ["", []];
   }
   const li = txtLi(txt).map((i) => rmCnSpace(i)),
-    [title, seg_li] = await segWithTitle(chat, li);
-  return [title, await partition(li, seg_li, repartition(chat, li.length))];
+    [title, user, seg_li] = await segWithTitle(chat, li);
+  return [
+    title,
+    user,
+    await partition(li, seg_li, repartition(chat, li.length)),
+  ];
 };
