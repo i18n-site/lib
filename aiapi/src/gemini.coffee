@@ -3,8 +3,8 @@
   lodash-es/merge.js
 
 
-# SITE = 'generativelanguage.googleapis.com'
-SITE = 'api.tu-zi.com'
+SITE = 'generativelanguage.googleapis.com'
+# SITE = 'api.tu-zi.com'
 
 export default (
   token_li
