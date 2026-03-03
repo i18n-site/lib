@@ -3,12 +3,13 @@
   lodash-es/merge.js
 
 
-SITE = 'generativelanguage.googleapis.com'
-# SITE = 'api.tu-zi.com'
+# SITE = 'generativelanguage.googleapis.com'
+SITE = 'api.tu-zi.com'
 
 export default (
   token_li
-  model='gemini-3.1-pro-preview'
+  model='gemini-3-flash-preview'
+  # model='gemini-3.1-pro-preview'
   # model='gemini-2.5-pro'
 )=>
   generate_content_url = 'https://'+SITE+'/v1beta/models/'+model+':generateContent'
