@@ -1,0 +1,5 @@
+{
+  "build": "pkg/README.md",
+  "files": ["./readme.make.md"],
+  "tableOfContents": {}
+}
