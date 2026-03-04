@@ -5,13 +5,13 @@
     "": {
       "name": "@3-/iflow",
       "dependencies": {
-        "@3-/log": "^0.1.6",
+        "@3-/log": "^0.1.7",
         "@iflow-ai/iflow-cli-sdk": "^0.2.1-beta.5",
       },
     },
   },
   "packages": {
-    "@3-/log": ["@3-/log@0.1.6", "", {}, "sha512-oHw9FHM/Bgmnr9FkkTZKPqOQy1CsbBCBoJQNC8FYUtGuIfQjTKFbEC8l1uaqU0Qvl2yHKPBt6yw3Tf8gSA3mmw=="],
+    "@3-/log": ["@3-/log@0.1.7", "", {}, "sha512-6ZLz0L21svaDLaJ8u6t7d44jTwjqAumylAI0svxX6PXrd93jjkVClXoEPNGsmXzoV9YKBtzcgVHziE3VUsPpsQ=="],
 
     "@iflow-ai/iflow-cli-sdk": ["@iflow-ai/iflow-cli-sdk@0.2.1-beta.5", "", { "dependencies": { "execa": "^5.1.1", "ws": "^8.18.3" } }, "sha512-u/OcgeRbp/LHhzYbCflhEpqnF+yqa+o5rAPee2Laf3E6ZUxWnGd4rRdQR5AjxMQpkbrfWXWyku0NUR2FAEkhIA=="],
 
