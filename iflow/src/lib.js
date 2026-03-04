@@ -4,7 +4,9 @@ export default async (chat, option) => {
   const client = new IFlowClient(option);
   try {
     await client.connect();
-    const send = client.sendMessage.bind(client);
+    const send = (msg) => {
+      client.sendMessage.bind(client);
+    };
     const recv = async function* () {
       for await (const message of client.receiveMessages()) {
         if (message.type === MessageType.ASSISTANT) {
