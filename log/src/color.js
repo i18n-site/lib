@@ -1,8 +1,8 @@
 export const colored = (color) => {
   var prefix;
-  prefix = '\x1B[' + color + 'm';
+  prefix = "\x1B[" + color + "m";
   return (i) => {
-    return prefix + i + '\x1B[0m';
+    return prefix + i + "\x1B[0m";
   };
 };
 
