@@ -6,7 +6,8 @@ export default async (chat, option) => {
   try {
     await client.connect();
     const send = (msg) => {
-      client.sendMessage.bind(client);
+      log("❯ " + msg);
+      return client.sendMessage(msg);
     };
     const recv = async function* () {
       for await (const message of client.receiveMessages()) {
