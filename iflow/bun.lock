@@ -5,11 +5,14 @@
     "": {
       "name": "@3-/iflow",
       "dependencies": {
+        "@3-/log": "^0.1.5",
         "@iflow-ai/iflow-cli-sdk": "^0.2.1-beta.5",
       },
     },
   },
   "packages": {
+    "@3-/log": ["@3-/log@0.1.5", "", {}, "sha512-Z09GnmS9b8qTJbXVEadkLfXpvrfFfswosCVrHtZVJC8a1tPoypyCWg3zHNkzhxafszweNfXi6ma5EhPYviKYRA=="],
+
     "@iflow-ai/iflow-cli-sdk": ["@iflow-ai/iflow-cli-sdk@0.2.1-beta.5", "", { "dependencies": { "execa": "^5.1.1", "ws": "^8.18.3" } }, "sha512-u/OcgeRbp/LHhzYbCflhEpqnF+yqa+o5rAPee2Laf3E6ZUxWnGd4rRdQR5AjxMQpkbrfWXWyku0NUR2FAEkhIA=="],
 
     "cross-spawn": ["cross-spawn@7.0.6", "", { "dependencies": { "path-key": "^3.1.0", "shebang-command": "^2.0.0", "which": "^2.0.1" } }, "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="],

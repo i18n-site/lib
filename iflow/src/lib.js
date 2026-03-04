@@ -1,4 +1,5 @@
 import { IFlowClient, MessageType } from "@iflow-ai/iflow-cli-sdk";
+import log from "@3-/log";
 
 export default async (chat, option) => {
   const client = new IFlowClient(option);

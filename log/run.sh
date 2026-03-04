@@ -7,7 +7,7 @@ set -ex
 ./build.sh
 
 if [ ! -n "$1" ]; then
-  exec direnv exec . ./test/main.coffee | tee out.txt
+  exec mise exec -- ./test/main.coffee | tee out.txt
 else
   exec ./${@:1}
 fi

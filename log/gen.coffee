@@ -19,7 +19,7 @@ for [color, code] in Object.entries COLOR
     code = ';'+code
   console.log color
   js = """
-import {colored, default as colorer}from './index.js'
+import {colored, default as colorer}from './color.js'
 export const #{color} = colored('#{code}');
 export default process.env.NODE_ENV==='production'?console.log:colorer(#{color},console.log)
   """
