@@ -11,10 +11,10 @@ const check_server = async () => {
   try {
     const res = await fetch("http://127.0.0.1:18374");
     const text = await res.text();
-    console.log("Fetch result:", text);
+    console.log("获取", text);
     return text.trim();
   } catch (err) {
-    console.log("Fetch error:", err.message);
+    console.log("错误", err.message);
     return "FAIL";
   }
 };
