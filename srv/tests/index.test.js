@@ -1,4 +1,4 @@
-#! /usr/bin/env bun
+#! /usr/bin/env node
 import { join } from "path";
 import { test, expect } from "vitest";
 import install from "../srv/install.js";

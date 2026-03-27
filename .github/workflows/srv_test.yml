@@ -1,15 +1,18 @@
-name: System Service CI (跨平台系统服务自动化测试)
+name: '@3-/srv test (系统服务自动化测试)'
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev", "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev", "main" ]
 
 jobs:
   test:
     name: Test on / 运行环境 ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ./srv
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -18,13 +21,11 @@ jobs:
     - name: Checkout Code / 检出代码
       uses: actions/checkout@v4
 
-    - name: Setup Bun Environment / 配置 Bun 环境
-      uses: oven-sh/setup-bun@v1
-      with:
-        bun-version: latest
+    - name: Setup Node.js Environment / 配置 Node.js 环境
+      uses: actions/setup-node@v6
 
     - name: Install Dependencies / 安装依赖包
-      run: bun install
+      run: npm install
 
     - name: Run Vitest with Real Services / 执行系统服务挂载真实端到端测试
-      run: bun run test
+      run: npm run test

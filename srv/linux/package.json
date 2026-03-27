@@ -1,7 +1,9 @@
 {
   "name": "@3-/srv-linux",
   "version": "0.1.7",
-  "os": ["linux"],
+  "os": [
+    "linux"
+  ],
   "type": "module",
   "exports": {
     "./install.js": "./install.js",
@@ -10,5 +12,10 @@
   "dependencies": {
     "@3-/srv-obj-replace": "file:../obj_replace",
     "zx": "^8.8.5"
+  },
+  "repository": "https://github.com/i18n-site/lib/tree/dev",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev",
+  "bugs": {
+    "url": "https://github.com/i18n-site/lib/issues"
   }
 }

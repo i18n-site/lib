@@ -12,5 +12,10 @@
   },
   "scripts": {
     "test": "vitest run tests/"
+  },
+  "repository": "https://github.com/i18n-site/lib/tree/dev",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev",
+  "bugs": {
+    "url": "https://github.com/i18n-site/lib/issues"
   }
 }

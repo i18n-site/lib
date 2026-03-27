@@ -27,14 +27,7 @@ const cdn_headers = Object.fromEntries(
 )
 
 const addHostToExpression = (expr, new_host) => {
-  let hosts = []
-  if (expr) {
-    const match_in = expr.match(/\(http\.host in \{(.+?)\}\)/)
-    if (match_in) hosts = match_in[1].split(/\s+/).map(s => s.replace(/"/g, ''))
-      
-    const match_eq = expr.match(/\(http\.host eq "(.+?)"\)/)
-    if (match_eq) hosts = [match_eq[1]]
-  }
+  const hosts = expr ? [...expr.matchAll(/"([^"]+)"/g)].map(m => m[1]) : []
   if (!hosts.includes(new_host)) hosts.push(new_host)
   return `(http.host in {${hosts.map(h => `"${h}"`).join(" ")}})`
 }
@@ -51,6 +44,14 @@ const cleanDns = async (cf, zone_id, host) => {
   }
 }
 
+const rule = (description, expression, action_parameters) => ({
+  action: "rewrite",
+  action_parameters,
+  description,
+  expression,
+  enabled: true,
+})
+
 const bind = async (cf, zone_id, host, backblazeb2, bucket) => {
   await cleanDns(cf, zone_id, host)
 
@@ -60,37 +61,26 @@ const bind = async (cf, zone_id, host, backblazeb2, bucket) => {
   const req_desc = `${host} → b2:${bucket}`
   const new_req_rules = req_rules.filter(r => r.description !== req_desc)
   
-  new_req_rules.push({
-    action: "rewrite",
-    action_parameters: {
-      uri: { path: { expression: `concat("/file/${bucket}", http.request.uri.path)` } }
-    },
-    description: req_desc,
-    expression: `(http.host in {"${host}"})`,
-    enabled: true,
-  })
+  new_req_rules.push(rule(
+    req_desc,
+    `(http.host in {"${host}"})`,
+    { uri: { path: { expression: `concat("/file/${bucket}", http.request.uri.path)` } } }
+  ))
 
-  let b2_expr = ""
-  const b2_old = res_rules.find(r => r.description === "rm_b2_head")
-  if (b2_old) b2_expr = b2_old.expression
-
+  const b2_expr = res_rules.find(r => r.description === "rm_b2_head")?.expression || ""
   const new_res_rules = res_rules.filter(r => r.description !== "rm_b2_head" && r.description !== "删除cdn头")
   
-  new_res_rules.push({
-    action: "rewrite",
-    action_parameters: { headers: b2_headers },
-    description: "rm_b2_head",
-    expression: addHostToExpression(b2_expr, host),
-    enabled: true,
-  })
+  new_res_rules.push(rule(
+    "rm_b2_head",
+    addHostToExpression(b2_expr, host),
+    { headers: b2_headers }
+  ))
 
-  new_res_rules.push({
-    action: "rewrite",
-    action_parameters: { headers: cdn_headers },
-    description: "删除cdn头",
-    expression: "true",
-    enabled: true,
-  })
+  new_res_rules.push(rule(
+    "删除cdn头",
+    "true",
+    { headers: cdn_headers }
+  ))
 
   const r = await Promise.allSettled([
     cf.dns.records.create({

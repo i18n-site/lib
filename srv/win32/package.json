@@ -1,7 +1,9 @@
 {
   "name": "@3-/srv-win32",
   "version": "0.1.7",
-  "os": ["win32"],
+  "os": [
+    "win32"
+  ],
   "type": "module",
   "exports": {
     "./install.js": "./install.js",
@@ -9,5 +11,10 @@
   },
   "dependencies": {
     "zx": "^8.8.5"
+  },
+  "repository": "https://github.com/i18n-site/lib/tree/dev",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev",
+  "bugs": {
+    "url": "https://github.com/i18n-site/lib/issues"
   }
 }

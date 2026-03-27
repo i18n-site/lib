@@ -13,5 +13,10 @@
   },
   "dependencies": {
     "zx": "^8.8.5"
+  },
+  "repository": "https://github.com/i18n-site/lib/tree/dev",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev",
+  "bugs": {
+    "url": "https://github.com/i18n-site/lib/issues"
   }
 }
