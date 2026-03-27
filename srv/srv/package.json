@@ -1,6 +1,6 @@
 {
   "name": "@3-/srv",
-  "version": "0.1.21",
+  "version": "0.1.22",
   "type": "module",
   "exports": {
     "./install.js": "./install.js",

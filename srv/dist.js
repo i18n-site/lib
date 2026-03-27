@@ -88,7 +88,7 @@ if (changed.length > 0) {
   }
   writeFileSync(hash_file, yaml.dump(hashes), 'utf8')
 
-  const { version: v } = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'))
+  const { version: v } = JSON.parse(readFileSync(join(dir, changed[0].dir, 'package.json'), 'utf8'))
   await $`git add .`
   try {
     await $`git commit -m "chore: release ${v}"`
