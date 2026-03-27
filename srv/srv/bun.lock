@@ -1,0 +1,30 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "@3-/srv",
+      "dependencies": {
+        "zx": "^8.8.5",
+      },
+      "optionalDependencies": {
+        "@3-/srv-darwin": "file:../darwin",
+        "@3-/srv-linux": "file:../linux",
+        "@3-/srv-win32": "file:../win32",
+      },
+    },
+  },
+  "packages": {
+    "@3-/srv-darwin": ["@3-/srv-darwin@file:../darwin", { "dependencies": { "@3-/srv-obj-replace": "file:../obj_replace", "zx": "^8.8.5" } }],
+
+    "@3-/srv-linux": ["@3-/srv-linux@file:../linux", { "dependencies": { "@3-/srv-obj-replace": "file:../obj_replace", "zx": "^8.8.5" } }],
+
+    "@3-/srv-win32": ["@3-/srv-win32@file:../win32", { "dependencies": { "zx": "^8.8.5" } }],
+
+    "zx": ["zx@8.8.5", "", { "bin": { "zx": "build/cli.js" } }, "sha512-SNgDF5L0gfN7FwVOdEFguY3orU5AkfFZm9B5YSHog/UDHv+lvmd82ZAsOenOkQixigwH2+yyH198AwNdKhj+RA=="],
+
+    "@3-/srv-darwin/@3-/srv-obj-replace": ["@3-/srv-obj-replace@file:../obj_replace", {}],
+
+    "@3-/srv-linux/@3-/srv-obj-replace": ["@3-/srv-obj-replace@file:../obj_replace", {}],
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@3-/srv",
+  "version": "0.1.7",
+  "type": "module",
+  "exports": {
+    "./install.js": "./install.js",
+    "./uninstall.js": "./uninstall.js"
+  },
+  "optionalDependencies": {
+    "@3-/srv-darwin": "file:../darwin",
+    "@3-/srv-linux": "file:../linux",
+    "@3-/srv-win32": "file:../win32"
+  },
+  "dependencies": {
+    "zx": "^8.8.5"
+  }
+}

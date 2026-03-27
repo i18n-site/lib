@@ -1,0 +1,31 @@
+{
+  "name": "@3-/cf_b2",
+  "version": "0.1.0",
+  "keywords": [],
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://atomgit.com/i18n/lib.git"
+  },
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/cf_b2",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "bin": {
+    "cf_b2": "./src/bin.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "cloudflare": "^5.2.0",
+    "psl": "^1.15.0",
+    "yargs": "^18.0.0"
+  }
+}

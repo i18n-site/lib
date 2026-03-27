@@ -1,0 +1,33 @@
+{
+  "name": "@3-/plugin",
+  "version": "0.1.42",
+  "repository": "https://atomgit.com/i18n/lib.git",
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/plugin",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "peerDependencies": {
+    "@3-/deps": "^0.0.2",
+    "@3-/lang": "^0.1.22",
+    "@3-/read": "^0.1.4",
+    "@3-/u8": "^0.1.2",
+    "@3-/urle": "^0.1.7",
+    "@3-/utf8": "^0.0.4",
+    "@3-/write": "^0.0.2",
+    "@3-/yml": "^0.1.5",
+    "ansis": "^3.4.0",
+    "json5": "^2.2.3",
+    "@3-/swc": "^0.1.12"
+  },
+  "bin": {
+    "plugin": "./lib/bin.js"
+  },
+  "dependencies": {}
+}

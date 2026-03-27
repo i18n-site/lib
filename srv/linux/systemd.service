@@ -1,0 +1,13 @@
+[Unit]
+Description=$name Daemon
+After=network.target
+
+[Service]
+ExecStart=$execPath $scriptPath run
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=$name
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,13 @@
+{
+  "name": "@3-/srv-obj-replace",
+  "version": "0.1.7",
+  "type": "module",
+  "exports": {
+    "./str.js": "./str.js",
+    "./fp.js": "./fp.js",
+    "./gen.js": "./gen.js"
+  },
+  "dependencies": {
+    "@3-/read": "^0.1.4"
+  }
+}
