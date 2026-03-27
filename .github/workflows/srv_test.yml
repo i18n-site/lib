@@ -27,6 +27,11 @@ jobs:
     - name: Checkout Code / 检出代码
       uses: actions/checkout@v4
 
+    - name: Setup Node.js Environment / 配置 Node.js 环境
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
     - name: Setup Bun Environment / 配置 Bun 环境
       uses: oven-sh/setup-bun@v1
       with:
@@ -36,4 +41,4 @@ jobs:
       run: bun install
 
     - name: Run Vitest with Real Services / 执行系统服务挂载真实端到端测试
-      run: bun run test
+      run: npm run test
