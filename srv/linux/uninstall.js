@@ -3,7 +3,7 @@ import { homedir } from "os";
 import { join } from "path";
 import { $ } from "./init.js";
 
-export default async ({ name }) => {
+export default async ([name]) => {
   const systemd_dir = join(homedir(), ".config", "systemd", "user"),
     service_path = join(systemd_dir, `${name}.service`);
 
