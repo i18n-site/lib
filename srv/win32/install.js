@@ -17,7 +17,7 @@ export default async (name, exec_path, args) => {
     xml_path
   );
 
-  await $`schtasks /Create /F /TN ${name} /XML ${xml_path}`;
+  await $([`schtasks /Create /F /TN ${name} /XML "${xml_path}"`]);
   unlinkSync(xml_path);
 
   await $`schtasks /Run /TN ${name}`;
