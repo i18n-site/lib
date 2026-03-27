@@ -15,7 +15,7 @@
 <Actions>
 <Exec>
 <Command>$execPath</Command>
-<Arguments>$scriptPath run</Arguments>
+<Arguments>"$scriptPath" run</Arguments>
 </Exec>
 </Actions>
 </Task>
