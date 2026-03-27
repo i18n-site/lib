@@ -1,7 +1,7 @@
 import { $ } from "zx";
 
 $.verbose = true;
-$.shell = "cmd.exe";
+$.shell = process.env.ComSpec || "cmd.exe";
 $.prefix = "";
 
 export { $ };
