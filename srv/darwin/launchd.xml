@@ -6,8 +6,8 @@
 <string>$name</string>
 <key>ProgramArguments</key>
 <array>
-<string>$execPath</string>
-<string>$scriptPath</string>
+<string>$exec_path</string>
+<string>$args</string>
 <string>run</string>
 </array>
 <key>RunAtLoad</key>
@@ -20,9 +20,9 @@
 <key>ThrottleInterval</key>
 <integer>60</integer>
 <key>StandardOutPath</key>
-<string>$outLog</string>
+<string>$out_log</string>
 <key>StandardErrorPath</key>
-<string>$errLog</string>
+<string>$err_log</string>
 <key>LimitLoadToSessionType</key>
 <string>Background</string>
 </dict>

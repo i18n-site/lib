@@ -12,7 +12,7 @@ export default async (name, exec_path, args) => {
     err_log = join(logs_dir, `${name}.err.log`);
 
   gen(
-    { name, execPath: exec_path, scriptPath: args, outLog: out_log, errLog: err_log },
+    { name, exec_path, args, out_log, err_log },
     join(import.meta.dirname, "launchd.xml"),
     plist_path
   );
