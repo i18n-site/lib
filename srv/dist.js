@@ -67,13 +67,9 @@ for (const pkg of packages) {
   }
 }
 
-// 只要有任何包变了，就把所有包都加入 changed，这样保证 workspace:* 的版本号不论谁更新都会强制保持完全一致
-if (changed.length > 0) {
-  for (const pkg of packages) {
-    if (!changed.some(c => c.dir === pkg)) {
-      changed.push({ dir: pkg, name: current[pkg].name, hash: current[pkg].hash })
-    }
-  }
+// 若有平台包变动，则 srv 必须重新发布绑定新版依赖
+if (changed.some(c => c.dir !== 'srv') && !changed.some(c => c.dir === 'srv')) {
+  changed.push({ dir: 'srv', name: current.srv.name, hash: current.srv.hash })
 }
 
 if (changed.length > 0) {
@@ -89,7 +85,24 @@ if (changed.length > 0) {
   for (const { dir: pkg_dir } of changed) {
     cd(join(dir, pkg_dir))
     try { unlinkSync('bun.lock') } catch (e) {}
+    
+    const pkg_json_path = join(dir, pkg_dir, 'package.json')
+    const origin_pkg_json = readFileSync(pkg_json_path, 'utf8')
+    const has_workspace = origin_pkg_json.includes('"workspace:*"')
+    
+    if (has_workspace) {
+      const replaced = origin_pkg_json.replace(
+        /"(@3-\/srv-(.*?))":\s*"workspace:\*"/g,
+        (_, dep, p) => `"${dep}": "${JSON.parse(readFileSync(join(dir, p, 'package.json'), 'utf8')).version}"`
+      )
+      writeFileSync(pkg_json_path, replaced, 'utf8')
+    }
+
     await $`bun publish`
+    
+    if (has_workspace) {
+      writeFileSync(pkg_json_path, origin_pkg_json, 'utf8')
+    }
   }
   cd(dir)
 

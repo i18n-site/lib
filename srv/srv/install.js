@@ -8,3 +8,5 @@ export default async (name, scriptPath) => {
   await uninstall(name, () => {});
   await install(name, exec, scriptPath);
 };
+ 
+// test

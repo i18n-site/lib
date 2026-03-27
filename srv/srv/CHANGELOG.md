@@ -1,5 +1,17 @@
 # @3-/srv
 
+## 0.1.41
+
+### Patch Changes
+
+- auto update
+
+## 0.1.40
+
+### Patch Changes
+
+- auto update
+
 ## 0.1.39
 
 ### Patch Changes
