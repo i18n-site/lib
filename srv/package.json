@@ -8,7 +8,8 @@
     "obj_replace"
   ],
   "devDependencies": {
-    "vitest": "^1.4.0"
+    "vitest": "^1.4.0",
+    "zx": "^8.8.5"
   },
   "scripts": {
     "test": "vitest run tests/"
