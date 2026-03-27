@@ -18,5 +18,7 @@
 <string>$outLog</string>
 <key>StandardErrorPath</key>
 <string>$errLog</string>
+<key>LimitLoadToSessionType</key>
+<string>Background</string>
 </dict>
 </plist>
