@@ -1,5 +1,11 @@
 # @3-/srv-linux
 
+## 0.1.27
+
+### Patch Changes
+
+- auto update
+
 ## 0.1.26
 
 ### Patch Changes
