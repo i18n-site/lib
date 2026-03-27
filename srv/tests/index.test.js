@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { join } from "path";
 import { test, expect } from "vitest";
 import install from "../srv/install.js";
@@ -20,6 +21,15 @@ const wait_for_server = async (retries = 15) => {
   return "FAIL";
 };
 
+const wait_for_server_to_stop = async (retries = 15) => {
+  for (let i = 0; i < retries; i++) {
+    const res = await check_server();
+    if (res === "FAIL") return "FAIL";
+    await new Promise((r) => setTimeout(r, 1000));
+  }
+  return "OK";
+};
+
 test("部署并验证真实的后台服务网络可达性", async () => {
   const script_path = join(import.meta.dirname, "dummy.js");
   
@@ -27,9 +37,11 @@ test("部署并验证真实的后台服务网络可达性", async () => {
 
   const text_after_install = await wait_for_server();
   expect(text_after_install).toBe("OK");
+  console.log("✅ 安装服务测试通过");
 
   await uninstall({ name: service_name });
 
-  const text_after_uninstall = await wait_for_server(3);
+  const text_after_uninstall = await wait_for_server_to_stop(15);
   expect(text_after_uninstall).toBe("FAIL");
-}, 20000);
+  console.log("✅ 卸载服务测试通过");
+}, 30000);
