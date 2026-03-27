@@ -1,3 +1,4 @@
 bun.lock
+.claude/
 /node-os-service/
 /openclaw/
