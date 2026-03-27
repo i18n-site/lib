@@ -8,8 +8,15 @@ import { $ } from "zx";
 const service_name = "test_srv_3_agent";
 
 const check_server = async () => {
-  const { stdout } = await $`curl -s http://127.0.0.1:18374 || echo "FAIL"`.quiet();
-  return stdout.trim();
+  try {
+    const res = await fetch("http://127.0.0.1:18374");
+    const text = await res.text();
+    console.log("Fetch result:", text);
+    return text.trim();
+  } catch (err) {
+    console.log("Fetch error:", err.message);
+    return "FAIL";
+  }
 };
 
 const wait_for_server = async (retries = 15) => {
