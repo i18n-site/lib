@@ -39,4 +39,4 @@ jobs:
       run: bun install
 
     - name: Run Vitest with Real Services / 执行系统服务挂载真实端到端测试
-      run: npm run test
+      run: bun run test
