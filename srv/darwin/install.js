@@ -1,4 +1,3 @@
-import fs from "fs/promises";
 import { homedir } from "os";
 import { join } from "path";
 import { $ } from "zx";
@@ -13,8 +12,7 @@ export default async ({ name, scriptPath: script_path }) => {
     out_log = join(logs_dir, `${name}.log`),
     err_log = join(logs_dir, `${name}.err.log`);
 
-  await fs.mkdir(launch_agents_dir, { recursive: true });
-  await gen(
+  gen(
     { name, execPath: exec_path, scriptPath: script_path, outLog: out_log, errLog: err_log },
     join(import.meta.dirname, "launchd.xml"),
     plist_path

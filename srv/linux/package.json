@@ -10,7 +10,7 @@
     "./uninstall.js": "./uninstall.js"
   },
   "dependencies": {
-    "@3-/srv-obj-replace": "file:../obj_replace",
+    "@3-/srv-obj-replace": "^0.1.11",
     "zx": "^8.8.5"
   },
   "repository": "https://github.com/i18n-site/lib/tree/dev",

@@ -1,4 +1,3 @@
-import fs from "fs/promises";
 import { homedir } from "os";
 import { join } from "path";
 import { $ } from "zx";
@@ -9,8 +8,7 @@ export default async ({ name, scriptPath: script_path }) => {
     systemd_dir = join(homedir(), ".config", "systemd", "user"),
     service_path = join(systemd_dir, `${name}.service`);
 
-  await fs.mkdir(systemd_dir, { recursive: true });
-  await gen(
+  gen(
     { name, execPath: exec_path, scriptPath: script_path },
     join(import.meta.dirname, "systemd.service"),
     service_path
