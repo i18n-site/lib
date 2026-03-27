@@ -58,14 +58,14 @@ test("安装前无响应", async () => {
 
 test("安装后可连接", async () => {
   const scriptPath = join(import.meta.dirname, "中 文 目 录 测试", "dummy.js");
-  await install({ name: service_name, scriptPath });
+  await install(service_name, scriptPath);
   const res = await waitForServer();
   expect(res).toBe("OK");
   console.log("安装测试通过");
 }, 30000);
 
 test("卸载后网络释放", async () => {
-  await uninstall({ name: service_name });
+  await uninstall(service_name);
 
   const res = await waitForServerToStop(15);
   expect(res).toBe("FAIL");
