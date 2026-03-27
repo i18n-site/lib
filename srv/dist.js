@@ -2,7 +2,7 @@
 
 import { $, cd } from 'zx'
 import { join } from 'path'
-import { readFileSync, writeFileSync, existsSync } from 'fs'
+import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 import yaml from 'js-yaml'
 import packlist from 'npm-packlist'
 import Arborist from '@npmcli/arborist'
@@ -16,6 +16,8 @@ const
   hashes = existsSync(hash_file) ? (yaml.load(readFileSync(hash_file, 'utf8')) || {}) : {},
   getHash = async (data) => Buffer.from(await crypto.subtle.digest("SHA-256", data)).toString('base64url'),
   changed = []
+
+try { unlinkSync(join(dir, 'srv/bun.lock')) } catch (e) {}
 
 for (const pkg of packages) {
   const
