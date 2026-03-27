@@ -1,11 +1,13 @@
-import { join } from "path";
-import { $ } from "zx";
 import fs from "fs/promises";
 import { homedir } from "os";
+import { join } from "path";
+import { $ } from "zx";
 
 export default async ({ name }) => {
-  const plistPath = join(homedir(), "Library", "LaunchAgents", `${name}.plist`);
+  const home_dir = homedir(),
+    launch_agents_dir = join(home_dir, "Library", "LaunchAgents"),
+    plist_path = join(launch_agents_dir, `${name}.plist`);
 
-  await $`launchctl unload -w ${plistPath}`;
-  await fs.unlink(plistPath);
+  await $`launchctl bootout gui/$(id -u) ${plist_path} || true`;
+  await fs.rm(plist_path, { force: true });
 };
