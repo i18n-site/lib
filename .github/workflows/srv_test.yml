@@ -1,6 +1,7 @@
 name: '@3-/srv test (系统服务自动化测试)'
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "dev", "main" ]
     paths:
