@@ -6,6 +6,11 @@ const PORT = 18374,
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("OK2");
   },
-  server = createServer(handler);
+  server = createServer(handler),
+  tryListen = () => {
+    server.listen(PORT, "127.0.0.1").on('error', () => {
+      setTimeout(tryListen, 1000);
+    });
+  };
 
-server.listen(PORT, "127.0.0.1");
+tryListen();
