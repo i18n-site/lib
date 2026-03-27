@@ -1,4 +1,4 @@
-import { $ } from "zx";
+import { $ } from "./init.js";
 
 export default async ({ name, scriptPath: script_path }) => {
   try {

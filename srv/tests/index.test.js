@@ -5,6 +5,7 @@ import { join } from "path";
 import { test, expect } from "vitest";
 import install from "../srv/install.js";
 import uninstall from "../srv/uninstall.js";
+import { $ } from "zx";
 
 const service_name = "test_srv_3_agent";
 
@@ -25,6 +26,18 @@ const waitForServer = async (retries = 15) => {
     await sleep(1e3);
     const res = await checkServer();
     if (res === "OK") return "OK";
+  }
+  if (process.platform === "linux") {
+    try {
+      await $`systemctl --user status test_srv_3_agent`;
+      await $`journalctl --user -xeu test_srv_3_agent`;
+    } catch (e) {
+      console.error(e);
+    }
+  } else if (process.platform === "win32") {
+    try {
+      await $`schtasks /Query /TN test_srv_3_agent /V /FO LIST`;
+    } catch (e) {}
   }
   return "FAIL";
 };

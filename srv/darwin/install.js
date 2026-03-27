@@ -1,6 +1,6 @@
 import { homedir } from "os";
 import { join } from "path";
-import { $ } from "zx";
+import { $ } from "./init.js";
 import gen from "@3-/srv-obj-replace/gen.js";
 
 export default async ({ name, scriptPath: script_path }) => {

@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import { homedir } from "os";
 import { join } from "path";
-import { $ } from "zx";
+import { $ } from "./init.js";
 
 export default async ({ name }) => {
   const home_dir = homedir(),
