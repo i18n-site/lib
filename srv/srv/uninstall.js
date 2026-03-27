@@ -1,5 +1,5 @@
-export default async (name) => {
+export default async (name, onErr = console.error) => {
   const { platform } = process,
     { default: uninstall } = await import(`@3-/srv-${platform}/uninstall.js`);
-  await uninstall(name);
+  await uninstall(name, onErr);
 };

@@ -13,7 +13,6 @@ export default async (name, exec_path, args) => {
     service_path
   );
   await $`systemctl --user daemon-reload`;
-  await $`systemctl --user stop ${name}.service || true`;
   await $`systemctl --user enable --now ${name}.service`;
   try {
     await $`loginctl enable-linger $(whoami)`;

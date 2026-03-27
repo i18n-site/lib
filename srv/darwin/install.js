@@ -16,6 +16,5 @@ export default async (name, exec_path, args) => {
     join(import.meta.dirname, "launchd.xml"),
     plist_path
   );
-  await $`launchctl bootout user/$(id -u) ${plist_path} || true`;
   await $`launchctl bootstrap user/$(id -u) ${plist_path}`;
 };
