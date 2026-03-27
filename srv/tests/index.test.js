@@ -1,9 +1,10 @@
 #!/usr/bin/env bun
+
+import sleep from "@3-/sleep";
 import { join } from "path";
 import { test, expect } from "vitest";
 import install from "../srv/install.js";
 import uninstall from "../srv/uninstall.js";
-import { $ } from "zx";
 
 const service_name = "test_srv_3_agent";
 
@@ -21,18 +22,18 @@ const checkServer = async () => {
 
 const waitForServer = async (retries = 15) => {
   for (let i = 0; i < retries; i++) {
+    await sleep(1e3);
     const res = await checkServer();
     if (res === "OK") return "OK";
-    await new Promise((r) => setTimeout(r, 1000));
   }
   return "FAIL";
 };
 
 const waitForServerToStop = async (retries = 15) => {
   for (let i = 0; i < retries; i++) {
+    await sleep(1e3);
     const res = await checkServer();
     if (res === "FAIL") return "FAIL";
-    await new Promise((r) => setTimeout(r, 1000));
   }
   return "OK";
 };
@@ -45,7 +46,6 @@ test("安装前无响应", async () => {
 test("安装后可连接", async () => {
   const scriptPath = join(import.meta.dirname, "dummy.js");
   await install({ name: service_name, scriptPath });
-
   const res = await waitForServer();
   expect(res).toBe("OK");
   console.log("安装测试通过");

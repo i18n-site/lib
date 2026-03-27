@@ -1,12 +1,6 @@
 {
   "type": "module",
-  "workspaces": [
-    "srv",
-    "linux",
-    "darwin",
-    "win32",
-    "obj_replace"
-  ],
+  "workspaces": ["srv", "linux", "darwin", "win32"],
   "devDependencies": {
     "vitest": "^1.4.0",
     "zx": "^8.8.5"
@@ -20,6 +14,7 @@
     "url": "https://github.com/i18n-site/lib/issues"
   },
   "dependencies": {
+    "@3-/sleep": "^0.0.4",
     "@npmcli/arborist": "^9.4.2",
     "js-yaml": "^4.1.1",
     "npm-packlist": "^10.0.4"
