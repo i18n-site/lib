@@ -15,7 +15,8 @@ const
   packages = ['darwin', 'linux', 'win32', 'srv'],
   hashes = existsSync(hash_file) ? (yaml.load(readFileSync(hash_file, 'utf8')) || {}) : {},
   getHash = async (data) => Buffer.from(await crypto.subtle.digest("SHA-256", data)).toString('base64url'),
-  changed = []
+  changed = [],
+  current = {}
 
 try { unlinkSync(join(dir, 'srv/bun.lock')) } catch (e) {}
 
@@ -58,16 +59,17 @@ for (const pkg of packages) {
     offset += b.length
   }
 
-  const current_hash = await getHash(merged)
+  const hash = await getHash(merged)
+  current[pkg] = { hash, name: JSON.parse(readFileSync(join(pkg_dir, 'package.json'), 'utf8')).name }
 
-  if (hashes[pkg] !== current_hash) {
-    const { name } = JSON.parse(readFileSync(join(pkg_dir, 'package.json'), 'utf8'))
-    changed.push({
-      dir: pkg,
-      name,
-      hash: current_hash
-    })
+  if (hashes[pkg] !== hash) {
+    changed.push({ dir: pkg, name: current[pkg].name, hash })
   }
+}
+
+// 平台包变了则 srv 必须重新发布，否则 workspace:* 解析的版本号过期
+if (changed.some(c => c.dir !== 'srv') && !changed.some(c => c.dir === 'srv')) {
+  changed.push({ dir: 'srv', name: current.srv.name, hash: current.srv.hash })
 }
 
 if (changed.length > 0) {
