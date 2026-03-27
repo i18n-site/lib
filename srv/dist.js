@@ -75,11 +75,22 @@ if (changed.length > 0) {
 
   writeFileSync(join(dir, '.changeset', 'auto-update.md'), changeset_content, 'utf8')
 
-  await $`bunx changeset version`
+  const pre_versions = {}
+  for (const pkg of packages) {
+    pre_versions[pkg] = JSON.parse(readFileSync(join(dir, pkg, 'package.json'), 'utf8')).version
+  }
 
-  for (const { dir: pkg_dir } of changed) {
-    cd(join(dir, pkg_dir))
-    await $`bun publish`
+  await $`bunx changeset version`
+  
+  // bun publish 会读取 bun.lock 导致 workspace:* 被替换为旧版，这里必须重新 install
+  await $`bun install`
+
+  for (const pkg of packages) {
+    const post_version = JSON.parse(readFileSync(join(dir, pkg, 'package.json'), 'utf8')).version
+    if (pre_versions[pkg] !== post_version) {
+      cd(join(dir, pkg))
+      await $`bun publish`
+    }
   }
   cd(dir)
 
