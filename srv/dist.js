@@ -79,6 +79,7 @@ if (changed.length > 0) {
 
   for (const { dir: pkg_dir } of changed) {
     cd(join(dir, pkg_dir))
+    try { unlinkSync('bun.lock') } catch (e) {}
     await $`bun publish`
   }
   cd(dir)
