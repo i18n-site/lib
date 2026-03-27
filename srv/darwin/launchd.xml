@@ -8,7 +8,6 @@
 <array>
 <string>$exec_path</string>
 <string>$args</string>
-<string>run</string>
 </array>
 <key>RunAtLoad</key>
 <true/>
