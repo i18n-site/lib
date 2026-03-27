@@ -87,4 +87,11 @@ if (changed.length > 0) {
     hashes[pkg_dir] = hash
   }
   writeFileSync(hash_file, yaml.dump(hashes), 'utf8')
+
+  const { version: v } = JSON.parse(readFileSync(join(dir, 'package.json'), 'utf8'))
+  await $`git add .`
+  try {
+    await $`git commit -m "chore: release ${v}"`
+    await $`git push`
+  } catch (e) {}
 }
