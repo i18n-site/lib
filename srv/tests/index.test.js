@@ -44,7 +44,7 @@ test("安装前无响应", async () => {
 });
 
 test("安装后可连接", async () => {
-  const scriptPath = join(import.meta.dirname, "dummy.js");
+  const scriptPath = join(import.meta.dirname, "中 文 目 录 测试", "dummy.js");
   await install({ name: service_name, scriptPath });
   const res = await waitForServer();
   expect(res).toBe("OK");
