@@ -1,6 +1,6 @@
 {
   "name": "@3-/srv-win32",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "os": [
     "win32"
   ],
