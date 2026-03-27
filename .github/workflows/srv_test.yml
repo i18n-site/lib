@@ -25,15 +25,13 @@ jobs:
 
     steps:
     - name: Checkout Code / 检出代码
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Setup Node.js Environment / 配置 Node.js 环境
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      uses: actions/setup-node@v6
 
     - name: Setup Bun Environment / 配置 Bun 环境
-      uses: oven-sh/setup-bun@v1
+      uses: oven-sh/setup-bun@v2
       with:
         bun-version: latest
 

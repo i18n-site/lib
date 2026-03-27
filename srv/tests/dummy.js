@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 import { createServer } from "http";
 
 const PORT = 18374,

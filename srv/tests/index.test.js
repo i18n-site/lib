@@ -7,7 +7,7 @@ import { $ } from "zx";
 
 const service_name = "test_srv_3_agent";
 
-const check_server = async () => {
+const checkServer = async () => {
   try {
     const res = await fetch("http://127.0.0.1:18374");
     const text = await res.text();
@@ -19,18 +19,18 @@ const check_server = async () => {
   }
 };
 
-const wait_for_server = async (retries = 15) => {
+const waitForServer = async (retries = 15) => {
   for (let i = 0; i < retries; i++) {
-    const res = await check_server();
+    const res = await checkServer();
     if (res === "OK") return "OK";
     await new Promise((r) => setTimeout(r, 1000));
   }
   return "FAIL";
 };
 
-const wait_for_server_to_stop = async (retries = 15) => {
+const waitForServerToStop = async (retries = 15) => {
   for (let i = 0; i < retries; i++) {
-    const res = await check_server();
+    const res = await checkServer();
     if (res === "FAIL") return "FAIL";
     await new Promise((r) => setTimeout(r, 1000));
   }
@@ -38,15 +38,15 @@ const wait_for_server_to_stop = async (retries = 15) => {
 };
 
 test("安装前无响应", async () => {
-  const res = await wait_for_server_to_stop(1);
+  const res = await waitForServerToStop(1);
   expect(res).toBe("FAIL");
 });
 
 test("安装后可连接", async () => {
-  const script_path = join(import.meta.dirname, "dummy.js");
-  await install({ name: service_name, scriptPath: script_path });
+  const scriptPath = join(import.meta.dirname, "dummy.js");
+  await install({ name: service_name, scriptPath });
 
-  const res = await wait_for_server();
+  const res = await waitForServer();
   expect(res).toBe("OK");
   console.log("安装测试通过");
 }, 30000);
@@ -54,7 +54,7 @@ test("安装后可连接", async () => {
 test("卸载后网络释放", async () => {
   await uninstall({ name: service_name });
 
-  const res = await wait_for_server_to_stop(15);
+  const res = await waitForServerToStop(15);
   expect(res).toBe("FAIL");
   console.log("卸载测试通过");
 }, 30000);

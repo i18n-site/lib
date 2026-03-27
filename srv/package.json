@@ -18,5 +18,10 @@
   "homepage": "https://github.com/i18n-site/lib/tree/dev",
   "bugs": {
     "url": "https://github.com/i18n-site/lib/issues"
+  },
+  "dependencies": {
+    "@npmcli/arborist": "^9.4.2",
+    "js-yaml": "^4.1.1",
+    "npm-packlist": "^10.0.4"
   }
 }
