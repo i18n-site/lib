@@ -17,8 +17,7 @@ export default async (name, exec_path, args) => {
     xml_path
   );
 
-  const xml_str = readFileSync(xml_path, "utf8");
-  writeFileSync(xml_path, "\uFEFF" + xml_str, "utf16le");
+  writeFileSync(xml_path, "\uFEFF" + readFileSync(xml_path, "utf8"), "utf16le");
 
   await $([`schtasks /Create /F /TN ${name} /XML "${xml_path}"`]);
   unlinkSync(xml_path);
