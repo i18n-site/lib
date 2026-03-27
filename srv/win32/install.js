@@ -1,6 +1,6 @@
 import { $ } from "./init.js";
 
-export default async ([name, exec_path, args]) => {
+export default async (name, exec_path, args) => {
   try {
     await $`schtasks /End /TN ${name}`;
   } catch (e) {}

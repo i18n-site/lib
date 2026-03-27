@@ -3,7 +3,7 @@ import { join } from "path";
 import { $ } from "./init.js";
 import gen from "@3-/obj_replace/gen.js";
 
-export default async ([name, exec_path, args]) => {
+export default async (name, exec_path, args) => {
   const home_dir = homedir(),
     launch_agents_dir = join(home_dir, "Library", "LaunchAgents"),
     plist_path = join(launch_agents_dir, `${name}.plist`),
