@@ -9,7 +9,7 @@ export default async (name, onErr = console.error) => {
     plist_path = join(launch_agents_dir, `${name}.plist`);
 
   try {
-    await $`launchctl bootout user/$(id -u) ${plist_path}`;
+    await $`launchctl bootout user/$(id -u) ${plist_path}`.quiet();
   } catch (e) { onErr(e); }
   await fs.rm(plist_path, { force: true });
 };

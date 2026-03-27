@@ -67,9 +67,13 @@ for (const pkg of packages) {
   }
 }
 
-// 平台包变了则 srv 必须重新发布，否则 workspace:* 解析的版本号过期
-if (changed.some(c => c.dir !== 'srv') && !changed.some(c => c.dir === 'srv')) {
-  changed.push({ dir: 'srv', name: current.srv.name, hash: current.srv.hash })
+// 只要有任何包变了，就把所有包都加入 changed，这样保证 workspace:* 的版本号不论谁更新都会强制保持完全一致
+if (changed.length > 0) {
+  for (const pkg of packages) {
+    if (!changed.some(c => c.dir === pkg)) {
+      changed.push({ dir: pkg, name: current[pkg].name, hash: current[pkg].hash })
+    }
+  }
 }
 
 if (changed.length > 0) {
