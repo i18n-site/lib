@@ -1,6 +1,6 @@
 {
   "name": "@3-/srv-linux",
-  "version": "0.1.33",
+  "version": "0.1.36",
   "os": [
     "linux"
   ],

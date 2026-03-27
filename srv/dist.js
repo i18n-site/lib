@@ -78,6 +78,7 @@ if (changed.length > 0) {
   writeFileSync(join(dir, '.changeset', 'auto-update.md'), changeset_content, 'utf8')
 
   await $`bunx changeset version`
+  await $`bun install`
 
   for (const { dir: pkg_dir } of changed) {
     cd(join(dir, pkg_dir))
