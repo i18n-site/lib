@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-16"?>
 <Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+<Principals>
+<Principal id="Author">
+<LogonType>InteractiveToken</LogonType>
+<RunLevel>HighestAvailable</RunLevel>
+</Principal>
+</Principals>
 <Triggers>
 <LogonTrigger>
 <Enabled>true</Enabled>
@@ -28,7 +34,7 @@
 <Count>999</Count>
 </RestartOnFailure>
 </Settings>
-<Actions>
+<Actions Context="Author">
 <Exec>
 <Command>$execPath</Command>
 <Arguments>"$scriptPath" run</Arguments>
