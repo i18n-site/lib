@@ -76,7 +76,12 @@ if (changed.length > 0) {
   writeFileSync(join(dir, '.changeset', 'auto-update.md'), changeset_content, 'utf8')
 
   await $`bunx changeset version`
-  await $`bunx changeset publish`
+
+  for (const { dir: pkg_dir } of changed) {
+    cd(join(dir, pkg_dir))
+    await $`bun publish`
+  }
+  cd(dir)
 
   for (const { dir: pkg_dir, hash } of changed) {
     hashes[pkg_dir] = hash
