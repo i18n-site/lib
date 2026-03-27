@@ -8,6 +8,6 @@ export default async ({ name }) => {
     launch_agents_dir = join(home_dir, "Library", "LaunchAgents"),
     plist_path = join(launch_agents_dir, `${name}.plist`);
 
-  await $`launchctl bootout user/$(id -u) ${plist_path} || true`;
+  await $`launchctl bootout gui/$(id -u) ${plist_path} || true`;
   await fs.rm(plist_path, { force: true });
 };
