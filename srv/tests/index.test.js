@@ -64,6 +64,19 @@ test("安装后可连接", async () => {
   console.log("安装测试通过");
 }, 30000);
 
+test("重新安装应覆盖服务并返回新结果", async () => {
+  const scriptPath2 = join(import.meta.dirname, "中 文 目 录 测试", "dummy2.js");
+  await install(service_name, scriptPath2);
+  let res;
+  for (let i = 0; i < 15; i++) {
+    await sleep(1e3);
+    res = await checkServer();
+    if (res === "OK2") break;
+  }
+  expect(res).toBe("OK2");
+  console.log("重新安装覆盖测试通过");
+}, 30000);
+
 test("卸载后网络释放", async () => {
   await uninstall(service_name);
 
