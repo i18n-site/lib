@@ -17,6 +17,6 @@ export default async ({ name, scriptPath: script_path }) => {
     join(import.meta.dirname, "launchd.xml"),
     plist_path
   );
-  await $`launchctl bootout gui/$(id -u) ${plist_path} || true`;
-  await $`launchctl bootstrap gui/$(id -u) ${plist_path}`;
+  await $`launchctl bootout user/$(id -u) ${plist_path} || true`;
+  await $`launchctl bootstrap user/$(id -u) ${plist_path}`;
 };

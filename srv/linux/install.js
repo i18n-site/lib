@@ -16,4 +16,9 @@ export default async ({ name, scriptPath: script_path }) => {
   await $`systemctl --user daemon-reload`;
   await $`systemctl --user stop ${name}.service || true`;
   await $`systemctl --user enable --now ${name}.service`;
+  try {
+    await $`loginctl enable-linger $(whoami)`;
+  } catch (e) {
+    console.warn(e);
+  }
 };

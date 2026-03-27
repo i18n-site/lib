@@ -7,7 +7,7 @@ export default async ({ name, scriptPath: script_path }) => {
     await $`schtasks /End /TN ${name}`;
   } catch (e) {}
 
-  const cmd = `schtasks /Create /F /TN ${name} /TR "node \\"${script_path}\\" run" /SC ONSTART /RL HIGHEST`;
+  const cmd = `schtasks /Create /F /TN ${name} /TR "node \\"${script_path}\\" run" /SC ONLOGON`;
   await $([cmd]);
 
   await $`schtasks /Run /TN ${name}`;
