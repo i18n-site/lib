@@ -4,7 +4,7 @@ export default (option) => {
   option = {
     retryStrategy: (times) => {
       if (times > 6) {
-        throw new Error("ioredis can't connect " + url ? url : JSON.stringify(option));
+        throw new Error("ioredis can't connect " + JSON.stringify(option, null, 2));
       }
       return 1e3;
     },
