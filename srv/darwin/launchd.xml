@@ -22,7 +22,6 @@
 <string>$out_log</string>
 <key>StandardErrorPath</key>
 <string>$err_log</string>
-<key>LimitLoadToSessionType</key>
-<string>Background</string>
+
 </dict>
 </plist>
