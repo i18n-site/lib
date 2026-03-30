@@ -1,5 +1,17 @@
 # @3-/srv-darwin
 
+## 0.1.52
+
+### Patch Changes
+
+- auto update
+
+## 0.1.51
+
+### Patch Changes
+
+- auto update
+
 ## 0.1.50
 
 ### Patch Changes
