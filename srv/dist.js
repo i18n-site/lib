@@ -99,7 +99,7 @@ if (changed.length > 0) {
     }
 
     await $`bun publish`
-    
+
     if (has_workspace) {
       writeFileSync(pkg_json_path, origin_pkg_json, 'utf8')
     }
