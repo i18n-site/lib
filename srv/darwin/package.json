@@ -5,10 +5,7 @@
     "darwin"
   ],
   "type": "module",
-  "exports": {
-    "./install.js": "./install.js",
-    "./uninstall.js": "./uninstall.js"
-  },
+  "exports": "./*.js",
   "dependencies": {
     "@3-/obj_replace": "^0.1.0",
     "zx": "^8.8.5"
