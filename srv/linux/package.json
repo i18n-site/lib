@@ -1,12 +1,12 @@
 {
   "name": "@3-/srv-linux",
-  "version": "0.1.43",
+  "version": "0.1.44",
   "os": [
     "linux"
   ],
   "type": "module",
   "exports": {
-    "./*": "./*.js"
+    "./*": "./*"
   },
   "dependencies": {
     "@3-/obj_replace": "^0.1.0",

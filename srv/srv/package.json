@@ -1,9 +1,9 @@
 {
   "name": "@3-/srv",
-  "version": "0.1.50",
+  "version": "0.1.51",
   "type": "module",
   "exports": {
-    "./*": "./*.js"
+    "./*": "./*"
   },
   "optionalDependencies": {
     "@3-/srv-darwin": "workspace:*",

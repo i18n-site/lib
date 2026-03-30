@@ -1,12 +1,12 @@
 {
   "name": "@3-/srv-darwin",
-  "version": "0.1.49",
+  "version": "0.1.50",
   "os": [
     "darwin"
   ],
   "type": "module",
   "exports": {
-    "./*": "./*.js"
+    "./*": "./*"
   },
   "dependencies": {
     "@3-/obj_replace": "^0.1.0",
