@@ -14,6 +14,9 @@
         "lodash-es": "^4.17.23",
         "zx": "^8.8.5",
       },
+      "devDependencies": {
+        "ansis": "^4.2.0",
+      },
     },
   },
   "packages": {
@@ -51,7 +54,7 @@
 
     "ansi-styles": ["ansi-styles@6.2.3", "https://registry.npmmirror.com/ansi-styles/-/ansi-styles-6.2.3.tgz", {}, "sha512-4Dj6M28JB+oAH8kFkTLUo+a2jwOFkuqb3yucU0CANcRRUbxS0cP0nZYCGjcc3BNXwRIsUVmDGgzawme7zvJHvg=="],
 
-    "ansis": ["ansis@3.17.0", "https://registry.npmmirror.com/ansis/-/ansis-3.17.0.tgz", {}, "sha512-0qWUglt9JEqLFr3w1I1pbrChn1grhaiAR2ocX1PP/flRmxgtwTzPFFFnfIlD6aMOLQZgSuCRlidD70lvx8yhzg=="],
+    "ansis": ["ansis@4.2.0", "", {}, "sha512-HqZ5rWlFjGiV0tDm3UxxgNRqsOTniqoKZu0pIAfh7TZQMGuZK+hH0drySty0si0QXj1ieop4+SkSfPZBPPkHig=="],
 
     "asap": ["asap@2.0.6", "https://registry.npmmirror.com/asap/-/asap-2.0.6.tgz", {}, "sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA=="],
 
@@ -206,6 +209,8 @@
     "@3-/mdt/@3-/walk": ["@3-/walk@0.0.1", "https://registry.npmmirror.com/@3-/walk/-/walk-0.0.1.tgz", {}, "sha512-YIhBR+fAei413SfXY1m3z8SIg8zi4qFRPLEh2a9o2uVUZRUXTvC+QqolZhCuPOXYUb2jcby0qTAGb6IfbptFjQ=="],
 
     "@3-/mdt/@3-/write": ["@3-/write@0.0.1", "https://registry.npmmirror.com/@3-/write/-/write-0.0.1.tgz", {}, "sha512-EvXAzDdmAynZyNJyMD5l90RfKhxYglJMJ5tXx3rj9VCUrFNhZnlRTIOJrteMtgtFsfTLf2hUrbh7TtPBnjgpLg=="],
+
+    "@3-/mdt/ansis": ["ansis@3.17.0", "https://registry.npmmirror.com/ansis/-/ansis-3.17.0.tgz", {}, "sha512-0qWUglt9JEqLFr3w1I1pbrChn1grhaiAR2ocX1PP/flRmxgtwTzPFFFnfIlD6aMOLQZgSuCRlidD70lvx8yhzg=="],
 
     "@3-/mdt/yargs": ["yargs@17.7.2", "https://registry.npmmirror.com/yargs/-/yargs-17.7.2.tgz", { "dependencies": { "cliui": "^8.0.1", "escalade": "^3.1.1", "get-caller-file": "^2.0.5", "require-directory": "^2.1.1", "string-width": "^4.2.3", "y18n": "^5.0.5", "yargs-parser": "^21.1.1" } }, "sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w=="],
 

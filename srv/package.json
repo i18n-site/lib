@@ -20,6 +20,7 @@
     "url": "https://github.com/i18n-site/lib/issues"
   },
   "dependencies": {
-    "@3-/sleep": "^0.0.4"
+    "@3-/sleep": "^0.0.4",
+    "ansis": "^4.2.0"
   }
 }

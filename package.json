@@ -10,5 +10,8 @@
     "@3-/walk": "^0.2.1",
     "lodash-es": "^4.17.23",
     "zx": "^8.8.5"
+  },
+  "devDependencies": {
+    "ansis": "^4.2.0"
   }
 }
