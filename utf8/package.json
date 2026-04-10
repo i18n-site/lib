@@ -1,6 +1,6 @@
 {
   "name": "@3-/utf8",
-  "version": "0.0.4",
+  "version": "0.1.1",
   "repository": "https://atomgit.com/i18n/lib.git",
   "homepage": "https://atomgit.com/i18n/lib/tree/dev/utf8",
   "author": "i18n.site@gmail.com",
@@ -15,10 +15,6 @@
   "files": [
     "lib/*"
   ],
-  "devDependencies": {
-    "@babel/core": "^7.24.4",
-    "@babel/plugin-transform-modules-commonjs": "^7.24.1",
-    "@babel/cli": "^7.24.1"
-  },
+  "devDependencies": {},
   "type": "module"
 }
