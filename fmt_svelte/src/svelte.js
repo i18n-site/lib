@@ -1,12 +1,6 @@
 import pug from "./pug.js";
 import styl from "./styl.js";
 
-const langByList = (li) =>
-  li
-    .find((s) => s.startsWith("lang="))
-    ?.split("=")[1]
-    ?.replace(/['"]/g, "");
-
 export default async (code) => {
   let end_tag, fmt, tag, t;
   const res = [];
@@ -19,7 +13,7 @@ export default async (code) => {
         if (fmt) {
           try {
             content = await fmt(content);
-          } catch (e) {}
+          } catch (_) {}
         }
         res.push(content.trim(), line);
         t = fmt = undefined;
@@ -30,9 +24,9 @@ export default async (code) => {
       if (match) {
         const current_tag = match[1].toLowerCase();
         if (["template", "style", "script"].includes(current_tag)) {
-          const attr_str = match[2] || "";
-          const lang_match = attr_str.match(/lang\s*=\s*(['"]?)([^'"\s>]+)\1/i);
-          const lang = lang_match ? lang_match[2].toLowerCase() : undefined;
+          const attr_str = match[2] || "",
+            lang_match = attr_str.match(/lang\s*=\s*(['"]?)([^'"\s>]+)\1/i),
+            lang = lang_match ? lang_match[2].toLowerCase() : undefined;
 
           tag = current_tag;
           if (tag === "template" && lang === "pug") fmt = pug;

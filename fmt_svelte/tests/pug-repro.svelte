@@ -1,5 +1,5 @@
 <template lang="pug">
-  b.btn(
+b.btn(
     onclick!={ (e) => { e.preventDefault(); token = ''; setUrl('/'); } }
     onkeydown!={ (e) => { if (e.keyCode === 13) { doSomething(); } } }
   )

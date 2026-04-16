@@ -48,30 +48,30 @@ export class PugPrinter {
    * The index of the current token inside the `tokens` array.
    */
   // Start at -1, because `getNextToken()` increases it before retrieval
-  currentIndex = -1;
-  currentLineLength = 0;
-  indentString;
-  indentLevel = 0;
+  current_index = -1;
+  current_line_length = 0;
+  indent_string;
+  indent_level = 0;
   framework = "auto";
   quotes;
   otherQuotes;
-  alwaysUseAttributeSeparator;
-  neverUseAttributeSeparator;
-  wrapAttributesPattern;
-  codeInterpolationOptions;
-  currentTagPosition = 0;
-  possibleIdPosition = 0;
-  possibleClassPosition = 0;
-  previousAttributeRemapped = false;
+  always_use_attribute_separator;
+  never_use_attribute_separator;
+  wrap_attributes_pattern;
+  code_interpolation_options;
+  current_tag_position = 0;
+  possible_id_position = 0;
+  possible_class_position = 0;
+  previous_attribute_remapped = false;
   /**
    * Specifies whether attributes should be wrapped in a tag or not.
    */
-  wrapAttributes = false;
-  pipelessText = false;
-  pipelessComment = false;
-  currentlyInPugInterpolation = false;
-  classLiteralToAttribute = [];
-  classLiteralAfterAttributes = [];
+  wrap_attributes = false;
+  pipeless_text = false;
+  pipeless_comment = false;
+  currently_in_pug_interpolation = false;
+  class_literal_to_attribute = [];
+  class_literal_after_attributes = [];
   /**
    * Constructs a new pug printer.
    *
@@ -83,19 +83,19 @@ export class PugPrinter {
     this.content = content;
     this.tokens = tokens;
     this.options = options;
-    this.indentString = options.pugUseTabs ? "\t" : " ".repeat(options.pugTabWidth);
+    this.indent_string = options.pugUseTabs ? "\t" : " ".repeat(options.pugTabWidth);
     if (options.pugSingleFileComponentIndentation) {
-      this.indentLevel++;
+      this.indent_level++;
     }
     this.framework = options.pugFramework === "auto" ? detectFramework() : options.pugFramework;
     this.quotes = this.options.pugSingleQuote ? "'" : '"';
     this.otherQuotes = this.options.pugSingleQuote ? '"' : "'";
-    const pugAttributeSeparator = resolvePugAttributeSeparatorOption(options.pugAttributeSeparator);
-    this.alwaysUseAttributeSeparator = pugAttributeSeparator === "always";
-    this.neverUseAttributeSeparator = pugAttributeSeparator === "none";
-    const wrapAttributesPattern = options.pugWrapAttributesPattern;
-    this.wrapAttributesPattern = wrapAttributesPattern ? new RegExp(wrapAttributesPattern) : null;
-    this.codeInterpolationOptions = {
+    const pug_attribute_separator = resolvePugAttributeSeparatorOption(options.pugAttributeSeparator),
+      wrap_attributes_pattern = options.pugWrapAttributesPattern;
+    this.always_use_attribute_separator = pug_attribute_separator === "always";
+    this.never_use_attribute_separator = pug_attribute_separator === "none";
+    this.wrap_attributes_pattern = wrap_attributes_pattern ? new RegExp(wrap_attributes_pattern) : null;
+    this.code_interpolation_options = {
       semi: options.pugSemi ?? options.semi,
       singleQuote: options.pugSingleQuote ?? options.singleQuote,
       bracketSpacing: options.pugBracketSpacing ?? options.bracketSpacing,
@@ -115,26 +115,26 @@ export class PugPrinter {
   // ##     ## ##       ##       ##        ##       ##    ##  ##    ##
   // ##     ## ######## ######## ##        ######## ##     ##  ######
   //#region Helpers
-  get computedIndent() {
-    switch (this.previousToken?.type) {
+  get computed_indent() {
+    switch (this.previous_token?.type) {
       case "newline":
       case "outdent": {
-        return this.indentString.repeat(this.indentLevel);
+        return this.indent_string.repeat(this.indent_level);
       }
       case "indent": {
-        return this.indentString;
+        return this.indent_string;
       }
       case "start-pug-interpolation": {
         return "";
       }
     }
-    return this.options.pugSingleFileComponentIndentation ? this.indentString : "";
+    return this.options.pugSingleFileComponentIndentation ? this.indent_string : "";
   }
-  get previousToken() {
-    return this.tokens[this.currentIndex - 1];
+  get previous_token() {
+    return this.tokens[this.current_index - 1];
   }
-  get nextToken() {
-    return this.tokens[this.currentIndex + 1];
+  get next_token() {
+    return this.tokens[this.current_index + 1];
   }
   /**
    * Builds the formatted pug content.
@@ -202,8 +202,8 @@ export class PugPrinter {
     return results.join("");
   }
   getNextToken() {
-    this.currentIndex++;
-    return this.tokens[this.currentIndex] ?? null;
+    this.current_index++;
+    return this.tokens[this.current_index] ?? null;
   }
   quoteString(val) {
     return `${this.quotes}${val}${this.quotes}`;
@@ -212,30 +212,30 @@ export class PugPrinter {
     return !!token && possibilities.includes(token.type) !== invert;
   }
   tokenNeedsSeparator(token) {
-    return this.neverUseAttributeSeparator
+    return this.never_use_attribute_separator
       ? false
-      : this.alwaysUseAttributeSeparator || /^([(:[]).*/.test(token.name);
+      : this.always_use_attribute_separator || /^([(:[]).*/.test(token.name);
   }
-  getUnformattedContentLines(firstToken, lastToken) {
-    const { start } = firstToken.loc;
-    const { end } = lastToken.loc;
-    const lines = this.content.split(/\r\n|\n|\r/);
-    const startLine = start.line - 1;
-    const endLine = end.line - 1;
-    const parts = [];
-    const firstLine = lines[startLine];
-    if (firstLine !== undefined) {
-      parts.push(firstLine.slice(start.column - 1));
+  getUnformattedContentLines(first_token, last_token) {
+    const { start } = first_token.loc,
+      { end } = last_token.loc,
+      lines = this.content.split(/\r\n|\n|\r/),
+      start_line = start.line - 1,
+      end_line = end.line - 1,
+      parts = [],
+      first_line = lines[start_line];
+    if (first_line !== undefined) {
+      parts.push(first_line.slice(start.column - 1));
     }
-    for (let lineNumber = startLine + 1; lineNumber < endLine; lineNumber++) {
-      const line = lines[lineNumber];
+    for (let line_number = start_line + 1; line_number < end_line; line_number++) {
+      const line = lines[line_number];
       if (line !== undefined) {
         parts.push(line);
       }
     }
-    const lastLine = lines[endLine];
-    if (lastLine !== undefined) {
-      parts.push(lastLine.slice(0, end.column - 1));
+    const last_line = lines[end_line];
+    if (last_line !== undefined) {
+      parts.push(last_line.slice(0, end.column - 1));
     }
     return parts;
   }
@@ -243,39 +243,39 @@ export class PugPrinter {
     if (this.options.pugExplicitDiv) {
       return;
     }
-    const currentTagEnd = Math.max(this.possibleIdPosition, this.possibleClassPosition);
-    const tag = this.result.slice(this.currentTagPosition, currentTagEnd);
-    const replaced = tag.replace(search, replace);
+    const current_tag_end = Math.max(this.possible_id_position, this.possible_class_position),
+      tag = this.result.slice(this.current_tag_position, current_tag_end),
+      replaced = tag.replace(search, replace);
     if (replaced !== tag) {
-      const prefix = this.result.slice(0, this.currentTagPosition);
-      const suffix = this.result.slice(currentTagEnd);
+      const prefix = this.result.slice(0, this.current_tag_position),
+        suffix = this.result.slice(current_tag_end);
       this.result = `${prefix}${replaced}${suffix}`;
       // tag was replaced, so adjust possible positions as well
       const diff = tag.length - replaced.length;
-      this.possibleIdPosition -= diff;
-      this.possibleClassPosition -= diff;
+      this.possible_id_position -= diff;
+      this.possible_class_position -= diff;
     }
   }
   async frameworkFormat(code) {
-    const options = {
-      ...this.codeInterpolationOptions,
+    const opts = {
+      ...this.code_interpolation_options,
       // we need to keep the original singleQuote option
       // see https://github.com/prettier/plugin-pug/issues/339
       singleQuote: this.options.singleQuote,
     };
     switch (this.framework) {
       case "angular": {
-        options.parser = "__ng_interpolation";
+        opts.parser = "__ng_interpolation";
         break;
       }
       case "svelte":
       case "vue":
       default: {
-        options.parser = "babel";
-        options.semi = false;
+        opts.parser = "babel";
+        opts.semi = false;
       }
     }
-    let result = await format(code, options);
+    let result = await format(code, opts);
     if (result[0] === ";") {
       result = result.slice(1);
     }
@@ -288,31 +288,31 @@ export class PugPrinter {
       const start = text.indexOf("{{");
       if (start === -1) {
         // Find single curly brackets for svelte
-        const start2 = text.indexOf("{");
-        if (this.options.pugFramework === "svelte" && start2 !== -1) {
-          result += text.slice(0, start2);
-          text = text.slice(start2 + 1);
-          const end2 = text.indexOf("}");
-          if (end2 === -1) {
+        const s2 = text.indexOf("{");
+        if (this.options.pugFramework === "svelte" && s2 !== -1) {
+          result += text.slice(0, s2);
+          text = text.slice(s2 + 1);
+          const e2 = text.indexOf("}");
+          if (e2 === -1) {
             result += "{";
             result += text;
             text = "";
           } else {
-            let code = text.slice(0, end2);
+            let code = text.slice(0, e2);
             try {
-              const dangerousQuoteCombination = detectDangerousQuoteCombination(
+              const dangerous_quote_combination = detectDangerousQuoteCombination(
                 code,
                 this.quotes,
                 this.otherQuotes,
                 logger,
               );
-              if (dangerousQuoteCombination) {
+              if (dangerous_quote_combination) {
                 logger.warn(
                   "The following expression could not be formatted correctly. Please try to fix it yourself and if there is a problem, please open a bug issue:",
                   code,
                 );
                 result += handleBracketSpacing(this.options.pugBracketSpacing, code);
-                text = text.slice(end2 + 1);
+                text = text.slice(e2 + 1);
                 continue;
               } else {
                 code = await this.frameworkFormat(code);
@@ -322,7 +322,7 @@ export class PugPrinter {
               try {
                 code = await format(code, {
                   parser: "babel",
-                  ...this.codeInterpolationOptions,
+                  ...this.code_interpolation_options,
                   singleQuote: !this.options.pugSingleQuote,
                 });
                 code = code.trim();
@@ -338,7 +338,7 @@ export class PugPrinter {
             }
             code = unwrapLineFeeds(code);
             result += handleBracketSpacing(this.options.pugBracketSpacing, code, ["{", "}"]);
-            text = text.slice(end2 + 1);
+            text = text.slice(e2 + 1);
           }
         } else {
           result += text;
@@ -355,13 +355,13 @@ export class PugPrinter {
         } else {
           let code = text.slice(0, end);
           try {
-            const dangerousQuoteCombination = detectDangerousQuoteCombination(
+            const dangerous_quote_combination = detectDangerousQuoteCombination(
               code,
               this.quotes,
               this.otherQuotes,
               logger,
             );
-            if (dangerousQuoteCombination) {
+            if (dangerous_quote_combination) {
               logger.warn(
                 "The following expression could not be formatted correctly. Please try to fix it yourself and if there is a problem, please open a bug issue:",
                 code,
@@ -414,7 +414,7 @@ export class PugPrinter {
             try {
               code = await format(code, {
                 parser: "babel",
-                ...this.codeInterpolationOptions,
+                ...this.code_interpolation_options,
                 singleQuote: !this.options.pugSingleQuote,
               });
               code = code.trim();
@@ -436,26 +436,26 @@ export class PugPrinter {
     }
     return result;
   }
-  async formatDelegatePrettier(val, parser, formatOptions = {}) {
-    const { trimTrailingSemicolon = false, trimLeadingSemicolon = true } = formatOptions;
-    const options = { ...this.codeInterpolationOptions };
-    const originalVal = val;
+  async formatDelegatePrettier(val, parser, format_options = {}) {
+    const { trim_trailing_semi = false, trim_leading_semi = true } = format_options,
+      opts = { ...this.code_interpolation_options },
+      orig_val = val;
     val = val.trim();
-    const wasQuoted = isQuoted(val);
-    if (wasQuoted) {
-      options.singleQuote = !this.options.pugSingleQuote;
+    const was_quoted = isQuoted(val);
+    if (was_quoted) {
+      opts.singleQuote = !this.options.pugSingleQuote;
       val = val.slice(1, -1); // Remove quotes
     }
     try {
-      val = await format(val, { parser, ...options });
+      val = await format(val, { parser, ...opts });
       val = unwrapLineFeeds(val);
-      if (trimTrailingSemicolon && val.at(-1) === ";") {
+      if (trim_trailing_semi && val.at(-1) === ";") {
         val = val.slice(0, -1);
       }
-      if (trimLeadingSemicolon && val[0] === ";") {
+      if (trim_leading_semi && val[0] === ";") {
         val = val.slice(1);
       }
-      if (wasQuoted) {
+      if (was_quoted) {
         val =
           this.quotes === '"'
             ? // Escape double quotes, but only if they are not already escaped
@@ -466,18 +466,18 @@ export class PugPrinter {
       return val;
     } catch (e) {
       logger.warn(`Failed to format delegate prettier with parser ${parser}: ${e.message}`);
-      return originalVal;
+      return orig_val;
     }
   }
   async formatStyleAttribute(val) {
     return this.formatDelegatePrettier(val, "css", {
-      trimTrailingSemicolon: true,
+      trim_trailing_semi: true,
     });
   }
   async formatVueEventBinding(val) {
     try {
       return await this.formatDelegatePrettier(val, "__vue_event_binding", {
-        trimTrailingSemicolon: true,
+        trim_trailing_semi: true,
       });
     } catch {
       return this.formatVueTsEventBinding(val);
@@ -485,7 +485,7 @@ export class PugPrinter {
   }
   async formatVueTsEventBinding(val) {
     return this.formatDelegatePrettier(val, "__vue_ts_event_binding", {
-      trimTrailingSemicolon: true,
+      trim_trailing_semi: true,
     });
   }
   async formatVueExpression(val) {
@@ -507,11 +507,7 @@ export class PugPrinter {
   async formatAngularDirective(val) {
     return this.formatDelegatePrettier(val, "__ng_directive");
   }
-  async formatFrameworkInterpolation(
-    val,
-    parser, // TODO: may be changed to allow a special parser for svelte
-    [opening, closing],
-  ) {
+  async formatFrameworkInterpolation(val, parser, opening, closing) {
     val = val.slice(1, -1); // Remove quotes
     val = val.slice(opening.length, -closing.length); // Remove braces
     val = val.trim();
@@ -521,12 +517,12 @@ export class PugPrinter {
         val,
       );
     } else {
-      const options = {
-        ...this.codeInterpolationOptions,
+      const opts = {
+        ...this.code_interpolation_options,
         singleQuote: !this.options.pugSingleQuote,
       };
       try {
-        val = await format(val, { parser, ...options });
+        val = await format(val, { parser, ...opts });
       } catch {
         logger.warn(
           "The following expression could not be formatted correctly. Please try to fix it yourself and if there is a problem, please open a bug issue:",
@@ -539,15 +535,15 @@ export class PugPrinter {
     return this.quoteString(val);
   }
   async formatAngularInterpolation(val) {
-    return this.formatFrameworkInterpolation(val, "__ng_interpolation", ["{{", "}}"]);
+    return this.formatFrameworkInterpolation(val, "__ng_interpolation", "{{", "}}");
   }
   async formatSvelteInterpolation(val) {
-    const wasQuoted = isQuoted(val);
-    if (wasQuoted) {
+    const was_quoted = isQuoted(val);
+    if (was_quoted) {
       val = val.slice(1, -1); // Remove quotes
     }
-    const opening = "{";
-    const closing = "}";
+    const opening = "{",
+      closing = "}";
     val = val.slice(opening.length, -closing.length); // Remove braces
     val = val.trim();
     // Since there's no svelte-attribute-expression parser in Prettier,
@@ -556,7 +552,7 @@ export class PugPrinter {
       // Try formatting as JS expression
       const formatted = await format(val, {
         parser: "__js_expression",
-        ...this.codeInterpolationOptions,
+        ...this.code_interpolation_options,
         singleQuote: !this.options.pugSingleQuote,
       });
       val = formatted.trim();
@@ -584,150 +580,150 @@ export class PugPrinter {
     if (
       val === "div" &&
       !this.options.pugExplicitDiv &&
-      this.nextToken &&
-      ((this.nextToken.type === "class" && this.options.pugClassLocation === "before-attributes") ||
-        this.nextToken.type === "id")
+      this.next_token &&
+      ((this.next_token.type === "class" && this.options.pugClassLocation === "before-attributes") ||
+        this.next_token.type === "id")
     ) {
       val = "";
     }
-    this.currentLineLength += val.length;
-    const result = `${this.computedIndent}${val}`;
+    this.current_line_length += val.length;
+    const result = `${this.computed_indent}${val}`;
     logger.debug(
       "tag",
       { result, val: token.val, length: token.val.length },
-      this.currentLineLength,
+      this.current_line_length,
     );
-    this.currentTagPosition = this.result.length + this.computedIndent.length;
-    this.possibleIdPosition = this.result.length + result.length;
-    this.possibleClassPosition = this.result.length + result.length;
+    this.current_tag_position = this.result.length + this.computed_indent.length;
+    this.possible_id_position = this.result.length + result.length;
+    this.possible_class_position = this.result.length + result.length;
     return result;
   }
   ["start-attributes"](token) {
     let result = "";
-    if (this.nextToken?.type === "attribute") {
-      this.previousAttributeRemapped = false;
-      this.possibleClassPosition = this.result.length;
+    if (this.next_token?.type === "attribute") {
+      this.previous_attribute_remapped = false;
+      this.possible_class_position = this.result.length;
       result = "(";
-      logger.debug(this.currentLineLength);
-      let tempToken = this.nextToken;
-      let tempIndex = this.currentIndex + 1;
-      // In pug, tags can have two kind of attributes: normal attributes that appear between parentheses,
-      // and literals for ids and classes, prefixing the parentheses, e.g.: `#id.class(attribute="value")`
-      // https://pugjs.org/language/attributes.html#class-literal
-      // https://pugjs.org/language/attributes.html#id-literal
-      // In the stream of attribute tokens, distinguish those that can be converted to literals,
-      // and count those that cannot (normal attributes) to determine the resulting line length correctly.
-      let hasLiteralAttributes = false;
-      let numNormalAttributes = 0;
-      while (tempToken.type === "attribute") {
+      logger.debug(this.current_line_length);
+      let tok = this.next_token,
+        idx = this.current_index + 1,
+        // In pug, tags can have two kind of attributes: normal attributes that appear between parentheses,
+        // and literals for ids and classes, prefixing the parentheses, e.g.: `#id.class(attribute="value")`
+        // https://pugjs.org/language/attributes.html#class-literal
+        // https://pugjs.org/language/attributes.html#id-literal
+        // In the stream of attribute tokens, distinguish those that can be converted to literals,
+        // and count those that cannot (normal attributes) to determine the resulting line length correctly.
+        has_lit_attrs = false,
+        num_norm_attrs = 0;
+      while (tok.type === "attribute") {
         if (
-          !this.currentlyInPugInterpolation &&
-          !this.wrapAttributes &&
-          this.wrapAttributesPattern?.test(tempToken.name)
+          !this.currently_in_pug_interpolation &&
+          !this.wrap_attributes &&
+          this.wrap_attributes_pattern?.test(tok.name)
         ) {
-          this.wrapAttributes = true;
+          this.wrap_attributes = true;
         }
-        switch (tempToken.name) {
+        switch (tok.name) {
           case "class":
           case "id": {
             // If classes or IDs are defined as attributes and not converted to literals, count them toward attribute wrapping.
             if (
-              (tempToken.name === "class" && this.options.pugClassNotation !== "literal") ||
-              (tempToken.name === "id" && this.options.pugIdNotation !== "literal")
+              (tok.name === "class" && this.options.pugClassNotation !== "literal") ||
+              (tok.name === "id" && this.options.pugIdNotation !== "literal")
             ) {
-              numNormalAttributes++;
+              num_norm_attrs++;
             }
-            hasLiteralAttributes = true;
-            const val = tempToken.val.toString();
+            has_lit_attrs = true;
+            const val = tok.val.toString();
             if (isQuoted(val)) {
-              this.currentLineLength -= 2;
+              this.current_line_length -= 2;
             }
-            this.currentLineLength += 1 + val.length;
+            this.current_line_length += 1 + val.length;
             logger.debug(
               {
-                tokenName: tempToken.name,
-                length: tempToken.name.length,
+                tokenName: tok.name,
+                length: tok.name.length,
               },
-              this.currentLineLength,
+              this.current_line_length,
             );
             break;
           }
           default: {
-            this.currentLineLength += tempToken.name.length;
-            if (numNormalAttributes > 0) {
+            this.current_line_length += tok.name.length;
+            if (num_norm_attrs > 0) {
               // This isn't the first normal attribute that will appear between parentheses,
               // add space and separator
-              this.currentLineLength += 1;
-              if (this.tokenNeedsSeparator(tempToken)) {
-                this.currentLineLength += 1;
+              this.current_line_length += 1;
+              if (this.tokenNeedsSeparator(tok)) {
+                this.current_line_length += 1;
               }
             }
             logger.debug(
               {
-                tokenName: tempToken.name,
-                length: tempToken.name.length,
+                tokenName: tok.name,
+                length: tok.name.length,
               },
-              this.currentLineLength,
+              this.current_line_length,
             );
-            const val = tempToken.val.toString();
+            const val = tok.val.toString();
             if (val.length > 0 && val !== "true") {
-              this.currentLineLength += 1 + val.length;
-              logger.debug({ tokenVal: val, length: val.length }, this.currentLineLength);
+              this.current_line_length += 1 + val.length;
+              logger.debug({ tokenVal: val, length: val.length }, this.current_line_length);
             }
-            numNormalAttributes++;
+            num_norm_attrs++;
             break;
           }
         }
-        tempToken = this.tokens[++tempIndex];
+        tok = this.tokens[++idx];
       }
-      logger.debug("after token", this.currentLineLength);
+      logger.debug("after token", this.current_line_length);
       if (
-        hasLiteralAttributes && // Remove div as it will be replaced with the literal for id and/or class
-        this.previousToken?.type === "tag" &&
-        this.previousToken.val === "div" &&
+        has_lit_attrs && // Remove div as it will be replaced with the literal for id and/or class
+        this.previous_token?.type === "tag" &&
+        this.previous_token.val === "div" &&
         !this.options.pugExplicitDiv
       ) {
-        this.currentLineLength -= 3;
+        this.current_line_length -= 3;
       }
-      if (numNormalAttributes > 0) {
+      if (num_norm_attrs > 0) {
         // Add leading and trailing parentheses
-        this.currentLineLength += 2;
+        this.current_line_length += 2;
       }
       if (this.options.pugClassLocation === "after-attributes") {
-        let tempClassIndex = tempIndex;
-        let tempClassToken = this.tokens[++tempClassIndex];
-        while (tempClassToken.type === "class") {
-          const val = tempClassToken.val;
+        let c_idx = idx,
+          c_tok = this.tokens[++c_idx];
+        while (c_tok.type === "class") {
+          const val = c_tok.val;
           // Add leading . for classes
-          this.currentLineLength += 1 + val.length;
-          logger.debug({ tokenVal: val, length: val.length }, this.currentLineLength);
-          tempClassToken = this.tokens[++tempClassIndex];
+          this.current_line_length += 1 + val.length;
+          logger.debug({ tokenVal: val, length: val.length }, this.current_line_length);
+          c_tok = this.tokens[++c_idx];
         }
       }
       logger.debug("final line length", {
-        currentLineLength: this.currentLineLength,
+        currentLineLength: this.current_line_length,
       });
       if (
-        !this.currentlyInPugInterpolation &&
-        !this.wrapAttributes &&
-        (this.currentLineLength > this.options.pugPrintWidth ||
+        !this.currently_in_pug_interpolation &&
+        !this.wrap_attributes &&
+        (this.current_line_length > this.options.pugPrintWidth ||
           (this.options.pugWrapAttributesThreshold >= 0 &&
-            numNormalAttributes > this.options.pugWrapAttributesThreshold))
+            num_norm_attrs > this.options.pugWrapAttributesThreshold))
       ) {
-        this.wrapAttributes = true;
+        this.wrap_attributes = true;
       }
       if (
         this.options.pugSortAttributes !== "as-is" ||
         this.options.pugSortAttributesEnd.length > 0 ||
         this.options.pugSortAttributesBeginning.length > 0
       ) {
-        const startAttributesIndex = this.tokens.indexOf(token);
-        const endAttributesIndex = tempIndex;
-        if (endAttributesIndex - startAttributesIndex > 2) {
+        const start_idx = this.tokens.indexOf(token),
+          end_idx = idx;
+        if (end_idx - start_idx > 2) {
           this.tokens = partialSort(
             this.tokens,
-            startAttributesIndex + 1,
-            endAttributesIndex,
+            start_idx + 1,
+            end_idx,
             (a, b) =>
               compareAttributeToken(
                 a,

@@ -21,7 +21,7 @@ export const plugin = {
   /* eslint-disable jsdoc/require-jsdoc */
   parsers: {
     pug: {
-      parse(text, options) {
+      parse(text, _options) {
         logger.debug("[parsers:pug:parse]:", { text });
         let trimmedAndAlignedContent = text.replace(/^\s*\n/, "");
         const contentIndentation = /^\s*/.exec(trimmedAndAlignedContent);
@@ -36,8 +36,8 @@ export const plugin = {
         // Pre-process to wrap unquoted Svelte expressions in attributes
         // e.g. onclick={back} -> onclick="{back}"
         // e.g. onclick!={back} -> onclick!="{back}"
-        let processedContent = "";
-        let i = 0;
+        let processedContent = "",
+          i = 0;
         while (i < trimmedAndAlignedContent.length) {
           const slice = trimmedAndAlignedContent.slice(i);
           // Skip JS code lines starting with - or = or != at the start of a line
@@ -46,8 +46,8 @@ export const plugin = {
           if (i === 0 || trimmedAndAlignedContent[i - 1] === "\n") {
             const jsMatch = slice.match(/^(!?=|-)\s/);
             if (jsMatch) {
-              const lineEnd = trimmedAndAlignedContent.indexOf("\n", i);
-              const nextI = lineEnd === -1 ? trimmedAndAlignedContent.length : lineEnd;
+              const lineEnd = trimmedAndAlignedContent.indexOf("\n", i),
+                nextI = lineEnd === -1 ? trimmedAndAlignedContent.length : lineEnd;
               processedContent += trimmedAndAlignedContent.slice(i, nextI);
               i = nextI;
               continue;
@@ -58,16 +58,15 @@ export const plugin = {
           // We only want to match if it's an attribute, usually preceded by a name or !
           const attrMatch = slice.match(/^(!?=)\s*\{/);
           if (attrMatch) {
-            const op = attrMatch[1];
-
-            // Find the actual { index
-            const braceIndex = trimmedAndAlignedContent.indexOf("{", i + op.length);
+            const op = attrMatch[1],
+              // Find the actual { index
+              braceIndex = trimmedAndAlignedContent.indexOf("{", i + op.length);
 
             // Append the operator and any spaces before {
             processedContent += trimmedAndAlignedContent.slice(i, braceIndex);
 
-            let braceCount = 0;
-            let foundEnd = false;
+            let braceCount = 0,
+              foundEnd = false;
             for (let j = braceIndex; j < trimmedAndAlignedContent.length; j++) {
               const char = trimmedAndAlignedContent[j];
               if (char === "{") braceCount++;
@@ -92,8 +91,8 @@ export const plugin = {
           }
         }
 
-        const content = processedContent;
-        const tokens = lex(content);
+        const content = processedContent,
+          tokens = lex(content);
         // console.log(JSON.stringify(tokens, null, 2));
         return { content, tokens };
       },
@@ -109,7 +108,7 @@ export const plugin = {
         logger.debug("[parsers:pug:locEnd]:", { node });
         return 0;
       },
-      preprocess(text, options) {
+      preprocess(text, _options) {
         logger.debug("[parsers:pug:preprocess]:", { text });
         return text;
       },
