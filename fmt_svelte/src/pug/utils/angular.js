@@ -1,4 +1,4 @@
-import { isQuoted, isWrappedWith } from './common.js';
+import { isQuoted, isWrappedWith } from "./common.js";
 /**
  * Indicates whether the attribute name is an Angular binding.
  *
@@ -17,7 +17,7 @@ import { isQuoted, isWrappedWith } from './common.js';
  * @returns `true` if `name` passes the angular binding check, otherwise `false`.
  */
 export function isAngularBinding(name) {
-    return name.length >= 3 && name[0] === '[' && name.at(-1) === ']';
+  return name.length >= 3 && name[0] === "[" && name.at(-1) === "]";
 }
 /**
  * Indicates whether the attribute name is an Angular event.
@@ -37,7 +37,7 @@ export function isAngularBinding(name) {
  * @returns `true` if `name` passes the angular action check, otherwise `false`.
  */
 export function isAngularAction(name) {
-    return name.length >= 3 && name[0] === '(' && name.at(-1) === ')';
+  return name.length >= 3 && name[0] === "(" && name.at(-1) === ")";
 }
 /**
  * Indicates whether the attribute name is an Angular directive.
@@ -57,7 +57,7 @@ export function isAngularAction(name) {
  * @returns `true` if `name` passes the angular directive check, otherwise `false`.
  */
 export function isAngularDirective(name) {
-    return name.length >= 2 && name[0] === '*';
+  return name.length >= 2 && name[0] === "*";
 }
 /**
  * Indicates whether the attribute value is an Angular interpolation.
@@ -77,8 +77,7 @@ export function isAngularDirective(name) {
  * @returns `true` if `val` passes the angular interpolation check, otherwise `false`.
  */
 export function isAngularInterpolation(val) {
-    return (val.length >= 5 &&
-        isQuoted(val) &&
-        isWrappedWith(val, '{{', '}}', 1) &&
-        !val.includes('{{', 3));
+  return (
+    val.length >= 5 && isQuoted(val) && isWrappedWith(val, "{{", "}}", 1) && !val.includes("{{", 3)
+  );
 }

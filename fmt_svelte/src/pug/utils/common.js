@@ -6,16 +6,16 @@
  * @returns Previous tag token if there was one.
  */
 export function previousTagToken(tokens, index) {
-    for (let i = index - 1; i >= 0; i--) {
-        const token = tokens[i];
-        if (!token) {
-            return;
-        }
-        if (token.type === 'tag') {
-            return token;
-        }
+  for (let i = index - 1; i >= 0; i--) {
+    const token = tokens[i];
+    if (!token) {
+      return;
     }
-    return;
+    if (token.type === "tag") {
+      return token;
+    }
+  }
+  return;
 }
 /**
  * Returns the previous attribute token between the current token and the last occurrence of a `start-attributes` token.
@@ -25,18 +25,16 @@ export function previousTagToken(tokens, index) {
  * @returns Previous attribute token if there was one.
  */
 export function previousNormalAttributeToken(tokens, index) {
-    for (let i = index - 1; i > 0; i--) {
-        const token = tokens[i];
-        if (!token || token.type === 'start-attributes') {
-            return;
-        }
-        if (token.type === 'attribute' &&
-            token.name !== 'class' &&
-            token.name !== 'id') {
-            return token;
-        }
+  for (let i = index - 1; i > 0; i--) {
+    const token = tokens[i];
+    if (!token || token.type === "start-attributes") {
+      return;
     }
-    return;
+    if (token.type === "attribute" && token.name !== "class" && token.name !== "id") {
+      return token;
+    }
+  }
+  return;
 }
 /**
  * Returns the previous type attribute token or undefined if no attribute is present.
@@ -46,16 +44,16 @@ export function previousNormalAttributeToken(tokens, index) {
  * @returns Previous attribute token if there was one.
  */
 export function previousTypeAttributeToken(tokens, index) {
-    for (let i = index - 1; i > 0; i--) {
-        const token = tokens[i];
-        if (!token || token.type === 'start-attributes' || token.type === 'tag') {
-            return;
-        }
-        if (token.type === 'attribute' && token.name === 'type') {
-            return token;
-        }
+  for (let i = index - 1; i > 0; i--) {
+    const token = tokens[i];
+    if (!token || token.type === "start-attributes" || token.type === "tag") {
+      return;
     }
-    return;
+    if (token.type === "attribute" && token.name === "type") {
+      return token;
+    }
+  }
+  return;
 }
 /**
  * Unwraps line feeds from a given value.
@@ -64,14 +62,14 @@ export function previousTypeAttributeToken(tokens, index) {
  * @returns The unwrapped result.
  */
 export function unwrapLineFeeds(value) {
-    return value.includes('\n')
-        ? value
-            .split('\n')
-            .map((part) => part.trim())
-            .map((part) => (part[0] === '.' ? '' : ' ') + part)
-            .join('')
-            .trim()
-        : value;
+  return value.includes("\n")
+    ? value
+        .split("\n")
+        .map((part) => part.trim())
+        .map((part) => (part[0] === "." ? "" : " ") + part)
+        .join("")
+        .trim()
+    : value;
 }
 /**
  * Indicates whether the attribute is a `style` normal attribute.
@@ -92,7 +90,7 @@ export function unwrapLineFeeds(value) {
  * @returns Whether it's a style attribute that is quoted or not.
  */
 export function isStyleAttribute(name, val) {
-    return name === 'style' && isQuoted(val);
+  return name === "style" && isQuoted(val);
 }
 /**
  * Indicates whether the value is surrounded by the `start` and `end` parameters.
@@ -104,7 +102,7 @@ export function isStyleAttribute(name, val) {
  * @returns Whether the value is wrapped with start and end from the offset or not.
  */
 export function isWrappedWith(val, start, end, offset = 0) {
-    return (val.startsWith(start, offset) && val.endsWith(end, val.length - offset));
+  return val.startsWith(start, offset) && val.endsWith(end, val.length - offset);
 }
 /**
  * Indicates whether the value is surrounded by quotes.
@@ -153,12 +151,12 @@ export function isWrappedWith(val, start, end, offset = 0) {
  * @returns Whether the value is quoted or not.
  */
 export function isQuoted(val) {
-    if (/^(['"`])([\s\S]*)\1$/.test(val)) {
-        // Regex for checking if there are any unescaped quotations.
-        const regex = new RegExp(`${val[0]}(?<!\\\\${val[0]})`);
-        return !regex.test(val.slice(1, -1));
-    }
-    return false;
+  if (/^(['"`])([\s\S]*)\1$/.test(val)) {
+    // Regex for checking if there are any unescaped quotations.
+    const regex = new RegExp(`${val[0]}(?<!\\\\${val[0]})`);
+    return !regex.test(val.slice(1, -1));
+  }
+  return false;
 }
 /**
  * Detects whether the given value is a single line interpolation or not.
@@ -167,7 +165,7 @@ export function isQuoted(val) {
  * @returns `true` if it's a single line interpolation, otherwise `false`.
  */
 export function isSingleLineWithInterpolation(val) {
-    return /^`[\S\s]*`$/.test(val) && val.includes('${');
+  return /^`[\S\s]*`$/.test(val) && val.includes("${");
 }
 /**
  * Detects whether the given value is a multiline interpolation or not.
@@ -176,7 +174,7 @@ export function isSingleLineWithInterpolation(val) {
  * @returns `true` if it's a multiline interpolation, otherwise `false`.
  */
 export function isMultilineInterpolation(val) {
-    return /^`[\S\s]*`$/m.test(val) && val.includes('\n');
+  return /^`[\S\s]*`$/m.test(val) && val.includes("\n");
 }
 /**
  * Encloses code in brackets and possibly spaces.
@@ -188,10 +186,8 @@ export function isMultilineInterpolation(val) {
  * @param param2."1" Closing brackets.
  * @returns The handled string.
  */
-export function handleBracketSpacing(bracketSpacing, code, [opening, closing] = ['{{', '}}']) {
-    return bracketSpacing
-        ? `${opening} ${code} ${closing}`
-        : `${opening}${code}${closing}`;
+export function handleBracketSpacing(bracketSpacing, code, [opening, closing] = ["{{", "}}"]) {
+  return bracketSpacing ? `${opening} ${code} ${closing}` : `${opening}${code}${closing}`;
 }
 /**
  * Bakes a string.
@@ -203,23 +199,22 @@ export function handleBracketSpacing(bracketSpacing, code, [opening, closing] = 
  * @see [copied from Prettier common util](https://github.com/prettier/prettier/blob/master/src/common/util.js#L647)
  */
 export function makeString(rawContent, enclosingQuote, unescapeUnnecessaryEscapes = false) {
-    const otherQuote = enclosingQuote === '"' ? "'" : '"';
-    const newContent = rawContent.replaceAll(/\\([\S\s])|(["'])/g, (match, escaped, quote) => {
-        if (escaped === otherQuote) {
-            return escaped;
-        }
-        if (quote === enclosingQuote) {
-            return `\\${quote}`;
-        }
-        if (quote) {
-            return quote;
-        }
-        return unescapeUnnecessaryEscapes &&
-            /^[^\n\r"'0-7\\bfnrt-vx\u2028\u2029]$/.test(escaped)
-            ? escaped
-            : `\\${escaped}`;
-    });
-    return enclosingQuote + newContent + enclosingQuote;
+  const otherQuote = enclosingQuote === '"' ? "'" : '"';
+  const newContent = rawContent.replaceAll(/\\([\S\s])|(["'])/g, (match, escaped, quote) => {
+    if (escaped === otherQuote) {
+      return escaped;
+    }
+    if (quote === enclosingQuote) {
+      return `\\${quote}`;
+    }
+    if (quote) {
+      return quote;
+    }
+    return unescapeUnnecessaryEscapes && /^[^\n\r"'0-7\\bfnrt-vx\u2028\u2029]$/.test(escaped)
+      ? escaped
+      : `\\${escaped}`;
+  });
+  return enclosingQuote + newContent + enclosingQuote;
 }
 /**
  * See [issue #9](https://github.com/prettier/plugin-pug/issues/9) for more details.
@@ -231,18 +226,18 @@ export function makeString(rawContent, enclosingQuote, unescapeUnnecessaryEscape
  * @returns Whether dangerous quote combinations where detected or not.
  */
 export function detectDangerousQuoteCombination(code, quotes, otherQuotes, logger) {
-    // Index of primary quote
-    const q1 = code.indexOf(quotes);
-    // Index of secondary (other) quote
-    const q2 = code.indexOf(otherQuotes);
-    // Index of backtick
-    const qb = code.indexOf('`');
-    // eslint-disable-next-line unicorn/consistent-existence-index-check
-    if (q1 >= 0 && q2 >= 0 && q2 > q1 && (qb < 0 || q1 < qb)) {
-        logger.log({ code, quotes, otherQuotes, q1, q2, qb });
-        return true;
-    }
-    return false;
+  // Index of primary quote
+  const q1 = code.indexOf(quotes);
+  // Index of secondary (other) quote
+  const q2 = code.indexOf(otherQuotes);
+  // Index of backtick
+  const qb = code.indexOf("`");
+  // eslint-disable-next-line unicorn/consistent-existence-index-check
+  if (q1 >= 0 && q2 >= 0 && q2 > q1 && (qb < 0 || q1 < qb)) {
+    logger.log({ code, quotes, otherQuotes, q1, q2, qb });
+    return true;
+  }
+  return false;
 }
 /**
  * Try to detect used framework within the project by reading `process.env.npm_package_*`.
@@ -250,22 +245,19 @@ export function detectDangerousQuoteCombination(code, quotes, otherQuotes, logge
  * @returns PugFramework.
  */
 export function detectFramework() {
-    try {
-        const npmPackages = Object.keys(process.env)
-            .filter((key) => key.startsWith('npm_package_'))
-            .filter((key) => /(dev)?[Dd]ependencies_+/.test(key));
-        if (npmPackages.some((pack) => pack.includes('vue') && !pack.includes('vuepress'))) {
-            return 'vue';
-        }
-        else if (npmPackages.some((pack) => pack.includes('svelte'))) {
-            return 'svelte';
-        }
-        else if (npmPackages.some((pack) => pack.includes('angular'))) {
-            return 'angular';
-        }
+  try {
+    const npmPackages = Object.keys(process.env)
+      .filter((key) => key.startsWith("npm_package_"))
+      .filter((key) => /(dev)?[Dd]ependencies_+/.test(key));
+    if (npmPackages.some((pack) => pack.includes("vue") && !pack.includes("vuepress"))) {
+      return "vue";
+    } else if (npmPackages.some((pack) => pack.includes("svelte"))) {
+      return "svelte";
+    } else if (npmPackages.some((pack) => pack.includes("angular"))) {
+      return "angular";
     }
-    catch {
-        return 'auto';
-    }
-    return 'auto';
+  } catch {
+    return "auto";
+  }
+  return "auto";
 }

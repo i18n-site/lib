@@ -11,7 +11,9 @@
   "bin": {
     "fmt_svelte": "./lib/fmt_svelte.js"
   },
-  "files": ["lib/*"],
+  "files": [
+    "lib/*"
+  ],
   "type": "module",
   "exports": {
     ".": "./lib/lib.js",

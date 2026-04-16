@@ -19,9 +19,7 @@ export default async (code) => {
         if (fmt) {
           try {
             content = await fmt(content);
-          } catch (e) {
-            throw new Error(`${content}\n${tag}: ${e}`);
-          }
+          } catch (e) {}
         }
         res.push(content.trim(), line);
         t = fmt = undefined;

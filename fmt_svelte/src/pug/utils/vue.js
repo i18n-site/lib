@@ -22,7 +22,7 @@
  * @returns `true` if `name` passes the vue event binding check, otherwise `false`.
  */
 export function isVueEventBinding(name) {
-    return /^(v-on:|@).*/.test(name);
+  return /^(v-on:|@).*/.test(name);
 }
 /**
  * Indicates whether the attribute name is a Vue expression.
@@ -49,7 +49,7 @@ export function isVueEventBinding(name) {
  * @returns `true` if `name` passes the vue expression check, otherwise `false`.
  */
 export function isVueExpression(name) {
-    return /^((v-(bind|slot))?:|v-(model|slot|if|for|else-if|text|html|t)|#).*/.test(name);
+  return /^((v-(bind|slot))?:|v-(model|slot|if|for|else-if|text|html|t)|#).*/.test(name);
 }
 /**
  * Indicates whether the attribute name is a Vue v-for and includes a `of`.
@@ -74,7 +74,7 @@ export function isVueExpression(name) {
  * @returns `true` if `name` and `val` passes the vue `v-for` with `of` check, otherwise `false`.
  */
 export function isVueVForWithOf(name, val) {
-    return 'v-for' === name && val.includes('of');
+  return "v-for" === name && val.includes("of");
 }
 /**
  * Indicates whether the attribute name is a Vue v-bind.
@@ -98,7 +98,7 @@ export function isVueVForWithOf(name, val) {
  * @returns `true` if `name` passes the vue `v-bind` check, otherwise `false`.
  */
 export function isVueVBindExpression(name) {
-    return 'v-bind' === name;
+  return "v-bind" === name;
 }
 /**
  * Indicates whether the attribute name is a Vue v-on.
@@ -122,7 +122,7 @@ export function isVueVBindExpression(name) {
  * @returns `true` if `name` passes the vue `v-on` check, otherwise `false`.
  */
 export function isVueVOnExpression(name) {
-    return 'v-on' === name;
+  return "v-on" === name;
 }
 /**
  * Indicates whether the attribute name is a Vue `v-` directive.
@@ -146,5 +146,5 @@ export function isVueVOnExpression(name) {
  * @returns `true` if `name` passes the vue `v-` check, otherwise `false`.
  */
 export function isVueVDirective(name) {
-    return name.startsWith('v-');
+  return name.startsWith("v-");
 }

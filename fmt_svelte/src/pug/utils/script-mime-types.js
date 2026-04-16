@@ -8,14 +8,14 @@ const wrappingQuotesRe = /(^(["'`]))|((["'`])$)/g;
 //       will be handled separately
 // Why using a Map: https://github.com/prettier/plugin-pug/pull/248#discussion_r663854854
 const scriptTypeToParserMap = new Map([
-    ['application/ecmascript', 'babel'],
-    ['application/javascript', 'babel'],
-    ['application/json', 'json'],
-    ['text/ecmascript', 'babel'],
-    ['text/javascript', 'babel'],
-    ['text/markdown', 'markdown'],
-    ['text/typescript', 'typescript'],
-    ['module', 'babel'],
+  ["application/ecmascript", "babel"],
+  ["application/javascript", "babel"],
+  ["application/json", "json"],
+  ["text/ecmascript", "babel"],
+  ["text/javascript", "babel"],
+  ["text/markdown", "markdown"],
+  ["text/typescript", "typescript"],
+  ["module", "babel"],
 ]);
 /**
  * Decides which parser to format script contents with.
@@ -24,23 +24,23 @@ const scriptTypeToParserMap = new Map([
  * @returns Parser name to parse contents with.
  */
 export function getScriptParserName(typeAttrToken) {
-    // Omission means Javascript
-    if (!typeAttrToken) {
-        return 'babel';
-    }
-    const typeRaw = typeAttrToken.val;
-    // If it's not a string, best not do anything
-    if (typeof typeRaw !== 'string') {
-        return;
-    }
-    const type = typeRaw.replaceAll(wrappingQuotesRe, '');
-    // Empty type is equivalent to omission
-    if (!type) {
-        return 'babel';
-    }
-    const suffixExec = jsonSuffixRe.exec(type);
-    if (suffixExec) {
-        return suffixExec[1];
-    }
-    return scriptTypeToParserMap.get(type);
+  // Omission means Javascript
+  if (!typeAttrToken) {
+    return "babel";
+  }
+  const typeRaw = typeAttrToken.val;
+  // If it's not a string, best not do anything
+  if (typeof typeRaw !== "string") {
+    return;
+  }
+  const type = typeRaw.replaceAll(wrappingQuotesRe, "");
+  // Empty type is equivalent to omission
+  if (!type) {
+    return "babel";
+  }
+  const suffixExec = jsonSuffixRe.exec(type);
+  if (suffixExec) {
+    return suffixExec[1];
+  }
+  return scriptTypeToParserMap.get(type);
 }
