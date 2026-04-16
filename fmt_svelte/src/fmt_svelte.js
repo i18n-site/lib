@@ -1,47 +1,39 @@
 #!/usr/bin/env -S node --trace-uncaught --expose-gc --unhandled-rejections=strict --experimental-wasm-modules
-var argv, filename, out;
+import yargs from "yargs/yargs";
+import { hideBin } from "yargs/helpers";
+import read from "@3-/read";
+import write from "@3-/write";
+import walk from "@3-/walk";
+import { statSync } from "fs";
+import svelte from "./svelte.js";
 
-import yargs from 'yargs/yargs';
-
-import read from '@3-/read';
-
-import write from '@3-/write';
-
-import {
-  resolve
-} from 'path';
-
-import {
-  hideBin
-} from 'yargs/helpers';
-
-import svelte from './svelte.js';
-
-
-argv = yargs(hideBin(process.argv)).usage('用法: $0 <文件名> [选项]').check((argv) => {
-  var err;
-  if (argv._.length < 1) {
-    err = "错误：必须提供一个文件名";
-  } else {
-    [filename] = argv._;
-    if (!filename.endsWith('.svelte')) {
-      err = "错误：文件名必须以 .svelte 结尾";
+const argv = yargs(hideBin(process.argv))
+    .usage("用法: $0 <文件名|目录名> [选项]")
+    .check((argv) => {
+      if (!argv._[0]) throw new Error("错误：必须提供一个文件名或目录名");
+      return true;
+    })
+    .option("write", {
+      alias: "w",
+      description: "将结果写回文件",
+      type: "boolean",
+    })
+    .alias("h", "help")
+    .help("h")
+    .parse(),
+  [path] = argv._,
+  fmt = async (f) => {
+    if (f.endsWith(".svelte")) {
+      const out = await svelte(read(f));
+      if (argv.write) write(f, out);
+      else console.log(`${f}:\n${out}\n`);
     }
-  }
-  if (err) {
-    throw new Error(err);
-  }
-  return true;
-}).option('write', {
-  alias: 'w',
-  description: '将结果写回文件',
-  type: 'boolean'
-}).alias('h', 'help').help('h').parse();
+  };
 
-out = (await svelte(read(filename)));
-
-if (argv.write) {
-  write(filename, out);
+if (statSync(path).isDirectory()) {
+  for await (const f of walk(path, (p) => !p.startsWith(".") && p !== "node_modules")) {
+    await fmt(f);
+  }
 } else {
-  console.log(out);
+  await fmt(path);
 }

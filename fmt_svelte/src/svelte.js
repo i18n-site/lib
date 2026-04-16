@@ -1,69 +1,45 @@
-var getLang;
+import pug from "./pug.js";
+import styl from "./styl.js";
 
-import pug from './pug.js';
-
-import styl from './styl.js';
-
-getLang = (li) => {
-  var i, k, v;
-  for (i of li) {
-    [k, v] = i.split('=');
-    if (k === 'lang') {
-      return v.replaceAll('"', '');
-    }
+const langByList = (li) => {
+  for (const i of li) {
+    const [k, v] = i.split("=");
+    if (k === "lang") return v.replaceAll('"', "");
   }
 };
 
-export default async(svelte) => {
-  var end_tag, err, fmt, i, ref, result, setEnd, t, tag;
-  result = [];
-  setEnd = (tag) => {
-    t = [];
-    end_tag = '</' + tag + '>';
-  };
-  ref = svelte.split('\n');
-  for (i of ref) {
-    i = i.trimEnd();
+export default async (code) => {
+  let end_tag, fmt, tag, t;
+  const res = [];
+  for (const raw_line of code.split("\n")) {
+    const line = raw_line.trimEnd();
     if (t) {
-      if (i === end_tag) {
-        t = t.join('\n');
+      if (line === end_tag) {
+        let content = t.join("\n");
         if (fmt) {
           try {
-            t = (await fmt(t));
-          } catch (error) {
-            err = error;
-            throw new Error(t + '\n' + tag + ': ' + err);
+            content = await fmt(content);
+          } catch (e) {
+            throw new Error(`${content}\n${tag}: ${e}`);
           }
         }
-        result.push(t.trim());
-        result.push(i);
-        t = fmt = void 0;
+        res.push(content.trim(), line);
+        t = fmt = undefined;
       } else {
-        t.push(i);
+        t.push(line);
       }
     } else {
-      result.push(i);
-      if (i.startsWith('<') && i.endsWith('>')) {
-        i = i.slice(1, -1).split(' ');
-        tag = i.shift().trim();
-        switch (tag) {
-          case 'template':
-            if (getLang(i) === 'pug') {
-              fmt = pug;
-            }
-            break;
-          case 'style':
-            if (getLang(i) === 'stylus') {
-              fmt = styl;
-            }
-        }
-        setEnd(tag);
+      res.push(line);
+      if (line.startsWith("<") && line.endsWith(">")) {
+        const li = line.slice(1, -1).split(" ");
+        tag = li.shift().trim();
+        if (tag === "template" && langByList(li) === "pug") fmt = pug;
+        else if (tag === "style" && langByList(li) === "stylus") fmt = styl;
+        t = [];
+        end_tag = `</${tag}>`;
       }
     }
   }
-  if (t != null ? t.length : void 0) {
-    result = result.concat(t);
-  }
-  // return
-  return result.join('\n').trim();
+  if (t?.length) res.push(...t);
+  return res.join("\n").trim();
 };

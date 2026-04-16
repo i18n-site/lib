@@ -1,9 +1,7 @@
-import {
-  format
-} from 'stylus-supremacy';
+import { format } from "stylus-supremacy";
 
-export default (stylus) => {
-  return format(stylus, {
+export default (txt) =>
+  format(txt, {
     alwaysUseImport: true,
     alwaysUseZeroWithoutUnit: true,
     insertBraces: false,
@@ -16,6 +14,5 @@ export default (stylus) => {
     preserveNewLinesBetweenPropertyValues: true,
     reduceMarginAndPaddingValues: true,
     sortProperties: "grouped",
-    tabStopChar: "  "
+    tabStopChar: "  ",
   });
-};
