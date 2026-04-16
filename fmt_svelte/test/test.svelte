@@ -4,7 +4,6 @@
 onMount =>
   console.log '> hello'
   return
-
 </script>
 
 <template lang="pug">
@@ -13,58 +12,61 @@ b
   b
     p 上传面试录音转写的 txt / md 文件
     p
-      input(type="file" name="file" accept=".txt,.md")
+      input(accept=".txt,.md" name="file" type="file")
   p.or
     b 或者
   b
     p 发送飞书文档的连接
     p
-      input(type="url" name="url" placeholder="飞书文档的链接")
+      input(name="url" placeholder="飞书文档的链接" type="url")
   hr
   b.model
     | 管理能力素质模型
     a(href="#")
-
 </template>
 
 <style lang="stylus">
 :global(_)
+  display flex
+  justify-content center
+  align-items center
   overflow hidden
   height 100dvh
-  display flex
-  align-items center
-  justify-content center
-
 
   &>b
+    display flex
     flex-direction column
     align-items stretch
-    display flex
+
     &>h1
-      font-size 1.5em
-      text-align center
       margin-bottom 1em
+      text-align center
+      font-size 1.5em
+
     &>b
-      border 1px solid #ccc
-      padding .5em 1em
+      padding 0.5em 1em
       outline 3px solid #eee
+      border 1px solid #ccc
+
       &.model
         text-align center
+
         &>a
-          border-bottom 1px solid #00f
-          padding-bottom .2rem
-          margin-bottom .4rem
           display inline-block
+          margin-bottom 0.4rem
+          padding-bottom 0.2rem
+          border-bottom 1px solid #00f
+
     &>p.or
+      position relative
+      background var(--svgHline) repeat-x 0 50% / 500px
       color #999
       text-align center
-      position relative
-      background: var(--svgHline) repeat-x 0 50% / 500px
+
       &>b
+        padding 0 0.5em
         background #fff
-        padding 0 .5em
 
 b
   font-weight 400
-
 </style>

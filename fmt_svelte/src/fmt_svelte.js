@@ -4,14 +4,14 @@ import { hideBin } from "yargs/helpers";
 import read from "@3-/read";
 import write from "@3-/write";
 import walk from "@3-/walk";
-import { statSync } from "fs";
+import { statSync, existsSync } from "fs";
 import svelte from "./svelte.js";
 import { basename } from "path";
 
 const argv = yargs(hideBin(process.argv))
-    .usage("用法: $0 <文件名|目录名> [选项]")
+    .usage("用法: $0 <文件名|目录名...> [选项]")
     .check((argv) => {
-      if (!argv._[0]) throw new Error("错误：必须提供一个文件名或目录名");
+      if (!argv._[0]) throw new Error("错误：必须提供至少一个文件名或目录名");
       return true;
     })
     .option("write", {
@@ -22,22 +22,32 @@ const argv = yargs(hideBin(process.argv))
     .alias("h", "help")
     .help("h")
     .parse(),
-  [path] = argv._,
-  is_dir = statSync(path).isDirectory(),
-  do_write = argv.write || is_dir,
-  fmt = async (f) => {
+  paths = argv._,
+  fmt = async (f, do_write) => {
     if (f.endsWith(".svelte")) {
-      const out = await svelte(read(f));
-      if (do_write) write(f, out);
-      else console.log(`${f}:\n${out}\n`);
+      try {
+        const out = await svelte(read(f));
+        if (do_write) write(f, out);
+        else console.log(`${f}:\n${out}\n`);
+      } catch (e) {
+        console.error(`${f}: ${e.message}`);
+      }
     }
   };
 
-if (is_dir) {
-  for await (const f of walk(path, (p) => {
-    p = basename(p);
-    return p.startsWith(".") || p == "node_modules";
-  })) {
-    await fmt(f);
+for (const path of paths) {
+  if (!existsSync(path)) {
+    console.error(`路径不存在: ${path}`);
+    continue;
   }
-} else await fmt(path);
+  const is_dir = statSync(path).isDirectory(),
+    do_write = argv.write || is_dir;
+  if (is_dir) {
+    for await (const f of walk(path, (p) => {
+      p = basename(p);
+      return p.startsWith(".") || p == "node_modules";
+    })) {
+      await fmt(f, do_write);
+    }
+  } else await fmt(path, do_write);
+}
