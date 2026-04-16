@@ -9,10 +9,11 @@ import svelte from "./svelte.js";
 import js from "./js.js";
 import { basename } from "path";
 
-const argv = yargs(hideBin(process.argv))
+const 
+  argv = yargs(hideBin(process.argv))
     .usage("用法: $0 <文件名|目录名...> [选项]")
-    .check((argv) => {
-      if (!argv._[0]) throw new Error("错误：必须提供至少一个文件名或目录名");
+    .check((v) => {
+      if (!v._[0]) throw new Error("错误：必须提供至少一个文件名或目录名");
       return true;
     })
     .option("write", {
@@ -24,17 +25,36 @@ const argv = yargs(hideBin(process.argv))
     .help("h")
     .parse(),
   paths = argv._,
+  report = (file, errors) => {
+    if (errors?.length > 0) {
+      errors.forEach(e => {
+        const line = e.line || e.start_line || "?";
+        console.error(`${file}:${line}: ${e.message} (${e.ruleId || 'error'})`);
+      });
+      return true;
+    }
+    return false;
+  },
   fmt = async (f, do_write) => {
     try {
-      let out;
+      const content = read(f);
+      let out, errors = [];
+
       if (f.endsWith(".svelte")) {
-        out = await svelte(read(f));
+        const [o, e] = await svelte(content, f);
+        out = o;
+        errors = e;
       } else if (f.match(/\.(?:[mc]?js|ts)$/)) {
-        out = await js(read(f));
+        const [o, e] = await js(content, f);
+        out = o;
+        errors = e;
       }
+
+      report(f, errors);
+
       if (out !== undefined) {
         if (do_write) write(f, out);
-        else console.log(`${f}:\n${out}\n`);
+        else if (!argv.write) console.log(`${f}:\n${out}\n`);
       }
     } catch (e) {
       console.error(`${f}: ${e.message}`);
@@ -46,14 +66,13 @@ for (const path of paths) {
     console.error(`路径不存在: ${path}`);
     continue;
   }
-  const is_dir = statSync(path).isDirectory(),
+  const 
+    is_dir = statSync(path).isDirectory(),
     do_write = argv.write || is_dir;
   if (is_dir) {
     for await (const f of walk(path, (p) => {
-      p = basename(p);
-      return p.startsWith(".") || p == "node_modules";
-    })) {
-      await fmt(f, do_write);
-    }
+      const b = basename(p);
+      return b.startsWith(".") || b == "node_modules";
+    })) await fmt(f, do_write);
   } else await fmt(path, do_write);
 }
