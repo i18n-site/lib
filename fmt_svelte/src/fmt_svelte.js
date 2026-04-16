@@ -25,29 +25,21 @@ const
     .help("h")
     .parse(),
   paths = argv._,
-  report = (file, errors) => {
-    if (errors?.length > 0) {
-      errors.forEach(e => {
-        const line = e.line || e.start_line || "?";
-        console.error(`${file}:${line}: ${e.message} (${e.ruleId || 'error'})`);
-      });
-      return true;
+  report = (file, errs) => {
+    if (errs?.length) {
+      errs.forEach(({ line, start_line, message, ruleId }) => console.error(`${file}:${line || start_line || "?"}: ${message} (${ruleId || 'error'})`));
+      return 1;
     }
-    return false;
   },
   fmt = async (f, do_write) => {
     try {
-      const content = read(f);
+      const 
+        content = read(f),
+        is_svelte = f.endsWith(".svelte");
       let out, errors = [];
 
-      if (f.endsWith(".svelte")) {
-        const [o, e] = await svelte(content, f);
-        out = o;
-        errors = e;
-      } else if (f.match(/\.(?:[mc]?js|ts)$/)) {
-        const [o, e] = await js(content, f);
-        out = o;
-        errors = e;
+      if (is_svelte || f.match(/\.(?:[mc]?js|ts)$/)) {
+        [out, errors] = await (is_svelte ? svelte : js)(content, f);
       }
 
       report(f, errors);
@@ -76,3 +68,4 @@ for (const path of paths) {
     })) await fmt(f, do_write);
   } else await fmt(path, do_write);
 }
+

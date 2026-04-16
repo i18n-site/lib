@@ -1,6 +1,6 @@
 {
   "name": "fmt_svelte",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://atomgit.com/i18n/lib/tree/dev/fmt_svelte",
   "license": "MulanPSL-2.0",
   "author": "i18n.site@gmail.com",
@@ -11,7 +11,9 @@
   "bin": {
     "fmt_svelte": "./lib/fmt_svelte.js"
   },
-  "files": ["lib/*"],
+  "files": [
+    "lib/*"
+  ],
   "type": "module",
   "exports": {
     ".": "./lib/lib.js",

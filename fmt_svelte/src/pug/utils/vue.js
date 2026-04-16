@@ -1,150 +1,22 @@
-/**
- * Indicates whether the attribute name is a Vue event binding.
- *
- * ---
- *
- * Example event binding:
- * ```
- * v-btn(@click="doSomething") Do Something
- * ```
- *
- * In this case `name` is `@click`.
- *
- * ---
- *
- * Checks for: `v-on:`.
- *
- * Also shorthands like `@*` are checked.
- *
- * ---
- *
- * @param name Name of tag attribute.
- * @returns `true` if `name` passes the vue event binding check, otherwise `false`.
- */
-export function isVueEventBinding(name) {
-  return /^(v-on:|@).*/.test(name);
-}
-/**
- * Indicates whether the attribute name is a Vue expression.
- *
- * ---
- *
- * Example expression:
- * ```
- * v-text-field(v-model="value", :label="label") Do Something
- * ```
- *
- * In this case `name` is `v-model` and `:label`.
- *
- * ---
- *
- * Checks for: `v-bind`, `v-slot`, `v-model`, `v-if`, `v-else-if`, `v-for`,
- * `v-text`, `v-html` and `v-t`.
- *
- * Also shorthands like `:*` are checked.
- *
- * ---
- *
- * @param name Name of tag attribute.
- * @returns `true` if `name` passes the vue expression check, otherwise `false`.
- */
-export function isVueExpression(name) {
-  return /^((v-(bind|slot))?:|v-(model|slot|if|for|else-if|text|html|t)|#).*/.test(name);
-}
-/**
- * Indicates whether the attribute name is a Vue v-for and includes a `of`.
- *
- * ---
- *
- * Example expression:
- * ```
- * tr(v-for="item of items", :key="item.id")
- * ```
- *
- * In this case `name` is `v-for` and it includes a `of`.
- *
- * ---
- *
- * Checks for: `v-for` and `of`.
- *
- * ---
- *
- * @param name Name of tag attribute.
- * @param val Value of tag attribute.
- * @returns `true` if `name` and `val` passes the vue `v-for` with `of` check, otherwise `false`.
- */
-export function isVueVForWithOf(name, val) {
-  return "v-for" === name && val.includes("of");
-}
-/**
- * Indicates whether the attribute name is a Vue v-bind.
- *
- * ---
- *
- * Example expression:
- * ```
- * v-btn(v-bind="$attrs")
- * ```
- *
- * In this case `name` is `v-bind`.
- *
- * ---
- *
- * Checks for: `v-bind`.
- *
- * ---
- *
- * @param name Name of tag attribute.
- * @returns `true` if `name` passes the vue `v-bind` check, otherwise `false`.
- */
-export function isVueVBindExpression(name) {
-  return "v-bind" === name;
-}
-/**
- * Indicates whether the attribute name is a Vue v-on.
- *
- * ---
- *
- * Example expression:
- * ```
- * v-btn(v-on="on")
- * ```
- *
- * In this case `name` is `v-on`.
- *
- * ---
- *
- * Checks for: `v-on`.
- *
- * ---
- *
- * @param name Name of tag attribute.
- * @returns `true` if `name` passes the vue `v-on` check, otherwise `false`.
- */
-export function isVueVOnExpression(name) {
-  return "v-on" === name;
-}
-/**
- * Indicates whether the attribute name is a Vue `v-` directive.
- *
- * ---
- *
- * Example expression:
- * ```
- * div(v-some="thing")
- * ```
- *
- * In this case `name` is `v-some`.
- *
- * ---
- *
- * Checks for: `v-`.
- *
- * ---
- *
- * @param name Name of tag attribute.
- * @returns `true` if `name` passes the vue `v-` check, otherwise `false`.
- */
-export function isVueVDirective(name) {
-  return name.startsWith("v-");
-}
+export const isVueEventBinding = (name) => /^(v-on:|@).*/.test(name);
+
+export const isVueExpression = (name) =>
+  /^((v-(bind|slot))?:|v-(model|slot|if|for|else-if|text|html|t)|#).*/.test(name);
+
+export const isVueVForWithOf = (name, val) => name === "v-for" && val.includes("of");
+
+export const isVueVBindExpression = (name) => name === "v-bind";
+
+export const isVueVOnExpression = (name) => name === "v-on";
+
+export const isVueVDirective = (name) => name.startsWith("v-");
+
+export default {
+  isVueEventBinding,
+  isVueExpression,
+  isVueVForWithOf,
+  isVueVBindExpression,
+  isVueVOnExpression,
+  isVueVDirective,
+};
+

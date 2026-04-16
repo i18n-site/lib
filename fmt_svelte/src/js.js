@@ -1,8 +1,8 @@
 import { format } from "oxfmt";
 
-export default async (code, filename = "file.js") => {
+export default async (code, file_name = "file.js") => {
   const 
-    ext = filename.endsWith(".ts") ? "file.ts" : "file.js",
-    result = await format(ext, code);
-  return [result.code, result.errors || []];
+    ext = file_name.endsWith(".ts") ? "file.ts" : "file.js",
+    { code: out, errors } = await format(ext, code);
+  return [out, errors || []];
 };
