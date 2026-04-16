@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --trace-uncaught --expose-gc --unhandled-rejections=strict --experimental-wasm-modules
+#!/usr/bin/env bun
 import yargs from "yargs/yargs";
 import { hideBin } from "yargs/helpers";
 import read from "@3-/read";
