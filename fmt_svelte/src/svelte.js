@@ -13,7 +13,7 @@ export default async (code) => {
         if (fmt) {
           try {
             content = await fmt(content);
-          } catch (_) {}
+          } catch {}
         }
         res.push(content.trim(), line);
         t = fmt = undefined;

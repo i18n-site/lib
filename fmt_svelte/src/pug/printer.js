@@ -39,7 +39,7 @@ import {
 /**
  * The printer class.
  */
-export class PugPrinter {
+export default class PugPrinter {
   content;
   tokens;
   options;
@@ -747,41 +747,41 @@ export class PugPrinter {
     if (typeof token.val === "string" && isQuoted(token.val) && token.val[0] !== "`") {
       if (token.name === "class" && this.options.pugClassNotation === "literal") {
         // Handle class attribute
-        const val = token.val.slice(1, -1).trim();
-        const classes = val.split(/\s+/);
-        const specialClasses = [];
-        const normalClasses = [];
-        const validClassNameRegex = /^-?[A-Z_a-z]+[\w-]*$/;
-        for (const className of classes) {
-          if (validClassNameRegex.test(className)) {
+        const val = token.val.slice(1, -1).trim(),
+          classes = val.split(/\s+/),
+          special_classes = [],
+          normal_classes = [],
+          valid_class_name_regex = /^-?[A-Z_a-z]+[\w-]*$/;
+        for (const class_name of classes) {
+          if (valid_class_name_regex.test(class_name)) {
             if (this.options.pugClassLocation === "after-attributes") {
-              this.classLiteralAfterAttributes.push(className);
+              this.class_literal_after_attributes.push(class_name);
             } else {
-              normalClasses.push(className);
+              normal_classes.push(class_name);
             }
           } else {
-            specialClasses.push(className);
+            special_classes.push(class_name);
           }
         }
-        if (normalClasses.length > 0) {
+        if (normal_classes.length > 0) {
           // Write css-class in front of attributes
-          const position = this.possibleClassPosition;
+          const pos = this.possible_class_position;
           this.result = [
-            this.result.slice(0, position),
+            this.result.slice(0, pos),
             ".",
-            normalClasses.join("."),
-            this.result.slice(position),
+            normal_classes.join("."),
+            this.result.slice(pos),
           ].join("");
-          this.possibleClassPosition += 1 + normalClasses.join(".").length;
+          this.possible_class_position += 1 + normal_classes.join(".").length;
           if (this.options.pugClassLocation === "before-attributes") {
             this.replaceTagWithLiteralIfPossible(/div\./, ".");
           }
         }
-        if (specialClasses.length > 0) {
-          token.val = makeString(specialClasses.join(" "), this.quotes);
-          this.previousAttributeRemapped = false;
+        if (special_classes.length > 0) {
+          token.val = makeString(special_classes.join(" "), this.quotes);
+          this.previous_attribute_remapped = false;
         } else {
-          this.previousAttributeRemapped = true;
+          this.previous_attribute_remapped = true;
           return;
         }
       } else if (token.name === "id" && this.options.pugIdNotation !== "as-is") {
@@ -789,8 +789,8 @@ export class PugPrinter {
         let val = token.val;
         val = val.slice(1, -1);
         val = val.trim();
-        const validIdNameRegex = /^-?[A-Z_a-z]+[\w-]*$/;
-        if (!validIdNameRegex.test(val)) {
+        const valid_id_name_regex = /^-?[A-Z_a-z]+[\w-]*$/;
+        if (!valid_id_name_regex.test(val)) {
           val = makeString(val, this.quotes);
           this.result += "id";
           if (!token.mustEscape) {
@@ -800,33 +800,33 @@ export class PugPrinter {
           return;
         }
         // Write css-id in front of css-classes
-        const position = this.possibleIdPosition;
-        const literal = `#${val}`;
-        this.result = [this.result.slice(0, position), literal, this.result.slice(position)].join(
+        const pos = this.possible_id_position,
+          literal = `#${val}`;
+        this.result = [this.result.slice(0, pos), literal, this.result.slice(pos)].join(
           "",
         );
-        this.possibleClassPosition += literal.length;
+        this.possible_class_position += literal.length;
         this.replaceTagWithLiteralIfPossible(/div#/, "#");
-        this.previousAttributeRemapped = true;
+        this.previous_attribute_remapped = true;
         return;
       }
     }
-    const hasNormalPreviousToken = previousNormalAttributeToken(this.tokens, this.currentIndex);
+    const has_norm_prev = previousNormalAttributeToken(this.tokens, this.current_index);
     if (
-      this.previousToken?.type === "attribute" &&
-      (!this.previousAttributeRemapped || hasNormalPreviousToken)
+      this.previous_token?.type === "attribute" &&
+      (!this.previous_attribute_remapped || has_norm_prev)
     ) {
       if (this.tokenNeedsSeparator(token)) {
         this.result += ",";
       }
-      if (!this.wrapAttributes) {
+      if (!this.wrap_attributes) {
         this.result += " ";
       }
     }
-    this.previousAttributeRemapped = false;
-    if (this.wrapAttributes) {
+    this.previous_attribute_remapped = false;
+    if (this.wrap_attributes) {
       this.result += "\n";
-      this.result += this.indentString.repeat(this.indentLevel + 1);
+      this.result += this.indent_string.repeat(this.indent_level + 1);
     }
     this.result += token.name;
     if (typeof token.val === "boolean") {
@@ -834,13 +834,13 @@ export class PugPrinter {
         this.result += `=${token.val}`;
       }
     } else if (token.name === "class" && this.options.pugClassNotation === "attribute") {
-      const val = isQuoted(token.val) ? token.val.slice(1, -1).trim() : token.val;
-      const classes = val.split(/\s+/);
-      if (this.classLiteralToAttribute.length > 0) {
-        for (let i = this.classLiteralToAttribute.length - 1; i > -1; i--) {
-          const className = this.classLiteralToAttribute.splice(i, 1)[0];
-          if (className) {
-            classes.unshift(className);
+      const val = isQuoted(token.val) ? token.val.slice(1, -1).trim() : token.val,
+        classes = val.split(/\s+/);
+      if (this.class_literal_to_attribute.length > 0) {
+        for (let i = this.class_literal_to_attribute.length - 1; i > -1; i--) {
+          const class_name = this.class_literal_to_attribute.splice(i, 1)[0];
+          if (class_name) {
+            classes.unshift(class_name);
           }
         }
       }
@@ -881,25 +881,25 @@ export class PugPrinter {
         val = await this.formatStyleAttribute(val);
       } else {
         // Prevent wrong quotation if there is an extra whitespace at the end
-        const rightTrimmedVal = val.trimEnd();
-        if (isQuoted(rightTrimmedVal)) {
-          val = makeString(rightTrimmedVal.slice(1, -1), this.quotes);
+        const r_trim_val = val.trimEnd();
+        if (isQuoted(r_trim_val)) {
+          val = makeString(r_trim_val.slice(1, -1), this.quotes);
         } else if (val === "true") {
           // The value is exactly true and is not quoted
           return;
         } else if (token.mustEscape) {
           val = await format(val, {
             parser: "__js_expression",
-            ...this.codeInterpolationOptions,
+            ...this.code_interpolation_options,
             singleQuote: !this.options.pugSingleQuote,
           });
-          const lines = val.split("\n");
-          const codeIndentLevel = this.wrapAttributes ? this.indentLevel + 1 : this.indentLevel;
+          const lines = val.split("\n"),
+            code_indent_level = this.wrap_attributes ? this.indent_level + 1 : this.indent_level;
           if (lines.length > 1) {
             val = lines[0] ?? "";
             for (let index = 1; index < lines.length; index++) {
               val += "\n";
-              val += this.indentString.repeat(codeIndentLevel);
+              val += this.indent_string.repeat(code_indent_level);
               // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
               val += lines[index];
             }
@@ -919,214 +919,214 @@ export class PugPrinter {
       this.result += `=${val}`;
     }
   }
-  ["end-attributes"](token) {
-    if (this.wrapAttributes && this.result.at(-1) !== "(") {
+  ["end-attributes"](_token) {
+    if (this.wrap_attributes && this.result.at(-1) !== "(") {
       if (!this.options.pugBracketSameLine) {
         this.result += "\n";
       }
-      this.result += this.indentString.repeat(
-        this.indentLevel + this.options.pugClosingBracketIndentDepth,
+      this.result += this.indent_string.repeat(
+        this.indent_level + this.options.pugClosingBracketIndentDepth,
       );
     }
-    this.wrapAttributes = false;
-    if (this.classLiteralToAttribute.length > 0) {
-      if (this.previousToken?.type === "start-attributes") {
+    this.wrap_attributes = false;
+    if (this.class_literal_to_attribute.length > 0) {
+      if (this.previous_token?.type === "start-attributes") {
         this.result += "(";
-      } else if (this.previousToken?.type === "attribute") {
+      } else if (this.previous_token?.type === "attribute") {
         this.result += " ";
       }
-      const classes = this.classLiteralToAttribute.splice(0);
+      const classes = this.class_literal_to_attribute.splice(0);
       this.result += `class=${this.quoteString(classes.join(" "))}`;
-      if (this.previousToken?.type === "start-attributes") {
+      if (this.previous_token?.type === "start-attributes") {
         this.result += ")";
       }
     }
     if (this.result.at(-1) === "(") {
       // There were no attributes
       this.result = this.result.slice(0, -1);
-    } else if (this.previousToken?.type === "attribute") {
+    } else if (this.previous_token?.type === "attribute") {
       if (this.options.pugBracketSameLine) {
         this.result = this.result.trimEnd();
       }
       this.result += ")";
     } else if (
       this.options.pugPreserveAttributeBrackets &&
-      this.previousToken?.type === "start-attributes"
+      this.previous_token?.type === "start-attributes"
     ) {
       this.result += "()";
     }
-    if (this.result.at(-1) === ")" && this.classLiteralAfterAttributes.length > 0) {
-      const classes = this.classLiteralAfterAttributes.splice(0);
+    if (this.result.at(-1) === ")" && this.class_literal_after_attributes.length > 0) {
+      const classes = this.class_literal_after_attributes.splice(0);
       this.result += `.${classes.join(".")}`;
     }
     if (this.options.pugClassLocation === "after-attributes") {
-      this.possibleClassPosition = this.result.length;
+      this.possible_class_position = this.result.length;
     }
-    if (this.nextToken?.type === "text" || this.nextToken?.type === "path") {
+    if (this.next_token?.type === "text" || this.next_token?.type === "path") {
       this.result += " ";
     }
   }
-  indent(token) {
-    const result = `\n${this.indentString.repeat(this.indentLevel)}`;
-    this.indentLevel++;
-    this.currentLineLength = result.length - 1 + 1 + this.options.pugTabWidth; // -1 for \n, +1 for non zero based
+  indent(_token) {
+    const result = `\n${this.indent_string.repeat(this.indent_level)}`;
+    this.indent_level++;
+    this.current_line_length = result.length - 1 + 1 + this.options.pugTabWidth; // -1 for \n, +1 for non zero based
     logger.debug(
       "indent",
       {
         result,
-        indentLevel: this.indentLevel,
+        indentLevel: this.indent_level,
         pugTabWidth: this.options.pugTabWidth,
       },
-      this.currentLineLength,
+      this.current_line_length,
     );
     return result;
   }
   outdent(token) {
     let result = "";
-    if (this.previousToken && this.previousToken.type !== "outdent") {
-      if (token.loc.start.line - this.previousToken.loc.end.line > 1) {
+    if (this.previous_token && this.previous_token.type !== "outdent") {
+      if (token.loc.start.line - this.previous_token.loc.end.line > 1) {
         // Insert one extra blank line
         result += "\n";
       }
       result += "\n";
     }
-    this.indentLevel--;
-    this.currentLineLength = 1 + this.indentString.repeat(this.indentLevel).length; // -1 for \n, +1 for non zero based
-    logger.debug("outdent", { result, indentLevel: this.indentLevel }, this.currentLineLength);
+    this.indent_level--;
+    this.current_line_length = 1 + this.indent_string.repeat(this.indent_level).length; // -1 for \n, +1 for non zero based
+    logger.debug("outdent", { result, indentLevel: this.indent_level }, this.current_line_length);
     return result;
   }
   class(token) {
     if (this.options.pugClassNotation === "attribute") {
-      this.classLiteralToAttribute.push(token.val);
+      this.class_literal_to_attribute.push(token.val);
       // An extra div should be printed if...
       if (
-        this.previousToken === undefined ||
+        this.previous_token === undefined ||
         // ...the previous token indicates that this was the first class literal and thus a div did not previously exist...
-        this.checkTokenType(this.previousToken, ["tag", "class", "end-attributes"], true) ||
+        this.checkTokenType(this.previous_token, ["tag", "class", "end-attributes"], true) ||
         // ...OR the previous token is a div that will be removed because of the no explicit divs rule.
-        (this.previousToken.type === "tag" &&
-          this.previousToken.val === "div" &&
-          this.nextToken?.type !== "attribute" &&
+        (this.previous_token.type === "tag" &&
+          this.previous_token.val === "div" &&
+          this.next_token?.type !== "attribute" &&
           !this.options.pugExplicitDiv)
       ) {
-        this.result += `${this.computedIndent}div`;
+        this.result += `${this.computed_indent}div`;
       }
       if (
-        this.checkTokenType(this.nextToken, ["text", "newline", "indent", "outdent", "eos", ":"])
+        this.checkTokenType(this.next_token, ["text", "newline", "indent", "outdent", "eos", ":"])
       ) {
         // Copy and clear the class literals list.
-        const classes = this.classLiteralToAttribute.splice(0);
+        const classes = this.class_literal_to_attribute.splice(0);
         // If the last result character was a )...
         if (this.result.at(-1) === ")") {
           // Look for 'class=' that is before the last '('...
-          const attributesStartIndex = this.result.lastIndexOf("(");
-          const lastClassIndex = this.result.indexOf("class=", attributesStartIndex);
+          const attr_start_idx = this.result.lastIndexOf("("),
+            last_class_idx = this.result.indexOf("class=", attr_start_idx);
           // If a 'class=' is found...
           // eslint-disable-next-line unicorn/prefer-ternary, unicorn/consistent-existence-index-check -- This is more readable without ternaries.
-          if (lastClassIndex > -1) {
+          if (last_class_idx > -1) {
             // ...then insert the new class into it.
             this.result = [
-              this.result.slice(0, lastClassIndex + 7),
+              this.result.slice(0, last_class_idx + 7),
               classes.join(" "),
               " ",
-              this.result.slice(lastClassIndex + 7),
+              this.result.slice(last_class_idx + 7),
             ].join("");
           } else {
             // ...otherwise add a new class attribute into the existing attributes.
             this.result =
               this.result.slice(0, -1) +
-              `${this.neverUseAttributeSeparator ? " " : ", "}class=${this.quoteString(classes.join(" "))})`;
+              `${this.never_use_attribute_separator ? " " : ", "}class=${this.quoteString(classes.join(" "))})`;
           }
           // ...or if the element has no attributes...
         } else {
           // Start a new attribute list with the class attribute in it.
           this.result += `(class=${this.quoteString(classes.join(" "))})`;
         }
-        if (this.nextToken?.type === "text") {
+        if (this.next_token?.type === "text") {
           this.result += " ";
         }
       }
     } else {
       const val = `.${token.val}`;
-      this.currentLineLength += val.length;
+      this.current_line_length += val.length;
       logger.debug(
         "before class",
         {
           result: this.result,
           val,
           length: val.length,
-          previousToken: this.previousToken,
+          previousToken: this.previous_token,
         },
-        this.currentLineLength,
+        this.current_line_length,
       );
-      switch (this.previousToken?.type) {
+      switch (this.previous_token?.type) {
         case undefined:
         case "newline":
         case "outdent":
         case "indent": {
-          const optionalDiv =
+          const optional_div =
             this.options.pugExplicitDiv || this.options.pugClassLocation === "after-attributes"
               ? "div"
               : "";
-          let result = `${this.computedIndent}${optionalDiv}`;
+          let result = `${this.computed_indent}${optional_div}`;
           if (this.options.pugClassLocation === "after-attributes") {
-            this.classLiteralAfterAttributes.push(val.slice(1));
+            this.class_literal_after_attributes.push(val.slice(1));
           } else {
             result += val;
           }
-          this.currentLineLength += optionalDiv.length;
-          this.possibleIdPosition =
-            this.result.length + this.computedIndent.length + optionalDiv.length;
+          this.current_line_length += optional_div.length;
+          this.possible_id_position =
+            this.result.length + this.computed_indent.length + optional_div.length;
           this.result += result;
-          this.possibleClassPosition = this.result.length;
+          this.possible_class_position = this.result.length;
           break;
         }
         case "end-attributes": {
-          const prefix = this.result.slice(0, this.possibleClassPosition);
-          this.result = [prefix, val, this.result.slice(this.possibleClassPosition)].join("");
-          this.possibleClassPosition += val.length;
+          const prefix = this.result.slice(0, this.possible_class_position);
+          this.result = [prefix, val, this.result.slice(this.possible_class_position)].join("");
+          this.possible_class_position += val.length;
           break;
         }
         default: {
           if (this.options.pugClassLocation === "after-attributes") {
-            this.classLiteralAfterAttributes.push(val.slice(1));
+            this.class_literal_after_attributes.push(val.slice(1));
           } else {
-            const prefix = this.result.slice(0, this.possibleClassPosition);
-            this.result = [prefix, val, this.result.slice(this.possibleClassPosition)].join("");
-            this.possibleClassPosition += val.length;
+            const prefix = this.result.slice(0, this.possible_class_position);
+            this.result = [prefix, val, this.result.slice(this.possible_class_position)].join("");
+            this.possible_class_position += val.length;
           }
           break;
         }
       }
       if (
         this.options.pugClassLocation === "after-attributes" &&
-        this.classLiteralAfterAttributes.length > 0
+        this.class_literal_after_attributes.length > 0
       ) {
-        let result = this.result.slice(0, this.possibleClassPosition);
+        let result = this.result.slice(0, this.possible_class_position);
         if (
           ["text", "newline", "indent", "outdent", "eos", "code", ":", undefined].includes(
-            this.nextToken?.type,
+            this.next_token?.type,
           )
         ) {
-          const classes = this.classLiteralAfterAttributes.splice(0);
+          const classes = this.class_literal_after_attributes.splice(0);
           result += "." + classes.join(".");
         }
-        this.result = [result, this.result.slice(this.possibleClassPosition)].join("");
-        this.possibleClassPosition = this.result.length;
+        this.result = [result, this.result.slice(this.possible_class_position)].join("");
+        this.possible_class_position = this.result.length;
         this.replaceTagWithLiteralIfPossible(/div\./, ".");
       }
       logger.debug(
         "after class",
         { result: this.result, val, length: val.length },
-        this.currentLineLength,
+        this.current_line_length,
       );
-      if (this.nextToken?.type === "text" && !/^\s+$/.test(this.nextToken.val)) {
-        this.currentLineLength += 1;
+      if (this.next_token?.type === "text" && !/^\s+$/.test(this.next_token.val)) {
+        this.current_line_length += 1;
         this.result += " ";
       }
     }
   }
-  eos(token) {
+  eos(_token) {
     // Remove all newlines at the end
     while (this.result.at(-1) === "\n") {
       this.result = this.result.slice(0, -1);
@@ -1134,36 +1134,36 @@ export class PugPrinter {
     // Insert one newline
     this.result += "\n";
   }
-  comment(commentToken) {
-    let result = this.computedIndent;
+  comment(comment_token) {
+    let result = this.computed_indent;
     // See if this is a `//- prettier-ignore` comment, which would indicate that the part of the template
     // that follows should be left unformatted. Support the same format as typescript-eslint is using for descriptions:
     // https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/ban-ts-comment.md#allow-with-description
-    if (/^ prettier-ignore($|[ :])/.test(commentToken.val)) {
+    if (/^ prettier-ignore($|[ :])/.test(comment_token.val)) {
       // Use a separate token processing loop to find the end of the stream of tokens to be ignored by formatting,
       // and uses their `loc` properties to retrieve the original pug code to be used instead.
       let token = this.getNextToken();
       if (token) {
-        let skipNewline = token.type === "newline";
-        let ignoreLevel = 0;
+        let skip_newline = token.type === "newline",
+          ignore_level = 0;
         while (token) {
           const { type } = token;
-          if (type === "newline" && ignoreLevel === 0) {
+          if (type === "newline" && ignore_level === 0) {
             // Skip first newline after `prettier-ignore` comment
-            if (skipNewline) {
-              skipNewline = false;
+            if (skip_newline) {
+              skip_newline = false;
             } else {
               break;
             }
           }
           // eslint-disable-next-line unicorn/prefer-switch
           else if (type === "indent") {
-            ignoreLevel++;
+            ignore_level++;
           } else if (type === "outdent") {
-            ignoreLevel--;
-            if (ignoreLevel <= 0) {
-              if (ignoreLevel < 0) {
-                this.indentLevel--;
+            ignore_level--;
+            if (ignore_level <= 0) {
+              if (ignore_level < 0) {
+                this.indent_level--;
               }
               break;
             }
@@ -1173,11 +1173,11 @@ export class PugPrinter {
           token = this.getNextToken();
         }
         if (token) {
-          const lines = this.getUnformattedContentLines(commentToken, token);
-          // Trim the last line, since indentation of formatted pug is handled separately.
-          const lastLine = lines.pop();
-          if (lastLine !== undefined) {
-            lines.push(lastLine.trimEnd());
+          const lines = this.getUnformattedContentLines(comment_token, token),
+            // Trim the last line, since indentation of formatted pug is handled separately.
+            last_line = lines.pop();
+          if (last_line !== undefined) {
+            lines.push(last_line.trimEnd());
           }
           result += lines.join("\n");
           if (token.type === "eos") {
@@ -1186,88 +1186,88 @@ export class PugPrinter {
         }
       }
     } else {
-      if (this.checkTokenType(this.previousToken, ["newline", "indent", "outdent"], true)) {
+      if (this.checkTokenType(this.previous_token, ["newline", "indent", "outdent"], true)) {
         result += " ";
       }
       result += "//";
-      if (!commentToken.buffer) {
+      if (!comment_token.buffer) {
         result += "-";
       }
       result += formatPugCommentPreserveSpaces(
-        commentToken.val,
+        comment_token.val,
         this.options.pugCommentPreserveSpaces,
       );
-      if (this.nextToken?.type === "start-pipeless-text") {
-        this.pipelessComment = true;
+      if (this.next_token?.type === "start-pipeless-text") {
+        this.pipeless_comment = true;
       }
     }
     return result;
   }
   newline(token) {
     let result = "";
-    if (this.previousToken && token.loc.start.line - this.previousToken.loc.end.line > 1) {
+    if (this.previous_token && token.loc.start.line - this.previous_token.loc.end.line > 1) {
       // Insert one extra blank line
       result += "\n";
     }
     result += "\n";
-    this.currentLineLength = 1 + this.indentString.repeat(this.indentLevel).length; // -1 for \n, +1 for non zero based
-    logger.debug("newline", { result, indentLevel: this.indentLevel }, this.currentLineLength);
+    this.current_line_length = 1 + this.indent_string.repeat(this.indent_level).length; // -1 for \n, +1 for non zero based
+    logger.debug("newline", { result, indentLevel: this.indent_level }, this.current_line_length);
     return result;
   }
   async text(token) {
-    let result = "";
-    let val = token.val;
-    let needsTrailingWhitespace = false;
-    let endsWithWhitespace = val.at(-1) === " " && !/^\s+$/.test(val);
-    if (this.pipelessText) {
-      switch (this.previousToken?.type) {
+    let result = "",
+      val = token.val,
+      needs_trailing_ws = false,
+      ends_with_ws = val.at(-1) === " " && !/^\s+$/.test(val);
+    if (this.pipeless_text) {
+      switch (this.previous_token?.type) {
         case "newline": {
           if (val.trim().length > 0) {
-            result += this.indentString.repeat(this.indentLevel + 1);
+            result += this.indent_string.repeat(this.indent_level + 1);
           }
           break;
         }
         case "start-pipeless-text": {
-          result += this.indentString;
+          result += this.indent_string;
           break;
         }
       }
-      if (this.pipelessComment) {
+      if (this.pipeless_comment) {
         val = formatPugCommentPreserveSpaces(val, this.options.pugCommentPreserveSpaces, true);
       }
     } else {
-      if (this.nextToken && endsWithWhitespace) {
-        switch (this.nextToken.type) {
+      if (this.next_token && ends_with_ws) {
+        switch (this.next_token.type) {
           case "interpolated-code":
           case "start-pug-interpolation": {
-            needsTrailingWhitespace = true;
+            needs_trailing_ws = true;
             break;
           }
         }
       }
       val = val.replaceAll(/\s\s+/g, " ");
-      switch (this.previousToken?.type) {
+      switch (this.previous_token?.type) {
         case "newline": {
-          result += this.indentString.repeat(this.indentLevel);
+          result += this.indent_string.repeat(this.indent_level);
           if (this.options.pugPreserveWhitespace && /^ .+$/.test(val)) {
             result += "|\n";
-            result += this.indentString.repeat(this.indentLevel);
+            result += this.indent_string.repeat(this.indent_level);
           }
           result += "|";
-          if (/.*\S.*/.test(token.val) || this.nextToken?.type === "start-pug-interpolation") {
+          if (/.*\S.*/.test(token.val) || this.next_token?.type === "start-pug-interpolation") {
             result += " ";
           }
           break;
         }
         case "indent":
         case "outdent": {
-          result += this.computedIndent;
+          result += this.computed_indent;
           if (this.options.pugPreserveWhitespace && /^ .+$/.test(val)) {
             result += "|\n";
-            result += this.indentString.repeat(this.indentLevel);
+            result += this.indent_string.repeat(this.indent_level);
           }
           result += "|";
-          if (/.*\S.*/.test(token.val) || this.nextToken?.type === "start-pug-interpolation") {
+          if (/.*\S.*/.test(token.val) || this.next_token?.type === "start-pug-interpolation") {
             result += " ";
           }
           break;
@@ -1277,7 +1277,7 @@ export class PugPrinter {
           if (/^ .+$/.test(val) || val === " ") {
             result += " ";
           } else if (/^.+ $/.test(val)) {
-            needsTrailingWhitespace = true;
+            needs_trailing_ws = true;
           }
           break;
         }
@@ -1287,7 +1287,7 @@ export class PugPrinter {
       val = val.replaceAll(/#([[{])/g, "\\#$1");
     }
     if (
-      this.checkTokenType(this.previousToken, [
+      this.checkTokenType(this.previous_token, [
         "tag",
         "id",
         "interpolation",
@@ -1296,24 +1296,24 @@ export class PugPrinter {
         "filter",
       ])
     ) {
-      if (val.length === 0 && this.nextToken?.type === "indent") {
-        endsWithWhitespace = false;
+      if (val.length === 0 && this.next_token?.type === "indent") {
+        ends_with_ws = false;
       } else {
         val = ` ${val}`;
       }
     }
     result += val;
-    if (needsTrailingWhitespace) {
+    if (needs_trailing_ws) {
       result += " ";
     }
-    if (endsWithWhitespace && this.nextToken?.type === "indent") {
-      result += "\n" + this.indentString.repeat(this.indentLevel + 1) + "|";
+    if (ends_with_ws && this.next_token?.type === "indent") {
+      result += "\n" + this.indent_string.repeat(this.indent_level + 1) + "|";
     }
     return result;
   }
   ["interpolated-code"](token) {
     let result = "";
-    switch (this.previousToken?.type) {
+    switch (this.previous_token?.type) {
       case "tag":
       case "class":
       case "id":
@@ -1328,8 +1328,8 @@ export class PugPrinter {
       case "indent":
       case "newline":
       case "outdent": {
-        result = this.computedIndent;
-        result += this.pipelessText ? this.indentString : "| ";
+        result = this.computed_indent;
+        result += this.pipeless_text ? this.indent_string : "| ";
         break;
       }
     }
@@ -1337,36 +1337,36 @@ export class PugPrinter {
     result += handleBracketSpacing(this.options.pugBracketSpacing, token.val.trim(), ["{", "}"]);
     return result;
   }
-  async formatRawCode(val, useSemi) {
+  async formatRawCode(val, use_semi) {
     val = await format(val, {
       parser: "babel",
-      ...this.codeInterpolationOptions,
-      semi: useSemi,
+      ...this.code_interpolation_options,
+      semi: use_semi,
       // Always pass endOfLine 'lf' here to be sure that the next `val.slice(0, -1)` call is always working
       endOfLine: "lf",
     });
     return val.slice(0, -1);
   }
-  async formatRawCodeWithFallbackNoElse(val, useSemi) {
+  async formatRawCodeWithFallbackNoElse(val, use_semi) {
     try {
-      return await this.formatRawCode(val, useSemi);
+      return await this.formatRawCode(val, use_semi);
     } catch (error) {
       if (!(error instanceof SyntaxError)) throw error;
-      const m = /Unexpected token \(1:(\d+)\)/.exec(error.message);
-      const n = Number(m?.[1]);
+      const m = /Unexpected token \(1:(\d+)\)/.exec(error.message),
+        n = Number(m?.[1]);
       // If the error is not from the very end of the code, then this fallback approach won't work, so we throw the original error.
       if (val.length + 1 !== n) throw error;
       // At this point, we know the SyntaxError is from the fact that there's no statement after our val's statement, implying we likely need a block after it. Using an empty block to get babel to parse it without affecting the code semantics.
       // Example: `if (foo)` is not valid JS on its own, but `if (foo) {}` is.
       try {
         // Look for comments at the end of the line, since we have to insert the block in between the statement and the comment or else the block will potentially be commented out
-        const commentIndex = val.search(/\/(?:\/|\*).*$/);
-        if (commentIndex === -1) {
+        const comment_idx = val.search(/\/(?:\/|\*).*$/);
+        if (comment_idx === -1) {
           val += "{}";
         } else {
-          val = `${val.slice(0, commentIndex)}{}${val.slice(commentIndex)}`;
+          val = `${val.slice(0, comment_idx)}{}${val.slice(comment_idx)}`;
         }
-        val = await this.formatRawCode(val, useSemi);
+        val = await this.formatRawCode(val, use_semi);
         /*
                 Strip out the empty block, which prettier has now formatted to split across two lines, and if there was a comment, it's now at the end of the second line. The first \s is to account for the space prettier inserted between the statement and the empty block.
                 Input:
@@ -1387,44 +1387,44 @@ export class PugPrinter {
         const comment = ma[1];
         val = val.slice(0, ma.index) + (comment ?? "");
         return val.trim();
-      } catch (secondError) {
-        logger.debug("[PugPrinter] fallback format error", secondError);
+      } catch (second_error) {
+        logger.debug("[PugPrinter] fallback format error", second_error);
         // throw original error since our fallback didn't work
         throw error;
       }
     }
   }
   // Since every line is parsed independently, babel will throw a SyntaxError if the line of code is only valid when there is another statement after it, or if the line starts with `else if` or `else`. This is a hack to get babel to properly parse what would otherwise be an invalid standalone JS line (e.g., `if (foo)`, `else if (bar)`, `else`)
-  async formatRawCodeWithFallback(val, useSemi) {
+  async formatRawCodeWithFallback(val, use_semi) {
     if (val.startsWith("else")) {
       // If the code starts with `else`, then we can format the code without the `else` keyword, and then add it back onto the start.
       // We can call the same helper function in each case, just with different inputs, so we can easily handle all `if`, `else if`, and `else` cases without having to write out each one.
-      const noElse = await this.formatRawCodeWithFallbackNoElse(val.slice(4), useSemi);
-      // `noElse` will either be an empty string or it will contain a comment. Now we just prepend `else` onto the start and trim in case `noElse` is empty
-      return `else ${noElse}`.trim();
+      const no_else = await this.formatRawCodeWithFallbackNoElse(val.slice(4), use_semi);
+      // `no_else` will either be an empty string or it will contain a comment. Now we just prepend `else` onto the start and trim in case `no_else` is empty
+      return `else ${no_else}`.trim();
     } else {
-      return await this.formatRawCodeWithFallbackNoElse(val, useSemi);
+      return await this.formatRawCodeWithFallbackNoElse(val, use_semi);
     }
   }
   async code(token) {
-    let result = this.computedIndent;
+    let result = this.computed_indent;
     if (!token.mustEscape && token.buffer) {
       result += "!";
     }
     result += token.buffer ? "=" : "-";
-    let useSemi = this.options.pugSemi;
-    if (useSemi && (token.mustEscape || token.buffer)) {
-      useSemi = false;
+    let use_semi = this.options.pugSemi;
+    if (use_semi && (token.mustEscape || token.buffer)) {
+      use_semi = false;
     }
     let val = token.val;
     try {
-      const valBackup = val;
-      val = await this.formatRawCodeWithFallback(val, useSemi);
+      const val_bak = val;
+      val = await this.formatRawCodeWithFallback(val, use_semi);
       if (val[0] === ";") {
         val = val.slice(1);
       }
       if (val.includes("\n")) {
-        val = valBackup;
+        val = val_bak;
       }
     } catch (error) {
       logger.warn("[PugPrinter]:", error);
@@ -1434,36 +1434,36 @@ export class PugPrinter {
   }
   id(token) {
     const val = `#${token.val}`;
-    this.currentLineLength += val.length;
-    switch (this.previousToken?.type) {
+    this.current_line_length += val.length;
+    switch (this.previous_token?.type) {
       case undefined:
       case "newline":
       case "outdent":
       case "indent": {
-        const optionalDiv = this.options.pugExplicitDiv ? "div" : "";
-        const result = `${this.computedIndent}${optionalDiv}${val}`;
-        this.currentLineLength += optionalDiv.length;
+        const optional_div = this.options.pugExplicitDiv ? "div" : "",
+          result = `${this.computed_indent}${optional_div}${val}`;
+        this.current_line_length += optional_div.length;
         this.result += result;
-        this.possibleClassPosition = this.result.length;
+        this.possible_class_position = this.result.length;
         break;
       }
       default: {
-        const prefix = this.result.slice(0, this.possibleIdPosition);
-        this.possibleClassPosition += val.length;
-        this.result = [prefix, val, this.result.slice(this.possibleIdPosition)].join("");
+        const prefix = this.result.slice(0, this.possible_id_position);
+        this.possible_class_position += val.length;
+        this.result = [prefix, val, this.result.slice(this.possible_id_position)].join("");
         break;
       }
     }
   }
-  async ["start-pipeless-text"](token) {
-    this.pipelessText = true;
-    let result = `\n${this.indentString.repeat(this.indentLevel)}`;
-    if (this.previousToken?.type === "dot") {
-      const lastTagToken = previousTagToken(this.tokens, this.currentIndex);
+  async ["start-pipeless-text"](_token) {
+    this.pipeless_text = true;
+    let result = `\n${this.indent_string.repeat(this.indent_level)}`;
+    if (this.previous_token?.type === "dot") {
+      const last_tag_tok = previousTagToken(this.tokens, this.current_index);
       let parser;
-      switch (lastTagToken?.val) {
+      switch (last_tag_tok?.val) {
         case "script": {
-          parser = getScriptParserName(previousTypeAttributeToken(this.tokens, this.currentIndex));
+          parser = getScriptParserName(previousTypeAttributeToken(this.tokens, this.current_index));
           break;
         }
         case "style": {
@@ -1475,24 +1475,24 @@ export class PugPrinter {
         }
       }
       if (parser) {
-        let index = this.currentIndex + 1;
-        let tok = this.tokens[index];
-        let rawText = "";
-        let usedInterpolatedCode = false;
+        let idx = this.current_index + 1,
+          tok = this.tokens[idx],
+          raw = "",
+          used_interpolated = false;
         while (tok && tok.type !== "end-pipeless-text") {
           switch (tok.type) {
             case "text": {
-              rawText += tok.val;
+              raw += tok.val;
               break;
             }
             case "newline": {
-              rawText += "\n";
+              raw += "\n";
               break;
             }
             case "interpolated-code": {
-              usedInterpolatedCode = true;
-              rawText += tok.mustEscape ? "#" : "!";
-              rawText += `{${tok.val}}`;
+              used_interpolated = true;
+              raw += tok.mustEscape ? "#" : "!";
+              raw += `{${tok.val}}`;
               break;
             }
             default: {
@@ -1504,134 +1504,134 @@ export class PugPrinter {
               break;
             }
           }
-          index++;
-          tok = this.tokens[index];
+          idx++;
+          tok = this.tokens[idx];
         }
         try {
-          result = await format(rawText, {
+          result = await format(raw, {
             parser,
-            ...this.codeInterpolationOptions,
+            ...this.code_interpolation_options,
           });
         } catch (error) {
-          if (!usedInterpolatedCode) {
+          if (!used_interpolated) {
             logger.error(error);
             throw error;
           }
           // Continue without formatting the content
-          const warningContext = [
+          const warn_ctx = [
             "[PugPrinter:start-pipeless-text]:",
             "The following expression could not be formatted correctly.",
             "This is likely a syntax error or an issue caused by the missing execution context.",
             "If you think this is a bug, please open a bug issue.",
           ];
-          // TODO: If other token types occur use `if (usedInterpolatedCode)`
+          // TODO: If other token types occur use `if (used_interpolated)`
           // eslint-disable-next-line unicorn/no-immediate-mutation
-          warningContext.push(
-            `\ncode: \`${rawText.trim()}\``,
+          warn_ctx.push(
+            `\ncode: \`${raw.trim()}\``,
             "\nYou used interpolated code in your pipeless script tag, so you may ignore this warning.",
           );
           if (types.isNativeError(error)) {
-            warningContext.push(`\nFound ${parser} ${error.name}: ${error.message}.`);
+            warn_ctx.push(`\nFound ${parser} ${error.name}: ${error.message}.`);
           } else {
             logger.debug("typeof error:", typeof error);
-            warningContext.push(`\nUnexpected error for parser ${parser}.`, error);
+            warn_ctx.push(`\nUnexpected error for parser ${parser}.`, error);
           }
-          logger.warn(...warningContext);
-          result = rawText;
+          logger.warn(...warn_ctx);
+          result = raw;
         }
         result = result.trimEnd();
-        const indentString = this.indentString.repeat(this.indentLevel + 1);
+        const indent_str = this.indent_string.repeat(this.indent_level + 1);
         result = result
           .split("\n")
-          .map((line) => (line ? indentString + line : ""))
+          .map((line) => (line ? indent_str + line : ""))
           .join("\n");
         result = `\n${result}`;
         // Preserve newline
-        tok = this.tokens[index - 1];
+        tok = this.tokens[idx - 1];
         if (tok?.type === "text" && tok.val === "") {
           result += "\n";
         }
-        this.currentIndex = index - 1;
+        this.current_index = idx - 1;
       }
     }
     return result;
   }
-  ["end-pipeless-text"](token) {
-    this.pipelessText = false;
-    this.pipelessComment = false;
+  ["end-pipeless-text"](_token) {
+    this.pipeless_text = false;
+    this.pipeless_comment = false;
     return "";
   }
   doctype(token) {
-    let result = `${this.computedIndent}doctype`;
+    let result = `${this.computed_indent}doctype`;
     if (token.val) {
       result += ` ${token.val}`;
     }
     return result;
   }
-  dot(token) {
+  dot(_token) {
     return ".";
   }
   block(token) {
-    let result = `${this.computedIndent}block `;
+    let result = `${this.computed_indent}block `;
     if (token.mode !== "replace") {
       result += `${token.mode} `;
     }
     result += token.val;
     return result;
   }
-  extends(token) {
-    const indent = this.options.pugSingleFileComponentIndentation ? this.indentString : "";
+  extends(_token) {
+    const indent = this.options.pugSingleFileComponentIndentation ? this.indent_string : "";
     return `${indent}extends `;
   }
   path(token) {
     let result = "";
-    if (this.checkTokenType(this.previousToken, ["include", "filter"])) {
+    if (this.checkTokenType(this.previous_token, ["include", "filter"])) {
       result += " ";
     }
     result += token.val;
     return result;
   }
-  ["start-pug-interpolation"](token) {
+  ["start-pug-interpolation"](_token) {
     let result = "";
     if (
-      this.pipelessText &&
-      this.tokens[this.currentIndex - 2]?.type === "newline" &&
-      this.previousToken?.type === "text" &&
-      this.previousToken.val.trim().length === 0
+      this.pipeless_text &&
+      this.tokens[this.current_index - 2]?.type === "newline" &&
+      this.previous_token?.type === "text" &&
+      this.previous_token.val.trim().length === 0
     ) {
-      result += this.indentString.repeat(this.indentLevel + 1);
+      result += this.indent_string.repeat(this.indent_level + 1);
     }
-    this.currentlyInPugInterpolation = true;
+    this.currently_in_pug_interpolation = true;
     result += "#[";
     return result;
   }
-  ["end-pug-interpolation"](token) {
-    this.currentlyInPugInterpolation = false;
+  ["end-pug-interpolation"](_token) {
+    this.currently_in_pug_interpolation = false;
     return "]";
   }
   interpolation(token) {
-    const result = `${this.computedIndent}#{${token.val}}`;
-    this.currentLineLength += result.length;
-    this.possibleIdPosition = this.result.length + result.length;
-    this.possibleClassPosition = this.result.length + result.length;
+    const result = `${this.computed_indent}#{${token.val}}`;
+    this.current_line_length += result.length;
+    this.possible_id_position = this.result.length + result.length;
+    this.possible_class_position = this.result.length + result.length;
     return result;
   }
-  include(token) {
-    return `${this.computedIndent}include`;
+  include(_token) {
+    return `${this.computed_indent}include`;
   }
   filter(token) {
-    return `${this.computedIndent}:${token.val}`;
+    return `${this.computed_indent}:${token.val}`;
   }
   async call(token) {
-    let result = `${this.computedIndent}+${token.val}`;
-    let args = token.args;
+    let result = `${this.computed_indent}+${token.val}`,
+      args = token.args;
     if (args) {
       args = args.trim().replaceAll(/\s\s+/g, " ");
       // Place an x at the beginning to preserve brackets,
       // then remove the x after format.
       args = await format(`x(${args})`, {
         parser: "babel",
-        ...this.codeInterpolationOptions,
+        ...this.code_interpolation_options,
       });
       args = args.trim();
       if (args.at(-1) === ";") {
@@ -1641,20 +1641,20 @@ export class PugPrinter {
       args = unwrapLineFeeds(args);
       result += args;
     }
-    this.currentLineLength += result.length;
-    this.possibleIdPosition = this.result.length + result.length;
-    this.possibleClassPosition = this.result.length + result.length;
+    this.current_line_length += result.length;
+    this.possible_id_position = this.result.length + result.length;
+    this.possible_class_position = this.result.length + result.length;
     return result;
   }
   async mixin(token) {
-    let result = `${this.computedIndent}mixin ${token.val}`;
-    let args = token.args;
+    let result = `${this.computed_indent}mixin ${token.val}`,
+      args = token.args;
     if (args) {
       args = args.trim().replaceAll(/\s\s+/g, " ");
       // Let args act as args of js function during format.
       args = await format(`function x(${args}) {}`, {
         parser: "babel",
-        ...this.codeInterpolationOptions,
+        ...this.code_interpolation_options,
       });
       args = args.trim().slice(10, -3);
       result += args;
@@ -1662,11 +1662,11 @@ export class PugPrinter {
     return result;
   }
   async if(token) {
-    let result = this.computedIndent;
+    let result = this.computed_indent;
     const match = /^!\((.*)\)$/.exec(token.val);
     logger.debug("[PugPrinter]:", match);
-    let append = "if ";
-    let code = token.val;
+    let append = "if ",
+      code = token.val;
     if (match) {
       append = "unless ";
       code = match[1];
@@ -1675,51 +1675,51 @@ export class PugPrinter {
     if (typeof code === "string") {
       code = await format(code, {
         parser: "__js_expression",
-        ...this.codeInterpolationOptions,
+        ...this.code_interpolation_options,
         singleQuote: !this.options.pugSingleQuote,
       });
     }
     result += String(code).trim();
     return result;
   }
-  ["mixin-block"](token) {
-    return `${this.computedIndent}block`;
+  ["mixin-block"](_token) {
+    return `${this.computed_indent}block`;
   }
-  else(token) {
-    return `${this.computedIndent}else`;
+  else(_token) {
+    return `${this.computed_indent}else`;
   }
   async ["&attributes"](token) {
     const code = await format(token.val, {
       parser: "__js_expression",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
-    });
-    const result = `&attributes(${code})`;
-    this.currentLineLength += result.length;
+    }),
+      result = `&attributes(${code})`;
+    this.current_line_length += result.length;
     return result;
   }
   ["text-html"](token) {
     const match = /^<(.*?)>(.*)<\/(.*?)>$/.exec(token.val);
     logger.debug("[PugPrinter]:", match);
     if (match) {
-      return `${this.computedIndent}${match[1]} ${match[2]}`;
+      return `${this.computed_indent}${match[1]} ${match[2]}`;
     }
     const entry = Object.entries(DOCTYPE_SHORTCUT_REGISTRY).find(
       ([key]) => key === token.val.toLowerCase(),
     );
     if (entry) {
-      return `${this.computedIndent}${entry[1]}`;
+      return `${this.computed_indent}${entry[1]}`;
     }
-    return `${this.computedIndent}${token.val}`;
+    return `${this.computed_indent}${token.val}`;
   }
   async each(token) {
-    let result = `${this.computedIndent}each ${token.val}`;
+    let result = `${this.computed_indent}each ${token.val}`;
     if (token.key !== null) {
       result += `, ${token.key}`;
     }
     const code = await format(token.code, {
       parser: "__js_expression",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
     });
     result += ` in ${unwrapLineFeeds(code.trim())}`;
@@ -1729,7 +1729,7 @@ export class PugPrinter {
     let value = token.value.trim();
     value = await format(value, {
       parser: "babel",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
     });
     value = value.trim();
@@ -1742,62 +1742,62 @@ export class PugPrinter {
     value = unwrapLineFeeds(value);
     let code = await format(token.code, {
       parser: "__js_expression",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
       semi: true,
     });
     code = code.trim();
-    return `${this.computedIndent}each ${value} of ${code}`;
+    return `${this.computed_indent}each ${value} of ${code}`;
   }
   async while(token) {
     const code = await format(token.val, {
       parser: "__js_expression",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
     });
-    return `${this.computedIndent}while ${code.trim()}`;
+    return `${this.computed_indent}while ${code.trim()}`;
   }
   async case(token) {
     const code = await format(token.val, {
       parser: "__js_expression",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
     });
-    return `${this.computedIndent}case ${code.trim()}`;
+    return `${this.computed_indent}case ${code.trim()}`;
   }
   async when(token) {
     const code = await format(token.val, {
       parser: "__js_expression",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
     });
-    return `${this.computedIndent}when ${code.trim()}`;
+    return `${this.computed_indent}when ${code.trim()}`;
   }
-  [":"](token) {
-    this.possibleIdPosition = this.result.length + 2;
-    this.possibleClassPosition = this.result.length + 2;
+  [":"](_token) {
+    this.possible_id_position = this.result.length + 2;
+    this.possible_class_position = this.result.length + 2;
     return ": ";
   }
-  default(token) {
-    return `${this.computedIndent}default`;
+  default(_token) {
+    return `${this.computed_indent}default`;
   }
   async ["else-if"](token) {
     const code = await format(token.val, {
       parser: "__js_expression",
-      ...this.codeInterpolationOptions,
+      ...this.code_interpolation_options,
       singleQuote: !this.options.pugSingleQuote,
     });
-    return `${this.computedIndent}else if ${code.trim()}`;
+    return `${this.computed_indent}else if ${code.trim()}`;
   }
-  blockcode(token) {
-    return `${this.computedIndent}-`;
+  blockcode(_token) {
+    return `${this.computed_indent}-`;
   }
-  yield(token) {
-    return `${this.computedIndent}yield`;
+  yield(_token) {
+    return `${this.computed_indent}yield`;
   }
-  slash(token) {
+  slash(_token) {
     let result = "/";
-    if (this.nextToken?.type === "text") {
+    if (this.next_token?.type === "text") {
       result += " ";
     }
     return result;
