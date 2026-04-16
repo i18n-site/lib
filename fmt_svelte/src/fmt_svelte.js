@@ -33,7 +33,10 @@ const argv = yargs(hideBin(process.argv))
   };
 
 if (is_dir) {
-  for await (const f of walk(path, (p) => !p.startsWith(".") && p !== "node_modules")) {
+  for await (const f of walk(path, (p) => {
+    p = basename(p);
+    return p.startsWith(".") || p == "node_modules";
+  })) {
     await fmt(f);
   }
 } else await fmt(path);
