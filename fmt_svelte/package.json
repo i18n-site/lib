@@ -11,15 +11,12 @@
   "bin": {
     "fmt_svelte": "./lib/fmt_svelte.js"
   },
-  "files": [
-    "lib/*"
-  ],
+  "files": ["lib/*"],
   "type": "module",
   "exports": {
     ".": "./lib/lib.js",
     "./*": "./lib/*"
   },
-  "scripts": {},
   "dependencies": {
     "@3-/read": "^0.1.4",
     "@3-/walk": "^0.2.1",
@@ -36,3 +33,4 @@
     "typescript": "^6.0.2"
   }
 }
+

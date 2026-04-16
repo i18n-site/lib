@@ -1,5 +1,6 @@
 import pug from "./pug.js";
 import styl from "./styl.js";
+import js from "./js.js";
 
 export default async (code) => {
   let end_tag, fmt, tag, t;
@@ -31,6 +32,7 @@ export default async (code) => {
           tag = current_tag;
           if (tag === "template" && lang === "pug") fmt = pug;
           else if (tag === "style" && (lang === "stylus" || lang === "styl")) fmt = styl;
+          else if (tag === "script" && (!lang || lang === "js" || lang === "ts")) fmt = js;
 
           t = [];
           end_tag = `</${tag}>`;

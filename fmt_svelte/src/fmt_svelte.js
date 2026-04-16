@@ -6,6 +6,7 @@ import write from "@3-/write";
 import walk from "@3-/walk";
 import { statSync, existsSync } from "fs";
 import svelte from "./svelte.js";
+import js from "./js.js";
 import { basename } from "path";
 
 const argv = yargs(hideBin(process.argv))
@@ -24,14 +25,19 @@ const argv = yargs(hideBin(process.argv))
     .parse(),
   paths = argv._,
   fmt = async (f, do_write) => {
-    if (f.endsWith(".svelte")) {
-      try {
-        const out = await svelte(read(f));
+    try {
+      let out;
+      if (f.endsWith(".svelte")) {
+        out = await svelte(read(f));
+      } else if (f.match(/\.(?:[mc]?js|ts)$/)) {
+        out = await js(read(f));
+      }
+      if (out !== undefined) {
         if (do_write) write(f, out);
         else console.log(`${f}:\n${out}\n`);
-      } catch (e) {
-        console.error(`${f}: ${e.message}`);
       }
+    } catch (e) {
+      console.error(`${f}: ${e.message}`);
     }
   };
 
