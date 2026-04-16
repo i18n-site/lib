@@ -1,12 +1,11 @@
 import pug from "./pug.js";
 import styl from "./styl.js";
 
-const langByList = (li) => {
-  for (const i of li) {
-    const [k, v] = i.split("=");
-    if (k === "lang") return v.replaceAll('"', "");
-  }
-};
+const langByList = (li) =>
+  li
+    .find((s) => s.startsWith("lang="))
+    ?.split("=")[1]
+    .replace(/['"]/g, "");
 
 export default async (code) => {
   let end_tag, fmt, tag, t;
@@ -25,16 +24,15 @@ export default async (code) => {
         }
         res.push(content.trim(), line);
         t = fmt = undefined;
-      } else {
-        t.push(line);
-      }
+      } else t.push(line);
     } else {
       res.push(line);
       if (line.startsWith("<") && line.endsWith(">")) {
-        const li = line.slice(1, -1).split(" ");
+        const li = line.slice(1, -1).split(" "),
+          lang = langByList(li);
         tag = li.shift().trim();
-        if (tag === "template" && langByList(li) === "pug") fmt = pug;
-        else if (tag === "style" && langByList(li) === "stylus") fmt = styl;
+        if (tag === "template" && lang === "pug") fmt = pug;
+        else if (tag === "style" && lang === "stylus") fmt = styl;
         t = [];
         end_tag = `</${tag}>`;
       }

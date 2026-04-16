@@ -22,18 +22,18 @@ const argv = yargs(hideBin(process.argv))
     .help("h")
     .parse(),
   [path] = argv._,
+  is_dir = statSync(path).isDirectory(),
+  do_write = argv.write || is_dir,
   fmt = async (f) => {
     if (f.endsWith(".svelte")) {
       const out = await svelte(read(f));
-      if (argv.write) write(f, out);
+      if (do_write) write(f, out);
       else console.log(`${f}:\n${out}\n`);
     }
   };
 
-if (statSync(path).isDirectory()) {
+if (is_dir) {
   for await (const f of walk(path, (p) => !p.startsWith(".") && p !== "node_modules")) {
     await fmt(f);
   }
-} else {
-  await fmt(path);
-}
+} else await fmt(path);
