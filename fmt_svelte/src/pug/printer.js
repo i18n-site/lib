@@ -300,8 +300,12 @@ export class PugPrinter {
                                 code = await format(code, {
                                     parser: 'babel',
                                     ...this.codeInterpolationOptions,
-                                    semi: false,
+                                    singleQuote: !this.options.pugSingleQuote,
                                 });
+                                code = code.trim();
+                                if (code.at(-1) === ';') {
+                                    code = code.slice(0, -1);
+                                }
                                 if (code[0] === ';') {
                                     code = code.slice(1);
                                 }
@@ -380,8 +384,12 @@ export class PugPrinter {
                             code = await format(code, {
                                 parser: 'babel',
                                 ...this.codeInterpolationOptions,
-                                semi: false,
+                                singleQuote: !this.options.pugSingleQuote,
                             });
+                            code = code.trim();
+                            if (code.at(-1) === ';') {
+                                code = code.slice(0, -1);
+                            }
                             if (code[0] === ';') {
                                 code = code.slice(1);
                             }
@@ -521,7 +529,7 @@ export class PugPrinter {
             const formatted = await format(val, {
                 parser: '__js_expression',
                 ...this.codeInterpolationOptions,
-                semi: false,
+                singleQuote: !this.options.pugSingleQuote,
             });
             val = formatted.trim();
         }
@@ -857,6 +865,7 @@ export class PugPrinter {
                     val = await format(val, {
                         parser: '__js_expression',
                         ...this.codeInterpolationOptions,
+                        singleQuote: !this.options.pugSingleQuote,
                     });
                     const lines = val.split('\n');
                     const codeIndentLevel = this.wrapAttributes
@@ -1627,9 +1636,13 @@ export class PugPrinter {
             args = await format(`x(${args})`, {
                 parser: 'babel',
                 ...this.codeInterpolationOptions,
-                semi: false,
             });
-            args = args.trim().slice(1);
+            args = args.trim();
+            if (args.at(-1) === ';') {
+                args = args.slice(0, -1);
+            }
+            args = args.slice(1);
+            args = unwrapLineFeeds(args);
             result += args;
         }
         this.currentLineLength += result.length;
@@ -1667,6 +1680,7 @@ export class PugPrinter {
             code = await format(code, {
                 parser: '__js_expression',
                 ...this.codeInterpolationOptions,
+                singleQuote: !this.options.pugSingleQuote,
             });
         }
         result += String(code).trim();
@@ -1682,6 +1696,7 @@ export class PugPrinter {
         const code = await format(token.val, {
             parser: '__js_expression',
             ...this.codeInterpolationOptions,
+            singleQuote: !this.options.pugSingleQuote,
         });
         const result = `&attributes(${code})`;
         this.currentLineLength += result.length;
@@ -1707,9 +1722,9 @@ export class PugPrinter {
         const code = await format(token.code, {
             parser: '__js_expression',
             ...this.codeInterpolationOptions,
-            semi: false,
+            singleQuote: !this.options.pugSingleQuote,
         });
-        result += ` in ${code}`;
+        result += ` in ${unwrapLineFeeds(code.trim())}`;
         return result;
     }
     async eachOf(token) {
@@ -1717,8 +1732,12 @@ export class PugPrinter {
         value = await format(value, {
             parser: 'babel',
             ...this.codeInterpolationOptions,
-            semi: false,
+            singleQuote: !this.options.pugSingleQuote,
         });
+        value = value.trim();
+        if (value.at(-1) === ';') {
+            value = value.slice(0, -1);
+        }
         if (value[0] === ';') {
             value = value.slice(1);
         }
@@ -1726,6 +1745,7 @@ export class PugPrinter {
         let code = await format(token.code, {
             parser: '__js_expression',
             ...this.codeInterpolationOptions,
+            singleQuote: !this.options.pugSingleQuote,
             semi: true,
         });
         code = code.trim();
@@ -1735,6 +1755,7 @@ export class PugPrinter {
         const code = await format(token.val, {
             parser: '__js_expression',
             ...this.codeInterpolationOptions,
+            singleQuote: !this.options.pugSingleQuote,
         });
         return `${this.computedIndent}while ${code.trim()}`;
     }
@@ -1742,6 +1763,7 @@ export class PugPrinter {
         const code = await format(token.val, {
             parser: '__js_expression',
             ...this.codeInterpolationOptions,
+            singleQuote: !this.options.pugSingleQuote,
         });
         return `${this.computedIndent}case ${code.trim()}`;
     }
@@ -1749,6 +1771,7 @@ export class PugPrinter {
         const code = await format(token.val, {
             parser: '__js_expression',
             ...this.codeInterpolationOptions,
+            singleQuote: !this.options.pugSingleQuote,
         });
         return `${this.computedIndent}when ${code.trim()}`;
     }
@@ -1764,6 +1787,7 @@ export class PugPrinter {
         const code = await format(token.val, {
             parser: '__js_expression',
             ...this.codeInterpolationOptions,
+            singleQuote: !this.options.pugSingleQuote,
         });
         return `${this.computedIndent}else if ${code.trim()}`;
     }
