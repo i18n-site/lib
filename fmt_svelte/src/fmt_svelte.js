@@ -6,6 +6,7 @@ import write from "@3-/write";
 import walk from "@3-/walk";
 import { statSync } from "fs";
 import svelte from "./svelte.js";
+import { basename } from "path";
 
 const argv = yargs(hideBin(process.argv))
     .usage("用法: $0 <文件名|目录名> [选项]")
