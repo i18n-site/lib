@@ -1,11 +1,11 @@
 import { format } from "prettier";
-import { languages, options, parsers, printers } from "@prettier/plugin-pug";
+import { languages, options, parsers, printers } from "./pug/index.js";
 
 export default async (code) =>
   await format(code, {
     parser: "pug",
     plugins: [{ languages, options, parsers, printers }],
     pugAttributeSeparator: "none",
-    pugSortAttributes: "asc",
+    pugSortAttributes: "as-is",
     pugEmptyAttributes: "none",
   });

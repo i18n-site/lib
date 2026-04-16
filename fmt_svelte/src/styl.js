@@ -13,6 +13,8 @@ export default (txt) =>
     insertSemicolons: false,
     preserveNewLinesBetweenPropertyValues: true,
     reduceMarginAndPaddingValues: true,
-    sortProperties: "grouped",
+    sortProperties: false,
     tabStopChar: "  ",
+    insertSpaceBeforeComment: false,
+    insertSpaceAfterComment: false,
   });
