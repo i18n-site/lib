@@ -3,24 +3,13 @@
 [test/main.coffee](./test/main.coffee) :
 
 ```coffee
-#!/usr/bin/env coffee
-
-> @3-/minhtm
-  path > join
-  fs > readFileSync
-
-html = readFileSync(
-  join import.meta.dirname,'index.html'
-  'utf8'
-)
-
-console.log await minhtm(html)
+./test/main.coffee
 ```
 
 output :
 
 ```
-<!doctype html><html><head><meta charset=UTF-8><meta content="width=device-width,initial-scale=1" name=viewport><link href=//cdn.jsdelivr.net/npm/fc3/index.css rel=stylesheet><link href=//cdn.jsdelivr.net/npm/@3-/web@0.1.11/_.css rel=stylesheet><script type=importmap>{"imports":{"-/":"//cdn.jsdelivr.net/npm/@3-/web@0.1.11/"}}</script><script type=module>import"-/com/state.js"</script></head><body><i-state _=//api.u-01.eu.org></i-state></body></html>
+./out.txt
 ```
 
 ## About
