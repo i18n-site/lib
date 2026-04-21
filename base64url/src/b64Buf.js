@@ -1,1 +1,1 @@
-export default (b64) => Buffer.from(b64, "base64url");
+export default (s) => Buffer.from(s, "base64url");

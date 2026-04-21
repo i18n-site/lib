@@ -1,4 +1,1 @@
-export default (b64) =>
-  Uint8Array.fromBase64(b64, {
-    alphabet: "base64url",
-  });
+export default (s) => Uint8Array.fromBase64(s, { alphabet: "base64url" });
