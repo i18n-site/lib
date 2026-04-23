@@ -4,7 +4,7 @@ const URL = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions"
   HEADERS = { "Content-Type": "application/json" },
   AUTO = "auto";
 
-export default (token) => {
+export default (token, model = "qwen-mt-flash") => {
   const headers = { ...HEADERS, Authorization: "Bearer " + token };
   return async (from_lang, to_lang, txt) => {
     from_lang = CODE_QWEN[from_lang] || from_lang || AUTO;
@@ -14,7 +14,7 @@ export default (token) => {
         method: "POST",
         headers,
         body: JSON.stringify({
-          model: "qwen-mt-flash",
+          model,
           messages: [{ role: "user", content: txt }],
           translation_options: {
             source_lang: from_lang,
