@@ -17,7 +17,7 @@ export default [
   "正體中文",
   "Svenska",
   "Gaeilge",
-  "Norwegian Bokmål",
+  "Norsk",
   "ไทย",
   "עברית",
   "Tiếng Việt",

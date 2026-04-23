@@ -17,7 +17,7 @@ export default [
   "Traditional Chinese",
   "Swedish",
   "Irish",
-  "Norwegian Bokmål",
+  "Norwegian",
   "Thai",
   "Hebrew",
   "Vietnamese",

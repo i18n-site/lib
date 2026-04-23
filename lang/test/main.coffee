@@ -2,8 +2,9 @@
 
 > @3-/lang/CODE.js
   @3-/lang/ZH.js
+  @3-/lang/code/QWEN.js
 
-ALI = new Set("""代码
+QW = new Set("""代码
 en
 zh
 zh_tw
@@ -99,7 +100,8 @@ fa
 """.split('\n'))
 
 for code,pos in CODE
-  if not ALI.has code
+  code = QWEN[code] || code
+  if not QW.has code
     console.log ZH[pos], code
 # for i from AI_LANG
 #   console.log i
