@@ -2,15 +2,12 @@
 import gemini from "./gemini.js";
 import qwen from "./qwen3Mt.js";
 import CODE2QWEN from "./CODE2QWEN.js";
+import rank from "./rank.js";
+import NAME from "./NAME.js";
 import Table from "cli-table3";
 
 const g_map = new Map(gemini.map(([name, code]) => [code, name])),
-  q_map = new Map(qwen.map(([en, zh, code]) => [code, [zh, en]])),
-  all_codes = new Set([
-    ...g_map.keys(),
-    ...q_map.keys(),
-    ...Object.values(CODE2QWEN),
-  ]),
+  q_map = new Map(qwen.map(([zh, en, code]) => [code, [zh, en]])),
   common = [],
   missing_qwen = [],
   missing_gemini = [],
@@ -36,27 +33,27 @@ const g_map = new Map(gemini.map(([name, code]) => [code, name])),
       style: { "padding-left": 0, "padding-right": 0 },
     });
 
+const getName = (code, fallback) => {
+  const info = NAME.get(code);
+  if (info) return info[0]; // 使用 NAME.js 中的中文名
+  console.warn(`⚠️ Missing name for code: ${code}`);
+  return fallback;
+};
+
 const seen_q = new Set();
 const seen_g = new Set();
 
-for (const code of all_codes) {
-  let g_code = code,
-    q_code = code;
-
-  for (const [g, q] of Object.entries(CODE2QWEN)) {
-    if (code === g || code === q) {
-      g_code = g;
-      q_code = q;
-      break;
-    }
+for (const [g_code, g_name] of g_map) {
+  let q_code = g_code;
+  if (CODE2QWEN[g_code]) {
+    q_code = CODE2QWEN[g_code];
   }
 
-  const g_name = g_map.get(g_code),
-    q_info = q_map.get(q_code);
-
-  if (g_name && q_info) {
+  const q_info = q_map.get(q_code);
+  if (q_info) {
     const [q_zh, q_en] = q_info;
-    common.push([`${g_code}/${q_code}`, g_name, q_zh, q_en]);
+    const displayName = getName(g_code, g_name.length <= q_zh.length ? g_name : q_zh);
+    common.push([g_code, displayName, q_en]);
     seen_g.add(g_code);
     seen_q.add(q_code);
   }
@@ -64,15 +61,22 @@ for (const code of all_codes) {
 
 for (const [code, name] of g_map) {
   if (!seen_g.has(code)) {
-    missing_qwen.push([code, name]);
+    missing_qwen.push([code, getName(code, name)]);
   }
 }
 
 for (const [code, info] of q_map) {
   if (!seen_q.has(code)) {
-    missing_gemini.push([code, ...info]);
+    const [q_zh, q_en] = info;
+    missing_gemini.push([code, getName(code, q_zh), q_en]);
   }
 }
+
+common.sort((a, b) => {
+  const codeA = a[0].split("/")[0];
+  const codeB = b[0].split("/")[0];
+  return (rank.get(codeB) || 0) - (rank.get(codeA) || 0);
+});
 
 const log = (title, data) => {
   console.log(`\n=== ${title} (${data.length}) ===`);
@@ -84,3 +88,11 @@ const log = (title, data) => {
 log("共同支持", common);
 log("Qwen 缺失 (Gemini 有)", missing_qwen);
 log("Gemini 缺失 (Qwen 有)", missing_gemini);
+
+const exportData = common.map(([code, zh, en]) => {
+  const info = NAME.get(code);
+  return [code, en, zh, info ? info[2] : ""];
+});
+const content = `export default ${JSON.stringify(exportData, null, 2)};\n`;
+await Bun.write("common.js", content);
+console.log("\nExported common.js");
