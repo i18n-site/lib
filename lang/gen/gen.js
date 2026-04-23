@@ -6,93 +6,79 @@ import rank from "./rank.js";
 import NAME from "./NAME.js";
 import Table from "cli-table3";
 
-const g_map = new Map(gemini.map(([name, code]) => [code, name])),
-  q_map = new Map(qwen.map(([zh, en, code]) => [code, [zh, en]])),
-  common = [],
-  missing_qwen = [],
-  missing_gemini = [],
-  new_table = () =>
-    new Table({
-      chars: {
-        top: "",
-        "top-mid": "",
-        "top-left": "",
-        "top-right": "",
-        bottom: "",
-        "bottom-mid": "",
-        "bottom-left": "",
-        "bottom-right": "",
-        left: "",
-        "left-mid": "",
-        mid: "",
-        "mid-mid": "",
-        right: "",
-        "right-mid": "",
-        middle: " ",
-      },
-      style: { "padding-left": 0, "padding-right": 0 },
-    });
+const
+  G_MAP = new Map(gemini.map(([name, code]) => [code, name])),
+  Q_MAP = new Map(qwen.map(([zh, en, code]) => [code, [zh, en]])),
+  COMMON = [],
+  MISSING_QWEN = [],
+  MISSING_GEMINI = [],
+  seen_q = new Set(),
+  seen_g = new Set(),
+  tableNew = () => new Table({
+    chars: { top: "", "top-mid": "", "top-left": "", "top-right": "", bottom: "", "bottom-mid": "", "bottom-left": "", "bottom-right": "", left: "", "left-mid": "", mid: "", "mid-mid": "", right: "", "right-mid": "", middle: " " },
+    style: { "padding-left": 0, "padding-right": 0 }
+  }),
+  nameByCode = (code, fallback) => {
+    const info = NAME.get(code);
+    if (info) return info[0];
+    console.warn("⚠️ Missing name for code: " + code);
+    return fallback;
+  };
 
-const getName = (code, fallback) => {
-  const info = NAME.get(code);
-  if (info) return info[0]; // 使用 NAME.js 中的中文名
-  console.warn(`⚠️ Missing name for code: ${code}`);
-  return fallback;
-};
-
-const seen_q = new Set();
-const seen_g = new Set();
-
-for (const [g_code, g_name] of g_map) {
-  let q_code = g_code;
-  if (CODE2QWEN[g_code]) {
-    q_code = CODE2QWEN[g_code];
-  }
-
-  const q_info = q_map.get(q_code);
+for (const [g_code, g_name] of G_MAP) {
+  const
+    q_code = CODE2QWEN[g_code] || g_code,
+    q_info = Q_MAP.get(q_code);
   if (q_info) {
     const [q_zh, q_en] = q_info;
-    const displayName = getName(g_code, g_name.length <= q_zh.length ? g_name : q_zh);
-    common.push([g_code, displayName, q_en]);
+    COMMON.push([g_code, nameByCode(g_code, g_name.length <= q_zh.length ? g_name : q_zh), q_en]);
     seen_g.add(g_code);
     seen_q.add(q_code);
   }
 }
 
-for (const [code, name] of g_map) {
-  if (!seen_g.has(code)) {
-    missing_qwen.push([code, getName(code, name)]);
-  }
+for (const [code, name] of G_MAP) if (!seen_g.has(code)) MISSING_QWEN.push([code, nameByCode(code, name)]);
+
+for (const [code, info] of Q_MAP) if (!seen_q.has(code)) {
+  const [q_zh, q_en] = info;
+  MISSING_GEMINI.push([code, nameByCode(code, q_zh), q_en]);
 }
 
-for (const [code, info] of q_map) {
-  if (!seen_q.has(code)) {
-    const [q_zh, q_en] = info;
-    missing_gemini.push([code, getName(code, q_zh), q_en]);
-  }
-}
-
-common.sort((a, b) => {
-  const codeA = a[0].split("/")[0];
-  const codeB = b[0].split("/")[0];
-  return (rank.get(codeB) || 0) - (rank.get(codeA) || 0);
+COMMON.sort((a, b) => {
+  const ca = a[0].split("/")[0], cb = b[0].split("/")[0];
+  return (rank.get(cb) || 0) - (rank.get(ca) || 0);
 });
 
 const log = (title, data) => {
-  console.log(`\n=== ${title} (${data.length}) ===`);
-  const t = new_table();
+  console.log("\n=== " + title + " (" + data.length + ") ===");
+  const t = tableNew();
   t.push(...data);
   console.log(t.toString());
 };
 
-log("共同支持", common);
-log("Qwen 缺失 (Gemini 有)", missing_qwen);
-log("Gemini 缺失 (Qwen 有)", missing_gemini);
+log("共同支持", COMMON);
+log("Qwen 缺失 (Gemini 有)", MISSING_QWEN);
+log("Gemini 缺失 (Qwen 有)", MISSING_GEMINI);
 
-const exportData = common.map(([code, zh, en]) => {
-  const info = NAME.get(code);
-  return [code, en, zh, info ? info[2] : ""];
-});
-const content = `export default ${JSON.stringify(exportData, null, 2)};\n`;
-await Bun.write("common.js", content);
-console.log("\nExported common.js");
+const
+  write = async (path, data) => {
+    await Bun.write(path, "export default " + JSON.stringify(data, null, 2) + ";\n");
+    console.log("Exported " + path);
+  },
+  export_data = COMMON.map(([code, zh, en]) => {
+    const info = NAME.get(code);
+    return [code, en, zh, info ? info[2] : ""];
+  });
+
+await write("common.js", export_data);
+
+const
+  codes = COMMON.map(i => i[0]),
+  zhs = COMMON.map(i => i[1]),
+  ens = COMMON.map(i => i[2]),
+  names = COMMON.map(i => (NAME.get(i[0]) || [])[2] || "");
+
+await write("../src/CODE.js", codes);
+await write("../src/ZH.js", zhs);
+await write("../src/EN.js", ens);
+await write("../src/NAME.js", names);
