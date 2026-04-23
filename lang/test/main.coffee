@@ -1,8 +1,106 @@
 #!/usr/bin/env coffee
 
-> @3-/lang/ZH.js
+> @3-/lang/CODE.js
+  @3-/lang/ZH.js
 
-console.log ZH.length
+ALI = new Set("""代码
+en
+zh
+zh_tw
+ru
+ja
+ko
+es
+fr
+pt
+de
+it
+th
+vi
+id
+ms
+ar
+hi
+he
+my
+ta
+ur
+bn
+pl
+nl
+ro
+tr
+km
+lo
+yue
+cs
+el
+sv
+hu
+da
+fi
+uk
+bg
+sr
+te
+af
+hy
+as
+ast
+eu
+be
+bs
+ca
+ceb
+hr
+arz
+et
+gl
+ka
+gu
+is
+jv
+kn
+kk
+lv
+lt
+lb
+mk
+mai
+mt
+mr
+acm
+ary
+ars
+ne
+az
+apc
+uz
+nb
+nn
+oc
+or
+pag
+scn
+sd
+si
+sk
+sl
+ajp
+sw
+tl
+acq
+sq
+aeb
+vec
+war
+cy
+fa
+""".split('\n'))
+
+for code,pos in CODE
+  if not ALI.has code
+    console.log ZH[pos], code
 # for i from AI_LANG
 #   console.log i
   #, ZH[CODE_ID.get(i)[
