@@ -1,14 +1,6 @@
 export default {
-  no: "nn",
-  "zh-TW": "zh_tw",
+  iw: "he", // 希伯来语
+  fil: "tl", // 菲律宾语
+  no: "nb", // 挪威语
+  "zh-TW": "zh_tw", // 正體中文
 };
-
-export const MISS = new Set([
-  "ga", // 爱尔兰语
-  "su", // 巽他语
-  "pa", // 旁遮普语
-  "ml", // 马拉雅拉姆语
-  "ht", // 海地克里奥尔语
-  "tg", // 塔吉克语
-  "yi", // 意第绪语
-]);
