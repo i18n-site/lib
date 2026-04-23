@@ -2,13 +2,35 @@
 
 import gemini from "./gemini.js";
 import qwen from "./qwen3Mt.js";
+import Table from "cli-table3";
 
 const g_map = new Map(gemini.map(([name, code]) => [code, name])),
   q_map = new Map(qwen.map(([en, zh, code]) => [code, [zh, en]])),
   all_codes = new Set([...g_map.keys(), ...q_map.keys()]),
   common = [],
   missing_qwen = [],
-  missing_gemini = [];
+  missing_gemini = [],
+  new_table = () =>
+    new Table({
+      chars: {
+        top: "",
+        "top-mid": "",
+        "top-left": "",
+        "top-right": "",
+        bottom: "",
+        "bottom-mid": "",
+        "bottom-left": "",
+        "bottom-right": "",
+        left: "",
+        "left-mid": "",
+        mid: "",
+        "mid-mid": "",
+        right: "",
+        "right-mid": "",
+        middle: " ",
+      },
+      style: { "padding-left": 0, "padding-right": 0 },
+    });
 
 for (const code of all_codes) {
   const g_name = g_map.get(code),
@@ -27,7 +49,9 @@ for (const code of all_codes) {
 
 const log = (title, data) => {
   console.log("\n=== " + title + " ===");
-  console.table(data);
+  const t = new_table();
+  t.push(...data);
+  console.log(t.toString());
 };
 
 log("共同支持", common);
