@@ -1,29 +1,23 @@
-export default (token, model = "qwen-mt-flash") =>
-  async (from_lang, to_lang, txt) => {
-    const response = await fetch(
-      "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
-      {
+const URL = "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+  HEADERS = { "Content-Type": "application/json" };
+
+export default (token) => {
+  const headers = { ...HEADERS, Authorization: "Bearer " + token };
+  return async (from_lang, to_lang, txt) => {
+    const response = await fetch(URL, {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
+        headers,
         body: JSON.stringify({
-          model,
+          model: "qwen-mt-flash",
           messages: [{ role: "user", content: txt }],
           translation_options: {
             source_lang: from_lang || "auto",
             target_lang: to_lang,
           },
         }),
-      },
-    );
+      }),
+      { choices } = await response.json();
 
-    if (!response.ok) {
-      const errorBody = await response.text();
-      throw new Error(`HTTP ${response.status}: ${errorBody}`);
-    }
-
-    const data = await response.json();
-    return data.choices?.[0]?.message?.content;
+    return choices?.[0]?.message?.content;
   };
+};
