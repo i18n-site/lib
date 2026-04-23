@@ -1,6 +1,6 @@
-#!/usr/bin/env coffee
+#!/usr/bin/env bun
 
-export default """English,英语,en
+const li = `English,英语,en
 Chinese,简体中文,zh
 Traditional Chinese,繁体中文,zh-TW
 Russian,俄语,ru
@@ -91,4 +91,8 @@ Tunisian Arabic,突尼斯阿拉伯语,aeb
 Venetian,威尼斯语,vec
 Waray,瓦莱语,war
 Welsh,威尔士语,cy
-Western Persian,西波斯语,fa""".split('\n').map((i)=>i.split(','))
+Western Persian,西波斯语,fa`
+  .split("\n")
+  .map((i) => i.split(","));
+
+export default li;
