@@ -63,7 +63,7 @@ export default [
     "id",
     "Indonesian",
     "印度尼西亚语",
-    "Bahasa Indonesia"
+    "Indonesia"
   ],
   [
     "tr",

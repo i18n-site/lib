@@ -18,7 +18,7 @@ export default new Map([
   ["hi", ["印地语", "Hindi", "हिन्दी"]],
   ["nl", ["荷兰语", "Dutch", "Nederlands"]],
   ["tr", ["土耳其语", "Turkish", "Türkçe"]],
-  ["id", ["印度尼西亚语", "Indonesian", "Bahasa Indonesia"]],
+  ["id", ["印度尼西亚语", "Indonesian", "Indonesia"]],
   ["bn", ["孟加拉语", "Bengali", "বাংলা"]],
   ["pl", ["波兰语", "Polish", "Polski"]],
   ["da", ["丹麦语", "Danish", "Dansk"]],

@@ -9,7 +9,7 @@ export default [
   "Русский",
   "한국어",
   "Español",
-  "Bahasa Indonesia",
+  "Indonesia",
   "Türkçe",
   "العربية",
   "Nederlands",
