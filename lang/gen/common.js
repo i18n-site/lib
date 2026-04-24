@@ -63,7 +63,7 @@ export default [
     "id",
     "Indonesian",
     "印度尼西亚语",
-    "Indonesia"
+    "Bahasa Indonesia"
   ],
   [
     "tr",
@@ -105,7 +105,7 @@ export default [
     "no",
     "Norwegian Bokmål",
     "书面挪威语",
-    "Norsk bokmål"
+    "Norsk Bokmål"
   ],
   [
     "th",
@@ -141,13 +141,13 @@ export default [
     "ms",
     "Malay",
     "马来语",
-    "bahasa Melayu"
+    "Bahasa Melayu"
   ],
   [
     "mr",
     "Marathi",
     "马拉地语",
-    "मराठी"
+    "मরাठी"
   ],
   [
     "af",
@@ -177,7 +177,7 @@ export default [
     "cs",
     "Czech",
     "捷克语",
-    "čeština"
+    "Čeština"
   ],
   [
     "ta",
@@ -189,7 +189,7 @@ export default [
     "fi",
     "Finnish",
     "芬兰语",
-    "suomi"
+    "Suomi"
   ],
   [
     "pt",
@@ -207,7 +207,7 @@ export default [
     "ca",
     "Catalan",
     "加泰罗尼亚语",
-    "català"
+    "Català"
   ],
   [
     "gu",
@@ -219,7 +219,7 @@ export default [
     "kk",
     "Kazakh",
     "哈萨克语",
-    "Қазақ тілі"
+    "Қазақ Тілі"
   ],
   [
     "el",
@@ -231,13 +231,13 @@ export default [
     "hu",
     "Hungarian",
     "匈牙利语",
-    "magyar"
+    "Magyar"
   ],
   [
     "uk",
     "Ukrainian",
     "乌克兰语",
-    "українська"
+    "Українська"
   ],
   [
     "te",
@@ -249,7 +249,7 @@ export default [
     "sk",
     "Slovak",
     "斯洛伐克语",
-    "slovenčina"
+    "Slovenčina"
   ],
   [
     "sw",
@@ -279,7 +279,7 @@ export default [
     "hr",
     "Croatian",
     "克罗地亚语",
-    "hrvatski"
+    "Hrvatski"
   ],
   [
     "lb",
@@ -303,7 +303,7 @@ export default [
     "lt",
     "Lithuanian",
     "立陶宛语",
-    "lietuvių kalba"
+    "Lietuvių Kalba"
   ],
   [
     "or",
@@ -315,7 +315,7 @@ export default [
     "sr",
     "Serbian",
     "塞尔维亚语",
-    "Српски језик"
+    "Српски Језик"
   ],
   [
     "be",
@@ -333,7 +333,7 @@ export default [
     "my",
     "Burmese",
     "缅甸语",
-    "ဗမာစာ"
+    "မြန်မာစာ"
   ],
   [
     "sd",
@@ -345,13 +345,13 @@ export default [
     "sl",
     "Slovenian",
     "斯洛文尼亚语",
-    "slovenščina"
+    "Slovenščina"
   ],
   [
     "as",
     "Assamese",
     "阿萨姆语",
-    "অসমী亚"
+    "অসমীয়া"
   ],
   [
     "et",
@@ -363,7 +363,7 @@ export default [
     "lv",
     "Latvian",
     "拉脱维亚语",
-    "latviešu valoda"
+    "Latviešu Valoda"
   ],
   [
     "km",
@@ -381,7 +381,7 @@ export default [
     "hy",
     "Armenian",
     "亚美尼亚语",
-    "հայերեն"
+    "Հայերեն"
   ],
   [
     "bs",
@@ -411,7 +411,7 @@ export default [
     "mk",
     "Macedonian",
     "马其顿语",
-    "македонски јазик"
+    "Македонски Јазик"
   ],
   [
     "mt",
