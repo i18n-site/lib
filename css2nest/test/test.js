@@ -51,11 +51,9 @@ from_css = `.form-group>input,
   }
 }`;
 
-except = `.form-group {
-  &>input, &>textarea {
-    width: 100%;
-    padding: 8px;
-  }
+except = `.form-group>input, .form-group>textarea {
+  width: 100%;
+  padding: 8px;
 }
 
 .button-group {
@@ -106,14 +104,12 @@ from_css = `:host > v-scroll {
   color: green;
 }`;
 
-except = `:host {
-  &>v-scroll {
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    &>b {
-      display: block;
-    }
+except = `:host>v-scroll {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  &>b {
+    display: block;
   }
 }
 
@@ -131,3 +127,20 @@ console.log("--- test: top-level pseudo selectors ---");
 const out2 = css2nest(from_css);
 console.log(out2);
 equal(out2, except);
+
+console.log("--- test: nested classes ---");
+const css3 = ".toast { color: grey; } .toast.ERR { color: red; }";
+const expect3 = ".toast {\n  color: grey;\n  &.ERR {\n    color: red;\n  }\n}";
+console.log(css2nest(css3));
+equal(css2nest(css3), expect3);
+
+const css4 = ".animated { color: blue; } .animated.fadeInLeft { color: red; }";
+const expect4 = ".animated {\n  color: blue;\n  &.fadeInLeft {\n    color: red;\n  }\n}";
+console.log(css2nest(css4));
+equal(css2nest(css4), expect4);
+
+console.log("--- test: auto flatten empty parent ---");
+const css5 = ".a.b, .a.c { color: red; }";
+const expect5 = ".a.b, .a.c {\n  color: red;\n}";
+console.log(css2nest(css5));
+equal(css2nest(css5), expect5);
