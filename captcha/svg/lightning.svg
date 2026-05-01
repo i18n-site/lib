@@ -1,3 +1,5 @@
-<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-  <path d="M600 50 L200 550 H500 L400 950 L824 400 H524 Z" fill="#000" stroke="#000" stroke-width="4" stroke-linejoin="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <g transform="translate(-34.133, -21.333) scale(1.067)">
+    <path stroke="#000" stroke-linejoin="round" stroke-width="4" d="M600 50 200 550h300L400 950l424-550H524Z"/>
+  </g>
 </svg>

@@ -2,6 +2,7 @@
 import { optimize } from "svgo";
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { resize } from "./sh/resize.js";
 
 const SVG_DIR = "./svg",
   OUT_FILE = "./src/SVG.js",
@@ -19,8 +20,12 @@ const SVG_DIR = "./svg",
   files = readdirSync(SVG_DIR).filter((f) => f.endsWith(".svg")),
   sizes = new Map(),
   compress = (file) => {
-    const path = join(SVG_DIR, file),
-      data = readFileSync(path, "utf8"),
+    const path = join(SVG_DIR, file);
+    
+    // First, resize the SVG
+    resize(path, file);
+    
+    const data = readFileSync(path, "utf8"),
       result = optimize(data, { path, plugins: PLUGINS }),
       vBox = result.data.match(/viewBox="([^"]+)"/)?.[1],
       inner = result.data
