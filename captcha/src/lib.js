@@ -103,19 +103,20 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
  * 生成点击验证码
  * @param {number} w - 画布宽度
  * @param {number} h - 画布高度
- * @param {number} num - 图标数量
- * @returns {[string, string[], [number, number, number][]]} [SVG字符串, 选中的图标内容列表, 图标位置列表[[左上角x, 左上角y, 实际边长], ...]]
+ * @param {number} num - 目标图标数量
+ * @returns {[string, string[], [number, number, number][]]} [SVG字符串, 选中的目标图标原始SVG内容列表, 图标位置列表[[左上角x, 左上角y, 边长], ...]]
  */
 export default (w = 300, h = 300, num = 3) => {
-  const total = num + 3,
-    cols = Math.ceil(Math.sqrt(total * (w / h))),
-    rows = Math.ceil(total / cols),
-    cell_w = w / cols,
-    cell_h = h / rows,
+  const cell_size = 50,
     positions = [],
     selected = [],
     rendered = [],
     defs = [],
+    grid_w = Math.floor(w / cell_size),
+    grid_h = Math.floor(h / cell_size),
+    total = num + 3,
+    grid_slots = shuffle(Array.from({ length: grid_w * grid_h }, (_, i) => i)).slice(0, total),
+    icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total),
     bg_h = random(0, 360),
     ico_h_base = (bg_h + 160) % 360;
 
@@ -184,25 +185,23 @@ export default (w = 300, h = 300, num = 3) => {
       ')"/>';
   });
 
-  const grid_slots = shuffle(Array.from({ length: cols * rows }, (_, i) => i)).slice(0, total),
-    icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total);
-
   for (let i = 0; i < total; ++i) {
     const slot = grid_slots[i],
-      gx = slot % cols,
-      gy = Math.floor(slot / cols),
+      gx = slot % grid_w,
+      gy = Math.floor(slot / grid_w),
       idx = icon_indices[i],
-      // 从 SVG.js 获取渲染函数和原始路径
       [render_fn, raw_svg] = SVGS[idx],
       m_id = "m" + i,
       g_id = "g" + i,
-      // 优化：减小图标比例 (45% - 65%)
-      i_size = Math.floor(Math.min(cell_w, cell_h) * (random(45, 65) / 100)),
-      // 优化：极大增加随机偏移范围
-      max_jx = (cell_w - i_size) / 2 - 2,
-      max_jy = (cell_h - i_size) / 2 - 2,
-      x = gx * cell_w + (cell_w - i_size) / 2 + random(-max_jx, max_jx),
-      y = gy * cell_h + (cell_h - i_size) / 2 + random(-max_jy, max_jy),
+      // 图标大小必须小于格子
+      i_size = random(32, 42),
+      // 居中位置偏移
+      offset = (cell_size - i_size) / 2,
+      // 干扰抖动，确保不超出格子边界：抖动范围限制在 offset 内
+      jx = random(-Math.floor(offset), Math.floor(offset)),
+      jy = random(-Math.floor(offset), Math.floor(offset)),
+      x = gx * cell_size + offset + jx,
+      y = gy * cell_size + offset + jy,
       ico_h = (ico_h_base + random(-30, 30)) % 360;
 
     if (i < num) {
@@ -214,10 +213,10 @@ export default (w = 300, h = 300, num = 3) => {
     const [mask_str, group_str] = render_fn(
       x,
       y,
-      random(-35, 35),
+      random(-30, 30),
       i_size,
-      random(-10, 10),
-      random(-10, 10),
+      random(-8, 8),
+      random(-8, 8),
       (random(35, 55) / 100).toFixed(2),
       g_id,
       m_id,
