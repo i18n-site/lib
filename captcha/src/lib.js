@@ -2,32 +2,36 @@ import SVGS from "./SVG.js";
 import PATTERNS from "./PATTERNS.js";
 
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
-  grad = (id, h, l_min, l_max, op = 1) => {
-    const s = rand(70, 95),
-      c1 = "hsl(" + h + "," + s + "%," + l_min + "%)",
-      c2 = "hsl(" + ((h + rand(20, 40)) % 360) + "," + s + "%," + ((l_min + l_max) / 2) + "%)",
-      c3 = "hsl(" + ((h + rand(40, 60)) % 360) + "," + s + "%," + l_max + "%)";
-    return (
-      '<linearGradient id="' +
-      id +
-      '" x1="0%" y1="0%" x2="100%" y2="100%">' +
-      '<stop offset="0%" stop-color="' +
-      c1 +
-      '" stop-opacity="' +
-      op +
-      '"/>' +
-      '<stop offset="50%" stop-color="' +
-      c2 +
-      '" stop-opacity="' +
-      op +
-      '"/>' +
-      '<stop offset="100%" stop-color="' +
-      c3 +
-      '" stop-opacity="' +
-      op +
-      '"/>' +
-      "</linearGradient>"
-    );
+  PALETTES = [
+    [200, 280], // Cold (Blue-Purple)
+    [0, 60],   // Warm (Red-Orange)
+    [150, 210], // Nature (Green-Cyan)
+    [280, 340], // Candy (Pink-Magenta)
+    [40, 90]    // Earth (Gold-Brown)
+  ],
+  grad = (id, h, l_min, l_max, op = 1, seg = 0) => {
+    const s = rand(75, 95);
+    let stops = "";
+    if (seg < 2) {
+      // Smooth gradient with subtle vibrance shift
+      [0, 0.5, 1].forEach((v, i) => {
+        const hh = (h + i * 15) % 360,
+          ll = l_min + (l_max - l_min) * v;
+        stops += `<stop offset="${v * 100}%" stop-color="hsl(${hh},${s}%,${ll}%)" stop-opacity="${op}"/>`;
+      });
+    } else {
+      // Artistic segments: alternating light/dark or hue shifts
+      for (let i = 0; i < seg; i++) {
+        const hh = (h + i * (360 / seg) * 0.2) % 360,
+          ll = i % 2 === 0 ? rand(l_min, l_min + 15) : rand(l_max - 15, l_max),
+          c = `hsl(${hh},${s}%,${ll}%)`;
+        stops += `<stop offset="${(i * 100) / seg}%" stop-color="${c}" stop-opacity="${op}"/><stop offset="${((i + 1) * 100) / seg}%" stop-color="${c}" stop-opacity="${op}"/>`;
+      }
+    }
+    const a = rand(0, 360),
+      x1 = Math.round(50 + 50 * Math.cos((a * Math.PI) / 180)),
+      y1 = Math.round(50 + 50 * Math.sin((a * Math.PI) / 180));
+    return `<linearGradient id="${id}" x1="${x1}%" y1="${y1}%" x2="${100 - x1}%" y2="${100 - y1}%">${stops}</linearGradient>`;
   },
   rgba = (h, l, op) => "hsla(" + h + "," + rand(60, 90) + "%," + l + "%," + op + ")",
   shuffle = (arr) => {
@@ -87,8 +91,12 @@ export default (w = 300, h = 300, num = 3) => {
     total = num + rand(1, 4),
     grid_slots = shuffle(Array.from({ length: grid_w * grid_h }, (_, i) => i)).slice(0, total),
     icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total),
-    bg_h = rand(0, 360),
-    ico_h_base = (bg_h + 160) % 360,
+    
+    // Select a unified palette for the whole captcha
+    palette = PALETTES[rand(0, PALETTES.length - 1)],
+    bg_h = rand(palette[0], palette[1]),
+    ico_h_base = (bg_h + 180) % 360, // Use complementary or high-contrast hue
+
     positions = [],
     selected = [],
     rendered = [],
@@ -96,10 +104,12 @@ export default (w = 300, h = 300, num = 3) => {
     [p_size, path_d] = PATTERNS[rand(0, PATTERNS.length - 1)];
 
   defs.push(
-    grad("bg0", bg_h, 85, 98),
-    grad("bg1", (bg_h + 30) % 360, 75, 90),
-    grad("bg2", (bg_h + 60) % 360, 60, 95),
-    '<pattern id="p" patternTransform="scale(0.8) rotate(' + rand(0, 360) + ')" width="' + p_size + '" height="' + p_size + '" patternUnits="userSpaceOnUse"><path fill="url(#bg2)" d="' + path_d + '"/></pattern>'
+    grad("bg0", bg_h, 92, 98), // Very soft pastel background
+    grad("bg1", (bg_h + 30) % 360, 85, 94),
+    grad("bg2", (bg_h + 60) % 360, 70, 90),
+    '<pattern id="p" patternTransform="scale(0.8) rotate(' + rand(0, 360) + ')" width="' + p_size + '" height="' + p_size + '" patternUnits="userSpaceOnUse"><path fill="url(#bg2)" d="' + path_d + '"/></pattern>',
+    // Add a professional drop shadow filter
+    '<filter id="f" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/><feOffset dx="1" dy="1.5" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>'
   );
 
   const layer_count = 4, waves = [];
@@ -143,7 +153,7 @@ export default (w = 300, h = 300, num = 3) => {
       selected.push(raw_svg);
     }
 
-    defs.push(grad(g_id, ico_h, 5, 45));
+    defs.push(grad(g_id, ico_h, 5, 45, 1, rand(2, 4)));
     const [mask_str, group_str] = render_fn(x, y, rand(-30, 30), i_sz, rand(-8, 8), rand(-8, 8), (rand(35, 55) / 100).toFixed(2), g_id, m_id);
     defs.push(mask_str);
     rendered.push(group_str);
