@@ -1,25 +1,25 @@
 {
   "name": "@3-/captcha",
   "version": "0.1.0",
-  "keywords": [],
   "description": "",
+  "keywords": [],
+  "homepage": "https://atomgit.com/i18n/lib/tree/dev/captcha",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
   "repository": {
     "type": "git",
     "url": "git+https://atomgit.com/i18n/lib.git"
   },
-  "homepage": "https://atomgit.com/i18n/lib/tree/dev/captcha",
-  "author": "i18n.site@gmail.com",
-  "license": "MulanPSL-2.0",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
   "exports": {
     ".": "./lib/lib.js",
     "./*": "./lib/*"
   },
-  "files": [
-    "lib/*"
-  ],
+  "scripts": {},
   "devDependencies": {
     "svgo": "^4.0.1"
-  },
-  "scripts": {},
-  "type": "module"
+  }
 }

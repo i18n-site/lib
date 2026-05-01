@@ -14,10 +14,13 @@ const SMALL_ICONS = {
 const normalize = (file) => {
   const path = join(SVG_DIR, file);
   let data = readFileSync(path, "utf8");
-  
+
   // Strip previous normalization if any
   data = data.replace(/<g transform="scale\(10\.24\)">\n\s*([\s\S]*?)\n\s*<\/g>/, "$1");
-  data = data.replace(/<g transform="translate\([^)]+\) scale\([^)]+\)">\n\s*([\s\S]*?)\n\s*<\/g>/, "$1");
+  data = data.replace(
+    /<g transform="translate\([^)]+\) scale\([^)]+\)">\n\s*([\s\S]*?)\n\s*<\/g>/,
+    "$1",
+  );
 
   if (SMALL_ICONS[file]) {
     const { scale, tx, ty } = SMALL_ICONS[file];
@@ -35,6 +38,6 @@ const normalize = (file) => {
   }
 };
 
-const files = readdirSync(SVG_DIR).filter(f => f.endsWith(".svg"));
+const files = readdirSync(SVG_DIR).filter((f) => f.endsWith(".svg"));
 files.forEach(normalize);
 console.log("Internal normalization complete.");
