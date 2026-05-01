@@ -19,64 +19,52 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
       op +
       '"/></linearGradient>'
     );
+  },
+  SHUFFLE = (arr) => {
+    for (let i = arr.length - 1; i > 0; --i) {
+      const j = random(0, i);
+      [arr[i], arr[arr[j] === undefined ? i : j]] = [arr[j], arr[i]];
+    }
+    return arr;
   };
 
 export const captchaGen = (w = 300, h = 300, num = 3) => {
-  const icon_size = 45,
+  const icon_size = 48,
     positions = [],
     selected = [],
     rendered = [],
-    defs = [];
+    defs = [],
+    // Grid logic: Divide w, h by icon_size to get available slots
+    grid_w = Math.floor(w / icon_size),
+    grid_h = Math.floor(h / icon_size),
+    grids = [];
 
-  defs.push(GEN_GRAD("bg_g", 85, 95));
+  for (let i = 0; i < grid_w * grid_h; ++i) grids.push(i);
+  SHUFFLE(grids);
+
+  // Background: Ultra-light for max contrast
+  defs.push(GEN_GRAD("bg_g", 90, 97));
   let bg_body = '<rect width="' + w + '" height="' + h + '" fill="url(#bg_g)"/>';
 
-  for (let i = 0; i < 15; ++i) {
-    const x1 = random(0, w),
-      y1 = random(0, h),
-      x2 = random(0, w),
-      y2 = random(0, h);
-    bg_body +=
-      '<line x1="' +
-      x1 +
-      '" y1="' +
-      y1 +
-      '" x2="' +
-      x2 +
-      '" y2="' +
-      y2 +
-      '" stroke="' +
-      HSL(70, 80) +
-      '" stroke-width="' +
-      random(1, 2) +
-      '" stroke-opacity="0.5"/>';
-  }
+  // Ensure unique icons by shuffling SVGS and picking first N
+  const icon_indices = SHUFFLE(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, num);
 
   for (let i = 0; i < num; ++i) {
-    const idx = random(0, SVGS.length - 1),
+    const idx = icon_indices[i],
       content = SVGS[idx],
       g_id = "g" + i,
-      m_id = "m" + i;
-    let x,
-      y,
-      collision,
-      attempts = 0;
-
-    do {
-      x = random(20, w - icon_size - 20);
-      y = random(20, h - icon_size - 20);
-      collision = positions.some((p) => {
-        const dx = p[0] - x,
-          dy = p[1] - y;
-        return Math.sqrt(dx * dx + dy * dy) < icon_size * 0.85;
-      });
-      attempts++;
-    } while (collision && attempts < 20);
+      m_id = "m" + i,
+      grid_idx = grids.pop(),
+      // Position based on grid with a small random jitter
+      jitter = 4,
+      x = (grid_idx % grid_w) * icon_size + random(-jitter, jitter),
+      y = Math.floor(grid_idx / grid_w) * icon_size + random(-jitter, jitter);
 
     positions.push([x, y]);
     selected.push(content);
 
-    defs.push(GEN_GRAD(g_id, 20, 45));
+    // High contrast icons: Very dark (10-30% lightness)
+    defs.push(GEN_GRAD(g_id, 10, 30));
     defs.push(
       '<mask id="' +
         m_id +
@@ -85,9 +73,9 @@ export const captchaGen = (w = 300, h = 300, num = 3) => {
         "</g></mask>",
     );
 
-    const rot = random(-30, 30),
-      scale = random(10, 13) / 10,
-      op = random(25, 50) / 100; // Transparency: 0.25 to 0.5 (not exceeding 50%)
+    const rot = random(-25, 25),
+      scale = random(10, 12) / 10,
+      op = random(40, 50) / 100; // Transparency limited to 40-50% for visibility
 
     rendered.push(
       '<g transform="translate(' +
@@ -118,9 +106,10 @@ export const captchaGen = (w = 300, h = 300, num = 3) => {
     );
   }
 
+  // Refined filter for maximum clarity
   const filter =
-    '<filter id="f" x="-20%" y="-20%" width="140%" height="140%">' +
-    '<feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="blur"/>' +
+    '<filter id="f" x="-10%" y="-10%" width="120%" height="120%">' +
+    '<feGaussianBlur in="SourceGraphic" stdDeviation="0.6" result="blur"/>' +
     '<feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo"/>' +
     '<feComposite in="SourceGraphic" in2="goo" operator="atop"/>' +
     "</filter>";
