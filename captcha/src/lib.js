@@ -1,5 +1,5 @@
 import SVGS from "./SVG.js";
-import PATTERNS from "./PATTERNS.js";
+import { PATTERNS } from "./PATTERNS.js";
 
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
   grad = (id, h, l_min, l_max, op = 1) => {

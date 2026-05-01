@@ -1,0 +1,66 @@
+
+  ! eslint(no-useless-escape): Unnecessary escape character '"'
+    ,-[svgCompress.js:44:146]
+ 43 |     '  \'<mask id="\' + mask + \'"><g fill="white" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">\' + path + "</g></mask>",\n' +
+ 44 |     '  \'<g transform="translate(\' + x + "," + y + ") rotate(" + rot + "," + (sz / 2) + "," + (sz / 2) + ") skewX(" + sx + ") skewY(" + sy + \')\"><svg viewBox="\' + view + \'" width="\' + sz + \'" height="\' + sz + \'" opacity="\' + op + \'"><rect width="\' + w + \'" height="\' + h + \'" fill="url(#\' + grad + \')" mask="url(#\' + mask + \')"/></svg></g>\'\n' +
+    :                                                                                                                                                  ^^
+ 45 |     "], raw];\n\nexport default [\n",
+    `----
+  help: Replace `\"` with `"`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+    ,-[src/lib.js:42:11]
+ 41 |     const n = k.length - 1,
+ 42 |       a = new Array(n),
+    :           ^^^^^^^^^^^^
+ 43 |       b = new Array(n),
+    `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+    ,-[src/lib.js:43:11]
+ 42 |       a = new Array(n),
+ 43 |       b = new Array(n),
+    :           ^^^^^^^^^^^^
+ 44 |       c = new Array(n),
+    `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+    ,-[src/lib.js:44:11]
+ 43 |       b = new Array(n),
+ 44 |       c = new Array(n),
+    :           ^^^^^^^^^^^^
+ 45 |       r = new Array(n),
+    `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+    ,-[src/lib.js:45:11]
+ 44 |       c = new Array(n),
+ 45 |       r = new Array(n),
+    :           ^^^^^^^^^^^^
+ 46 |       p1 = new Array(n),
+    `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+    ,-[src/lib.js:46:12]
+ 45 |       r = new Array(n),
+ 46 |       p1 = new Array(n),
+    :            ^^^^^^^^^^^^
+ 47 |       p2 = new Array(n);
+    `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+  ! eslint-plugin-unicorn(no-new-array): Do not use `new Array(singleArgument)`.
+    ,-[src/lib.js:47:12]
+ 46 |       p1 = new Array(n),
+ 47 |       p2 = new Array(n);
+    :            ^^^^^^^^^^^^
+ 48 |     a[0] = 0; b[0] = 2; c[0] = 1; r[0] = k[0] + 2 * k[1];
+    `----
+  help: It's not clear whether the argument is meant to be the length of the array or the only element. If the argument is the array's length, consider using `Array.from({ length: n })`. If the argument is the only element, use `[element]`.
+
+Found 7 warnings and 0 errors.
+Finished in 3ms on 8 files with 93 rules using 12 threads.
