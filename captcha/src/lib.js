@@ -1,4 +1,4 @@
-import SVGS from "./SVG.js";
+import { SVGS } from "./SVG.js";
 import { PATTERNS } from "./PATTERNS.js";
 
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
@@ -39,12 +39,12 @@ const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
   },
   ctrl = (k) => {
     const n = k.length - 1,
-      a = new Array(n),
-      b = new Array(n),
-      c = new Array(n),
-      r = new Array(n),
-      p1 = new Array(n),
-      p2 = new Array(n);
+      a = Array.from({ length: n }),
+      b = Array.from({ length: n }),
+      c = Array.from({ length: n }),
+      r = Array.from({ length: n }),
+      p1 = Array.from({ length: n }),
+      p2 = Array.from({ length: n });
     a[0] = 0; b[0] = 2; c[0] = 1; r[0] = k[0] + 2 * k[1];
     for (let i = 1; i < n - 1; ++i) {
       a[i] = 1; b[i] = 4; c[i] = 1; r[i] = 4 * k[i] + 2 * k[i + 1];
