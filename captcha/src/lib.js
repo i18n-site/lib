@@ -3,13 +3,12 @@ import PATTERNS from "./PATTERNS.js";
 
 const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
   grad = (id, h, l_min, l_max, op = 1) => {
-    // 采用三段渐变，并让色相在小范围内滑动，色彩更丰满
     const h1 = h,
       h2 = (h + random(20, 40)) % 360,
       h3 = (h + random(40, 60)) % 360,
       s = random(70, 95),
       c1 = "hsl(" + h1 + "," + s + "%," + l_min + "%)",
-      c2 = "hsl(" + h2 + "," + s + "%," + (l_min + l_max) / 2 + "%)",
+      c2 = "hsl(" + h2 + "," + s + "%," + ((l_min + l_max) / 2) + "%)",
       c3 = "hsl(" + h3 + "," + s + "%," + l_max + "%)";
     return (
       '<linearGradient id="' +
@@ -96,15 +95,19 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
           y[i + 1],
       );
     }
-    d.push(
-      "C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z",
-    );
+    d.push("C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z");
     return d.join(" ");
   };
 
+/**
+ * 生成点击验证码
+ * @param {number} w - 画布宽度
+ * @param {number} h - 画布高度
+ * @param {number} num - 图标数量
+ * @returns {[string, string[], [number, number, number][]]} [SVG字符串, 选中的图标内容列表, 图标位置列表[[左上角x, 左上角y, 实际边长], ...]]
+ */
 export default (w = 300, h = 300, num = 3) => {
   const total = num + 3,
-    // 数学优化：根据数量动态计算行列，避免死板的固定网格
     cols = Math.ceil(Math.sqrt(total * (w / h))),
     rows = Math.ceil(total / cols),
     cell_w = w / cols,
@@ -114,10 +117,8 @@ export default (w = 300, h = 300, num = 3) => {
     rendered = [],
     defs = [],
     bg_h = random(0, 360),
-    // 视觉美学：图标色相与背景色相对冲（互补色逻辑）
     ico_h_base = (bg_h + 160) % 360;
 
-  // 背景渐变
   defs.push(
     grad("bg0", bg_h, 85, 98),
     grad("bg1", (bg_h + 30) % 360, 75, 90),
@@ -137,7 +138,6 @@ export default (w = 300, h = 300, num = 3) => {
       '"/></pattern>',
   );
 
-  // 多层视差波浪
   const layer_count = 4,
     waves = [];
   for (let l = 0; l < layer_count; ++l) {
@@ -156,7 +156,11 @@ export default (w = 300, h = 300, num = 3) => {
 
   let bg_body = '<rect width="' + w + '" height="' + h + '" fill="url(#bg0)" stroke="none"/>';
   bg_body +=
-    '<rect width="' + w + '" height="' + h + '" fill="url(#p)" fill-opacity="0.12" stroke="none"/>';
+    '<rect width="' +
+    w +
+    '" height="' +
+    h +
+    '" fill="url(#p)" fill-opacity="0.12" stroke="none"/>';
   shuffle(waves).forEach((d, i) => {
     const op = (0.15 + i * 0.1).toFixed(2),
       stroke = rgba((bg_h + 120) % 360, 80, 0.1);
@@ -180,7 +184,6 @@ export default (w = 300, h = 300, num = 3) => {
       ')"/>';
   });
 
-  // 抖动采样分布 (Jittered Sampling) - O(N)
   const grid_slots = shuffle(Array.from({ length: cols * rows }, (_, i) => i)).slice(0, total),
     icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total);
 
@@ -189,68 +192,38 @@ export default (w = 300, h = 300, num = 3) => {
       gx = slot % cols,
       gy = Math.floor(slot / cols),
       idx = icon_indices[i],
-      content = SVGS[idx],
-      v_box = content.match(/viewBox="([^"]+)"/)[1],
-      inner = content
-        .replace(/<svg[^>]*>|<\/svg>/g, "")
-        .replace(/stroke="#000"/g, 'stroke="white"')
-        .replace(/fill="#000"/g, 'fill="white"'),
-      [, , v_w, v_h] = v_box.split(" ").map(Number),
+      // 从 SVG.js 获取渲染函数和原始路径
+      [render_fn, raw_svg] = SVGS[idx],
       m_id = "m" + i,
       g_id = "g" + i,
-      // 动态大小：格子的 65% - 85%
-      i_size = Math.floor(Math.min(cell_w, cell_h) * (random(65, 85) / 100)),
-      // 数学居中 + 随机抖动
-      x = gx * cell_w + (cell_w - i_size) / 2 + random(-5, 5),
-      y = gy * cell_h + (cell_h - i_size) / 2 + random(-5, 5),
+      // 优化：减小图标比例 (45% - 65%)
+      i_size = Math.floor(Math.min(cell_w, cell_h) * (random(45, 65) / 100)),
+      // 优化：极大增加随机偏移范围
+      max_jx = (cell_w - i_size) / 2 - 2,
+      max_jy = (cell_h - i_size) / 2 - 2,
+      x = gx * cell_w + (cell_w - i_size) / 2 + random(-max_jx, max_jx),
+      y = gy * cell_h + (cell_h - i_size) / 2 + random(-max_jy, max_jy),
       ico_h = (ico_h_base + random(-30, 30)) % 360;
 
     if (i < num) {
       positions.push([x, y, i_size]);
-      selected.push(content);
+      selected.push(raw_svg);
     }
 
-    defs.push(
-      grad(g_id, ico_h, 5, 45),
-      '<mask id="' +
-        m_id +
-        '"><g fill="white" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">' +
-        inner +
-        "</g></mask>",
+    defs.push(grad(g_id, ico_h, 5, 45));
+    const [mask_str, group_str] = render_fn(
+      x,
+      y,
+      random(-35, 35),
+      i_size,
+      random(-10, 10),
+      random(-10, 10),
+      (random(35, 55) / 100).toFixed(2),
+      g_id,
+      m_id,
     );
-    rendered.push(
-      '<g transform="translate(' +
-        x +
-        "," +
-        y +
-        ") rotate(" +
-        random(-30, 30) +
-        "," +
-        i_size / 2 +
-        "," +
-        i_size / 2 +
-        ") skewX(" +
-        random(-8, 8) +
-        ") skewY(" +
-        random(-8, 8) +
-        ')"><svg viewBox="' +
-        v_box +
-        '" width="' +
-        i_size +
-        '" height="' +
-        i_size +
-        '" opacity="' +
-        random(35, 55) / 100 +
-        '"><rect width="' +
-        v_w +
-        '" height="' +
-        v_h +
-        '" fill="url(#' +
-        g_id +
-        ')" mask="url(#' +
-        m_id +
-        ')"/></svg></g>',
-    );
+    defs.push(mask_str);
+    rendered.push(group_str);
   }
 
   return [
