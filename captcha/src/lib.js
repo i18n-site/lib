@@ -158,13 +158,13 @@ export default (w = 300, h = 300, num = 3) => {
       selected_icons.push(raw_svg);
     }
     def_nodes.push(grad(grad_id, hueNorm(color[0] + rand(-15, 15)), icon_l[0], icon_l[1], 1, rand(0, 3)));
-    const [mask_str, group_str] = render_fn(px, py, rand(-45, 45), icon_sz, rand(-10, 10), rand(-10, 10), (rand(70, 95) / 100).toFixed(2), grad_id, mask_id);
+    const [mask_str, group_str] = render_fn(px, py, rand(-45, 45), icon_sz, rand(-10, 10), rand(-10, 10), (rand(40, 70) / 100).toFixed(2), grad_id, mask_id);
     def_nodes.push(mask_str);
     rendered_groups.push(group_str.replace("<g transform=", '<g filter="url(#' + filter + ') url(#f_distort)" transform='));
   }
 
   return [
-    '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" xmlns="http://www.w3.org/2000/svg">\n  <defs>' + def_nodes.join("") + '</defs>\n  <g filter="url(#f_noise)">\n    ' + bg_body + "\n    " + rendered_groups.join("") + "\n  </g>\n</svg>",
+    '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" xmlns="http://www.w3.org/2000/svg"><defs>' + def_nodes.join("") + '</defs><g filter="url(#f_noise)">' + bg_body + rendered_groups.join("") + "</g></svg>",
     selected_icons,
     positions,
   ];
