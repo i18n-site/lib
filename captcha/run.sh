@@ -11,4 +11,4 @@ set -x
 
 ./build.sh
 
-bun test
+./tests/captcha.js
