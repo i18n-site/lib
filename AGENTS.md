@@ -4,6 +4,12 @@
 
 - 使用 `bun i` 或 `bun i -D` 安装依赖
 
+## 性能
+
+可并发的操作，用 Promise.all 或者 kvrocks 的 mget 、pipeline 等并发机制优化性能
+
+kvrocks 是持久存储，查询不到的东西，无需再去数据库查
+
 ## 代码风格
 
 - 简洁、优雅、高效，用最现代的 js 语法
@@ -12,7 +18,7 @@
 - 抽取重复代码为函数，降低冗余，比如 `cosnt A=new Table({ style: { border: NO_BORDER } }), B=new Table({ style: { border: NO_BORDER } })`，可以写为 `const newTable=()=>new Table({ style: { border: NO_BORDER } }), A=newTable(), B=newTable()`
 - 变量声明：合并多个连续的 `const` 声明为一个语句。要写 `const a=1, b=2, c=3;`，而不是分三行写
 - 异步处理：用 `await`，禁止使用 `.then` 链式调用
-- 不要处理异常，不写 `try...catch`（已有的 try catch 除外）
+- 不要自动生成处理异常代码，不自动写 `try...catch`（`try ... catch` 由人工维护，已有的 `try catch` 不要删除）
 - 纯函数优先：只写纯函数，绝对不要写 class
 - 用箭头函数 `const funcName = () => {}`，不使用 `function` 关键字(生成器除外)；如可用 .bind 绑定参数，就避免定义函数
 - 代码复用：注重复用，多提取小函数，坚决避免出现大量类似或复制粘贴的代码结构
@@ -20,6 +26,7 @@
 - 函数参数不要用对象，不写({a,b,c})，写 (a,b,c)
 - 多值返回，用数组[a,b,c]，而不是{a,b,c}
 - 不用字符串模板(``)，用字符串拼接(+)
+- for 循环，如需序号，用 `++i` 而不是 `i++`
 
 ## 命名规范
 
