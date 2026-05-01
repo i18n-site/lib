@@ -102,6 +102,13 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     );
   };
 
+/**
+ * 生成点击验证码
+ * @param {number} w - 画布宽度
+ * @param {number} h - 画布高度
+ * @param {number} num - 图标数量
+ * @returns {[string, string[], [number, number, number][]]} [SVG字符串, 选中的图标内容列表, 图标位置列表[[左上角x, 左上角y, 实际边长], ...]]
+ */
 export default (w = 300, h = 300, num = 3) => {
   const cell_size = 60,
     positions = [],
@@ -110,7 +117,13 @@ export default (w = 300, h = 300, num = 3) => {
     defs = [],
     grid_w = Math.floor(w / cell_size),
     grid_h = Math.floor(h / cell_size),
-    taken = new Set();
+    total_icons = num + 3,
+    // 直接生成打乱的网格索引，无搜索复杂度
+    grid_indices = shuffle(Array.from({ length: grid_w * grid_h }, (_, i) => i)).slice(
+      0,
+      total_icons,
+    ),
+    icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total_icons);
 
   defs.push(grad("bg0", 85, 98), grad("bg1", 70, 90), grad("bg2", 60, 95));
 
@@ -187,29 +200,9 @@ export default (w = 300, h = 300, num = 3) => {
       ')"/>';
   });
 
-  const icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, num + 3);
-
-  for (let i = 0; i < num + 3; ++i) {
-    let grid_idx = -1,
-      attempts = 0;
-    while (++attempts * (num + 3) < 1000) {
-      const idx = random(0, grid_w * grid_h - 1);
-      if (!taken.has(idx)) {
-        grid_idx = idx;
-        break;
-      }
-    }
-    if (grid_idx === -1) {
-      for (let idx = 0; idx < grid_w * grid_h; ++idx) {
-        if (!taken.has(idx)) {
-          grid_idx = idx;
-          break;
-        }
-      }
-    }
-    if (grid_idx === -1) break;
-
-    const gx = grid_idx % grid_w,
+  for (let i = 0; i < total_icons; ++i) {
+    const grid_idx = grid_indices[i],
+      gx = grid_idx % grid_w,
       gy = Math.floor(grid_idx / grid_w),
       idx = icon_indices[i],
       content = SVGS[idx],
@@ -226,12 +219,6 @@ export default (w = 300, h = 300, num = 3) => {
       skew_y = random(-5, 5),
       op = random(30, 50) / 100,
       g_id = "g" + i;
-
-    taken.add(grid_idx);
-    if (gx > 0) taken.add(grid_idx - 1);
-    if (gx < grid_w - 1) taken.add(grid_idx + 1);
-    if (gy > 0) taken.add(grid_idx - grid_w);
-    if (gy < grid_h - 1) taken.add(grid_idx + grid_w);
 
     if (i < num) {
       positions.push([x, y, icon_size]);
