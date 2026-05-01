@@ -4,341 +4,344 @@
   @3-/lang/ZH.js
   @3-/lang/code/QWEN.js
 
-QW = new Set("""代码
-en
-zh
-zh_tw
-ru
-ja
-ko
-es
-fr
-pt
-de
-it
-th
-vi
-id
-ms
-ar
-hi
-he
-my
-ta
-ur
-bn
-pl
-nl
-ro
-tr
-km
-lo
-yue
-cs
-el
-sv
-hu
-da
-fi
-uk
-bg
-sr
-te
-af
-hy
-as
-ast
-eu
-be
-bs
-ca
-ceb
-hr
-arz
-et
-gl
-ka
-gu
-is
-jv
-kn
-kk
-lv
-lt
-lb
-mk
-mai
-mt
-mr
-acm
-ary
-ars
-ne
-az
-apc
-uz
-nb
-nn
-oc
-or
-pag
-scn
-sd
-si
-sk
-sl
-ajp
-sw
-tl
-acq
-sq
-aeb
-vec
-war
-cy
-fa
-""".split('\n'))
+console.log CODE.indexOf('zh-TW')
 
-ALI = new Set('''语言代码
-ab
-sq
-ak
-ar
-an
-am
-as
-az
-ast
-nch
-ee
-ay
-ga
-et
-oj
-oc
-or
-om
-os
-tpi
-ba
-eu
-be
-ber
-bm
-pag
-bg
-se
-bem
-byn
-bi
-bal
-is
-pl
-bs
-fa
-bho
-br
-ch
-cbk
-cv
-ts
-tt
-da
-shn
-tet
-de
-nds
-sco
-dv
-kdx
-dtp
-ru
-fo
-fr
-sa
-fil
-fj
-fi
-fur
-fvr
-kg
-km
-ngu
-kl
-ka
-gos
-gu
-gn
-kk
-ht
-ko
-ha
-nl
-cnr
-hup
-gil
-rn
-quc
-ky
-gl
-ca
-cs
-kab
-kn
-kr
-csb
-kha
-kw
-xh
-co
-mus
-crh
-tlh
-hbs
-qu
-ks
-ku
-la
-ltg
-lv
-lo
-lt
-li
-ln
-lg
-lb
-rue
-rw
-ro
-rm
-rom
-jbo
-mg
-gv
-mt
-mr
-ml
-ms
-chm
-mk
-mh
-kek
-mai
-mfe
-mi
-mn
-bn
-my
-hmn
-umb
-nv
-af
-ne
-niu
-no
-pmn
-pap
-pa
-pt
-ps
-ny
-tw
-chr
-ja
-sv
-sm
-sg
-si
-hsb
-eo
-sl
-sw
-so
-sk
-tl
-tg
-ty
-te
-ta
-th
-to
-toi
-ti
-tvl
-tyv
-tr
-tk
-wa
-war
-cy
-ve
-vo
-wo
-udm
-ur
-uz
-es
-ie
-fy
-szl
-he
-hil
-haw
-el
-lfn
-sd
-hu
-sn
-ceb
-syr
-su
-hy
-ace
-iba
-ig
-io
-ilo
-iu
-it
-yi
-ia
-hi
-id
-inh
-en
-yo
-vi
-zza
-jv
-zh
-zh-tw
-yue
-zu'''.split('\n'))
-
-
-NOT_EXIST = []
-for code,pos in CODE
-  code = QWEN[code] || code
-  if not QW.has code
-    if ALI.has(code)
-      NOT_EXIST.push(
-        JSON.stringify(code)+', // '+ZH[pos]
-      )
-    else
-      console.log ZH[pos], code
-console.log '[\n'+NOT_EXIST.join('\n')+'\n]'
-# for i from AI_LANG
-#   console.log i
-  #, ZH[CODE_ID.get(i)[
-
-# li = "简体中文、英语、日语、泰语、韩语、印地语、乌克兰语、阿拉伯语、土耳其语、越南语、波兰语、荷兰语、葡萄牙语、意大利语、西班牙语、德语、法语、俄语".split('、')
 #
-# map = new Map
+# QW = new Set("""代码
+# en
+# zh
+# zh_tw
+# ru
+# ja
+# ko
+# es
+# fr
+# pt
+# de
+# it
+# th
+# vi
+# id
+# ms
+# ar
+# hi
+# he
+# my
+# ta
+# ur
+# bn
+# pl
+# nl
+# ro
+# tr
+# km
+# lo
+# yue
+# cs
+# el
+# sv
+# hu
+# da
+# fi
+# uk
+# bg
+# sr
+# te
+# af
+# hy
+# as
+# ast
+# eu
+# be
+# bs
+# ca
+# ceb
+# hr
+# arz
+# et
+# gl
+# ka
+# gu
+# is
+# jv
+# kn
+# kk
+# lv
+# lt
+# lb
+# mk
+# mai
+# mt
+# mr
+# acm
+# ary
+# ars
+# ne
+# az
+# apc
+# uz
+# nb
+# nn
+# oc
+# or
+# pag
+# scn
+# sd
+# si
+# sk
+# sl
+# ajp
+# sw
+# tl
+# acq
+# sq
+# aeb
+# vec
+# war
+# cy
+# fa
+# """.split('\n'))
 #
-# for [k,v] from zh
-#   map.set(v,k)
+# ALI = new Set('''语言代码
+# ab
+# sq
+# ak
+# ar
+# an
+# am
+# as
+# az
+# ast
+# nch
+# ee
+# ay
+# ga
+# et
+# oj
+# oc
+# or
+# om
+# os
+# tpi
+# ba
+# eu
+# be
+# ber
+# bm
+# pag
+# bg
+# se
+# bem
+# byn
+# bi
+# bal
+# is
+# pl
+# bs
+# fa
+# bho
+# br
+# ch
+# cbk
+# cv
+# ts
+# tt
+# da
+# shn
+# tet
+# de
+# nds
+# sco
+# dv
+# kdx
+# dtp
+# ru
+# fo
+# fr
+# sa
+# fil
+# fj
+# fi
+# fur
+# fvr
+# kg
+# km
+# ngu
+# kl
+# ka
+# gos
+# gu
+# gn
+# kk
+# ht
+# ko
+# ha
+# nl
+# cnr
+# hup
+# gil
+# rn
+# quc
+# ky
+# gl
+# ca
+# cs
+# kab
+# kn
+# kr
+# csb
+# kha
+# kw
+# xh
+# co
+# mus
+# crh
+# tlh
+# hbs
+# qu
+# ks
+# ku
+# la
+# ltg
+# lv
+# lo
+# lt
+# li
+# ln
+# lg
+# lb
+# rue
+# rw
+# ro
+# rm
+# rom
+# jbo
+# mg
+# gv
+# mt
+# mr
+# ml
+# ms
+# chm
+# mk
+# mh
+# kek
+# mai
+# mfe
+# mi
+# mn
+# bn
+# my
+# hmn
+# umb
+# nv
+# af
+# ne
+# niu
+# no
+# pmn
+# pap
+# pa
+# pt
+# ps
+# ny
+# tw
+# chr
+# ja
+# sv
+# sm
+# sg
+# si
+# hsb
+# eo
+# sl
+# sw
+# so
+# sk
+# tl
+# tg
+# ty
+# te
+# ta
+# th
+# to
+# toi
+# ti
+# tvl
+# tyv
+# tr
+# tk
+# wa
+# war
+# cy
+# ve
+# vo
+# wo
+# udm
+# ur
+# uz
+# es
+# ie
+# fy
+# szl
+# he
+# hil
+# haw
+# el
+# lfn
+# sd
+# hu
+# sn
+# ceb
+# syr
+# su
+# hy
+# ace
+# iba
+# ig
+# io
+# ilo
+# iu
+# it
+# yi
+# ia
+# hi
+# id
+# inh
+# en
+# yo
+# vi
+# zza
+# jv
+# zh
+# zh-tw
+# yue
+# zu'''.split('\n'))
 #
-# for i,pos in li
-#   console.log map.get(i).toUpperCase(),'=',pos+', // '+i
 #
+# NOT_EXIST = []
+# for code,pos in CODE
+#   code = QWEN[code] || code
+#   if not QW.has code
+#     if ALI.has(code)
+#       NOT_EXIST.push(
+#         JSON.stringify(code)+', // '+ZH[pos]
+#       )
+#     else
+#       console.log ZH[pos], code
+# console.log '[\n'+NOT_EXIST.join('\n')+'\n]'
+# # for i from AI_LANG
+# #   console.log i
+#   #, ZH[CODE_ID.get(i)[
 #
+# # li = "简体中文、英语、日语、泰语、韩语、印地语、乌克兰语、阿拉伯语、土耳其语、越南语、波兰语、荷兰语、葡萄牙语、意大利语、西班牙语、德语、法语、俄语".split('、')
+# #
+# # map = new Map
+# #
+# # for [k,v] from zh
+# #   map.set(v,k)
+# #
+# # for i,pos in li
+# #   console.log map.get(i).toUpperCase(),'=',pos+', // '+i
+# #
+# #
