@@ -57,6 +57,13 @@ export default [
     "0 0 1024 1024",
     1024,
     1024,
+    "<path fill-rule=\"evenodd\" stroke=\"white\" stroke-width=\"4\" d=\"M128 512c0-256 384-256 640 0l192-192v384L768 512c-256 256-640 256-640 0Zm152-72a70 70 0 1 0 0 1Z\"/>",
+    "<svg viewBox=\"0 0 1024 1024\"><path fill-rule=\"evenodd\" stroke=\"#000\" stroke-width=\"4\" d=\"M128 512c0-256 384-256 640 0l192-192v384L768 512c-256 256-640 256-640 0Zm152-72a70 70 0 1 0 0 1Z\"/></svg>"
+  ),
+  F(
+    "0 0 1024 1024",
+    1024,
+    1024,
     "<circle cx=\"512\" cy=\"512\" r=\"450\" fill=\"none\" stroke=\"white\" stroke-width=\"60\"/><circle cx=\"340\" cy=\"400\" r=\"60\"/><circle cx=\"684\" cy=\"400\" r=\"60\"/><path fill=\"none\" stroke=\"white\" stroke-linecap=\"round\" stroke-width=\"60\" d=\"M300 650q212 200 424 0\"/>",
     "<svg viewBox=\"0 0 1024 1024\"><circle cx=\"512\" cy=\"512\" r=\"450\" fill=\"none\" stroke=\"#000\" stroke-width=\"60\"/><circle cx=\"340\" cy=\"400\" r=\"60\"/><circle cx=\"684\" cy=\"400\" r=\"60\"/><path fill=\"none\" stroke=\"#000\" stroke-linecap=\"round\" stroke-width=\"60\" d=\"M300 650q212 200 424 0\"/></svg>"
   ),
