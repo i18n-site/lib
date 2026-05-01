@@ -125,6 +125,11 @@ export default (w = 300, h = 300, num = 3) => {
     grid_slots = shuffleArr(Array.from({ length: grid_width * grid_height }, (_, i) => i)).slice(0, total_count),
     icon_indices = shuffleArr(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total_count),
     
+    // 随机决定背景深浅模式，确保高对比度
+    is_dark_bg = randNum(0, 1) === 1,
+    bg_l = is_dark_bg ? [5, 25] : [80, 98],
+    icon_l = is_dark_bg ? [75, 95] : [10, 45],
+
     // 为整个验证码选择统一色调
     palette = PALETTES[randNum(0, PALETTES.length - 1)],
     bg_hue = randNum(palette[0], palette[1]),
@@ -137,9 +142,9 @@ export default (w = 300, h = 300, num = 3) => {
     [p_size, path_d] = PATTERNS[randNum(0, PATTERNS.length - 1)];
 
   def_nodes.push(
-    gradDef("bg0", bg_hue, 92, 98), // 极浅背景
-    gradDef("bg1", (bg_hue + 30) % 360, 85, 94),
-    gradDef("bg2", (bg_hue + 60) % 360, 70, 90),
+    gradDef("bg0", bg_hue, bg_l[1] - 5, bg_l[1]), // 基础背景
+    gradDef("bg1", (bg_hue + 30) % 360, bg_l[0] + 5, bg_l[0] + 15),
+    gradDef("bg2", (bg_hue + 60) % 360, bg_l[0], bg_l[0] + 10),
     '<pattern id="p" patternTransform="scale(0.8) rotate(' + randNum(0, 360) + ')" width="' + p_size + '" height="' + p_size + '" patternUnits="userSpaceOnUse"><path fill="url(#bg2)" d="' + path_d + '"/></pattern>'
   );
 
@@ -158,9 +163,9 @@ export default (w = 300, h = 300, num = 3) => {
     waves.push(wavePath(points, w, h));
   }
 
-  let bg_body = '<rect width="' + w + '" height="' + h + '" fill="url(#bg0)" stroke="none"/><rect width="' + w + '" height="' + h + '" fill="url(#p)" fill-opacity="0.12" stroke="none"/>';
+  let bg_body = '<rect width="' + w + '" height="' + h + '" fill="url(#bg0)" stroke="none"/><rect width="' + w + '" height="' + h + '" fill="url(#p)" fill-opacity="' + (is_dark_bg ? 0.2 : 0.12) + '" stroke="none"/>';
   shuffleArr(waves).forEach((d, i) => {
-    bg_body += '<path d="' + d + '" fill="url(#bg1)" fill-opacity="' + (0.15 + i * 0.1).toFixed(2) + '" stroke="' + hslaColor((bg_hue + 120) % 360, 80, 0.1) + '" stroke-width="' + randNum(1, 3) + 'px" stroke-dasharray="' + randNum(0, 20) + '" transform="rotate(' + (i % 2 ? 180 : 0) + " " + w / 2 + " " + h / 2 + ')"/>';
+    bg_body += '<path d="' + d + '" fill="url(#bg1)" fill-opacity="' + (0.15 + i * 0.1).toFixed(2) + '" stroke="' + hslaColor((bg_hue + 120) % 360, is_dark_bg ? 30 : 80, 0.1) + '" stroke-width="' + randNum(1, 3) + 'px" stroke-dasharray="' + randNum(0, 20) + '" transform="rotate(' + (i % 2 ? 180 : 0) + " " + w / 2 + " " + h / 2 + ')"/>';
   });
 
   for (let i = 0; i < total_count; ++i) {
@@ -186,8 +191,8 @@ export default (w = 300, h = 300, num = 3) => {
     }
 
     // 每个图标使用独立的随机滤镜和渐变
-    def_nodes.push(filterDef(filter_id), gradDef(grad_id, icon_hue, 20, 60, 1, randNum(2, 3)));
-    const [mask_str, group_str] = render_fn(pos_x, pos_y, randNum(-30, 30), icon_size, randNum(-8, 8), randNum(-8, 8), (randNum(60, 85) / 100).toFixed(2), grad_id, mask_id);
+    def_nodes.push(filterDef(filter_id), gradDef(grad_id, icon_hue, icon_l[0], icon_l[1], 1, randNum(2, 3)));
+    const [mask_str, group_str] = render_fn(pos_x, pos_y, randNum(-30, 30), icon_size, randNum(-8, 8), randNum(-8, 8), (randNum(75, 95) / 100).toFixed(2), grad_id, mask_id);
     def_nodes.push(mask_str);
     // 应用唯一的 3D 滤镜
     rendered_groups.push(group_str.replace('<g transform=', '<g filter="url(#' + filter_id + ')" transform='));
