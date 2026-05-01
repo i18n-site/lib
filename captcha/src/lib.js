@@ -79,14 +79,21 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     return d + "C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z";
   };
 
+/**
+ * 生成点击验证码
+ * @param {number} w - 画布宽度
+ * @param {number} h - 画布高度
+ * @param {number} num - 图标数量
+ * @returns {[string, string[], [number, number, number][]]} [SVG字符串, 选中的图标内容列表, 图标位置列表[[左上角x, 左上角y, 实际边长], ...]]
+ */
 export default (w = 300, h = 300, num = 3) => {
-  const icon_size = 48,
+  const cell_size = 60,
     positions = [],
     selected = [],
     rendered = [],
     defs = [],
-    grid_w = Math.floor(w / icon_size),
-    grid_h = Math.floor(h / icon_size),
+    grid_w = Math.floor(w / cell_size),
+    grid_h = Math.floor(h / cell_size),
     taken = new Set();
 
   defs.push(genGrad("bg0", 85, 98), genGrad("bg1", 70, 90), genGrad("bg2", 60, 95));
@@ -194,18 +201,18 @@ export default (w = 300, h = 300, num = 3) => {
       inner = content.replace(/<svg[^>]*>|<\/svg>/g, ""),
       [, , vw, vh] = vbox.split(" ").map(Number),
       m_id = "m" + i,
-      jitter = 6,
-      x = gx * icon_size + random(-jitter, jitter),
-      y = gy * icon_size + random(-jitter, jitter),
+      // 每个图标大小不一，且必须小于网格
+      icon_size = random(Math.floor(cell_size * 0.6), Math.floor(cell_size * 0.9)),
+      jitter = 3,
+      x = gx * cell_size + (cell_size - icon_size) / 2 + random(-jitter, jitter),
+      y = gy * cell_size + (cell_size - icon_size) / 2 + random(-jitter, jitter),
       rot = random(-30, 30),
       skew_x = random(-5, 5),
       skew_y = random(-5, 5),
-      scale = random(9, 13) / 10,
-      real_size = icon_size * scale,
       op = random(30, 50) / 100, // 半透明
       g_id = "g" + i;
 
-    positions.push([x, y, real_size]);
+    positions.push([x, y, icon_size]);
     selected.push(content);
 
     defs.push(
@@ -232,8 +239,6 @@ export default (w = 300, h = 300, num = 3) => {
         skew_x +
         ") skewY(" +
         skew_y +
-        ") scale(" +
-        scale +
         ')">' +
         '<svg viewBox="' +
         vbox +
