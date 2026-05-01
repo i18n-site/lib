@@ -127,7 +127,7 @@ export default [
     "0 0 1024 1024",
     1024,
     1024,
-    "<circle cx=\"512\" cy=\"512\" r=\"450\" fill=\"none\" stroke=\"white\" stroke-width=\"60\"/><circle cx=\"340\" cy=\"380\" r=\"70\"/><circle cx=\"684\" cy=\"380\" r=\"70\"/><ellipse cx=\"512\" cy=\"720\" rx=\"120\" ry=\"160\"/>",
-    "<svg viewBox=\"0 0 1024 1024\"><circle cx=\"512\" cy=\"512\" r=\"450\" fill=\"none\" stroke=\"#000\" stroke-width=\"60\"/><circle cx=\"340\" cy=\"380\" r=\"70\"/><circle cx=\"684\" cy=\"380\" r=\"70\"/><ellipse cx=\"512\" cy=\"720\" rx=\"120\" ry=\"160\"/></svg>"
+    "<circle cx=\"512\" cy=\"512\" r=\"450\" fill=\"none\" stroke=\"white\" stroke-width=\"60\"/><circle cx=\"340\" cy=\"380\" r=\"70\" fill=\"none\" stroke=\"white\" stroke-width=\"40\"/><circle cx=\"684\" cy=\"380\" r=\"70\" fill=\"none\" stroke=\"white\" stroke-width=\"40\"/><ellipse cx=\"512\" cy=\"720\" rx=\"120\" ry=\"160\"/>",
+    "<svg viewBox=\"0 0 1024 1024\"><circle cx=\"512\" cy=\"512\" r=\"450\" fill=\"none\" stroke=\"#000\" stroke-width=\"60\"/><circle cx=\"340\" cy=\"380\" r=\"70\" fill=\"none\" stroke=\"#000\" stroke-width=\"40\"/><circle cx=\"684\" cy=\"380\" r=\"70\" fill=\"none\" stroke=\"#000\" stroke-width=\"40\"/><ellipse cx=\"512\" cy=\"720\" rx=\"120\" ry=\"160\"/></svg>"
   )
 ];
