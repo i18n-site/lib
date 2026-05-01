@@ -108,8 +108,22 @@ export default (w = 300, h = 300, num = 3) => {
     grad("bg1", (bg_h + 30) % 360, 85, 94),
     grad("bg2", (bg_h + 60) % 360, 70, 90),
     '<pattern id="p" patternTransform="scale(0.8) rotate(' + rand(0, 360) + ')" width="' + p_size + '" height="' + p_size + '" patternUnits="userSpaceOnUse"><path fill="url(#bg2)" d="' + path_d + '"/></pattern>',
-    // Add a professional drop shadow filter
-    '<filter id="f" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/><feOffset dx="1" dy="1.5" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>'
+    // Combined Filter: Drop Shadow + Inner Shadow + Rim Highlight
+    '<filter id="f" x="-20%" y="-20%" width="140%" height="140%">' +
+    '<feGaussianBlur in="SourceAlpha" stdDeviation="1.2" result="blur"/>' +
+    '<feOffset dx="1.2" dy="1.5" result="offsetBlur"/>' +
+    '<feFlood flood-color="#000" flood-opacity="0.25" result="dropColor"/>' +
+    '<feComposite in="dropColor" in2="offsetBlur" operator="in" result="dropShadow"/>' +
+    '<feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="innerBlur"/>' +
+    '<feOffset dx="-1" dy="-1" result="offsetInner"/>' +
+    '<feComposite in="SourceAlpha" in2="offsetInner" operator="out" result="innerMask"/>' +
+    '<feFlood flood-color="#000" flood-opacity="0.4" result="innerColor"/>' +
+    '<feComposite in="innerColor" in2="innerMask" operator="in" result="innerShadow"/>' +
+    '<feOffset dx="0.6" dy="0.6" result="offsetGlow"/>' +
+    '<feComposite in="SourceAlpha" in2="offsetGlow" operator="out" result="glowMask"/>' +
+    '<feFlood flood-color="#fff" flood-opacity="0.25" result="glowColor"/>' +
+    '<feComposite in="glowColor" in2="glowMask" operator="in" result="highlight"/>' +
+    '<feMerge><feMergeNode in="dropShadow"/><feMergeNode in="SourceGraphic"/><feMergeNode in="innerShadow"/><feMergeNode in="highlight"/></feMerge></filter>'
   );
 
   const layer_count = 4, waves = [];
@@ -146,17 +160,19 @@ export default (w = 300, h = 300, num = 3) => {
       jitter_y = rand(-Math.floor(offset), Math.floor(offset)),
       x = grid_x * cell_size + offset + jitter_x,
       y = grid_y * cell_size + offset + jitter_y,
-      ico_h = (ico_h_base + rand(-30, 30)) % 360;
+      ico_h = (ico_h_base + rand(-20, 20)) % 360;
 
     if (i < num) {
       positions.push([x, y, i_sz]);
       selected.push(raw_svg);
     }
 
-    defs.push(grad(g_id, ico_h, 5, 45, 1, rand(2, 4)));
-    const [mask_str, group_str] = render_fn(x, y, rand(-30, 30), i_sz, rand(-8, 8), rand(-8, 8), (rand(35, 55) / 100).toFixed(2), g_id, m_id);
+    // Icons use more vibrant colors (luminance 20-60) for contrast
+    defs.push(grad(g_id, ico_h, 20, 60, 1, rand(2, 3)));
+    const [mask_str, group_str] = render_fn(x, y, rand(-30, 30), i_sz, rand(-8, 8), rand(-8, 8), (rand(60, 85) / 100).toFixed(2), g_id, m_id);
     defs.push(mask_str);
-    rendered.push(group_str);
+    // Apply the shadow filter for depth
+    rendered.push(group_str.replace('<g transform=', '<g filter="url(#f)" transform='));
   }
 
   return [
