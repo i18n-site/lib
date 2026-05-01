@@ -1,5 +1,5 @@
 #!/usr/bin/env bun
-import { captchaGen } from '../src/lib.js';
+import captchaGen from '../src/lib.js';
 import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
