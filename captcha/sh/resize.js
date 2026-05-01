@@ -111,12 +111,20 @@ const parsePath = (d, file) => {
   return points;
 };
 
-const PADDING = 32; // Safety margin to prevent clipping
+const PADDING = 64; // Increased safety margin
 
 export const resize = (path, file) => {
   let data = readFileSync(path, "utf8");
 
-  const result = optimize(data, {
+  // Strip previous normalization wrapper if any (recursive-ish)
+  let cleanData = data;
+  while (cleanData.includes('<g transform="translate')) {
+    const next = cleanData.replace(/<g transform="translate\([^)]+\)\s*scale\([^)]+\)">\s*([\s\S]*?)\s*<\/g>/g, '$1');
+    if (next === cleanData) break;
+    cleanData = next;
+  }
+
+  const result = optimize(cleanData, {
     path,
     multipass: true,
     plugins: [
@@ -126,8 +134,10 @@ export const resize = (path, file) => {
           overrides: {
             convertPathData: {
               applyTransforms: true,
+              makeAbsolute: true,
             },
             convertTransform: true,
+            moveGroupAttrsToElems: true,
           },
         },
       },
@@ -137,6 +147,17 @@ export const resize = (path, file) => {
   });
 
   let optimized = result.data;
+
+  // Heuristic to find max stroke-width
+  const strokeWidths = optimized.match(/stroke-width="([^"]+)"/g);
+  let maxStroke = 0;
+  if (strokeWidths) {
+    maxStroke = Math.max(...strokeWidths.map(s => {
+      const val = Number(s.match(/stroke-width="([^"]+)"/)[1]);
+      return isNaN(val) ? 0 : val;
+    }));
+  }
+
   const dMatches = optimized.match(/d="([^"]+)"/g);
   let allPoints = [];
   if (dMatches) {
@@ -158,10 +179,17 @@ export const resize = (path, file) => {
   }
 
   if (allPoints.length > 0) {
-    const minX = Math.min(...allPoints.map(p => p.x));
-    const maxX = Math.max(...allPoints.map(p => p.x));
-    const minY = Math.min(...allPoints.map(p => p.y));
-    const maxY = Math.max(...allPoints.map(p => p.y));
+    let minX = Math.min(...allPoints.map(p => p.x));
+    let maxX = Math.max(...allPoints.map(p => p.x));
+    let minY = Math.min(...allPoints.map(p => p.y));
+    let maxY = Math.max(...allPoints.map(p => p.y));
+
+    // Expand by half stroke width on each side
+    minX -= maxStroke / 2;
+    maxX += maxStroke / 2;
+    minY -= maxStroke / 2;
+    maxY += maxStroke / 2;
+
     const width = maxX - minX;
     const height = maxY - minY;
     
