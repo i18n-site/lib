@@ -114,7 +114,8 @@ export default (w = 300, h = 300, num = 3) => {
     defs = [],
     grid_w = Math.floor(w / cell_size),
     grid_h = Math.floor(h / cell_size),
-    total = num + 3,
+    // 干扰图标数量随机，从 1 到 4
+    total = num + random(1, 4),
     grid_slots = shuffle(Array.from({ length: grid_w * grid_h }, (_, i) => i)).slice(0, total),
     icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total),
     bg_h = random(0, 360),
