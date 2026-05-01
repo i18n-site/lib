@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { optimize } from "svgo";
 
-const parsePath = (d, file) => {
+const parsePath = (d, _file) => {
   const commands = d.match(/[a-df-z][^a-df-z]*/ig) || [];
   const points = [];
   let currX = 0, currY = 0;
@@ -111,7 +111,7 @@ const parsePath = (d, file) => {
   return points;
 };
 
-const PADDING = 64; // Increased safety margin
+const PADDING = 16; // Reduced padding to maximize icon size
 
 export const resize = (path, file) => {
   let data = readFileSync(path, "utf8");
