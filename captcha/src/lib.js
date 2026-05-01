@@ -2,47 +2,86 @@ import SVGS from "./SVG.js";
 import PATTERNS from "./PATTERNS.js";
 
 const randNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
-  PALETTES = [
-    [200, 280], // 冷色调 (蓝紫)
-    [0, 60],    // 暖色调 (红橙)
-    [150, 210], // 自然 (绿青)
-    [280, 340], // 糖果 (粉红)
-    [40, 90]    // 大地 (金褐)
-  ],
+  normalizeHue = (h) => (h < 0 ? (h % 360) + 360 : h % 360),
+  /**
+   * 生成色调方案
+   */
+  getPalette = () => {
+    const h = randNum(0, 360),
+      s = randNum(60, 90),
+      l = randNum(40, 60),
+      modes = [
+        [0], // Monochromatic
+        [180], // Complementary
+        [-30, 30], // Analogous
+        [120, 240], // Triadic
+        [150, 210], // Split-Complementary
+      ],
+      offsets = modes[randNum(0, modes.length - 1)];
+    return [h, ...offsets.map((o) => normalizeHue(h + o))].map((hue) => ({
+      h: hue,
+      s,
+      l,
+    }));
+  },
   /**
    * 生成渐变定义
-   * @param {string} id - 渐变 ID
-   * @param {number} h - 起始色相
-   * @param {number} l_min - 最小亮度
-   * @param {number} l_max - 最大亮度
-   * @param {number} op - 透明度
-   * @param {number} seg - 分段数量 (0-1 为平滑渐变，>=2 为硬边界分段)
    */
   gradDef = (id, h, l_min, l_max, op = 1, seg = 0) => {
     const s = randNum(75, 95);
     let stops = "";
     if (seg < 2) {
-      // 平滑渐变，带有细微的色相偏移
       [0, 0.5, 1].forEach((v, i) => {
-        const hh = (h + i * 15) % 360,
+        const hh = normalizeHue(h + i * 15),
           ll = l_min + (l_max - l_min) * v;
-        stops += '<stop offset="' + (v * 100) + '%" stop-color="hsl(' + hh + "," + s + "%," + ll + '%)" stop-opacity="' + op + '"/>';
+        stops += `<stop offset="${v * 100}%" stop-color="hsl(${hh},${s}%,${ll}%)" stop-opacity="${op}"/>`;
       });
     } else {
-      // 艺术分段：交替明暗或色相偏移
       for (let i = 0; i < seg; ++i) {
-        const hh = (h + i * (360 / seg) * 0.2) % 360,
+        const hh = normalizeHue(h + i * (360 / seg) * 0.2),
           ll = i % 2 === 0 ? randNum(l_min, l_min + 15) : randNum(l_max - 15, l_max),
-          c = "hsl(" + hh + "," + s + "%," + ll + "%)";
-        stops += '<stop offset="' + ((i * 100) / seg) + '%" stop-color="' + c + '" stop-opacity="' + op + '"/><stop offset="' + (((i + 1) * 100) / seg) + '%" stop-color="' + c + '" stop-opacity="' + op + '"/>';
+          c = `hsl(${hh},${s}%,${ll}%)`;
+        stops += `<stop offset="${(i * 100) / seg}%" stop-color="${c}" stop-opacity="${op}"/><stop offset="${((i + 1) * 100) / seg}%" stop-color="${c}" stop-opacity="${op}"/>`;
       }
     }
     const angle = randNum(0, 360),
       x1 = Math.round(50 + 50 * Math.cos((angle * Math.PI) / 180)),
       y1 = Math.round(50 + 50 * Math.sin((angle * Math.PI) / 180));
-    return '<linearGradient id="' + id + '" x1="' + x1 + '%" y1="' + y1 + '%" x2="' + (100 - x1) + '%" y2="' + (100 - y1) + '%">' + stops + "</linearGradient>";
+    return `<linearGradient id="${id}" x1="${x1}%" y1="${y1}%" x2="${100 - x1}%" y2="${100 - y1}%">${stops}</linearGradient>`;
   },
-  hslaColor = (h, l, op) => "hsla(" + h + "," + randNum(60, 90) + "%," + l + "%," + op + ")",
+  hslaColor = (h, l, op) => `hsla(${h},${randNum(60, 90)}%,${l}%,${op})`,
+  /**
+   * 基础滤镜集合
+   */
+  filtersDef = () => {
+    const seed = randNum(0, 1000);
+    return `
+<filter id="f_noise" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="${seed}" result="noise"/>
+  <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+  <feComposite operator="in" in2="SourceGraphic"/>
+  <feBlend mode="multiply" in2="SourceGraphic"/>
+</filter>
+<filter id="f_distort" x="-20%" y="-20%" width="140%" height="140%">
+  <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="2" seed="${seed}" result="noise"/>
+  <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+</filter>
+<filter id="f_glossy" x="-20%" y="-20%" width="140%" height="140%">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur"/>
+  <feSpecularLighting in="blur" surfaceScale="5" specularConstant="1" specularExponent="40" lighting-color="#fff" result="spec">
+    <fePointLight x="-50" y="-50" z="200"/>
+  </feSpecularLighting>
+  <feComposite in="spec" in2="SourceAlpha" operator="in" result="spec"/>
+  <feComposite in="SourceGraphic" in2="spec" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"/>
+</filter>
+<filter id="f_shadow" x="-20%" y="-20%" width="140%" height="140%">
+  <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+  <feOffset dx="2" dy="2" result="offsetBlur"/>
+  <feFlood flood-color="#000" flood-opacity="0.3" result="color"/>
+  <feComposite in="color" in2="offsetBlur" operator="in" result="shadow"/>
+  <feMerge><feMergeNode in="shadow"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>`;
+  },
   shuffleArr = (arr) => {
     for (let i = arr.length - 1; i > 0; --i) {
       const j = randNum(0, i);
@@ -74,133 +113,116 @@ const randNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     p2[n - 1] = 0.5 * (k[n] + p1[n - 1]);
     return [p1, p2];
   },
+  /**
+   * 生成波浪路径 (使用三次贝塞尔曲线)
+   */
   wavePath = (points, w, h) => {
     const x = points.map((p) => p.x),
       y = points.map((p) => p.y),
       [p1_x, p2_x] = ctrlPoints(x),
       [p1_y, p2_y] = ctrlPoints(y);
-    let d = "M 0," + h + " C 0," + h + " " + x[0] + "," + y[0] + " " + x[0] + "," + y[0];
+    let d = `M 0,${h} C 0,${h} ${x[0]},${y[0]} ${x[0]},${y[0]}`;
     for (let i = 0; i < x.length - 1; ++i) {
-      d += " C " + p1_x[i].toFixed(1) + "," + p1_y[i].toFixed(1) + " " + p2_x[i].toFixed(1) + "," + p2_y[i].toFixed(1) + " " + x[i + 1] + "," + y[i + 1];
+      d += ` C ${p1_x[i].toFixed(1)},${p1_y[i].toFixed(1)} ${p2_x[i].toFixed(1)},${p2_y[i].toFixed(1)} ${x[i + 1]},${y[i + 1]}`;
     }
-    return d + " C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z";
-  },
-  /**
-   * 生成 3D 复合滤镜定义
-   */
-  filterDef = (id) => {
-    const blur_val = (randNum(10, 15) / 10).toFixed(1),
-      off_x = (randNum(10, 15) / 10).toFixed(1),
-      off_y = (randNum(12, 18) / 10).toFixed(1),
-      inner_blur = (randNum(12, 18) / 10).toFixed(1),
-      inner_op = (randNum(35, 50) / 100).toFixed(2);
-    return '<filter id="' + id + '" x="-20%" y="-20%" width="140%" height="140%">' +
-      '<feGaussianBlur in="SourceAlpha" stdDeviation="' + blur_val + '" result="blur"/>' +
-      '<feOffset dx="' + off_x + '" dy="' + off_y + '" result="offsetBlur"/>' +
-      '<feFlood flood-color="#000" flood-opacity="0.25" result="dropColor"/>' +
-      '<feComposite in="dropColor" in2="offsetBlur" operator="in" result="dropShadow"/>' +
-      '<feGaussianBlur in="SourceAlpha" stdDeviation="' + inner_blur + '" result="innerBlur"/>' +
-      '<feOffset dx="-1" dy="-1" result="offsetInner"/>' +
-      '<feComposite in="SourceAlpha" in2="offsetInner" operator="out" result="innerMask"/>' +
-      '<feFlood flood-color="#000" flood-opacity="' + inner_op + '" result="innerColor"/>' +
-      '<feComposite in="innerColor" in2="innerMask" operator="in" result="innerShadow"/>' +
-      '<feOffset dx="0.6" dy="0.6" result="offsetGlow"/>' +
-      '<feComposite in="SourceAlpha" in2="offsetGlow" operator="out" result="glowMask"/>' +
-      '<feFlood flood-color="#fff" flood-opacity="0.25" result="glowColor"/>' +
-      '<feComposite in="glowColor" in2="glowMask" operator="in" result="highlight"/>' +
-      '<feMerge><feMergeNode in="dropShadow"/><feMergeNode in="SourceGraphic"/><feMergeNode in="innerShadow"/><feMergeNode in="highlight"/></feMerge></filter>';
+    return d + ` C ${x[x.length - 1]},${y[y.length - 1]} ${w},${h} ${w},${h} Z`;
   };
 
 /**
  * 生成点击验证码
- * @param {number} w - 画布宽度
- * @param {number} h - 画布高度
- * @param {number} num - 目标图标数量
  */
 export default (w = 300, h = 300, num = 3) => {
-  const cell_size = 50,
-    grid_width = Math.floor(w / cell_size),
-    grid_height = Math.floor(h / cell_size),
-    total_count = num + randNum(1, 4),
-    grid_slots = shuffleArr(Array.from({ length: grid_width * grid_height }, (_, i) => i)).slice(0, total_count),
-    icon_indices = shuffleArr(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total_count),
-    
-    // 随机决定背景深浅模式，确保高对比度
+  const palette = getPalette(),
     is_dark_bg = randNum(0, 1) === 1,
-    bg_l = is_dark_bg ? [25, 45] : [80, 98],
-    icon_l = is_dark_bg ? [75, 95] : [10, 45],
+    bg_color = palette[0],
+    icon_palette = palette.length > 1 ? palette.slice(1) : [bg_color],
+    
+    bg_l = is_dark_bg ? [20, 40] : [85, 95],
+    icon_l = is_dark_bg ? [70, 90] : [15, 35],
 
-    // 为整个验证码选择统一色调
-    palette = PALETTES[randNum(0, PALETTES.length - 1)],
-    bg_hue = randNum(palette[0], palette[1]),
-    icon_hue_base = (bg_hue + 180) % 360,
+    cell_size = 50,
+    grid_w = Math.floor(w / cell_size),
+    grid_h = Math.floor(h / cell_size),
+    total_count = num + randNum(1, 3),
+    slots = shuffleArr(Array.from({ length: grid_w * grid_h }, (_, i) => i)).slice(0, total_count),
+    icon_indices = shuffleArr(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, total_count),
 
     positions = [],
     selected_icons = [],
     rendered_groups = [],
-    def_nodes = [],
+    def_nodes = [filtersDef()],
     [p_size, path_d] = PATTERNS[randNum(0, PATTERNS.length - 1)];
 
+  // 背景渐变
   def_nodes.push(
-    gradDef("bg0", bg_hue, bg_l[1] - 5, bg_l[1]), // 基础背景
-    gradDef("bg1", (bg_hue + 30) % 360, bg_l[0] + 5, bg_l[0] + 15),
-    gradDef("bg2", (bg_hue + 60) % 360, bg_l[0], bg_l[0] + 10),
-    '<pattern id="p" patternTransform="scale(0.8) rotate(' + randNum(0, 360) + ')" width="' + p_size + '" height="' + p_size + '" patternUnits="userSpaceOnUse"><path fill="url(#bg2)" d="' + path_d + '"/></pattern>'
+    gradDef("bg0", bg_color.h, bg_l[1] - 5, bg_l[1]),
+    gradDef("bg1", normalizeHue(bg_color.h + 20), bg_l[0], bg_l[0] + 15),
+    gradDef("bg2", normalizeHue(bg_color.h - 20), bg_l[0], bg_l[0] + 10),
+    `<pattern id="p" patternTransform="scale(0.8) rotate(${randNum(0, 360)})" width="${p_size}" height="${p_size}" patternUnits="userSpaceOnUse"><path fill="url(#bg2)" d="${path_d}"/></pattern>`
   );
 
-  const layer_count = 4, waves = [];
+  // 波浪图层
+  const layer_count = 3, waves = [];
   for (let l = 0; l < layer_count; ++l) {
     const points = [{ x: 0, y: (h / (layer_count + 1)) * (l + 1) }],
-      seg_count = randNum(5, 10),
-      seg_width = w / seg_count;
+      seg_count = randNum(4, 8),
+      seg_w = w / seg_count;
     for (let s = 1; s < seg_count; ++s) {
       points.push({
-        x: Math.round(s * seg_width + randNum(-seg_width * 0.2, seg_width * 0.2)),
-        y: Math.round((h / (layer_count + 1)) * (l + 1) + randNum(-20, 20)),
+        x: Math.round(s * seg_w + randNum(-seg_w * 0.3, seg_w * 0.3)),
+        y: Math.round((h / (layer_count + 1)) * (l + 1) + randNum(-30, 30)),
       });
     }
     points.push({ x: w, y: (h / (layer_count + 1)) * (l + 1) });
     waves.push(wavePath(points, w, h));
   }
 
-  let bg_body = '<rect width="' + w + '" height="' + h + '" fill="url(#bg0)" stroke="none"/><rect width="' + w + '" height="' + h + '" fill="url(#p)" fill-opacity="' + (is_dark_bg ? 0.2 : 0.12) + '" stroke="none"/>';
-  shuffleArr(waves).forEach((d, i) => {
-    bg_body += '<path d="' + d + '" fill="url(#bg1)" fill-opacity="' + (0.15 + i * 0.1).toFixed(2) + '" stroke="' + hslaColor((bg_hue + 120) % 360, is_dark_bg ? 30 : 80, 0.1) + '" stroke-width="' + randNum(1, 3) + 'px" stroke-dasharray="' + randNum(0, 20) + '" transform="rotate(' + (i % 2 ? 180 : 0) + " " + w / 2 + " " + h / 2 + ')"/>';
+  let bg_body = `<rect width="${w}" height="${h}" fill="url(#bg0)" stroke="none"/><rect width="${w}" height="${h}" fill="url(#p)" fill-opacity="${is_dark_bg ? 0.2 : 0.1}" stroke="none"/>`;
+  
+  waves.forEach((d, i) => {
+    bg_body += `<path d="${d}" filter="url(#f_distort)" fill="url(#bg1)" fill-opacity="${0.2 + i * 0.1}" stroke="${hslaColor(bg_color.h, is_dark_bg ? 40 : 70, 0.2)}" stroke-width="${randNum(1, 2)}" transform="rotate(${i % 2 ? 180 : 0} ${w / 2} ${h / 2})"/>`;
   });
 
+  // 渲染图标
   for (let i = 0; i < total_count; ++i) {
-    const slot_idx = grid_slots[i],
-      grid_x = slot_idx % grid_width,
-      grid_y = Math.floor(slot_idx / grid_width),
+    const slot = slots[i],
+      gx = slot % grid_w,
+      gy = Math.floor(slot / grid_w),
       icon_idx = icon_indices[i],
       [render_fn, raw_svg] = SVGS[icon_idx],
-      mask_id = "m" + i,
-      grad_id = "g" + i,
-      filter_id = "f" + i,
-      icon_size = randNum(32, 42),
-      offset_val = (cell_size - icon_size) / 2,
-      jitter_x = randNum(-Math.floor(offset_val), Math.floor(offset_val)),
-      jitter_y = randNum(-Math.floor(offset_val), Math.floor(offset_val)),
-      pos_x = grid_x * cell_size + offset_val + jitter_x,
-      pos_y = grid_y * cell_size + offset_val + jitter_y,
-      icon_hue = (icon_hue_base + randNum(-30, 30)) % 360;
+      
+      icon_size = randNum(34, 44),
+      padding = (cell_size - icon_size) / 2,
+      jx = randNum(-Math.floor(padding + 5), Math.floor(padding + 5)),
+      jy = randNum(-Math.floor(padding + 5), Math.floor(padding + 5)),
+      px = gx * cell_size + padding + jx,
+      py = gy * cell_size + padding + jy,
+      
+      color_obj = icon_palette[i % icon_palette.length],
+      grad_id = `g${i}`,
+      mask_id = `m${i}`,
+      filter_type = i < num ? (randNum(0, 1) ? "f_glossy" : "f_shadow") : "f_shadow";
 
     if (i < num) {
-      positions.push([pos_x, pos_y, icon_size]);
+      positions.push([px, py, icon_size]);
       selected_icons.push(raw_svg);
     }
 
-    // 每个图标使用独立的随机滤镜和渐变
-    def_nodes.push(filterDef(filter_id), gradDef(grad_id, icon_hue, icon_l[0], icon_l[1], 1, randNum(2, 3)));
-    const [mask_str, group_str] = render_fn(pos_x, pos_y, randNum(-30, 30), icon_size, randNum(-8, 8), randNum(-8, 8), (randNum(40, 60) / 100).toFixed(2), grad_id, mask_id);
+    def_nodes.push(gradDef(grad_id, normalizeHue(color_obj.h + randNum(-15, 15)), icon_l[0], icon_l[1], 1, randNum(0, 3)));
+    const [mask_str, group_str] = render_fn(px, py, randNum(-45, 45), icon_size, randNum(-10, 10), randNum(-10, 10), (randNum(70, 95) / 100).toFixed(2), grad_id, mask_id);
     def_nodes.push(mask_str);
-    // 应用唯一的 3D 滤镜
-    rendered_groups.push(group_str.replace('<g transform=', '<g filter="url(#' + filter_id + ')" transform='));
+    
+    rendered_groups.push(group_str.replace("<g transform=", `<g filter="url(#${filter_type}) url(#f_distort)" transform=`));
   }
 
-  return [
-    '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + " " + h + '" xmlns="http://www.w3.org/2000/svg" style="border:none"><defs>' + def_nodes.join("") + "</defs>" + bg_body + rendered_groups.join("") + "</svg>",
-    selected_icons,
-    positions,
-  ];
+  const final_svg = `
+<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+  <defs>${def_nodes.join("")}</defs>
+  <g filter="url(#f_noise)">
+    ${bg_body}
+    ${rendered_groups.join("")}
+  </g>
+</svg>`;
+
+  return [final_svg, selected_icons, positions];
 };
