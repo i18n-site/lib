@@ -79,27 +79,26 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     const x = points.map((p) => p.x),
       y = points.map((p) => p.y),
       [p1_x, p2_x] = ctrl(x),
-      [p1_y, p2_y] = ctrl(y);
-    let d = "M 0," + h + " C 0," + h + " " + x[0] + "," + y[0] + " " + x[0] + "," + y[0] + " ";
+      [p1_y, p2_y] = ctrl(y),
+      d = ["M 0," + h + " C 0," + h + " " + x[0] + "," + y[0] + " " + x[0] + "," + y[0]];
     for (let i = 0; i < x.length - 1; ++i) {
-      d +=
+      d.push(
         "C " +
-        p1_x[i] +
-        "," +
-        p1_y[i] +
-        " " +
-        p2_x[i] +
-        "," +
-        p2_y[i] +
-        " " +
-        x[i + 1] +
-        "," +
-        y[i + 1] +
-        " ";
+          p1_x[i].toFixed(1) +
+          "," +
+          p1_y[i].toFixed(1) +
+          " " +
+          p2_x[i].toFixed(1) +
+          "," +
+          p2_y[i].toFixed(1) +
+          " " +
+          x[i + 1] +
+          "," +
+          y[i + 1],
+      );
     }
-    return (
-      d + "C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z"
-    );
+    d.push("C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z");
+    return d.join(" ");
   };
 
 /**
@@ -118,7 +117,6 @@ export default (w = 300, h = 300, num = 3) => {
     grid_w = Math.floor(w / cell_size),
     grid_h = Math.floor(h / cell_size),
     total_icons = num + 3,
-    // 直接生成打乱的网格索引，无搜索复杂度
     grid_indices = shuffle(Array.from({ length: grid_w * grid_h }, (_, i) => i)).slice(
       0,
       total_icons,
@@ -156,8 +154,8 @@ export default (w = 300, h = 300, num = 3) => {
     const points = [{ x: 0, y: (h / (layer_count + 1)) * (l + 1) }];
     for (let s = 1; s < segment_count; ++s) {
       points.push({
-        x: s * cell_w + random(-cell_w * 0.3, cell_w * 0.3),
-        y: (h / (layer_count + 1)) * (l + 1) + random(-variance, variance),
+        x: Math.round(s * cell_w + random(-cell_w * 0.3, cell_w * 0.3)),
+        y: Math.round((h / (layer_count + 1)) * (l + 1) + random(-variance, variance)),
       });
     }
     points.push({ x: w, y: (h / (layer_count + 1)) * (l + 1) });
@@ -207,7 +205,11 @@ export default (w = 300, h = 300, num = 3) => {
       idx = icon_indices[i],
       content = SVGS[idx],
       v_box = content.match(/viewBox="([^"]+)"/)[1],
-      inner = content.replace(/<svg[^>]*>|<\/svg>/g, ""),
+      // 优化：一次性替换颜色并移除标签，减少正则开销
+      inner = content
+        .replace(/<svg[^>]*>|<\/svg>/g, "")
+        .replace(/stroke="#000"/g, 'stroke="white"')
+        .replace(/fill="#000"/g, 'fill="white"'),
       [, , v_w, v_h] = v_box.split(" ").map(Number),
       m_id = "m" + i,
       icon_size = random(Math.floor(cell_size * 0.6), Math.floor(cell_size * 0.9)),
@@ -230,7 +232,7 @@ export default (w = 300, h = 300, num = 3) => {
       '<mask id="' +
         m_id +
         '"><g fill="white" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">' +
-        inner.replace(/stroke="#000"/g, 'stroke="white"').replace(/fill="#000"/g, 'fill="white"') +
+        inner +
         "</g></mask>",
     );
 
