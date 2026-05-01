@@ -4,7 +4,7 @@ import PATTERNS from "./PATTERNS.js";
 const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
   hsl = (l_min, l_max, s_min = 50, s_max = 90) =>
     "hsl(" + random(0, 360) + "," + random(s_min, s_max) + "%," + random(l_min, l_max) + "%)",
-  genGrad = (id, l_min, l_max, op = 1) => {
+  grad = (id, l_min, l_max, op = 1) => {
     const h1 = random(0, 360),
       h2 = (h1 + random(40, 180)) % 360,
       s1 = random(60, 95),
@@ -26,7 +26,15 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     );
   },
   rgba = (l_min, l_max, op) =>
-    "rgba(" + random(l_min, l_max) + "," + random(l_min, l_max) + "," + random(l_min, l_max) + "," + op + ")",
+    "rgba(" +
+    random(l_min, l_max) +
+    "," +
+    random(l_min, l_max) +
+    "," +
+    random(l_min, l_max) +
+    "," +
+    op +
+    ")",
   shuffle = (arr) => {
     for (let i = arr.length - 1; i > 0; --i) {
       const j = random(0, i);
@@ -34,7 +42,7 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     }
     return arr;
   },
-  computeControlPoints = (k) => {
+  ctrl = (k) => {
     const n = k.length - 1;
     let a = new Array(n),
       b = new Array(n),
@@ -67,25 +75,33 @@ const random = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
     p2[n - 1] = 0.5 * (k[n] + p1[n - 1]);
     return [p1, p2];
   },
-  genWavePath = (points, w, h) => {
+  wave = (points, w, h) => {
     const x = points.map((p) => p.x),
       y = points.map((p) => p.y),
-      [p1x, p2x] = computeControlPoints(x),
-      [p1y, p2y] = computeControlPoints(y);
+      [p1_x, p2_x] = ctrl(x),
+      [p1_y, p2_y] = ctrl(y);
     let d = "M 0," + h + " C 0," + h + " " + x[0] + "," + y[0] + " " + x[0] + "," + y[0] + " ";
     for (let i = 0; i < x.length - 1; ++i) {
-      d += "C " + p1x[i] + "," + p1y[i] + " " + p2x[i] + "," + p2y[i] + " " + x[i + 1] + "," + y[i + 1] + " ";
+      d +=
+        "C " +
+        p1_x[i] +
+        "," +
+        p1_y[i] +
+        " " +
+        p2_x[i] +
+        "," +
+        p2_y[i] +
+        " " +
+        x[i + 1] +
+        "," +
+        y[i + 1] +
+        " ";
     }
-    return d + "C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z";
+    return (
+      d + "C " + x[x.length - 1] + "," + y[y.length - 1] + " " + w + "," + h + " " + w + "," + h + " Z"
+    );
   };
 
-/**
- * 生成点击验证码
- * @param {number} w - 画布宽度
- * @param {number} h - 画布高度
- * @param {number} num - 图标数量
- * @returns {[string, string[], [number, number, number][]]} [SVG字符串, 选中的图标内容列表, 图标位置列表[[左上角x, 左上角y, 实际边长], ...]]
- */
 export default (w = 300, h = 300, num = 3) => {
   const cell_size = 60,
     positions = [],
@@ -96,9 +112,9 @@ export default (w = 300, h = 300, num = 3) => {
     grid_h = Math.floor(h / cell_size),
     taken = new Set();
 
-  defs.push(genGrad("bg0", 85, 98), genGrad("bg1", 70, 90), genGrad("bg2", 60, 95));
+  defs.push(grad("bg0", 85, 98), grad("bg1", 70, 90), grad("bg2", 60, 95));
 
-  const [psize, path_d] = PATTERNS[random(0, PATTERNS.length - 1)],
+  const [p_size, path_d] = PATTERNS[random(0, PATTERNS.length - 1)],
     p_scale = random(5, 15) / 10,
     p_rot = random(0, 360),
     p_op = random(10, 20) / 100;
@@ -109,9 +125,9 @@ export default (w = 300, h = 300, num = 3) => {
       ") rotate(" +
       p_rot +
       ')" width="' +
-      psize +
+      p_size +
       '" height="' +
-      psize +
+      p_size +
       '" patternUnits="userSpaceOnUse"><path fill="url(#bg2)" d="' +
       path_d +
       '"/></pattern>',
@@ -132,11 +148,18 @@ export default (w = 300, h = 300, num = 3) => {
       });
     }
     points.push({ x: w, y: (h / (layer_count + 1)) * (l + 1) });
-    waves.push(genWavePath(points, w, h));
+    waves.push(wave(points, w, h));
   }
 
   let bg_body = '<rect width="' + w + '" height="' + h + '" fill="url(#bg0)" stroke="none"/>';
-  bg_body += '<rect width="' + w + '" height="' + h + '" fill="url(#p)" fill-opacity="' + p_op + '" stroke="none"/>';
+  bg_body +=
+    '<rect width="' +
+    w +
+    '" height="' +
+    h +
+    '" fill="url(#p)" fill-opacity="' +
+    p_op +
+    '" stroke="none"/>';
 
   shuffle(waves).forEach((d, i) => {
     const op = (0.2 + i * 0.1).toFixed(2),
@@ -187,19 +210,12 @@ export default (w = 300, h = 300, num = 3) => {
     if (grid_idx === -1) break;
 
     const gx = grid_idx % grid_w,
-      gy = Math.floor(grid_idx / grid_w);
-
-    taken.add(grid_idx);
-    if (gx > 0) taken.add(grid_idx - 1);
-    if (gx < grid_w - 1) taken.add(grid_idx + 1);
-    if (gy > 0) taken.add(grid_idx - grid_w);
-    if (gy < grid_h - 1) taken.add(grid_idx + grid_w);
-
-    const idx = icon_indices[i],
+      gy = Math.floor(grid_idx / grid_w),
+      idx = icon_indices[i],
       content = SVGS[idx],
-      vbox = content.match(/viewBox="([^"]+)"/)[1],
+      v_box = content.match(/viewBox="([^"]+)"/)[1],
       inner = content.replace(/<svg[^>]*>|<\/svg>/g, ""),
-      [, , vw, vh] = vbox.split(" ").map(Number),
+      [, , v_w, v_h] = v_box.split(" ").map(Number),
       m_id = "m" + i,
       icon_size = random(Math.floor(cell_size * 0.6), Math.floor(cell_size * 0.9)),
       jitter = 3,
@@ -211,14 +227,19 @@ export default (w = 300, h = 300, num = 3) => {
       op = random(30, 50) / 100,
       g_id = "g" + i;
 
-    // 前 num 个为目标图标，后续 3 个为干扰图标
+    taken.add(grid_idx);
+    if (gx > 0) taken.add(grid_idx - 1);
+    if (gx < grid_w - 1) taken.add(grid_idx + 1);
+    if (gy > 0) taken.add(grid_idx - grid_w);
+    if (gy < grid_h - 1) taken.add(grid_idx + grid_w);
+
     if (i < num) {
       positions.push([x, y, icon_size]);
       selected.push(content);
     }
 
     defs.push(
-      genGrad(g_id, 5, 40),
+      grad(g_id, 5, 40),
       '<mask id="' +
         m_id +
         '"><g fill="white" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">' +
@@ -243,7 +264,7 @@ export default (w = 300, h = 300, num = 3) => {
         skew_y +
         ')">' +
         '<svg viewBox="' +
-        vbox +
+        v_box +
         '" width="' +
         icon_size +
         '" height="' +
@@ -252,9 +273,9 @@ export default (w = 300, h = 300, num = 3) => {
         op +
         '">' +
         '<rect width="' +
-        vw +
+        v_w +
         '" height="' +
-        vh +
+        v_h +
         '" fill="url(#' +
         g_id +
         ')" mask="url(#' +
