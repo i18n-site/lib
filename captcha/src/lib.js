@@ -164,12 +164,12 @@ export default (w = 300, h = 300, num = 3) => {
       ')"/>';
   });
 
-  const icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, num);
+  const icon_indices = shuffle(Array.from({ length: SVGS.length }, (_, i) => i)).slice(0, num + 3);
 
-  for (let i = 0; i < num; ++i) {
+  for (let i = 0; i < num + 3; ++i) {
     let grid_idx = -1,
       attempts = 0;
-    while (++attempts < 100) {
+    while (++attempts * (num + 3) < 1000) {
       const idx = random(0, grid_w * grid_h - 1);
       if (!taken.has(idx)) {
         grid_idx = idx;
@@ -201,7 +201,6 @@ export default (w = 300, h = 300, num = 3) => {
       inner = content.replace(/<svg[^>]*>|<\/svg>/g, ""),
       [, , vw, vh] = vbox.split(" ").map(Number),
       m_id = "m" + i,
-      // 每个图标大小不一，且必须小于网格
       icon_size = random(Math.floor(cell_size * 0.6), Math.floor(cell_size * 0.9)),
       jitter = 3,
       x = gx * cell_size + (cell_size - icon_size) / 2 + random(-jitter, jitter),
@@ -209,11 +208,14 @@ export default (w = 300, h = 300, num = 3) => {
       rot = random(-30, 30),
       skew_x = random(-5, 5),
       skew_y = random(-5, 5),
-      op = random(30, 50) / 100, // 半透明
+      op = random(30, 50) / 100,
       g_id = "g" + i;
 
-    positions.push([x, y, icon_size]);
-    selected.push(content);
+    // 前 num 个为目标图标，后续 3 个为干扰图标
+    if (i < num) {
+      positions.push([x, y, icon_size]);
+      selected.push(content);
+    }
 
     defs.push(
       genGrad(g_id, 5, 40),
