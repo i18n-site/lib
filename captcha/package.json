@@ -1,6 +1,6 @@
 {
   "name": "@3-/captcha",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "High-performance dependency-free SVG click-based CAPTCHA generator / 高性能无依赖的 SVG 点选式验证码生成器",
   "keywords": [
     "captcha",
