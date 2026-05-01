@@ -127,7 +127,7 @@ export default (w = 300, h = 300, num = 3) => {
     
     // 随机决定背景深浅模式，确保高对比度
     is_dark_bg = randNum(0, 1) === 1,
-    bg_l = is_dark_bg ? [5, 25] : [80, 98],
+    bg_l = is_dark_bg ? [25, 45] : [80, 98],
     icon_l = is_dark_bg ? [75, 95] : [10, 45],
 
     // 为整个验证码选择统一色调
@@ -192,7 +192,7 @@ export default (w = 300, h = 300, num = 3) => {
 
     // 每个图标使用独立的随机滤镜和渐变
     def_nodes.push(filterDef(filter_id), gradDef(grad_id, icon_hue, icon_l[0], icon_l[1], 1, randNum(2, 3)));
-    const [mask_str, group_str] = render_fn(pos_x, pos_y, randNum(-30, 30), icon_size, randNum(-8, 8), randNum(-8, 8), (randNum(75, 95) / 100).toFixed(2), grad_id, mask_id);
+    const [mask_str, group_str] = render_fn(pos_x, pos_y, randNum(-30, 30), icon_size, randNum(-8, 8), randNum(-8, 8), (randNum(40, 60) / 100).toFixed(2), grad_id, mask_id);
     def_nodes.push(mask_str);
     // 应用唯一的 3D 滤镜
     rendered_groups.push(group_str.replace('<g transform=', '<g filter="url(#' + filter_id + ')" transform='));
