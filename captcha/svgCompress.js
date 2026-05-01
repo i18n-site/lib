@@ -56,14 +56,14 @@ if (sizes.size > 1) {
 }
 
 const header =
-    'const F = (v, w, h, i, r) => [(x, y, rt, sz, sx, sy, op, g, m) => [\n' +
+    "const F = (v, w, h, i, r) => [(x, y, rt, sz, sx, sy, op, g, m) => [\n" +
     '  \'<mask id="\' + m + \'"><g fill="white" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">\' + i + "</g></mask>",\n' +
     '  \'<g transform="translate(\' + x + "," + y + ") rotate(\" + rt + \",\" + (sz / 2) + \",\" + (sz / 2) + \") skewX(\" + sx + \") skewY(\" + sy + \')"><svg viewBox="\' + v + \'" width="\' + sz + \'" height="\' + sz + \'" opacity="\' + op + \'"><rect width="\' + w + \'" height="\' + h + \'" fill="url(#\' + g + \')" mask="url(#\' + m + \')"/></svg></g>\'\n' +
     "], r];\n\nexport default [\n",
   body = svg_data
     .map(
       (d) =>
-        '  F(\n' +
+        "  F(\n" +
         "    " +
         JSON.stringify(d.v) +
         ",\n" +
@@ -86,4 +86,4 @@ const header =
 
 writeFileSync(OUT_FILE, header + body + footer);
 
-console.log("Bundled " + svg_data.length + " SVGs into " + OUT_FILE);
+console.log(svg_data.length + " svg → " + OUT_FILE);
