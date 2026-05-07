@@ -25,18 +25,19 @@ const argv = yargs(hideBin(process.argv))
   paths = argv._,
   report = (file, errs) => {
     if (errs?.length) {
-      errs.forEach(({ line, start_line, message, rule_id }) =>
+      for (let i = 0; i < errs.length; ++i) {
+        const e = errs[i];
         console.error(
           file +
             ":" +
-            (line || start_line || "?") +
+            (e.line || e.start_line || "?") +
             ": " +
-            message +
+            e.message +
             " (" +
-            (rule_id || "error") +
+            (e.rule_id || "error") +
             ")",
-        ),
-      );
+        );
+      }
       return 1;
     }
   },

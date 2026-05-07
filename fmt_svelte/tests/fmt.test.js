@@ -1,7 +1,5 @@
-#! /usr/bin/env bun
 import { describe, it, expect } from "vitest";
 import svelte from "../src/svelte.js";
-import { writeFileSync, unlinkSync } from "fs";
 
 describe("svelte 格式化", () => {
   it("应该格式化 script 标签中的 js", async () => {

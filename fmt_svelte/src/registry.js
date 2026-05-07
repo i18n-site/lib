@@ -3,8 +3,7 @@ import styl from "./styl.js";
 import pug from "./pug.js";
 import svelte from "./svelte.js";
 
-const 
-  M = {
+const M = {
     svelte,
     js,
     mjs: js,
@@ -20,8 +19,7 @@ const
     script: (lang) => (!lang || ["js", "ts"].includes(lang) ? js : undefined),
   };
 
-export const 
-  formatterByName = (name) => M[name.toLowerCase()],
+export const formatterByName = (name) => M[name.toLowerCase()],
   formatterByTag = (tag, lang) => {
     const f = TAG_M[tag.toLowerCase()];
     return f ? f(lang) : undefined;

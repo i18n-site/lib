@@ -1,15 +1,17 @@
-import { formatterByName } from "./registry.js";
+import { formatterByTag } from "./registry.js";
 
 export default async (code, file_name = "file.svelte") => {
-  let end_tag, fmt, tag, t, line_offset = 1;
-  const 
-    res = [], 
+  let end_tag,
+    fmt,
+    tag,
+    t,
+    line_offset = 1;
+  const res = [],
     errors = [],
     lines = code.split("\n");
 
   for (let i = 0; i < lines.length; ++i) {
-    const 
-      raw_line = lines[i],
+    const raw_line = lines[i],
       line = raw_line.trimEnd(),
       trim_line = line.trim();
 
@@ -19,7 +21,12 @@ export default async (code, file_name = "file.svelte") => {
         if (fmt) {
           const [out, errs] = await fmt(content, file_name);
           content = out;
-          if (errs?.length) errors.push(...errs.map((e) => ({ ...e, line: (e.line || 0) + line_offset })));
+          if (errs?.length) {
+            for (let j = 0; j < errs.length; ++j) {
+              const e = errs[j];
+              errors.push({ ...e, line: (e.line || 0) + line_offset });
+            }
+          }
         }
         res.push(content.trim(), line);
         t = fmt = undefined;
@@ -30,17 +37,13 @@ export default async (code, file_name = "file.svelte") => {
       if (match) {
         const current_tag = match[1].toLowerCase();
         if (["template", "style", "script"].includes(current_tag)) {
-          const 
-            attr_str = match[2] || "",
+          const attr_str = match[2] || "",
             lang_match = attr_str.match(/lang\s*=\s*(['"]?)([^'"\s>]+)\1/i),
             lang = lang_match ? lang_match[2].toLowerCase() : undefined;
 
           tag = current_tag;
           line_offset = i + 2;
-
-          if (tag === "template") fmt = formatterByName(lang || "html");
-          else if (tag === "style") fmt = formatterByName(lang || "css");
-          else if (tag === "script") fmt = formatterByName(lang || "js");
+          fmt = formatterByTag(tag, lang);
 
           t = [];
           end_tag = "</" + tag + ">";
@@ -51,4 +54,3 @@ export default async (code, file_name = "file.svelte") => {
   if (t?.length) res.push(...t);
   return [res.join("\n").trim(), errors];
 };
-
