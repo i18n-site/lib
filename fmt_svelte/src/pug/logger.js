@@ -18,12 +18,17 @@ const LOG_LEVEL_VALUES = {
 
 export const createLogger = (log_obj = console, level = LogLevel.ERROR) => {
   let current_level = level;
-  const 
-    setLogLevel = (l) => { current_level = l; },
+  const setLogLevel = (l) => {
+      current_level = l;
+    },
     isSupportedLogLevel = (v) => typeof v === "string" && Object.values(LogLevel).includes(v),
     isDebugEnabled = () => LOG_LEVEL_VALUES[current_level] <= LOG_LEVEL_VALUES[LogLevel.DEBUG],
     message = (lvl, msg, ...args) => {
-      if (current_level !== LogLevel.OFF && LOG_LEVEL_VALUES[current_level] <= LOG_LEVEL_VALUES[lvl] && lvl !== LogLevel.OFF) {
+      if (
+        current_level !== LogLevel.OFF &&
+        LOG_LEVEL_VALUES[current_level] <= LOG_LEVEL_VALUES[lvl] &&
+        lvl !== LogLevel.OFF
+      ) {
         log_obj[lvl](msg, ...args);
       }
     };

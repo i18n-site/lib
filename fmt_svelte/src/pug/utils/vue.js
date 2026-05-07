@@ -19,4 +19,3 @@ export default {
   isVueVOnExpression,
   isVueVDirective,
 };
-

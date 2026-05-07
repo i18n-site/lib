@@ -1,7 +1,6 @@
 import { CATEGORY_PUG } from "./constants.js";
 
-export const 
-  PUG_PRINT_WIDTH_OPTION = {
+export const PUG_PRINT_WIDTH_OPTION = {
     category: CATEGORY_PUG,
     type: "int",
     default: -1,
@@ -107,7 +106,8 @@ export const
       },
       {
         value: false,
-        description: "Do not print semicolons, except at the beginning of lines which may need them.",
+        description:
+          "Do not print semicolons, except at the beginning of lines which may need them.",
       },
     ],
   },
@@ -143,16 +143,18 @@ export const
       },
       {
         value: true,
-        description: "\n\t\t\tClosing bracket remains with last attribute's line.\n\t\t\tExample:\n\t\t\tinput(\n\t\t\ttype='text',\n\t\t\tvalue='my_value',\n\t\t\tname='my_name',\n\t\t\talt='my_alt',\n\t\t\tautocomplete='on')\n\t\t\t",
+        description:
+          "\n\t\t\tClosing bracket remains with last attribute's line.\n\t\t\tExample:\n\t\t\tinput(\n\t\t\ttype='text',\n\t\t\tvalue='my_value',\n\t\t\tname='my_name',\n\t\t\talt='my_alt',\n\t\t\tautocomplete='on')\n\t\t\t",
       },
       {
         value: "true",
-        description: "\n\t\t\tClosing bracket remains with last attribute's line.\n\t\t\tExample:\n\t\t\tinput(\n\t\t\ttype='text',\n\t\t\tvalue='my_value',\n\t\t\tname='my_name',\n\t\t\talt='my_alt',\n\t\t\tautocomplete='on')\n\t\t\t",
+        description:
+          "\n\t\t\tClosing bracket remains with last attribute's line.\n\t\t\tExample:\n\t\t\tinput(\n\t\t\ttype='text',\n\t\t\tvalue='my_value',\n\t\t\tname='my_name',\n\t\t\talt='my_alt',\n\t\t\tautocomplete='on')\n\t\t\t",
       },
       {
         value: false,
-        description: "\n\t\t\tClosing bracket ends with a new line.\n\t\t\tExample:\n\t\t\tinput(\n\t\t\ttype='text',\n\t\t\tvalue='my_value',\n\t\t\tname='my_name',\n\t\t\talt='my_alt',\n\t\t\tautocomplete='on'\n\t\t\t)\n\t\t\t",
+        description:
+          "\n\t\t\tClosing bracket ends with a new line.\n\t\t\tExample:\n\t\t\tinput(\n\t\t\ttype='text',\n\t\t\tvalue='my_value',\n\t\t\tname='my_name',\n\t\t\talt='my_alt',\n\t\t\tautocomplete='on'\n\t\t\t)\n\t\t\t",
       },
     ],
   };
-

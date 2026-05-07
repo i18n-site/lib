@@ -29,14 +29,14 @@ const plugin = {
           trimmed_aligned = trimmed_aligned.replace(indent_re, "$1");
         }
 
-        let processed = "", i = 0;
+        let processed = "",
+          i = 0;
         while (i < trimmed_aligned.length) {
           const slice = trimmed_aligned.slice(i);
           if (i === 0 || trimmed_aligned[i - 1] === "\n") {
             const js_match = slice.match(/^(!?=|-)\s/);
             if (js_match) {
-              const 
-                line_end = trimmed_aligned.indexOf("\n", i),
+              const line_end = trimmed_aligned.indexOf("\n", i),
                 next_i = line_end === -1 ? trimmed_aligned.length : line_end;
               processed += trimmed_aligned.slice(i, next_i);
               i = next_i;
@@ -46,14 +46,12 @@ const plugin = {
 
           const attr_match = slice.match(/^(!?=)\s*\{/);
           if (attr_match) {
-            const 
-              op = attr_match[1],
+            const op = attr_match[1],
               brace_idx = trimmed_aligned.indexOf("{", i + op.length);
 
             processed += trimmed_aligned.slice(i, brace_idx);
 
-            let 
-              brace_cnt = 0,
+            let brace_cnt = 0,
               found_end = false;
             for (let j = brace_idx; j < trimmed_aligned.length; j++) {
               const char = trimmed_aligned[j];
@@ -110,8 +108,7 @@ const plugin = {
   defaultOptions: {},
 };
 
-export const 
-  languages = plugin.languages,
+export const languages = plugin.languages,
   parsers = plugin.parsers,
   printers = plugin.printers,
   options = plugin.options,

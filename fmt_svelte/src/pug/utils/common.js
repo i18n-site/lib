@@ -44,8 +44,7 @@ export const isQuoted = (val) => {
   return false;
 };
 
-export const isSingleLineWithInterpolation = (val) =>
-  /^`[\S\s]*`$/.test(val) && val.includes("${");
+export const isSingleLineWithInterpolation = (val) => /^`[\S\s]*`$/.test(val) && val.includes("${");
 
 export const isMultilineInterpolation = (val) => /^`[\S\s]*`$/m.test(val) && val.includes("\n");
 
@@ -81,7 +80,8 @@ export const detectFramework = () => {
     const npm_packages = Object.keys(process.env)
       .filter((key) => key.startsWith("npm_package_"))
       .filter((key) => /(dev)?[Dd]ependencies_+/.test(key));
-    if (npm_packages.some((pack) => pack.includes("vue") && !pack.includes("vuepress"))) return "vue";
+    if (npm_packages.some((pack) => pack.includes("vue") && !pack.includes("vuepress")))
+      return "vue";
     if (npm_packages.some((pack) => pack.includes("svelte"))) return "svelte";
     if (npm_packages.some((pack) => pack.includes("angular"))) return "angular";
   } catch {
@@ -89,4 +89,3 @@ export const detectFramework = () => {
   }
   return "auto";
 };
-

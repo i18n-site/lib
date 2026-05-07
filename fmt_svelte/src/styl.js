@@ -1,6 +1,6 @@
 import { format } from "stylus-supremacy";
 
-export default (txt) =>
+export default (txt) => [
   format(txt, {
     alwaysUseImport: true,
     alwaysUseZeroWithoutUnit: true,
@@ -17,4 +17,6 @@ export default (txt) =>
     tabStopChar: "  ",
     insertSpaceBeforeComment: false,
     insertSpaceAfterComment: false,
-  });
+  }),
+  [],
+];

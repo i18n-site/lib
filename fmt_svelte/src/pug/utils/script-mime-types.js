@@ -1,5 +1,4 @@
-const 
-  JSON_SUFFIX_RE = /\+(json|yaml)$/i,
+const JSON_SUFFIX_RE = /\+(json|yaml)$/i,
   WRAPPING_QUOTES_RE = /(^(["'`]))|((["'`])$)/g,
   SCRIPT_TYPE_TO_PARSER_MAP = new Map([
     ["application/ecmascript", "babel"],
@@ -24,4 +23,3 @@ export const getScriptParserName = (type_attr_token) => {
 };
 
 export default getScriptParserName;
-

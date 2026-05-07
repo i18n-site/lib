@@ -90,11 +90,15 @@ export default class PugPrinter {
     this.framework = options.pugFramework === "auto" ? detectFramework() : options.pugFramework;
     this.quotes = this.options.pugSingleQuote ? "'" : '"';
     this.otherQuotes = this.options.pugSingleQuote ? '"' : "'";
-    const pug_attribute_separator = resolvePugAttributeSeparatorOption(options.pugAttributeSeparator),
+    const pug_attribute_separator = resolvePugAttributeSeparatorOption(
+        options.pugAttributeSeparator,
+      ),
       wrap_attributes_pattern = options.pugWrapAttributesPattern;
     this.always_use_attribute_separator = pug_attribute_separator === "always";
     this.never_use_attribute_separator = pug_attribute_separator === "none";
-    this.wrap_attributes_pattern = wrap_attributes_pattern ? new RegExp(wrap_attributes_pattern) : null;
+    this.wrap_attributes_pattern = wrap_attributes_pattern
+      ? new RegExp(wrap_attributes_pattern)
+      : null;
     this.code_interpolation_options = {
       semi: options.pugSemi ?? options.semi,
       singleQuote: options.pugSingleQuote ?? options.singleQuote,
@@ -581,7 +585,8 @@ export default class PugPrinter {
       val === "div" &&
       !this.options.pugExplicitDiv &&
       this.next_token &&
-      ((this.next_token.type === "class" && this.options.pugClassLocation === "before-attributes") ||
+      ((this.next_token.type === "class" &&
+        this.options.pugClassLocation === "before-attributes") ||
         this.next_token.type === "id")
     ) {
       val = "";
@@ -720,18 +725,14 @@ export default class PugPrinter {
         const start_idx = this.tokens.indexOf(token),
           end_idx = idx;
         if (end_idx - start_idx > 2) {
-          this.tokens = partialSort(
-            this.tokens,
-            start_idx + 1,
-            end_idx,
-            (a, b) =>
-              compareAttributeToken(
-                a,
-                b,
-                this.options.pugSortAttributes,
-                this.options.pugSortAttributesBeginning,
-                this.options.pugSortAttributesEnd,
-              ),
+          this.tokens = partialSort(this.tokens, start_idx + 1, end_idx, (a, b) =>
+            compareAttributeToken(
+              a,
+              b,
+              this.options.pugSortAttributes,
+              this.options.pugSortAttributesBeginning,
+              this.options.pugSortAttributesEnd,
+            ),
           );
         }
       }
@@ -802,9 +803,7 @@ export default class PugPrinter {
         // Write css-id in front of css-classes
         const pos = this.possible_id_position,
           literal = `#${val}`;
-        this.result = [this.result.slice(0, pos), literal, this.result.slice(pos)].join(
-          "",
-        );
+        this.result = [this.result.slice(0, pos), literal, this.result.slice(pos)].join("");
         this.possible_class_position += literal.length;
         this.replaceTagWithLiteralIfPossible(/div#/, "#");
         this.previous_attribute_remapped = true;
@@ -1690,10 +1689,10 @@ export default class PugPrinter {
   }
   async ["&attributes"](token) {
     const code = await format(token.val, {
-      parser: "__js_expression",
-      ...this.code_interpolation_options,
-      singleQuote: !this.options.pugSingleQuote,
-    }),
+        parser: "__js_expression",
+        ...this.code_interpolation_options,
+        singleQuote: !this.options.pugSingleQuote,
+      }),
       result = `&attributes(${code})`;
     this.current_line_length += result.length;
     return result;

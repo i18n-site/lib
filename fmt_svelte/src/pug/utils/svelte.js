@@ -5,4 +5,3 @@ export const isSvelteInterpolation = (val) =>
   (val.length >= 3 && isQuoted(val) && isWrappedWith(val, "{", "}", 1));
 
 export default isSvelteInterpolation;
-

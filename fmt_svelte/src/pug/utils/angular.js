@@ -1,6 +1,7 @@
 import { isQuoted, isWrappedWith } from "./common.js";
 
-export const isAngularBinding = (name) => name.length >= 3 && name[0] === "[" && name.at(-1) === "]";
+export const isAngularBinding = (name) =>
+  name.length >= 3 && name[0] === "[" && name.at(-1) === "]";
 
 export const isAngularAction = (name) => name.length >= 3 && name[0] === "(" && name.at(-1) === ")";
 
@@ -15,4 +16,3 @@ export default {
   isAngularDirective,
   isAngularInterpolation,
 };
-

@@ -1,6 +1,4 @@
-import pug from "./pug.js";
-import styl from "./styl.js";
-import js from "./js.js";
+import { formatterByName } from "./registry.js";
 
 export default async (code, file_name = "file.svelte") => {
   let end_tag, fmt, tag, t, line_offset = 1;
@@ -8,21 +6,20 @@ export default async (code, file_name = "file.svelte") => {
     res = [], 
     errors = [],
     lines = code.split("\n");
-  
-  for (const [i, raw_line] of lines.entries()) {
+
+  for (let i = 0; i < lines.length; ++i) {
     const 
+      raw_line = lines[i],
       line = raw_line.trimEnd(),
       trim_line = line.trim();
-    
+
     if (t) {
       if (trim_line === end_tag) {
         let content = t.join("\n");
         if (fmt) {
-          if (tag === "script") {
-            const [out, errs] = await fmt(content, file_name);
-            content = out;
-            if (errs?.length) errors.push(...errs.map(e => ({ ...e, line: (e.line || 0) + line_offset })));
-          } else content = await fmt(content);
+          const [out, errs] = await fmt(content, file_name);
+          content = out;
+          if (errs?.length) errors.push(...errs.map((e) => ({ ...e, line: (e.line || 0) + line_offset })));
         }
         res.push(content.trim(), line);
         t = fmt = undefined;
@@ -40,12 +37,13 @@ export default async (code, file_name = "file.svelte") => {
 
           tag = current_tag;
           line_offset = i + 2;
-          if (tag === "template" && lang === "pug") fmt = pug;
-          else if (tag === "style" && ["stylus", "styl"].includes(lang)) fmt = styl;
-          else if (tag === "script" && (!lang || ["js", "ts"].includes(lang))) fmt = js;
+
+          if (tag === "template") fmt = formatterByName(lang || "html");
+          else if (tag === "style") fmt = formatterByName(lang || "css");
+          else if (tag === "script") fmt = formatterByName(lang || "js");
 
           t = [];
-          end_tag = `</${tag}>`;
+          end_tag = "</" + tag + ">";
         }
       }
     }
