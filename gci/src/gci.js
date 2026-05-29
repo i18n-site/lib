@@ -4,10 +4,7 @@ import { simpleGit } from 'simple-git';
 
 const root = await simpleGit().revparse('--show-toplevel'),
   _chdir = process.chdir(root),
-  git = simpleGit().outputHandler((bin, stdout, stderr) => {
-    stdout.pipe(process.stdout);
-    stderr.pipe(process.stderr);
-  }),
+  git = simpleGit(),
   status = await git.status(),
   branch = status.current,
   has_commit = !!(await git.log().catch(() => null)),
@@ -24,7 +21,10 @@ if (!has_commit) {
 }
 
 await git.add('.');
-await git.commit(msg).catch(() => null);
+const res = await git.commit(msg).catch(() => null);
+if (res && res.commit) {
+  console.log('[' + res.branch + ' ' + res.commit + '] ' + msg + '\n ' + res.summary.changes + ' files changed, ' + res.summary.insertions + ' insertions(+), ' + res.summary.deletions + ' deletions(-)');
+}
 
 if (branch === 'main') {
   const to_dev = await git.checkout('dev').catch(() => null);
