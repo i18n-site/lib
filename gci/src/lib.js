@@ -1,6 +1,6 @@
 import { simpleGit } from "simple-git";
 import { createInterface } from "readline";
-import { gray, red } from "ansis";
+import { gray } from "ansis";
 import ERR from "@3-/log/ERR.js";
 import ai from "./ai.js";
 
@@ -99,10 +99,17 @@ export default async (git_url, dir) => {
         return;
       }
       const lineLog = (stream, isError) => {
-        const logger = isError ? console.error : console.log;
         createInterface({ input: stream }).on("line", (line) => {
           if (line.trim()) {
-            logger(gray("[" + prefix + "]") + " " + (isError ? red(line) : line));
+            if (isError) {
+              if (/error:|fatal:/i.test(line)) {
+                ERR(gray("[" + prefix + "]") + " " + line);
+              } else {
+                console.log(gray("[" + prefix + "] " + line));
+              }
+            } else {
+              console.log(gray("[" + prefix + "]") + " " + line);
+            }
           }
         });
       };
