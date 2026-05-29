@@ -23,6 +23,8 @@
   },
   "scripts": {},
   "dependencies": {
+    "@3-/bar": "^0.1.5",
+    "@3-/log": "^0.1.9",
     "@3-/read": "^0.1.4",
     "@opencode-ai/sdk": "^1.15.12",
     "simple-git": "^3.36.0"
