@@ -1,12 +1,98 @@
 import { existsSync, mkdirSync } from "fs";
 import { simpleGit } from "simple-git";
 import { createInterface } from "readline";
-import bar from "@3-/bar";
 import ERR from "@3-/log/ERR.js";
 import ai from "./ai.js";
 
+const initRepo = async (git, git_url, cwd, repo, outHandler, logStep) => {
+    logStep("正在初始化或克隆仓库...");
+    if (!repo) {
+      if (git_url) {
+        await simpleGit().outputHandler(outHandler).clone(git_url, cwd);
+      } else {
+        await git.init();
+      }
+    }
+  },
+  firstCommit = async (git, git_url, branch, logStep) => {
+    logStep("正在暂存文件...");
+    const cur = branch || "main";
+    await git.checkoutLocalBranch(cur).catch(() => null);
+    await git.add(".");
+
+    logStep("正在提交初始版本...");
+    await git.commit("init");
+
+    logStep("正在关联远程仓库...");
+    if (git_url) {
+      await git.addRemote("origin", git_url).catch(() => null);
+    }
+
+    logStep("正在推送初始版本到远程...");
+    await git.push("origin", cur, ["--set-upstream"]).catch(() => null);
+  },
+  normalCommit = async (git, branch, pushRetry, logStep) => {
+    logStep("正在暂存改动...");
+    await git.add(".");
+
+    const diff_text = await git.diff(["--cached"]);
+    if (!diff_text.trim()) {
+      console.log("没有改动");
+      return;
+    }
+
+    logStep("正在请求 AI 生成提交消息...");
+    const cli_msg = process.argv.slice(2).join(" ");
+    let msg = cli_msg;
+    if (!msg) {
+      msg = await ai(diff_text);
+      if (!msg) {
+        ERR("自动生成提交消息失败");
+        process.exit(1);
+      }
+    }
+
+    logStep("正在提交改动...");
+    const res = await git.commit(msg).catch(() => null);
+    if (res && res.commit) {
+      const { branch: b, commit: c, summary: s } = res;
+      console.log(
+        "[" +
+          b +
+          " " +
+          c +
+          "] " +
+          msg +
+          "\n " +
+          s.changes +
+          " 个文件被修改，" +
+          s.insertions +
+          " 处插入(+)，" +
+          s.deletions +
+          " 处删除(-)",
+      );
+    }
+
+    logStep("正在推送代码到远程...");
+    if (branch === "main") {
+      const temp = "gci-temp";
+      await git.checkoutLocalBranch(temp);
+      await git.branch(["-f", "main", "HEAD~1"]);
+      if (!process.env.NO_PUSH) {
+        await pushRetry(temp, "dev");
+      }
+      await git.checkout("main");
+      await git.branch(["-D", temp]);
+    } else {
+      if (!process.env.NO_PUSH && branch) {
+        await pushRetry();
+      }
+    }
+  };
+
 export default async (git_url, dir) => {
-  const BAR = bar(5),
+  let step = 0;
+  const logStep = (msg) => console.log("(" + ++step + "/5) " + msg),
     cwd = dir || process.cwd(),
     outHandler = (command, stdout, stderr, args) => {
       const sub = (args && args[0]) || command,
@@ -14,27 +100,21 @@ export default async (git_url, dir) => {
       if (sub === "diff" || sub === "status" || sub === "log" || sub === "rev-parse") {
         return;
       }
-      const lineLog = (stream) => {
+      const lineLog = (stream, isError) => {
+        const logger = isError ? console.error : console.log;
         createInterface({ input: stream }).on("line", (line) => {
           if (line.trim()) {
-            BAR.log("[" + prefix + "] " + line);
+            logger("[" + prefix + "] " + line);
           }
         });
       };
-      lineLog(stdout);
-      lineLog(stderr);
+      lineLog(stdout, false);
+      lineLog(stderr, true);
     },
     git = simpleGit(cwd).outputHandler(outHandler),
     repo = await git.checkIsRepo().catch(() => false);
 
-  if (!repo) {
-    if (git_url) {
-      await simpleGit().outputHandler(outHandler).clone(git_url, cwd);
-    } else {
-      await git.init();
-    }
-  }
-  BAR();
+  await initRepo(git, git_url, cwd, repo, outHandler, logStep);
 
   const status = await git.status(),
     branch = status.current,
@@ -51,78 +131,8 @@ export default async (git_url, dir) => {
     };
 
   if (!has_commit) {
-    const cur = branch || "main";
-    await git.checkoutLocalBranch(cur).catch(() => null);
-    await git.add(".");
-    BAR();
-    await git.commit("init");
-    BAR();
-    if (git_url) {
-      await git.addRemote("origin", git_url).catch(() => null);
-    }
-    BAR();
-    await git.push("origin", cur, ["--set-upstream"]).catch(() => null);
-    BAR();
-    return;
-  }
-
-  await git.add(".");
-  BAR();
-
-  const diff_text = await git.diff(["--cached"]);
-  if (!diff_text.trim()) {
-    console.log("没有改动");
-    return;
-  }
-
-  const cli_msg = process.argv.slice(2).join(" ");
-  let msg = cli_msg;
-
-  if (!msg) {
-    console.log("[信息] 正在请求 Opencode SDK 自动生成提交消息...");
-    msg = await ai(diff_text);
-    if (!msg) {
-      ERR("自动生成提交消息失败");
-      process.exit(1);
-    }
-  }
-  BAR();
-
-  const res = await git.commit(msg).catch(() => null);
-  if (res && res.commit) {
-    const { branch: b, commit: c, summary: s } = res;
-    console.log(
-      "[" +
-        b +
-        " " +
-        c +
-        "] " +
-        msg +
-        "\n " +
-        s.changes +
-        " 个文件被修改，" +
-        s.insertions +
-        " 处插入(+)，" +
-        s.deletions +
-        " 处删除(-)",
-    );
-  }
-  BAR();
-
-  if (branch === "main") {
-    const temp = "gci-temp";
-    await git.checkoutLocalBranch(temp);
-    await git.branch(["-f", "main", "HEAD~1"]);
-
-    if (!process.env.NO_PUSH) {
-      await pushRetry(temp, "dev");
-    }
-    await git.checkout("main");
-    await git.branch(["-D", temp]);
+    await firstCommit(git, git_url, branch, logStep);
   } else {
-    if (!process.env.NO_PUSH && branch) {
-      await pushRetry();
-    }
+    await normalCommit(git, branch, pushRetry, logStep);
   }
-  BAR();
 };
