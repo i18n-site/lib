@@ -1,18 +1,14 @@
 {
   "name": "@3-/gci",
   "version": "0.1.0",
-  "keywords": [],
   "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/gci",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/i18n-site/lib.git"
-  },
-  "homepage": "https://github.com/i18n-site/lib/tree/dev/gci",
-  "author": "i18n.site@gmail.com",
-  "license": "MulanPSL-2.0",
-  "exports": {
-    ".": "./lib/lib.js",
-    "./*": "./lib/*"
   },
   "bin": {
     "gci": "./lib/gci.js"
@@ -20,10 +16,16 @@
   "files": [
     "lib/*"
   ],
-  "devDependencies": {},
-  "scripts": {},
   "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
   "dependencies": {
+    "@3-/read": "^0.1.4",
+    "@opencode-ai/sdk": "^1.15.12",
     "simple-git": "^3.36.0"
-  }
+  },
+  "devDependencies": {}
 }

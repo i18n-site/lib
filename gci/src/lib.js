@@ -1,4 +1,3 @@
-import { existsSync, mkdirSync } from "fs";
 import { simpleGit } from "simple-git";
 
 export default async (git_url, dir) => {
