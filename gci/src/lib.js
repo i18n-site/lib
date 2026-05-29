@@ -9,6 +9,9 @@ export default async (git_url, dir) => {
   const BAR = bar(5),
     cwd = dir || process.cwd(),
     outHandler = (command, stdout, stderr) => {
+      if (command === "diff" || command === "status" || command === "log") {
+        return;
+      }
       const lineLog = (stream) => {
         createInterface({ input: stream }).on("line", (line) => {
           if (line.trim()) {
