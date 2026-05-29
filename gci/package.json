@@ -3,11 +3,11 @@
   "version": "0.1.3",
   "description": "AI-powered git commit and push automation tool / AI 驱动的 git 提交与推送自动化工具",
   "keywords": [
-    "git",
-    "commit",
-    "push",
     "ai",
-    "automation"
+    "automation",
+    "commit",
+    "git",
+    "push"
   ],
   "homepage": "https://github.com/i18n-site/lib/tree/dev/gci",
   "license": "MulanPSL-2.0",
