@@ -21,7 +21,6 @@
 - Automates staging of modifications (`git add .`).
 - Generates commit messages based on diff outputs using AI.
 - Supports custom commit messages provided through command line arguments.
-- Pushes changes directly to the current branch.
 - Handles push conflicts automatically by executing fetch, fast-forward merge, and retry operations.
 
 ## Installation
@@ -144,7 +143,6 @@ This principle applies to git commit messages. Clear history prevents future mai
 - 自动暂存改动（`git add .`）。
 - 依据代码差异（Diff）自动调用 AI 生成规范的提交消息。
 - 支持命令行参数传入自定义提交消息。
-- 将更改直接推送到当前分支。
 - 自动处理推送冲突，执行拉取、快进合并与重新推送。
 
 ## 安装

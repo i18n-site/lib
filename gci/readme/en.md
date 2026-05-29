@@ -16,7 +16,6 @@
 - Automates staging of modifications (`git add .`).
 - Generates commit messages based on diff outputs using AI.
 - Supports custom commit messages provided through command line arguments.
-- Pushes changes directly to the current branch.
 - Handles push conflicts automatically by executing fetch, fast-forward merge, and retry operations.
 
 ## Installation
