@@ -8,14 +8,16 @@ import ai from "./ai.js";
 export default async (git_url, dir) => {
   const BAR = bar(5),
     cwd = dir || process.cwd(),
-    outHandler = (command, stdout, stderr) => {
-      if (command === "diff" || command === "status" || command === "log") {
+    outHandler = (command, stdout, stderr, args) => {
+      const sub = (args && args[0]) || command,
+        prefix = command === "git" && sub ? "git " + sub : command;
+      if (sub === "diff" || sub === "status" || sub === "log" || sub === "rev-parse") {
         return;
       }
       const lineLog = (stream) => {
         createInterface({ input: stream }).on("line", (line) => {
           if (line.trim()) {
-            BAR.log("[" + command + "] " + line);
+            BAR.log("[" + prefix + "] " + line);
           }
         });
       };
