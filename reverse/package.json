@@ -1,0 +1,18 @@
+{
+  "name": "@3-/reverse",
+  "version": "0.1.2",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/reverse",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module"
+}

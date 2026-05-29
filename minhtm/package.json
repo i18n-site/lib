@@ -1,0 +1,35 @@
+{
+  "name": "@3-/minhtm",
+  "version": "0.1.7",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "bin": {
+    "minhtm": "./lib/minhtm.js"
+  },
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/minhtm",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {
+    "test": "vitest run"
+  },
+  "type": "module",
+  "dependencies": {
+    "@3-/extract": "^0.1.8",
+    "@3-/read": "^0.1.4",
+    "@3-/walk": "^0.2.1",
+    "@swc/core": "^1.15.26",
+    "@swc/html": "^1.15.26"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.4"
+  }
+}

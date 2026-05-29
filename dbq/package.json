@@ -1,0 +1,25 @@
+{
+  "name": "@3-/dbq",
+  "version": "0.1.39",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/dbq",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {
+    "@3-/is_dev": "^0.1.1",
+    "mariadb": "^3.3.0"
+  },
+  "dependencies": {
+    "@3-/log": "^0.1.4",
+    "@3-/retry": "^0.0.2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@3-/md__",
+  "version": "0.1.8",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/md__",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {
+    "micromark": "^4.0.0"
+  },
+  "scripts": {},
+  "type": "module"
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@3-/contabo",
+  "version": "0.1.4",
+  "keywords": [],
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/contabo",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/req": "^0.1.16",
+    "uuid": "^13.0.0"
+  }
+}

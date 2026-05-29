@@ -1,0 +1,31 @@
+{
+  "name": "@3-/intbin",
+  "version": "0.1.10",
+  "description": "Efficient conversion between integers, binaries, URL-safe base64 and base255 / 整数与二进制、URL安全base64及base255的高效转换工具",
+  "keywords": [
+    "integer",
+    "binary",
+    "base64url",
+    "base255"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/intbin",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/base64url": "^0.1.4"
+  }
+}

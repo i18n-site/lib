@@ -1,0 +1,21 @@
+{
+  "name": "@3-/loader",
+  "version": "0.0.2",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/loader",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "dependencies": {
+    "@3-/jsext": "^0.0.5",
+    "@3-/coffee_plus": "^0.1.2",
+    "coffeescript": "^2.7.0"
+  }
+}

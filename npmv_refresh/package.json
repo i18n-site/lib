@@ -1,0 +1,25 @@
+{
+  "name": "@3-/npmv_refresh",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/npmv_refresh",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "dependencies": {
+    "@3-/ipreq": "^0.1.23",
+    "@3-/pgw": "^0.1.4"
+  }
+}

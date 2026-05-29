@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package api;
+
+message IdUrlLi
+{
+  repeated uint64 id_li = 1;
+  repeated string url_li = 2;
+}

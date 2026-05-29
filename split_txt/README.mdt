@@ -1,0 +1,22 @@
+# @3-/split_txt
+
+按句子拆分文本,然后分组
+
+动态规划,每组大概n个字,方便向量化索引
+
+```coffee
+<+ ./src/lib.js >
+```
+
+测试 :
+```coffee
+<+ ./test/main.js >
+```
+
+output :
+
+```
+<+ ./out.txt >
+```
+
+<+ ../about.md >

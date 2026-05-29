@@ -1,0 +1,17 @@
+{
+  "name": "@3-/vbyte",
+  "version": "0.0.2",
+  "main": "_.js",
+  "repository": "git+https://github.com/i18n-site/lib.git",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/vbyte",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "exports": {
+    ".": "./_.js",
+    "./*": "./*"
+  },
+  "files": [
+    "*.wasm",
+    "*.ts"
+  ]
+}

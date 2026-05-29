@@ -1,0 +1,22 @@
+{
+  "name": "@3-/redis",
+  "version": "0.1.17",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/redis",
+  "author": "i18n.site@gmail.com",
+  "license": "MulanPSL-2.0",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "devDependencies": {},
+  "scripts": {},
+  "type": "module",
+  "peerDependencies": {},
+  "dependencies": {
+    "redis": "^5.10.0"
+  }
+}
