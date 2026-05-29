@@ -1,12 +1,10 @@
-import { existsSync, mkdirSync } from "fs";
 import { simpleGit } from "simple-git";
 import { createInterface } from "readline";
 import { green, gray, red } from "ansis";
 import ERR from "@3-/log/ERR.js";
 import ai from "./ai.js";
 
-const initRepo = async (git, git_url, cwd, repo, outHandler, logStep) => {
-    logStep("正在初始化或克隆仓库...");
+const initRepo = async (git, git_url, cwd, repo, outHandler) => {
     if (!repo) {
       if (git_url) {
         await simpleGit().outputHandler(outHandler).clone(git_url, cwd);
@@ -115,7 +113,7 @@ export default async (git_url, dir) => {
     git = simpleGit(cwd).outputHandler(outHandler),
     repo = await git.checkIsRepo().catch(() => false);
 
-  await initRepo(git, git_url, cwd, repo, outHandler, logStep);
+  await initRepo(git, git_url, cwd, repo, outHandler);
 
   const status = await git.status(),
     branch = status.current,
