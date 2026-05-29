@@ -1,8 +1,14 @@
 {
   "name": "@3-/gci",
   "version": "0.1.2",
-  "description": "",
-  "keywords": [],
+  "description": "AI-powered git commit and push automation tool / AI 驱动的 git 提交与推送自动化工具",
+  "keywords": [
+    "git",
+    "commit",
+    "push",
+    "ai",
+    "automation"
+  ],
   "homepage": "https://github.com/i18n-site/lib/tree/dev/gci",
   "license": "MulanPSL-2.0",
   "author": "i18n.site@gmail.com",
@@ -26,7 +32,6 @@
     "@3-/log": "^0.1.9",
     "@3-/read": "^0.1.4",
     "@opencode-ai/sdk": "^1.15.12",
-    "ansis": "^4.3.0",
     "simple-git": "^3.36.0"
   },
   "devDependencies": {}

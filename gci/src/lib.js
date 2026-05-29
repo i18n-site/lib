@@ -1,6 +1,7 @@
 import { simpleGit } from "simple-git";
 import { createInterface } from "readline";
-import { gray } from "ansis";
+import { gray } from "@3-/log/GRAY.js";
+import { green } from "@3-/log/GREEN.js";
 import ERR from "@3-/log/ERR.js";
 import ai from "./ai.js";
 
@@ -36,7 +37,7 @@ const initRepo = async (git, git_url, cwd, repo, outHandler) => {
 
     const diff_text = await git.diff(["--cached"]);
     if (!diff_text.trim()) {
-      console.log("没有改动");
+      console.log(gray("没有改动"));
       return;
     }
 
@@ -56,19 +57,17 @@ const initRepo = async (git, git_url, cwd, repo, outHandler) => {
     if (res && res.commit) {
       const { branch: b, commit: c, summary: s } = res;
       console.log(
-        "[" +
-          b +
-          " " +
-          c +
-          "] " +
-          msg +
-          "\n " +
-          s.changes +
-          " 个文件被修改，" +
-          s.insertions +
-          " 处插入(+)，" +
-          s.deletions +
-          " 处删除(-)",
+        gray("[" + b + " " + c + "] ") +
+          green(msg) +
+          gray(
+            "\n " +
+              s.changes +
+              " 个文件被修改，" +
+              s.insertions +
+              " 处插入(+)，" +
+              s.deletions +
+              " 处删除(-)",
+          ),
       );
     }
 
@@ -90,7 +89,7 @@ const initRepo = async (git, git_url, cwd, repo, outHandler) => {
   };
 
 export default async (git_url, dir) => {
-  const logStep = (msg) => console.log(msg),
+  const logStep = (msg) => console.log(green(msg)),
     cwd = dir || process.cwd(),
     outHandler = (command, stdout, stderr, args) => {
       const sub = (args && args[0]) || command,

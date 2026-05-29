@@ -1,4 +1,6 @@
 import { createOpencode } from '@opencode-ai/sdk';
+import { gray } from '@3-/log/GRAY.js';
+import { green } from '@3-/log/GREEN.js';
 
 const aiInit = async (title) => {
   const { client, server } = await createOpencode(),
@@ -15,9 +17,9 @@ const aiInit = async (title) => {
         const reasoning = parts.filter((p) => p.type === "reasoning").map((p) => p.text).join(""),
           reply = parts.filter((p) => p.type === "text").map((p) => p.text).join("");
         if (reasoning) {
-          console.log("\n💡 " + reasoning);
+          console.log(gray("\n💡 " + reasoning));
         }
-        console.log("\n← " + reply);
+        console.log(green("\n← " + reply));
         return reply;
       }
       if (res.data?.info?.error) {
