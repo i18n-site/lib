@@ -72,19 +72,8 @@ const initRepo = async (git, git_url, cwd, repo, outHandler) => {
     }
 
     logStep("正在推送代码到远程...");
-    if (branch === "main") {
-      const temp = "gci-temp";
-      await git.checkoutLocalBranch(temp);
-      await git.branch(["-f", "main", "HEAD~1"]);
-      if (!process.env.NO_PUSH) {
-        await pushRetry(temp, "dev");
-      }
-      await git.checkout("main");
-      await git.branch(["-D", temp]);
-    } else {
-      if (!process.env.NO_PUSH && branch) {
-        await pushRetry();
-      }
+    if (!process.env.NO_PUSH && branch) {
+      await pushRetry();
     }
   };
 

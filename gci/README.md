@@ -21,7 +21,7 @@
 - Automates staging of modifications (`git add .`).
 - Generates commit messages based on diff outputs using AI.
 - Supports custom commit messages provided through command line arguments.
-- Protects default branch (`main`) by redirecting direct pushes to development branch (`dev`) via temporary branches.
+- Pushes changes directly to the current branch.
 - Handles push conflicts automatically by executing fetch, fast-forward merge, and retry operations.
 
 ## Installation
@@ -83,9 +83,7 @@ graph TD
     GetMsg -- Yes --> Commit[Commit with CLI Message]
     GetMsg -- No --> RequestAI[Request AI Commit Message] --> Commit
 
-    Commit --> BranchPolicy{Is Main Branch?}
-    BranchPolicy -- Yes --> BranchProtect[Push to dev branch via temp branch and reset main local] --> PushRetry
-    BranchPolicy -- No --> PushDirect[Push current branch to origin] --> PushRetry
+    Commit --> PushDirect[Push current branch to origin] --> PushRetry
 
     FirstCommit --> PushRetry
     PushRetry{Push Successful?}
@@ -146,7 +144,7 @@ This principle applies to git commit messages. Clear history prevents future mai
 - 自动暂存改动（`git add .`）。
 - 依据代码差异（Diff）自动调用 AI 生成规范的提交消息。
 - 支持命令行参数传入自定义提交消息。
-- 保护默认分支（`main`），通过临时分支将提交推送到远程开发分支（`dev`）。
+- 将更改直接推送到当前分支。
 - 自动处理推送冲突，执行拉取、快进合并与重新推送。
 
 ## 安装
@@ -208,9 +206,7 @@ graph TD
     GetMsg -- 是 --> Commit[提交改动]
     GetMsg -- 否 --> RequestAI[调用 AI 生成消息] --> Commit
 
-    Commit --> BranchPolicy{是否为主分支 main?}
-    BranchPolicy -- 是 --> BranchProtect[通过临时分支推送至 dev 并重置本地 main] --> PushRetry
-    BranchPolicy -- 否 --> PushDirect[直接推送当前分支] --> PushRetry
+    Commit --> PushDirect[直接推送当前分支] --> PushRetry
 
     FirstCommit --> PushRetry
     PushRetry{推送是否成功?}

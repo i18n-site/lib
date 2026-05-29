@@ -16,7 +16,7 @@
 - Automates staging of modifications (`git add .`).
 - Generates commit messages based on diff outputs using AI.
 - Supports custom commit messages provided through command line arguments.
-- Protects default branch (`main`) by redirecting direct pushes to development branch (`dev`) via temporary branches.
+- Pushes changes directly to the current branch.
 - Handles push conflicts automatically by executing fetch, fast-forward merge, and retry operations.
 
 ## Installation
@@ -78,9 +78,7 @@ graph TD
     GetMsg -- Yes --> Commit[Commit with CLI Message]
     GetMsg -- No --> RequestAI[Request AI Commit Message] --> Commit
 
-    Commit --> BranchPolicy{Is Main Branch?}
-    BranchPolicy -- Yes --> BranchProtect[Push to dev branch via temp branch and reset main local] --> PushRetry
-    BranchPolicy -- No --> PushDirect[Push current branch to origin] --> PushRetry
+    Commit --> PushDirect[Push current branch to origin] --> PushRetry
 
     FirstCommit --> PushRetry
     PushRetry{Push Successful?}

@@ -27,21 +27,7 @@ fi
 
 git commit -m"$MSG" || true
 
-if [ "$branch" == "main" ]; then
-  if ! git checkout dev 2>/dev/null; then
-    if git fetch origin dev 2>/dev/null; then
-      git checkout -b dev origin/dev
-    else
-      git checkout -b dev
-      git push --set-upstream origin dev
-    fi
-  fi
 
-  git merge --ff --no-edit main
-  git checkout main
-  git reset --hard HEAD~1
-  git checkout dev
-fi
 
 if [ -z "$NO_PUSH" ]; then
   git push 2>/dev/null || (git fetch origin $branch && git merge --ff --no-edit origin/$branch && git push) || true

@@ -77,7 +77,7 @@ await sync(
 
 The project includes two helper scripts in the `bin/` directory to simplify daily operations.
 
-- **`gci` (Git Commit)**: A shortcut for your daily commit workflow. It automatically stages all new changes, commits them with a standard message, and pushes the `dev` branch. It handles initial repository setup and ensures work from `main` is correctly merged into `dev`.
+- **`gci` (Git Commit)**: A shortcut for your daily commit workflow. It automatically stages all changes, commits them with the specified or default message, and pushes to the current branch. If the repository is empty, it handles the initial repository setup and creates the `main` and `dev` branches.
 
 - **`gme` (Git Merge)**: A script to flag a commit for immediate synchronization. It runs `gci` to commit any pending changes, then amends the latest commit message to add the `🔹` prefix. This signals the automation to perform a merge on its next run.
 

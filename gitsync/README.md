@@ -84,7 +84,7 @@ await sync(
 
 The project includes two helper scripts in the `bin/` directory to simplify daily operations.
 
-- **`gci` (Git Commit)**: A shortcut for your daily commit workflow. It automatically stages all new changes, commits them with a standard message, and pushes the `dev` branch. It handles initial repository setup and ensures work from `main` is correctly merged into `dev`.
+- **`gci` (Git Commit)**: A shortcut for your daily commit workflow. It automatically stages all changes, commits them with the specified or default message, and pushes to the current branch. If the repository is empty, it handles the initial repository setup and creates the `main` and `dev` branches.
 
 - **`gme` (Git Merge)**: A script to flag a commit for immediate synchronization. It runs `gci` to commit any pending changes, then amends the latest commit message to add the `🔹` prefix. This signals the automation to perform a merge on its next run.
 
@@ -213,7 +213,7 @@ await sync(
 
 项目在 `bin/` 目录下提供了两个辅助脚本，用以简化日常操作。
 
-- **`gci` (Git Commit)**: 日常提交的快捷命令。它会自动暂存所有变更，使用标准信息进行提交，并推送 `dev` 分支。脚本还会处理仓库的初始化设置，并确保 `main` 分支的工作被正确合并到 `dev` 分支。
+- **`gci` (Git Commit)**: 日常提交的快捷命令。它会自动暂存所有变更，使用指定的或默认的提交消息进行提交，并推送当前分支。如果是空仓库，脚本会自动处理仓库的初始化设置并创建 `main` 和 `dev` 分支。
 
 - **`gme` (Git Merge)**: 用于标记一个提交需要立即被同步的脚本。它会先运行 `gci` 提交所有待处理的变更，然后修改最新的提交，在注释前添加 `🔹` 前缀。这个标志会通知自动化服务在下次运行时执行合并操作。
 
