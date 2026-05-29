@@ -46,7 +46,9 @@ export default async (diff_text) => {
   await using ai = await aiInit("gci-commit");
   return (
     await ai(
-      "根据以下代码改动，生成一句话的git提交消息，格式如<type>: 英文说明\n<中文说明>。不要返回其他多余的说明，仅返回提交消息即可。\n\n" +
+      (process.env.GCI_PROMPT ||
+        "根据以下代码改动，生成一句话的git提交消息，格式如<type>: 英文说明\n<中文说明>。不要返回其他多余的说明，仅返回提交消息即可。") +
+        "\n\n" +
         diff_text,
     )
   )?.trim();

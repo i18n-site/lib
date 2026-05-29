@@ -4,6 +4,7 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Configuration](#configuration)
 - [Architecture and Design](#architecture-and-design)
 - [Tech Stack](#tech-stack)
 - [Directory Structure](#directory-structure)
@@ -30,6 +31,12 @@ Or specify commit message directly:
 ```bash
 bunx gci "feat: add new feature"
 ```
+
+## Configuration
+You can customize the behavior using the following environment variables:
+
+- `GCI_PROMPT`: Customize the prompt used to generate the AI commit message.
+- `NO_PUSH`: If set (e.g. `NO_PUSH=1`), the tool will only commit changes locally and will not push them to the remote repository.
 
 ## Architecture and Design
 The tool executes workflow sequentially:
