@@ -9,6 +9,7 @@
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Configuration](#configuration)
 - [Architecture and Design](#architecture-and-design)
 - [Tech Stack](#tech-stack)
 - [Directory Structure](#directory-structure)
@@ -35,6 +36,12 @@ Or specify commit message directly:
 ```bash
 bunx gci "feat: add new feature"
 ```
+
+## Configuration
+You can customize the behavior using the following environment variables:
+
+- `GCI_PROMPT`: Customize the prompt used to generate the AI commit message.
+- `NO_PUSH`: If set (e.g. `NO_PUSH=1`), the tool will only commit changes locally and will not push them to the remote repository.
 
 ## Architecture and Design
 The tool executes workflow sequentially:
@@ -111,6 +118,7 @@ This principle applies to git commit messages. Clear history prevents future mai
 - [功能特性](#功能特性)
 - [安装](#安装)
 - [使用说明](#使用说明)
+- [配置说明](#配置说明)
 - [架构设计与模块流程](#架构设计与模块流程)
 - [技术堆栈](#技术堆栈)
 - [目录结构](#目录结构)
@@ -137,6 +145,12 @@ bunx gci
 ```bash
 bunx gci "feat: 增加新功能"
 ```
+
+## 配置说明
+您可以通过以下环境变量来自定义行为：
+
+- `GCI_PROMPT`: 自定义用于生成 AI 提交消息的提示词。
+- `NO_PUSH`: 如果设置该变量（如 `NO_PUSH=1`），工具只会执行本地提交，不会推送到远程仓库。
 
 ## 架构设计与模块流程
 系统按顺序执行以下流程：
