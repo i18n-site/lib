@@ -26,6 +26,7 @@
     "@3-/log": "^0.1.9",
     "@3-/read": "^0.1.4",
     "@opencode-ai/sdk": "^1.15.12",
+    "ansis": "^4.3.0",
     "simple-git": "^3.36.0"
   },
   "devDependencies": {}

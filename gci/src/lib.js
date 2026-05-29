@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync } from "fs";
 import { simpleGit } from "simple-git";
 import { createInterface } from "readline";
+import { green, gray, red } from "ansis";
 import ERR from "@3-/log/ERR.js";
 import ai from "./ai.js";
 
@@ -92,7 +93,7 @@ const initRepo = async (git, git_url, cwd, repo, outHandler, logStep) => {
 
 export default async (git_url, dir) => {
   let step = 0;
-  const logStep = (msg) => console.log("(" + ++step + "/5) " + msg),
+  const logStep = (msg) => console.log(green.bold("(" + ++step + "/5)") + " " + msg),
     cwd = dir || process.cwd(),
     outHandler = (command, stdout, stderr, args) => {
       const sub = (args && args[0]) || command,
@@ -104,7 +105,7 @@ export default async (git_url, dir) => {
         const logger = isError ? console.error : console.log;
         createInterface({ input: stream }).on("line", (line) => {
           if (line.trim()) {
-            logger("[" + prefix + "] " + line);
+            logger(gray("[" + prefix + "]") + " " + (isError ? red(line) : line));
           }
         });
       };
