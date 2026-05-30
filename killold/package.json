@@ -1,8 +1,14 @@
 {
   "name": "@3-/killold",
-  "version": "0.1.1",
-  "keywords": [],
-  "description": "",
+  "version": "0.1.2",
+  "keywords": [
+    "pid",
+    "kill",
+    "lock",
+    "process",
+    "single-instance"
+  ],
+  "description": "Kill previous running instances of the script by PID file / 通过 PID 文件清理运行中的旧进程实例",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/i18n-site/lib.git"
