@@ -1,0 +1,101 @@
+.demo
+  box-sizing border-box
+  display flex
+  flex-direction column
+  gap 20px
+  margin 0 auto
+  max-width 640px
+  padding 24px
+  user-select none
+  width 100%
+
+  .wrap
+    backdrop-filter blur(8px)
+    background #ffffff66
+    border 1px solid #0000000d
+    border-radius 16px
+    box-shadow inset 0 1px 0 #ffffff99, 0 8px 32px #00000005
+    display block
+    max-width 100%
+    overflow hidden
+    width 100%
+
+  .v
+    height 360px
+    margin-bottom 24px
+    max-height 100%
+
+  .h
+    height 180px
+    max-height 100%
+
+  c-vs, c-hs
+    height 100%
+    width 100%
+
+  c-vs>b
+    box-sizing border-box
+    display flex
+    flex-direction column
+    gap 10px
+    padding 20px
+    width 100%
+
+    &>b
+      align-items center
+      background linear-gradient(135deg, HSL(var(--theme-hue), 85%, 98%) 0, HSL(var(--theme-hue-next), 80%, 95%) 100%)
+      border 1px solid HSL(var(--theme-hue), 40%, 90%)
+      border-radius 16px
+      box-shadow 0 4px 12px #00000005, inset 0 1px 0 #ffffffcc
+      cursor pointer
+      display flex
+      height 72px
+      justify-content center
+      padding 0 20px
+      transition all 0.4s cubic-bezier(0.16, 1, 0.3, 1)
+
+      &:hover
+        border-color HSL(var(--theme-hue), 50%, 80%)
+        box-shadow 0 12px 24px #0000000f, inset 0 1px 0 #ffffffcc
+        transform translateY(-2px) scale(1.01)
+
+      .num
+        color HSL(var(--theme-hue), 65%, 45%)
+        font-size 28px
+        font-weight 800
+        text-shadow 0 2px 4px #0000000a
+
+  c-hs>b
+    align-items center
+    box-sizing border-box
+    display flex
+    gap 12px
+    height 100%
+    padding 20px
+
+    &>b
+      align-items center
+      background linear-gradient(135deg, HSL(var(--theme-hue), 85%, 97%) 0, HSL(var(--theme-hue-next), 80%, 94%) 100%)
+      border 1px solid HSL(var(--theme-hue), 40%, 88%)
+      border-radius 16px
+      box-shadow 0 4px 12px #00000005, inset 0 1px 0 #ffffffcc
+      box-sizing border-box
+      cursor pointer
+      display flex
+      flex-shrink 0
+      height 100%
+      justify-content center
+      padding 16px
+      transition all 0.4s cubic-bezier(0.16, 1, 0.3, 1)
+      width 140px
+
+      &:hover
+        border-color HSL(var(--theme-hue), 50%, 78%)
+        box-shadow 0 16px 32px #00000014, inset 0 1px 0 #ffffffcc
+        transform translateY(-4px)
+
+      .num
+        color HSL(var(--theme-hue), 65%, 45%)
+        font-size 32px
+        font-weight 800
+        text-shadow 0 2px 4px #0000000a

@@ -1,0 +1,29 @@
+{
+  "name": "@3-/nix",
+  "version": "0.1.5",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/nix",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/req": "^0.1.16",
+    "@3-/write": "^0.0.2",
+    "zx": "^8.8.5"
+  },
+  "devDependencies": {}
+}

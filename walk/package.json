@@ -1,0 +1,16 @@
+{
+  "name": "@3-/walk",
+  "version": "0.2.2",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/walk",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  }
+}

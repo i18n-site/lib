@@ -1,0 +1,61 @@
+.Input
+  align-items center
+  border-radius var(--inputRadius)
+  box-shadow var(--inputShadow)
+  box-sizing border-box
+  cursor text
+  display flex
+  min-height var(--inputMinHeight)
+  padding var(--inputPadding)
+  position relative
+  transition padding 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s
+  width 100%
+  z-index 1
+
+  &:has(input:not(:placeholder-shown))
+    align-items flex-end
+    padding var(--inputPaddingActive)
+
+    input+label
+      color var(--inputLabelColorActive)
+      font-size var(--inputLabelSizeActive)
+      font-weight 500
+      letter-spacing 0.02em
+      top 8px
+      transform translateY(0)
+
+  input
+    background-color transparent
+    border none
+    box-sizing border-box
+    color #1d1d1f
+    font-size 17px
+    font-weight 400
+    margin 0
+    outline none
+    padding 0
+    width 100%
+
+  label
+    color var(--inputLabelColor)
+    font-size var(--inputLabelSize)
+    font-weight 400
+    left 22px
+    letter-spacing 0.016px
+    pointer-events none
+    position absolute
+    top 50%
+    transform translateY(-50%)
+    transform-origin left center
+    transition all 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+
+@media (max-width 600px)
+  .Input
+    min-height 52px
+    padding 12px 24px
+
+    &:has(input:not(:placeholder-shown))
+      padding 20px 24px 4px
+
+    label
+      left 24px

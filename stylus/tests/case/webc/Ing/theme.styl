@@ -1,0 +1,25 @@
+.Ing
+  position relative
+
+  &:before
+    animation-duration 1s
+    animation-name fadeIn
+    background var(--ingSvg) 50% 50% / 64px no-repeat
+    bottom 0
+    content ''
+    cursor wait
+    left 0
+    position absolute
+    right 0
+    top 0
+    z-index 999
+
+:not(form).Ing
+  align-self center
+  display flex
+  height 64px
+  width 64px
+
+form.Ing:before
+  backdrop-filter blur(1px)
+  background-color #ffffff66

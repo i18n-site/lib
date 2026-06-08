@@ -1,0 +1,9 @@
+export const AST_LINE = 3,
+  AST_FILE = 4,
+  STATE_INIT = 0,
+  STATE_LOADING = 1,
+  STATE_DONE = 2,
+  NODE_VAR = 0,
+  NODE_PROP = 1,
+  NODE_RULE = 2,
+  NODE_IMPORT = 3;

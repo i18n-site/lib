@@ -1,0 +1,28 @@
+{
+  "name": "@3-/txt_id",
+  "version": "0.1.7",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/txt_id",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/blake3": "^1.0.10"
+  },
+  "devDependencies": {
+    "@8v/mysql": "^0.1.31"
+  }
+}

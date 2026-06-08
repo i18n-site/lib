@@ -1,0 +1,20 @@
+{
+  "name": "@3-/cache",
+  "version": "0.1.3",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/cache",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/jsmap": "^0.1.3",
+    "@3-/msgpack": "^0.1.2"
+  }
+}

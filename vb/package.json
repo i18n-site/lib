@@ -1,0 +1,18 @@
+{
+  "name": "@3-/vb",
+  "version": "0.1.6",
+  "homepage": "https://github.com/wactax/3TiSite/tree/main/vb",
+  "license": "MulanPSL-2.0",
+  "author": "3Ti.Site@Gmail.Com",
+  "repository": "git+https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "devDependencies": {}
+}

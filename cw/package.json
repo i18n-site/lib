@@ -1,0 +1,23 @@
+{
+  "name": "@3-/cw",
+  "version": "0.1.4",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/cw",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/token": "^0.1.5"
+  },
+  "devDependencies": {}
+}

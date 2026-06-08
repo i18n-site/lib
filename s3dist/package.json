@@ -1,0 +1,41 @@
+{
+  "name": "@3-/s3dist",
+  "version": "0.2.1",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/s3dist",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/b64": "^0.1.3",
+    "@3-/blake": "^0.1.7",
+    "@3-/ext": "^0.0.1",
+    "@3-/extract": "^0.0.1",
+    "@3-/intbin": "^0.1.2",
+    "@3-/mreplace": "^0.1.2",
+    "@3-/ossput": "^0.1.3",
+    "@3-/pg": "^0.1.3",
+    "@3-/pool": "^0.1.2",
+    "@3-/read": "^0.0.1",
+    "@3-/retry": "^0.0.1",
+    "@3-/u8": "^0.1.1",
+    "@3-/urle": "^0.1.6",
+    "@3-/utf8": "^0.0.3",
+    "coffeescript": "^2.7.0",
+    "esbuild": "^0.21.1",
+    "mime-types": "^2.1.35",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {}
+}

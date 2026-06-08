@@ -1,0 +1,24 @@
+.box
+  width: 150px
+  height: @width
+
+.parent
+  width: 200px
+  .child
+    width: @width
+    height: @width
+
+.sibling-a
+  width: 300px
+
+.sibling-b
+  height: @width
+
+.shorthand
+  width: 10px
+  height: 20px
+  padding: @width @height
+
+.custom-prop
+  --custom: 20px
+  margin: @--custom

@@ -1,0 +1,26 @@
+{
+  "name": "@3-/ossput",
+  "version": "0.1.17",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/ossput",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.828.0",
+    "@aws-sdk/lib-storage": "^3.828.0",
+    "@smithy/node-http-handler": "^4.0.6",
+    "https-proxy-agent": "^7.0.6"
+  }
+}

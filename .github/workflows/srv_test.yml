@@ -1,0 +1,43 @@
+name: "@3-/srv test (系统服务自动化测试)"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["dev", "main"]
+    paths:
+      - "srv/**"
+      - ".github/workflows/srv_test.yml"
+  pull_request:
+    branches: ["dev", "main"]
+    paths:
+      - "srv/**"
+      - ".github/workflows/srv_test.yml"
+
+jobs:
+  test:
+    name: Test on / 运行环境 ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: ./srv
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+
+    steps:
+      - name: Checkout Code / 检出代码
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js Environment / 配置 Node.js 环境
+        uses: actions/setup-node@v6
+
+      - name: Setup Bun Environment / 配置 Bun 环境
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies / 安装依赖包
+        run: bun install
+
+      - name: Run Vitest with Real Services / 执行系统服务挂载真实端到端测试
+        run: bun run test

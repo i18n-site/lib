@@ -1,0 +1,25 @@
+{
+  "name": "@3-/swc",
+  "version": "0.1.14",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/swc",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/merge": "^0.1.2",
+    "@swc/core": "^1.13.5"
+  },
+  "devDependencies": {}
+}

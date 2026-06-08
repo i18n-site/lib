@@ -1,0 +1,48 @@
+c-vs, c-hs
+  display block
+
+c-vs
+  &::part(bar)
+    height 100%
+    left 100%
+    top 0
+    width 13px
+
+  &::part(bar):hover, &::part(drag)
+    cursor var(--cursorScrollvSvg)
+    width 21px
+
+  &::part(si)
+    cursor var(--cursorScrollvSvg)
+    left 0
+    right 0
+    width 7px
+
+  height 100%
+  width 100%
+
+c-hs
+  &::part(scroll)
+    display block
+    width 100%
+
+  &::part(bar)
+    height 13px
+    left 0
+    right 0
+    width 100%
+
+  &::part(bar):hover, &::part(drag)
+    cursor var(--cursorScrollhSvg)
+    height 21px
+
+  &::part(si)
+    bottom 0
+    cursor var(--cursorScrollhSvg)
+    height 7px
+    top 0
+
+  width 100%
+
+body.drag
+  cursor var(--cursorGrabSvg)

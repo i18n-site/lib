@@ -1,0 +1,15 @@
+# @3-/feishu_watch
+
+1. 运行添加函数的验证
+
+./lib/challenge.js
+
+2. 运行正常逻辑
+
+output :
+
+```
+<+ ./out.txt >
+```
+
+<+ ../about.md >

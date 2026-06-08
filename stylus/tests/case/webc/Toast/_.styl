@@ -1,0 +1,63 @@
+.Toast
+  align-items center
+  backdrop-filter blur(12px)
+  background linear-gradient(90deg, #000000e6 0, #0f172acc 100%)
+  border 1px solid #0000000f
+  border-radius 14px
+  box-shadow inset 0 0 3px #00000080
+  color #fff
+  display flex
+  font-size 14px
+  font-weight bold
+  line-height 1.2
+  max-height 544px
+  max-width 544px
+  overflow visible
+  padding 7px 14px
+  position fixed
+  right 14px
+  text-align center
+  text-overflow ellipsis
+  top 14px
+  z-index 99999
+
+  &.animated
+    animation-duration 0.5s
+    animation-fill-mode both
+
+  &.fadeInRight
+    animation-name fadeInRight
+
+  &.fadeOutRight
+    animation-name fadeOutRight
+
+  &>.x
+    background url('./svg/xSolid.svg') 0 0 / cover no-repeat
+    cursor pointer
+    display block
+    filter invert(1) opacity(0.5)
+    flex-shrink 0
+    height 18px
+    margin 0 -4px 0 8px
+    transition filter 0.2s
+    user-select none
+    width 18px
+
+    &:hover
+      filter invert(1) opacity(0.85)
+
+  &.ERR
+    background linear-gradient(135deg, #ff0015f0 0, #ff0026fe 100%)
+    box-shadow inset 0 0 3px #ff000080
+
+    &>.x
+      filter invert(1) opacity(0.7)
+
+      &:hover
+        filter invert(1) opacity(1)
+
+  &>b
+    max-height 544px
+    max-width 544px
+    overflow hidden
+    text-overflow ellipsis

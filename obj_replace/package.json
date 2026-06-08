@@ -1,0 +1,19 @@
+{
+  "name": "@3-/obj_replace",
+  "version": "0.1.0",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev",
+  "bugs": {
+    "url": "https://github.com/i18n-site/lib/issues"
+  },
+  "repository": "https://github.com/i18n-site/lib/tree/dev",
+  "type": "module",
+  "exports": {
+    "./str.js": "./str.js",
+    "./fp.js": "./fp.js",
+    "./gen.js": "./gen.js"
+  },
+  "dependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/write": "^0.0.2"
+  }
+}

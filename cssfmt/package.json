@@ -1,0 +1,33 @@
+{
+  "name": "@3-/cssfmt",
+  "version": "0.1.5",
+  "description": "CSS formatter that nests selectors, converts rgba to hex, and moves @import to top / 支持选择器嵌套、rgba转十六进制及@import置顶的CSS格式化工具",
+  "keywords": [
+    "ast",
+    "css",
+    "formatter",
+    "nesting",
+    "rgba2hex"
+  ],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/cssfmt",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/css2nest": "^0.1.15",
+    "css-tree": "^3"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@3-/domain_watch",
+  "version": "0.1.0",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/domain_watch",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/sleep": "^0.0.4",
+    "@alicloud/credentials": "^2.4.4",
+    "@alicloud/domain20180129": "^4.0.0",
+    "@alicloud/openapi-client": "^0.4.15"
+  }
+}

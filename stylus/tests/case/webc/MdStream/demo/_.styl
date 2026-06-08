@@ -1,0 +1,79 @@
+c-vs, c-hs
+  display block
+
+c-vs
+  &::part(bar)
+    height 100%
+    left 100%
+    top 0
+    width 13px
+
+  &::part(bar):hover, &::part(drag)
+    cursor var(--cursorScrollvSvg)
+    width 21px
+
+  &::part(si)
+    cursor var(--cursorScrollvSvg)
+    left 0
+    right 0
+    width 7px
+
+  height 100%
+  width 100%
+
+c-hs
+  &::part(scroll)
+    display block
+    width 100%
+
+  &::part(bar)
+    height 13px
+    left 0
+    right 0
+    width 100%
+
+  &::part(bar):hover, &::part(drag)
+    cursor var(--cursorScrollhSvg)
+    height 21px
+
+  &::part(si)
+    bottom 0
+    cursor var(--cursorScrollhSvg)
+    height 7px
+    top 0
+
+  width 100%
+
+body.drag
+  cursor var(--cursorGrabSvg)
+
+c-vs
+  display block
+  height 100%
+  width 100%
+
+.demo
+  .col
+    display flex
+    height auto
+
+  .wrap
+    .Md
+      padding 24px 32px
+
+    &:hover
+      box-shadow 0 16px 48px -8px #0000001f
+
+    background #fff
+    border 1px solid #00000014
+    border-radius 20px
+    box-shadow 0 10px 40px -10px #00000014
+    display flex
+    height auto
+    overflow hidden
+
+  background none
+  display flex
+  margin 0 auto
+  padding 40px
+  width 95vw

@@ -1,0 +1,27 @@
+{
+  "name": "@3-/hwdns",
+  "version": "0.1.41",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/hwdns",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/chunk": "^0.1.2",
+    "@huaweicloud/huaweicloud-sdk-core": "^3.1.179",
+    "@huaweicloud/huaweicloud-sdk-dns": "^3.1.179",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@3-/stylus",
+  "version": "0.1.2",
+  "description": "Lightweight, efficient Stylus compiler in JavaScript / 轻量高效的 JavaScript 版本 Stylus 编译器",
+  "keywords": [
+    "compiler",
+    "css",
+    "parser",
+    "preprocessor",
+    "stylus"
+  ],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/stylus",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "./*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./stylus.js",
+    "./*": "./*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/log": "^0.1.9",
+    "@jridgewell/gen-mapping": "^0.3.13"
+  },
+  "devDependencies": {
+    "@3-/css2nest": "^0.1.12",
+    "diff": "^9.0.0",
+    "lightningcss": "^1.32.0",
+    "stylus": "^0.64.0"
+  }
+}
