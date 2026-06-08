@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+export PATH="$HOME/.cargo/bin:$PATH"
+
 
 if [[ ! -f "Cargo.toml" ]]; then
   DIR=$(cd "$(dirname "$0")" && pwd)

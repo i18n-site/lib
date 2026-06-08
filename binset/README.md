@@ -5,7 +5,6 @@
 ---
 
 <a id="en"></a>
-
 # BinSet : WebAssembly binary set based on Rust HashSet (rapidhash)
 
 WebAssembly binary set implementation. Built with Rust HashSet (using rapidhash), serialized using Bitcode, and compiled to WebAssembly.
@@ -110,7 +109,6 @@ The underlying hashing algorithm is rapidhash, the official successor to the fam
 ---
 
 <a id="zh"></a>
-
 # BinSet : 基于 Rust HashSet (rapidhash) 的 WebAssembly 二进制集合
 
 二进制集合实现。基于 Rust HashSet（使用 rapidhash 算法），配合 Bitcode 序列化，编译为 WebAssembly。

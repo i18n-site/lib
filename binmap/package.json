@@ -1,6 +1,6 @@
 {
   "name": "@3-/binmap",
-  "version": "0.1.18",
+  "version": "0.1.20",
   "description": "High-performance WebAssembly binary map based on Rust BTreeMap and Speedy serialization / 基于 Rust BTreeMap 与 Speedy 序列化的高性能 WebAssembly 二进制键值映射表",
   "keywords": [
     "binary",
@@ -14,6 +14,11 @@
   "author": "i18n.site@gmail.com",
   "repository": "https://github.com/i18n-site/lib.git",
   "type": "module",
+  "main": "./_.js",
+  "exports": {
+    ".": "./_.js",
+    "./*": "./*"
+  },
   "devDependencies": {
     "@3-/mdt": "^0.1.5",
     "@3-/read": "^0.1.4",
