@@ -3,12 +3,11 @@ import net from "net";
 const TIMEOUT = "timeout";
 
 export default (host, port, timeout = 7000) =>
-  new Promise((resolve) => {
+  new Promise((resolve, reject) => {
     const socket = net.connect({ host, port, timeout }),
       end = (err) => {
         socket.destroy();
-        console.error("⚠️ " + host + ":" + port, err);
-        resolve(false);
+        reject(err);
       };
 
     socket.on("connect", () => {
