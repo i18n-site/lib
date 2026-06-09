@@ -44,7 +44,7 @@ const initRepo = async (git, git_url, dir, repo, outHandler) => {
     logStep("正在请求 AI 生成提交消息...");
     let commit_msg = msg;
     if (!commit_msg) {
-      commit_msg = await ai(diff_text);
+      commit_msg = await ai(git, diff_text);
       if (!commit_msg) {
         ERR("自动生成提交消息失败");
         process.exit(1);
