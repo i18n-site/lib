@@ -1,6 +1,6 @@
 {
   "name": "@3-/gci",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "description": "AI-powered git commit and push automation tool / AI 驱动的 git 提交与推送自动化工具",
   "keywords": [
     "ai",
@@ -28,14 +28,12 @@
     "./*": "./lib/*"
   },
   "scripts": {},
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {
     "@1-/opencode": "^0.1.6",
     "@3-/log": "^0.1.9",
     "@3-/read": "^0.1.4",
     "simple-git": "^3.36.0"
-  },
-  "devDependencies": {},
-  "peerDependencies": {
-    "@opencode-ai/sdk": "^1.16.2"
   }
 }
