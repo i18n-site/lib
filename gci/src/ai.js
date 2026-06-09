@@ -3,11 +3,14 @@ import newOpencode from "@1-/opencode";
 export default async (git, diff_text) => {
   const log = await git.log({ maxCount: 1 }).catch(() => null),
     last_msg = log?.latest?.message,
-    has_cn = !last_msg || /[\u4e00-\u9fa5]/.test(last_msg),
-    fmt = has_cn
-      ? "`type: 英文说明\\n类型: 中文说明`。这里『类型』，是type的中文翻译，不要直接写『类型』"
-      : "`type: 英文说明`",
-    [prompt, client, session] = await newOpencode(process.cwd(), "gci-commit"),
+    has_cn = !last_msg || /[\u4e00-\u9fa5]/.test(last_msg);
+
+  let fmt = "`type: commit msg`";
+  if (has_cn) {
+    fmt += "`\\n类型: 中文说明`。这里『类型』，是type的中文翻译，不要直接写『类型』";
+  }
+
+  const [prompt, client, session] = await newOpencode(process.cwd(), "gci-commit"),
     [reply] = await prompt(
       (process.env.GCI_PROMPT ||
         "根据以下代码改动，生成一句话的git提交消息，格式如" +
@@ -27,4 +30,3 @@ export default async (git, diff_text) => {
       .join("");
   return text?.replace(/^`+|`+$/g, "").trim();
 };
-

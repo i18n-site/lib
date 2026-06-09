@@ -5,6 +5,7 @@
 ---
 
 <a id="en"></a>
+
 # BinMap : WebAssembly binary key-value map based on Rust RapidHashMap
 
 WebAssembly binary key-value map implementation. Built with Rust RapidHashMap, serialized using Bitcode, and compiled to WebAssembly.
@@ -111,6 +112,7 @@ The underlying core data structure is based on `rapidhash`, which is the officia
 ---
 
 <a id="zh"></a>
+
 # BinMap : 基于 Rust RapidHashMap 的 WebAssembly 二进制键值映射表
 
 二进制键值映射表实现。基于 Rust RapidHashMap，配合 Bitcode 序列化，编译为 WebAssembly。
