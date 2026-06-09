@@ -7,7 +7,8 @@ set -ex
 ./build.sh
 
 if [ ! -n "$1" ]; then
-  exec mise exec -- ./test/main.coffee | tee out.txt
+  mise exec -- ./test/main.coffee | tee out.txt
+  mise exec -- ./test/benchmark.js
 else
   exec ./${@:1}
 fi
