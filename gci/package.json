@@ -29,8 +29,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "@napi_rs/cersei_rs-darwin-arm64": "^1.0.22",
-    "cersei_rs": "^1.0.22"
+    "@napi_rs/cersei_rs-darwin-arm64": "^1.0.26",
+    "cersei_rs": "^1.0.26"
   },
   "devDependencies": {},
   "peerDependencies": {

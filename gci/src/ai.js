@@ -1,4 +1,4 @@
-import chat, { MSG_TXT } from "cersei_rs";
+import chat from "cersei_rs";
 import { join } from "node:path";
 import { homedir } from "node:os";
 import { existsSync } from "node:fs";
@@ -34,14 +34,7 @@ export default async (git, diff_text) => {
     "\n\n" +
     diff_text;
 
-  let reply = "";
-  for await (const [type, content] of agent(prompt_text, process.cwd())) {
-    if (type === MSG_TXT) {
-      reply += content;
-    } else if (type === 4) { // MSG_ERR
-      throw new Error(content);
-    }
-  }
+  const reply = await agent(prompt_text, process.cwd());
 
   return reply.replace(/^`+|`+$/g, "").trim();
 };
