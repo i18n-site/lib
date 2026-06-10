@@ -1,4 +1,18 @@
-import newOpencode from "@1-/opencode";
+import chat, { MSG_TXT } from "cersei_rs";
+import { join } from "node:path";
+import { homedir } from "node:os";
+import { existsSync } from "node:fs";
+
+const getLLMConfig = async () => {
+  const path = join(homedir(), ".config", "OPENAI.js");
+  if (existsSync(path)) {
+    const config = (await import(path)).default;
+    if (Array.isArray(config) && config.length >= 3) {
+      return config; // [baseUrl, apiKey, model]
+    }
+  }
+  throw new Error(`Unable to locate LLM configuration at ${path}. The file must export default [ baseUrl, apiKey, model ].`);
+};
 
 export default async (git, diff_text) => {
   const log = await git.log({ maxCount: 1 }).catch(() => null),
@@ -10,23 +24,24 @@ export default async (git, diff_text) => {
     fmt += "`\\n类型: 中文说明`。这里『类型』，是type的中文翻译，不要直接写『类型』";
   }
 
-  const [prompt, client, session] = await newOpencode(process.cwd(), "gci-commit"),
-    [reply] = await prompt(
-      (process.env.GCI_PROMPT ||
-        "根据以下代码改动，生成一句话的git提交消息，格式如" +
-          fmt +
-          "。不要返回其他多余的说明，仅返回提交消息即可。") +
-        "\n\n" +
-        diff_text,
-    );
-  if (reply) {
-    return reply.replace(/^`+|`+$/g, "").trim();
+  const [baseUrl, apiKey, model] = await getLLMConfig();
+  const agent = chat(baseUrl, apiKey, model);
+
+  const promptText = (process.env.GCI_PROMPT ||
+    "根据以下代码改动，生成一句话的git提交消息，格式如" +
+      fmt +
+      "。不要返回其他多余的说明，仅返回提交消息即可。") +
+    "\n\n" +
+    diff_text;
+
+  let reply = "";
+  for await (const [type, content] of agent(promptText, process.cwd())) {
+    if (type === MSG_TXT) {
+      reply += content;
+    } else if (type === 4) { // MSG_ERR
+      throw new Error(content);
+    }
   }
-  const res = await client.session.messages({ path: { id: session.id } }),
-    last_msg_item = res.data?.[res.data.length - 1],
-    text = last_msg_item?.parts
-      ?.filter((p) => p.type === "text")
-      .map((p) => p.text)
-      .join("");
-  return text?.replace(/^`+|`+$/g, "").trim();
+
+  return reply.replace(/^`+|`+$/g, "").trim();
 };

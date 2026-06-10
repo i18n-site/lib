@@ -28,10 +28,12 @@
     "./*": "./lib/*"
   },
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "@napi_rs/cersei_rs-darwin-arm64": "^1.0.21",
+    "cersei_rs": "^1.0.21"
+  },
   "devDependencies": {},
   "peerDependencies": {
-    "@1-/opencode": "^0.1.6",
     "@3-/log": "^0.1.9",
     "@3-/read": "^0.1.4",
     "simple-git": "^3.36.0"
