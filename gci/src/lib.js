@@ -31,7 +31,7 @@ const initRepo = async (git, git_url, dir, repo, outHandler) => {
     logStep("正在推送初始版本到远程...");
     await git.push("origin", cur, ["--set-upstream"]).catch(() => null);
   },
-  normalCommit = async (git, branch, pushRetry, logStep, msg) => {
+  normalCommit = async (git, branch, pushRetry, logStep, msg, dir) => {
     logStep("正在暂存改动...");
     await git.add(".");
 
@@ -44,7 +44,7 @@ const initRepo = async (git, git_url, dir, repo, outHandler) => {
     logStep("正在请求 AI 生成提交消息...");
     let commit_msg = msg;
     if (!commit_msg) {
-      commit_msg = await ai(git, diff_text);
+      commit_msg = await ai(git, diff_text, dir);
       if (!commit_msg) {
         ERR("自动生成提交消息失败");
         process.exit(1);
@@ -131,6 +131,6 @@ export default async (git_url, dir, msg) => {
   if (!has_commit) {
     await firstCommit(git, git_url, branch, logStep);
   } else {
-    await normalCommit(git, branch, pushRetry, logStep, msg);
+    await normalCommit(git, branch, pushRetry, logStep, msg, dir);
   }
 };

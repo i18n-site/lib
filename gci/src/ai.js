@@ -14,7 +14,7 @@ const llmConfig = async () => {
   throw new Error("Unable to locate LLM configuration at " + path + ". The file must export default [ baseUrl, apiKey, model ].");
 };
 
-export default async (git, diff_text) => {
+export default async (git, diff_text, dir) => {
   const log = await git.log({ maxCount: 1 }).catch(() => null),
     last_msg = log?.latest?.message,
     has_cn = !last_msg || /[\u4e00-\u9fa5]/.test(last_msg);
@@ -34,7 +34,7 @@ export default async (git, diff_text) => {
     "\n\n" +
     diff_text;
 
-  const reply = await agent(prompt_text, process.cwd());
+  const reply = await agent(prompt_text, dir);
 
   return reply.replace(/^`+|`+$/g, "").trim();
 };
