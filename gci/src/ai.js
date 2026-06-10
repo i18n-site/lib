@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { homedir } from "node:os";
 import { existsSync } from "node:fs";
 
-const getLLMConfig = async () => {
+const llmConfig = async () => {
   const path = join(homedir(), ".config", "OPENAI.js");
   if (existsSync(path)) {
     const config = (await import(path)).default;
@@ -11,7 +11,7 @@ const getLLMConfig = async () => {
       return config; // [baseUrl, apiKey, model]
     }
   }
-  throw new Error(`Unable to locate LLM configuration at ${path}. The file must export default [ baseUrl, apiKey, model ].`);
+  throw new Error("Unable to locate LLM configuration at " + path + ". The file must export default [ baseUrl, apiKey, model ].");
 };
 
 export default async (git, diff_text) => {
@@ -24,10 +24,10 @@ export default async (git, diff_text) => {
     fmt += "`\\n类型: 中文说明`。这里『类型』，是type的中文翻译，不要直接写『类型』";
   }
 
-  const [baseUrl, apiKey, model] = await getLLMConfig();
+  const [baseUrl, apiKey, model] = await llmConfig();
   const agent = chat(baseUrl, apiKey, model);
 
-  const promptText = (process.env.GCI_PROMPT ||
+  const prompt_text = (process.env.GCI_PROMPT ||
     "根据以下代码改动，生成一句话的git提交消息，格式如" +
       fmt +
       "。不要返回其他多余的说明，仅返回提交消息即可。") +
@@ -35,7 +35,7 @@ export default async (git, diff_text) => {
     diff_text;
 
   let reply = "";
-  for await (const [type, content] of agent(promptText, process.cwd())) {
+  for await (const [type, content] of agent(prompt_text, process.cwd())) {
     if (type === MSG_TXT) {
       reply += content;
     } else if (type === 4) { // MSG_ERR
