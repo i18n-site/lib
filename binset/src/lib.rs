@@ -37,6 +37,15 @@ impl BinSet {
     self.0.len()
   }
 
+  pub fn values(&self) -> js_sys::Iterator {
+    self.0
+      .iter()
+      .map(|val| js_sys::Uint8Array::from(val.as_ref()))
+      .collect::<js_sys::Array>()
+      .values()
+  }
+
+
   pub fn load(bin: &[u8]) -> BinSet {
     bitcode::decode(bin).unwrap()
   }
