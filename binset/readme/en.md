@@ -90,7 +90,10 @@ console.log s.size
 
 - `constructor()`: Initializes empty BinSet.
 - `add(val: Uint8Array): void`: Inserts value.
+- `delete(val: Uint8Array): boolean`: Removes value, returns true if value was present and deleted, false otherwise.
+- `clear(): void`: Clears all values from set.
 - `has(val: Uint8Array): boolean`: Returns boolean indicating value presence.
+- `values(): Iterator<Uint8Array>`: Returns an iterator over the values.
 - `dump(): Uint8Array`: Serializes entire set into Uint8Array buffer.
 - `static load(bin: Uint8Array): BinSet`: Instantiates new set from serialized buffer.
 - `readonly size: number`: Returns total elements.

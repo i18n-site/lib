@@ -90,7 +90,10 @@ console.log s.size
 
 - `constructor()`：初始化空集合。
 - `add(val: Uint8Array): void`：插入值。
+- `delete(val: Uint8Array): boolean`：删除值，若存在且删除成功返回 `true`，否则返回 `false`。
+- `clear(): void`：清空集合。
 - `has(val: Uint8Array): boolean`：判断值是否存在。
+- `values(): Iterator<Uint8Array>`：获取包含所有值的迭代器。
 - `dump(): Uint8Array`：将集合序列化为 Uint8Array 缓冲区。
 - `static load(bin: Uint8Array): BinSet`：从二进制缓冲区反序列化并构建 BinSet。
 - `readonly size: number`：返回集合内元素总数。

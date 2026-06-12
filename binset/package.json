@@ -1,6 +1,6 @@
 {
   "name": "@3-/binset",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "High-performance WebAssembly binary set based on Rust HashSet (rapidhash) and Bitcode serialization / 基于 Rust HashSet (rapidhash) 与 Bitcode 序列化的高性能 WebAssembly 二进制集合",
   "keywords": [
     "binary",

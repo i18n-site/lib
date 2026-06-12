@@ -28,6 +28,14 @@ impl BinSet {
     self.0.contains(val)
   }
 
+  pub fn delete(&mut self, val: &[u8]) -> bool {
+    self.0.remove(val)
+  }
+
+  pub fn clear(&mut self) {
+    self.0.clear();
+  }
+
   pub fn dump(&self) -> Vec<u8> {
     bitcode::encode(self)
   }
@@ -44,6 +52,8 @@ impl BinSet {
       .collect::<js_sys::Array>()
       .values()
   }
+
+
 
 
   pub fn load(bin: &[u8]) -> BinSet {
