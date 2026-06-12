@@ -91,8 +91,13 @@ console.log m.size
 
 - `constructor()`：初始化空映射表。
 - `set(key: Uint8Array, val: Uint8Array): void`：插入或更新键值对。
+- `delete(key: Uint8Array): boolean`：删除键值对，若键存在且删除成功返回 `true`，否则返回 `false`。
+- `clear(): void`：清空映射表。
 - `get(key: Uint8Array): Uint8Array | undefined`：获取键对应值，未找到返回 `undefined`。
 - `has(key: Uint8Array): boolean`：判断键是否存在。
+- `keys(): Iterator<Uint8Array>`：获取包含所有键的迭代器。
+- `values(): Iterator<Uint8Array>`：获取包含所有值的迭代器。
+- `entries(): Iterator<[Uint8Array, Uint8Array]>`：获取包含所有键值对的迭代器。
 - `dump(): Uint8Array`：将映射表序列化为 Uint8Array 缓冲区。
 - `static load(bin: Uint8Array): BinMap`：从二进制缓冲区反序列化并构建 BinMap。
 - `readonly size: number`：返回键值对总数。

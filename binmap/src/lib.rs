@@ -23,6 +23,10 @@ impl BinMap {
     self.0.insert(key.to_vec(), val.to_vec());
   }
 
+  pub fn delete(&mut self, key: &[u8]) -> bool {
+    self.0.remove(key).is_some()
+  }
+
   pub fn has(&self, key: &[u8]) -> bool {
     self.0.contains_key(key)
   }
@@ -67,6 +71,10 @@ impl BinMap {
       })
       .collect::<js_sys::Array>()
       .values()
+  }
+
+  pub fn clear(&mut self) {
+    self.0.clear();
   }
 
   pub fn load(bin: &[u8]) -> BinMap {

@@ -26,3 +26,14 @@ console.log("--- entries ---");
 for (const [k, v] of m.entries()) {
   console.log(k, "=>", v);
 }
+
+console.log("--- delete ---");
+console.log("has 1:", m.has(new Uint8Array([1])));
+console.log("delete 1:", m.delete(new Uint8Array([1])));
+console.log("has 1:", m.has(new Uint8Array([1])));
+console.log("delete 1 again:", m.delete(new Uint8Array([1])));
+console.log("size:", m.size);
+
+console.log("--- clear ---");
+m.clear();
+console.log("size after clear:", m.size);

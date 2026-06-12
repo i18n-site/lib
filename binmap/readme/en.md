@@ -91,8 +91,13 @@ console.log m.size
 
 - `constructor()`: Initializes empty BinMap.
 - `set(key: Uint8Array, val: Uint8Array): void`: Inserts or updates key-value pair.
+- `delete(key: Uint8Array): boolean`: Removes key-value pair, returns true if key was present and deleted, false otherwise.
+- `clear(): void`: Clears all key-value pairs from map.
 - `get(key: Uint8Array): Uint8Array | undefined`: Returns value associated with key, or undefined if not found.
 - `has(key: Uint8Array): boolean`: Returns boolean indicating key presence.
+- `keys(): Iterator<Uint8Array>`: Returns an iterator over the keys.
+- `values(): Iterator<Uint8Array>`: Returns an iterator over the values.
+- `entries(): Iterator<[Uint8Array, Uint8Array]>`: Returns an iterator over the key-value pairs.
 - `dump(): Uint8Array`: Serializes entire map into Uint8Array buffer.
 - `static load(bin: Uint8Array): BinMap`: Instantiates new map from serialized buffer.
 - `readonly size: number`: Returns total key-value pairs.
