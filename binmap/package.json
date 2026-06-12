@@ -1,6 +1,6 @@
 {
   "name": "@3-/binmap",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "description": "High-performance WebAssembly binary map based on Rust BTreeMap and Speedy serialization / 基于 Rust BTreeMap 与 Speedy 序列化的高性能 WebAssembly 二进制键值映射表",
   "keywords": [
     "binary",

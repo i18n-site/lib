@@ -1,6 +1,6 @@
 {
   "name": "@3-/gci",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "AI-powered git commit and push automation tool / AI 驱动的 git 提交与推送自动化工具",
   "keywords": [
     "ai",
@@ -29,8 +29,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "@napi_rs/cersei_rs-darwin-arm64": "^1.0.26",
-    "cersei_rs": "^1.0.26"
+    "@napi_rs/cersei_rs-darwin-arm64": "^1.0.28",
+    "cersei_rs": "^1.0.28"
   },
   "devDependencies": {},
   "peerDependencies": {

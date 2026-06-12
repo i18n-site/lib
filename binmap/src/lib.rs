@@ -40,6 +40,35 @@ impl BinMap {
     self.0.len()
   }
 
+  pub fn keys(&self) -> js_sys::Iterator {
+    self.0
+      .keys()
+      .map(|key| js_sys::Uint8Array::from(key.as_slice()))
+      .collect::<js_sys::Array>()
+      .values()
+  }
+
+  pub fn values(&self) -> js_sys::Iterator {
+    self.0
+      .values()
+      .map(|val| js_sys::Uint8Array::from(val.as_slice()))
+      .collect::<js_sys::Array>()
+      .values()
+  }
+
+  pub fn entries(&self) -> js_sys::Iterator {
+    self.0
+      .iter()
+      .map(|(key, val)| {
+        js_sys::Array::of2(
+          &js_sys::Uint8Array::from(key.as_slice()),
+          &js_sys::Uint8Array::from(val.as_slice()),
+        )
+      })
+      .collect::<js_sys::Array>()
+      .values()
+  }
+
   pub fn load(bin: &[u8]) -> BinMap {
     BinMap(bitcode::decode(bin).unwrap())
   }
