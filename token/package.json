@@ -1,0 +1,24 @@
+{
+  "name": "@3-/token",
+  "version": "0.1.5",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/token",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/u8": "^0.1.1",
+    "@3-/vb": "^0.1.5"
+  },
+  "devDependencies": {}
+}

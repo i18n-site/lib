@@ -1,0 +1,29 @@
+{
+  "name": "@3-/plimit",
+  "version": "0.1.3",
+  "description": "Concurrency limit for async functions / 异步函数并发控制",
+  "keywords": [
+    "async",
+    "concurrency",
+    "limit",
+    "promise",
+    "queue"
+  ],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/plimit",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "devDependencies": {}
+}

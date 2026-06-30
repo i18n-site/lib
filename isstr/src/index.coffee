@@ -1,0 +1,2 @@
+< (s)=>
+  s.constructor == String

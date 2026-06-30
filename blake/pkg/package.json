@@ -1,0 +1,17 @@
+{
+  "name": "@3-/blake",
+  "version": "0.1.7",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/blake",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "*.wasm",
+    "*.ts"
+  ],
+  "main": "_.js",
+  "exports": {
+    ".": "./_.js",
+    "./*": "./*"
+  }
+}

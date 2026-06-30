@@ -1,0 +1,27 @@
+{
+  "name": "tmpl",
+  "version": "0.1.1",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/tmpl",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/cw": "^0.1.4"
+  },
+  "devDependencies": {
+    "@3-/cf_work_secret": "^0.1.5",
+    "esbuild": "^0.25.0",
+    "wrangler": "^3.108.1"
+  }
+}

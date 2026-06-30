@@ -1,0 +1,23 @@
+{
+  "name": "@3-/is_str",
+  "version": "0.1.2",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/is_str",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "devDependencies": {}
+}

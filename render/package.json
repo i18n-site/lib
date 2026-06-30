@@ -1,0 +1,16 @@
+{
+  "name": "@3-/render",
+  "version": "0.1.1",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/render",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  }
+}

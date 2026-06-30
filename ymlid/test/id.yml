@@ -1,0 +1,5 @@
+password:
+  too_short: 1
+address:
+  exist: 2
+  disable_tempmail: 3

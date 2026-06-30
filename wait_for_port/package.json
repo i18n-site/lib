@@ -1,0 +1,35 @@
+{
+  "name": "@3-/wait_for_port",
+  "version": "0.1.2",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/wait_for_port",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "bin": {
+    "wait_for_port": "./lib/bin.js"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {
+    "test": "vitest run tests/*.test.js"
+  },
+  "dependencies": {
+    "@3-/sleep": "^0.0.4",
+    "yargs": "^18.0.0",
+    "zx": "^8.8.5"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.7"
+  }
+}

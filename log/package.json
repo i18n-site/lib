@@ -1,0 +1,22 @@
+{
+  "name": "@3-/log",
+  "version": "0.1.9",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/log",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/log.js",
+    "./*": "./lib/*"
+  },
+  "devDependencies": {
+    "@3-/write": "^0.0.2"
+  }
+}

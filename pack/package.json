@@ -1,0 +1,21 @@
+{
+  "name": "@3-/pack",
+  "version": "0.0.2",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/pack",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/read": "^0.0.1",
+    "@3-/xxhash3": "^0.1.7",
+    "base-x": "^4.0.0"
+  }
+}

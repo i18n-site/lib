@@ -1,0 +1,34 @@
+{
+  "name": "@3-/strhash",
+  "version": "0.1.1",
+  "description": "Preserve short strings as is, hash long strings to 22-character base64url MD5 / 保留短字符串，长字符串哈希为22位base64url MD5",
+  "keywords": [
+    "base64url",
+    "hash",
+    "md5",
+    "shorten",
+    "string-hash"
+  ],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/strhash",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/base64url": "^0.1.4"
+  },
+  "devDependencies": {
+    "@3-/utf8": "^0.1.1"
+  }
+}

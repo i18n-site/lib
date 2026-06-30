@@ -1,0 +1,26 @@
+{
+  "name": "@3-/docx2txt",
+  "version": "0.1.4",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/docx2txt",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "mammoth": "^1.11.0"
+  },
+  "devDependencies": {}
+}

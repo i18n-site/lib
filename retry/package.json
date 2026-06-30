@@ -1,0 +1,29 @@
+{
+  "name": "@3-/retry",
+  "version": "0.0.4",
+  "description": "Non-intrusive async retry wrapper with caller line tracing / 无侵入异步重试包装器，支持调用位置追踪及结构化日志记录",
+  "keywords": [
+    "async",
+    "log",
+    "retry",
+    "trace",
+    "wrapper"
+  ],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/retry",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/caller_line": "^0.0.2",
+    "@3-/log": "^0.1.9",
+    "@3-/sleep": "^0.0.4"
+  }
+}

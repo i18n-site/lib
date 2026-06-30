@@ -1,0 +1,26 @@
+{
+  "name": "@3-/feishu",
+  "version": "0.1.16",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/feishu",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "devDependencies": {},
+  "peerDependencies": {
+    "@3-/req": "^0.1.9",
+    "@3-/sleep": "^0.0.4",
+    "@3-/utf8": "^0.0.4"
+  }
+}
