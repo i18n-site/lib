@@ -34,6 +34,7 @@ Stylus provides syntax flexibility. Syntax flexibility leads to inconsistent sty
 .
 ├── lib/                     # Compiled files
 ├── src/                     # Source files
+│   ├── conf.js              # Default configuration dictionary
 │   ├── lib.js               # Formatter core logic
 │   └── parse.js             # Options parser
 └── tests/                   # Test suite

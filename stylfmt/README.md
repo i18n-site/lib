@@ -39,6 +39,7 @@ Stylus provides syntax flexibility. Syntax flexibility leads to inconsistent sty
 .
 ├── lib/                     # Compiled files
 ├── src/                     # Source files
+│   ├── conf.js              # Default configuration dictionary
 │   ├── lib.js               # Formatter core logic
 │   └── parse.js             # Options parser
 └── tests/                   # Test suite
@@ -128,6 +129,7 @@ Stylus 提供语法灵活性。语法灵活性导致代码库维护中风格不�
 .
 ├── lib/                     # 编译后文件
 ├── src/                     # 源代码目录
+│   ├── conf.js              # 默认配置字典
 │   ├── lib.js               # 格式化核心逻辑
 │   └── parse.js             # 配置解析器
 └── tests/                   # 测试用例目录

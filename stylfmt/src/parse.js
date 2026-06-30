@@ -1,9 +1,18 @@
-export default (supremacy_options) => {
-  if (!supremacy_options) return {};
-  return Object.fromEntries(
-    Object.entries(supremacy_options.stylusSupremacy || supremacy_options).map(([k, v]) => [
-      k.replace(/^stylusSupremacy\./, ""),
-      v,
-    ]),
+import CONF from "./conf.js";
+
+export default (supremacy_options) =>
+  Object.assign(
+    {},
+    CONF,
+    supremacy_options
+      ? Object.fromEntries(
+          Object.entries(supremacy_options).map(([k, v]) => [
+            k.replace(/^stylusSupremacy\./, ""),
+            v,
+          ]),
+        )
+      : {},
   );
-};
+
+
+

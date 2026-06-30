@@ -5,7 +5,11 @@ import read from "@3-/read";
 import stylfmt from "../lib/lib.js";
 
 const TEST_STYL = "test.styl",
-  format = stylfmt(loadYaml(read(join(import.meta.dirname, "supremacy.yml"))));
+  format = stylfmt(loadYaml(read(join(import.meta.dirname, "supremacy.yml")))),
+  formatDefault = stylfmt(),
+  formatOverride = stylfmt({ insertSemicolons: true, insertColons: true });
+
+
 
 test("stylfmt converts stylus to css2nest and formats", async () => {
   const code = read(join(import.meta.dirname, TEST_STYL)),
@@ -56,4 +60,22 @@ test("url paths are formatted without spacing issues", async () => {
   expect(result).toContain("url('/-/svg/up.svg')");
   expect(result).toContain("url('/-/svg/down.svg')");
   expect(result).not.toContain("url('/ -/ svg / up.svg')");
+});
+
+test("default configuration behaves identically", async () => {
+  const code = read(join(import.meta.dirname, TEST_STYL)),
+    result = await formatDefault(code, TEST_STYL);
+  expect(result).toContain("variables.styl");
+  expect(result).toContain("mixins.styl");
+  expect(result).toContain("body");
+  expect(result).toContain("a");
+});
+
+test("configuration overrides are merged correctly", async () => {
+  const code = [
+      "body",
+      "  color: red",
+    ].join("\n"),
+    result = await formatOverride(code, TEST_STYL);
+  expect(result).toContain("color: red;");
 });
