@@ -123,7 +123,14 @@ export default (supremacy) => {
       deduped = dedup(raw),
       nested = cssfmt(deduped),
       joined = (imports.length ? imports.join("\n") + "\n" : "") + nested,
-      formatted = await format(joined, opt);
+      url_quoted = joined.replace(/url\(([^)]+)\)/g, (match, val) => {
+        val = val.trim();
+        return (val.startsWith("'") && val.endsWith("'")) ||
+          (val.startsWith('"') && val.endsWith('"'))
+          ? match
+          : "url('" + val + "')";
+      }),
+      formatted = await format(url_quoted, opt);
     return unmask(formatted, comments);
   };
 };

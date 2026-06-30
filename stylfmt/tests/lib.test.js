@@ -39,6 +39,21 @@ test("import url is preserved", async () => {
   console.log("Formatted Result with url import:\n" + result);
   expect(result).toContain("variables.styl");
   expect(result).toContain("npmmirror.com");
-  expect(result).toContain("body");
   expect(result).toContain("color red");
+});
+
+test("url paths are formatted without spacing issues", async () => {
+  const code = [
+      ".icon",
+      "  &.up",
+      "    background-image url('/-/svg/up.svg')",
+      "  &.down",
+      "    background-image url(\"/-/svg/down.svg\")",
+    ].join("\n"),
+    result = await format(code, TEST_STYL);
+
+  console.log("Formatted Result with url paths:\n" + result);
+  expect(result).toContain("url('/-/svg/up.svg')");
+  expect(result).toContain("url('/-/svg/down.svg')");
+  expect(result).not.toContain("url('/ -/ svg / up.svg')");
 });

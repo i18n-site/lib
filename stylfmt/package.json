@@ -1,6 +1,6 @@
 {
   "name": "@3-/stylfmt",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Opinionated Stylus formatter based on CSS compilation and nesting / 基于 CSS 编译与嵌套的 Stylus 格式化工具",
   "keywords": [
     "css",
