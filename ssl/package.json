@@ -1,0 +1,28 @@
+{
+  "name": "@3-/ssl",
+  "version": "0.1.4",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/ssl",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "acme-client": "^5.4.0"
+  },
+  "devDependencies": {
+    "@3-/cf": "^0.1.32"
+  }
+}

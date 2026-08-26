@@ -1,0 +1,39 @@
+{
+  "name": "@3-/killold",
+  "version": "0.1.3",
+  "description": "Kill previous running instances of the script by PID file / 通过 PID 文件清理运行中的旧进程实例",
+  "keywords": [
+    "kill",
+    "lock",
+    "pid",
+    "process",
+    "single-instance"
+  ],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/killold",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/int": "^0.1.1",
+    "@3-/log": "^0.1.9",
+    "@3-/read": "^0.1.4",
+    "@3-/sleep": "^0.0.4",
+    "@3-/write": "^0.0.2",
+    "fkill": "^10.0.3"
+  },
+  "devDependencies": {
+    "knip": "^6.22.0"
+  }
+}

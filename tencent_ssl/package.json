@@ -1,0 +1,30 @@
+{
+  "name": "@3-/tencent_ssl",
+  "version": "0.1.7",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/tencent_ssl",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/cert": "^0.1.2",
+    "tencentcloud-sdk-nodejs-ssl": "^4.1.138",
+    "tencentcloud-sdk-nodejs-teo": "^4.1.154"
+  },
+  "devDependencies": {
+    "@3-/redis": "^0.1.17"
+  }
+}

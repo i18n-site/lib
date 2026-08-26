@@ -1,0 +1,32 @@
+{
+  "name": "@3-/mysqlha",
+  "version": "0.1.9",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/mysqlha",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "bin": {
+    "mysqlha": "./lib/main.js"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/heartbeat": "^0.1.7",
+    "@3-/sleep": "^0.0.4",
+    "@3-/yml": "^0.1.5",
+    "@7digital/mysql2-timeout": "^4.0.1",
+    "yargs": "^17.7.2",
+    "zx": "^8.2.0"
+  },
+  "devDependencies": {}
+}

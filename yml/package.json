@@ -1,0 +1,24 @@
+{
+  "name": "@3-/yml",
+  "version": "0.1.14",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/yml",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/read": "^0.1.4",
+    "@3-/write": "^0.0.2",
+    "js-yaml": "^4.1.1"
+  }
+}

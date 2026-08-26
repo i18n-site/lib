@@ -1,0 +1,16 @@
+{
+  "name": "@3-/title-case",
+  "version": "0.0.2",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/title-case",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  }
+}

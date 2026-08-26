@@ -1,0 +1,20 @@
+{
+  "name": "@3-/b64",
+  "version": "0.1.8",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/b64",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "devDependencies": {
+    "@3-/u8": "^0.1.1"
+  }
+}

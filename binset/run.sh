@@ -1,0 +1,1 @@
+../sh/wasm/run.sh

@@ -1,0 +1,26 @@
+{
+  "name": "@3-/seoping",
+  "version": "0.1.4",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/seoping",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/chunk": "^0.1.2",
+    "@3-/read": "^0.1.4",
+    "googleapis": "^143.0.0"
+  },
+  "devDependencies": {}
+}

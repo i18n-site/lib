@@ -1,0 +1,10 @@
+{
+  "name": "@3-/jsset",
+  "type": "module",
+  "dependencies": {},
+  "devDependencies": {
+    "@3-/loader": "^0.0.2",
+    "source-map-support": "^0.5.21",
+    "wasm-opt": "^1.4.0"
+  }
+}

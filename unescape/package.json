@@ -1,0 +1,32 @@
+{
+  "name": "@3-/unescape",
+  "version": "0.1.2",
+  "description": "Fast HTML entity unescape utility / 高效 HTML 实体字符反转义工具",
+  "keywords": [
+    "decoder",
+    "entity",
+    "fast",
+    "html",
+    "unescape"
+  ],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/unescape",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/int": "^0.1.1"
+  },
+  "devDependencies": {}
+}

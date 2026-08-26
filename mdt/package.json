@@ -1,0 +1,30 @@
+{
+  "name": "@3-/mdt",
+  "version": "0.1.5",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/mdt",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "bin": {
+    "mdt": "./lib/index.js"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/read": "^0.0.1",
+    "@3-/walk": "^0.0.1",
+    "@3-/write": "^0.0.1",
+    "ansis": "^3.2.0",
+    "pug": "^3.0.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@3-/uridir": "^0.1.1"
+  }
+}

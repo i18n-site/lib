@@ -1,0 +1,29 @@
+{
+  "name": "@3-/gitsync",
+  "version": "0.1.23",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/gitsync",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/gitapi": "^0.1.11",
+    "@3-/int": "^0.1.1",
+    "@3-/reset": "^0.1.2",
+    "zx": "^8.8.5"
+  },
+  "devDependencies": {}
+}

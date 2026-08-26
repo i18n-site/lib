@@ -1,0 +1,21 @@
+{
+  "name": "@3-/proto_remove_comment",
+  "version": "0.1.5",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/proto_remove_comment",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS heartbeat (
+	id BIGINT UNSIGNED auto_increment NOT NULL,
+	expire BIGINT UNSIGNED NOT NULL,
+	vps_id BIGINT UNSIGNED NOT NULL,
+	name VARBINARY(255) NOT NULL,
+  UNIQUE (vps_id, name),
+  CONSTRAINT heartbeat_pk PRIMARY KEY (id)
+)
+DEFAULT CHARSET=binary
+COLLATE=binary;
+
+CREATE INDEX IF NOT EXISTS heartbeat_expire_IDX USING BTREE ON heartbeat (expire);
+
+CREATE TABLE IF NOT EXISTS vps (
+	id BIGINT UNSIGNED auto_increment NOT NULL,
+	name VARBINARY(255) NOT NULL,
+  UNIQUE (name),
+  CONSTRAINT vps_pk PRIMARY KEY (id)
+)
+DEFAULT CHARSET=binary
+COLLATE=binary;
+

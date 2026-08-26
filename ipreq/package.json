@@ -1,0 +1,30 @@
+{
+  "name": "@3-/ipreq",
+  "version": "0.1.25",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/ipreq",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/err": "^0.1.4",
+    "lodash-es": "^4.17.21"
+  },
+  "peerDependencies": {
+    "@3-/fetch": "^0.1.2",
+    "@3-/utf8": "^0.0.3",
+    "node-fetch": "^3.3.2",
+    "stream": "^0.0.3"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@3-/wcsv",
+  "version": "0.1.8",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/wcsv",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@fast-csv/format": "^5.0.2"
+  },
+  "devDependencies": {}
+}

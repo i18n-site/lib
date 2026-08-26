@@ -1,0 +1,24 @@
+{
+  "name": "@3-/mysql2rust",
+  "version": "0.1.20",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/mysql2rust",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/rm": "^0.1.3"
+  },
+  "devDependencies": {}
+}

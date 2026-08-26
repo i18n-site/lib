@@ -1,0 +1,128 @@
+# @3-/merge
+
+[English](#english-readme) | [中文说明](#中文说明)
+
+
+## English README
+
+Deeply merges one or more source objects into a target object.
+
+- If a key holds an object in both the target and the source, it recursively merges them.
+- If a key holds an array in both the target and the source, it concatenates the arrays.
+- Otherwise, the value from the source overwrites the value in the target.
+
+[test/main.test.js](./test/main.test.js) :
+
+```javascript
+import merge from '@3-/merge';
+
+const target = {
+  a: 1,
+  b: {
+    c: 2,
+    d: [3, 4]
+  }
+};
+
+const source1 = {
+  b: {
+    d: [5, 6],
+    e: 7
+  },
+  f: 8
+};
+
+const source2 = {
+  a: 9,
+  b: {
+    c: 10
+  }
+}
+
+const result = merge({}, target, source1, source2);
+
+console.log(JSON.stringify(result, null, 2));
+```
+
+output:
+
+```json
+{
+  "a": 9,
+  "b": {
+    "c": 10,
+    "d": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "e": 7
+  },
+  "f": 8
+}
+```
+
+## 中文说明
+
+`@3-/merge` 深度合并一个或多个源对象到目标对象。
+
+- 如果目标和源中的同一个键的值都是对象，它将递归合并它们。
+- 如果目标和源中的同一个键的值都是数组，它将连接这两个数组。
+- 在其他情况下，源中的值将覆盖目标中的值。
+
+[test/main.test.js](./test/main.test.js) :
+
+```javascript
+import merge from '@3-/merge';
+
+const target = {
+  a: 1,
+  b: {
+    c: 2,
+    d: [3, 4]
+  }
+};
+
+const source1 = {
+  b: {
+    d: [5, 6],
+    e: 7
+  },
+  f: 8
+};
+
+const source2 = {
+  a: 9,
+  b: {
+    c: 10
+  }
+}
+
+const result = merge({}, target, source1, source2);
+
+console.log(JSON.stringify(result, null, 2));
+```
+
+输出:
+
+```json
+{
+  "a": 9,
+  "b": {
+    "c": 10,
+    "d": [
+      3,
+      4,
+      5,
+      6
+    ],
+    "e": 7
+  },
+  "f": 8
+}
+```
+
+---
+
+<+ ../about.md >

@@ -1,0 +1,20 @@
+{
+  "name": "@3-/utf8",
+  "version": "0.1.1",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/utf8",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./lib/autoe.cjs",
+      "import": "./lib/autoe.js"
+    },
+    "./*": "./lib/*"
+  },
+  "devDependencies": {}
+}

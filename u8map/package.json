@@ -1,0 +1,22 @@
+{
+  "name": "@3-/u8map",
+  "version": "0.1.2",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/u8map",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/pair": "^0.0.2",
+    "@3-/u8": "^0.1.1",
+    "@3-/utf8": "^0.0.3"
+  },
+  "devDependencies": {}
+}

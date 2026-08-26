@@ -1,0 +1,21 @@
+{
+  "name": "@3-/str2sec",
+  "version": "0.1.3",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/str2sec",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "devDependencies": {}
+}

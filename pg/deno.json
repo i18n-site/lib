@@ -1,0 +1,9 @@
+{
+  "name": "@8v/pg",
+  "exports": "./PG.js",
+  "license": "MulanPSL-2.0",
+  "imports": {
+    "postgres": "jsr:@y0/postgres@^3.4.5",
+    "ansis": "npm:ansis@^4.1.0"
+  }
+}

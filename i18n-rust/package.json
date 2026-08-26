@@ -1,0 +1,28 @@
+{
+  "name": "@3-/i18n-rust",
+  "version": "0.1.37",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/i18n-rust",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "peerDependencies": {
+    "@3-/intbin": "^0.1.2",
+    "@3-/lang": "^0.1.18",
+    "@3-/redis": "^0.1.11",
+    "@3-/snake": "^0.0.2",
+    "@3-/u8": "^0.1.1",
+    "@3-/utf8": "^0.0.3",
+    "@3-/write": "^0.0.1",
+    "@3-/yml": "^0.1.4"
+  }
+}

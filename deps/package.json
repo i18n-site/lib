@@ -1,0 +1,22 @@
+{
+  "name": "@3-/deps",
+  "version": "0.0.2",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/deps",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": "https://github.com/i18n-site/lib.git",
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "dependencies": {
+    "@3-/read": "^0.0.1"
+  },
+  "devDependencies": {
+    "@3-/uridir": "^0.1.1"
+  }
+}

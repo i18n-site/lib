@@ -1,0 +1,21 @@
+{
+  "name": "@3-/srv",
+  "version": "0.1.53",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev",
+  "bugs": {
+    "url": "https://github.com/i18n-site/lib/issues"
+  },
+  "repository": "https://github.com/i18n-site/lib/tree/dev",
+  "type": "module",
+  "exports": {
+    "./*": "./*"
+  },
+  "dependencies": {
+    "zx": "^8.8.5"
+  },
+  "optionalDependencies": {
+    "@3-/srv-darwin": "workspace:*",
+    "@3-/srv-linux": "workspace:*",
+    "@3-/srv-win32": "workspace:*"
+  }
+}

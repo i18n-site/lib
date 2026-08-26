@@ -1,0 +1,20 @@
+{
+  "name": "@3-/srv-darwin",
+  "version": "0.1.52",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev",
+  "bugs": {
+    "url": "https://github.com/i18n-site/lib/issues"
+  },
+  "repository": "https://github.com/i18n-site/lib/tree/dev",
+  "os": [
+    "darwin"
+  ],
+  "type": "module",
+  "exports": {
+    "./*": "./*"
+  },
+  "dependencies": {
+    "@3-/obj_replace": "^0.1.0",
+    "zx": "^8.8.5"
+  }
+}

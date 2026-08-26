@@ -1,0 +1,33 @@
+{
+  "name": "@3-/alissl",
+  "version": "0.2.2",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/alissl",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/cert": "^0.1.2"
+  },
+  "devDependencies": {
+    "@3-/redis": "^0.1.17"
+  },
+  "peerDependencies": {
+    "@3-/pageiter": "^0.1.2",
+    "@alicloud/cas20180713": "^1.0.0",
+    "@alicloud/cdn20180510": "^8.0.0",
+    "@alicloud/esa20240910": "^2.36.1",
+    "@alicloud/openapi-client": "^0.4.15"
+  }
+}

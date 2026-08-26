@@ -1,0 +1,27 @@
+{
+  "name": "@3-/smtp_check",
+  "version": "0.1.2",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/smtp_check",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@3-/doh": "^0.1.2",
+    "@3-/tls_smtp": "^0.1.1"
+  },
+  "devDependencies": {}
+}

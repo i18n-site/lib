@@ -1,0 +1,106 @@
+syntax = "proto3";
+
+package api;
+
+// message Translated
+// {
+//   repeated string htm = 1;
+//   repeated string txt = 2;
+//   Stat stat = 3;
+//   bytes x = 4;
+// }
+//
+// message Captcha
+// {
+//   uint64 id = 1;
+//   bytes img = 2;
+//   repeated string svg_li = 3;
+// }
+//
+// enum Stat {
+//   Ok = 0;              // 成功
+//   AccountInvalid = 1;  // 账号格式无效
+//   PasswordInvalid = 2; // 密码错误
+// }
+//
+// message Test1
+// {
+//   repeated uint32 htm = 1;
+//   repeated string txt = 2;
+// }
+//
+// message Test2
+// {
+//   uint32 htm = 1;
+//   string txt = 2;
+// }
+//
+// /// nodefault
+// message Test3
+// {
+//   repeated string htm = 1;
+//   string txt = 2;
+//   optional Stat stat = 3;
+//   Stat stat2 = 4;
+//   bool turn = 5;
+//   bytes bin = 6;
+// }
+//
+// message Test5
+// {
+//   repeated Test4 li = 1;
+// }
+//
+// message TestBool
+// {
+//   bool turn = 1;
+// }
+//
+// message TestStr
+// {
+//   string a = 1;
+// }
+//
+// message TestU32
+// {
+//   uint32 turn = 1;
+// }
+//
+// message TestU64
+// {
+//   uint64 a = 1;
+// }
+//
+// message Sign
+// {
+//   Stat stat = 1;
+// }
+//
+// message Sign1
+// {
+//   string a = 1;
+//   string b = 2;
+// }
+
+message Sign2
+{
+  map<string, string> a = 1;
+}
+
+message Sign3
+{
+  map<string, string> a = 1;
+  repeated uint64 b = 2;
+}
+
+message Sign4
+{
+  uint64 a = 1;
+  uint64 b = 2;
+}
+
+message Sign5
+{
+  map<string, string> a = 1;
+  uint64 b = 2;
+}

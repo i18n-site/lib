@@ -1,0 +1,23 @@
+{
+  "name": "@3-/b62",
+  "version": "0.1.5",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/b62",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "base-x": "^4.0.0"
+  }
+}

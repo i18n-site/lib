@@ -1,0 +1,23 @@
+{
+  "name": "@3-/ss",
+  "version": "0.1.0",
+  "homepage": "https://github.com/i18n-site/lib/tree/dev/ss",
+  "license": "MulanPSL-2.0",
+  "author": "i18n.site@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i18n-site/lib.git"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "type": "module",
+  "exports": {
+    ".": "./lib/lib.js",
+    "./*": "./lib/*"
+  },
+  "scripts": {},
+  "dependencies": {
+    "hash-wasm": "^4.12.0"
+  }
+}
