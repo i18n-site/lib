@@ -13,6 +13,3 @@ export default (supremacy_options) =>
         )
       : {},
   );
-
-
-

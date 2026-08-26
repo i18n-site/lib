@@ -9,8 +9,6 @@ const TEST_STYL = "test.styl",
   formatDefault = stylfmt(),
   formatOverride = stylfmt({ insertSemicolons: true, insertColons: true });
 
-
-
 test("stylfmt converts stylus to css2nest and formats", async () => {
   const code = read(join(import.meta.dirname, TEST_STYL)),
     result = await format(code, TEST_STYL);
@@ -52,7 +50,7 @@ test("url paths are formatted without spacing issues", async () => {
       "  &.up",
       "    background-image url('/-/svg/up.svg')",
       "  &.down",
-      "    background-image url(\"/-/svg/down.svg\")",
+      '    background-image url("/-/svg/down.svg")',
     ].join("\n"),
     result = await format(code, TEST_STYL);
 
@@ -72,10 +70,7 @@ test("default configuration behaves identically", async () => {
 });
 
 test("configuration overrides are merged correctly", async () => {
-  const code = [
-      "body",
-      "  color: red",
-    ].join("\n"),
+  const code = ["body", "  color: red"].join("\n"),
     result = await formatOverride(code, TEST_STYL);
   expect(result).toContain("color: red;");
 });

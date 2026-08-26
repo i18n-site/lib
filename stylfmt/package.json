@@ -26,8 +26,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "@3-/cssfmt": "^0.1.5",
     "@1-/stylus": "^0.1.5",
+    "@3-/cssfmt": "^0.1.5",
     "stylus-supremacy": "^5.0.2"
   },
   "devDependencies": {

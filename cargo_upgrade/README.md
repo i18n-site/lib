@@ -3,19 +3,13 @@
 [test/main.coffee](./test/main.coffee) :
 
 ```coffee
-#!/usr/bin/env coffee
-
-> @3-/cargo_upgrade
-
-# ROOT = import.meta.dirname
-
-console.log await cargo_upgrade 123
+./test/main.coffee
 ```
 
 output :
 
 ```
-./out.txt
+bun test v1.4.0 (34cbb9a40)
 ```
 
 ## About
