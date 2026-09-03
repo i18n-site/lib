@@ -8,7 +8,7 @@ SITE = 'generativelanguage.googleapis.com'
 
 export default (
   token_li
-  model='gemini-3.7-flash'
+  model='gemini-3.8-flash'
   # model='gemini-3.1-pro-preview'
   # model='gemini-2.5-pro'
 )=>
