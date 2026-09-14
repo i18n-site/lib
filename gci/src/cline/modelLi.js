@@ -3,18 +3,10 @@ import { join, dirname } from "node:path";
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import reqJson from "@3-/req/reqJson.js";
 
-const CACHE_DIR =
-    process.env.XDG_CACHE_HOME ||
-    (process.platform === "darwin"
-      ? join(homedir(), "Library", "Caches")
-      : join(homedir(), ".cache")),
+const CACHE_DIR = process.env.XDG_CACHE_HOME || join(homedir(), ".cache"),
   CACHE_FILE = join(CACHE_DIR, "gci/cline_models.json"),
   DAY_SEC = 86400,
   cacheRead = async () => {
-    if (typeof Bun !== "undefined") {
-      const file = Bun.file(CACHE_FILE);
-      return (await file.exists()) ? await file.json() : null;
-    }
     const text = await readFile(CACHE_FILE, "utf8").catch(() => null);
     return text ? JSON.parse(text) : null;
   },
@@ -24,18 +16,14 @@ const CACHE_DIR =
       li,
     });
     await mkdir(dirname(CACHE_FILE), { recursive: true }).catch(() => null);
-    if (typeof Bun !== "undefined") {
-      await Bun.write(CACHE_FILE, data);
-    } else {
-      await writeFile(CACHE_FILE, data).catch(() => null);
-    }
+    await writeFile(CACHE_FILE, data).catch(() => null);
   },
   modelFetch = async () => {
     const data = await reqJson(
         "https://api.cline.bot/api/v1/ai/cline/recommended-models",
       ),
       li = data.free.map((item) => item.id);
-    cacheWrite(li);
+    await cacheWrite(li);
     return li;
   };
 
