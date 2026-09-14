@@ -3,7 +3,6 @@
 ---
 
 <a id="en"></a>
-
 # @3-/gci : AI-Powered Git Commit and Push Automation Tool
 
 ## Table of Contents
@@ -126,7 +125,6 @@ This principle applies to git commit messages. Clear history prevents future mai
 ---
 
 <a id="zh"></a>
-
 # @3-/gci : AI 驱动的 Git 提交与推送自动化工具
 
 ## 目录
