@@ -1,4 +1,17 @@
+const MAX_DIFF_LEN = 16000;
+
 export default async (git, diff_text) => {
+  let diff = diff_text;
+  if (diff.length > MAX_DIFF_LEN) {
+    const stat = await git.diff(["--cached", "--stat"]).catch(() => "");
+    diff =
+      (stat ? stat + "\n\n" : "") +
+      diff.slice(0, MAX_DIFF_LEN) +
+      "\n...(diff 已截断，剩余 " +
+      (diff.length - MAX_DIFF_LEN) +
+      " 字符)...";
+  }
+
   const log = await git.log({ maxCount: 10 }).catch(() => null),
     msg_li = log?.all?.map((item) => item.message).filter(Boolean) || [],
     has_cn =
@@ -9,7 +22,7 @@ export default async (git, diff_text) => {
     custom_prompt = process.env.GCI_PROMPT;
 
   if (custom_prompt) {
-    return custom_prompt + "\n\n" + diff_text;
+    return custom_prompt + "\n\n" + diff;
   }
 
   const log_hint =
@@ -27,6 +40,7 @@ export default async (git, diff_text) => {
     "2. 仅返回单行提交信息本身，严禁包含任何多余文字、问候、分析或 Markdown 代码块包裹（不要加 ``` 反引号）\n" +
     log_hint +
     "\n\n代码改动如下：\n" +
-    diff_text
+    diff
   );
 };
+

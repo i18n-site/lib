@@ -27,10 +27,6 @@ const singlePush = async (git, branch, from, to) => {
     await git.branch(["-f", "main", "dev"]).catch(() => null);
   };
 
-export default async (git, branch) => {
-  if (branch === "dev") {
-    await devPush(git);
-  } else {
-    await singlePush(git, branch);
-  }
-};
+export default async (git, branch) =>
+  branch === "dev" ? devPush(git) : singlePush(git, branch);
+

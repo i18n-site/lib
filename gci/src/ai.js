@@ -6,6 +6,7 @@ import authRead from "./cline/auth.js";
 import modelLi from "./cline/modelLi.js";
 import clineChat from "./cline/chat.js";
 import promptMake from "./prompt.js";
+import msgClean from "./msgClean.js";
 
 const confLoad = async () => {
   const path = join(homedir(), ".config", "OPENAI.js");
@@ -36,9 +37,11 @@ export default async (git, diff_text, dir) => {
       agent = chat(base_url, api_key, model),
       reply = await agent(prompt_text, dir);
     if (reply) {
-      return reply.replace(/^`+|`+$/g, "").trim();
+      return msgClean(reply);
     }
   }
 
-  throw new Error("AI 生成未返回有效提交信息");
+  return null;
 };
+
+
