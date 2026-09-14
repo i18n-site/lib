@@ -1,23 +1,23 @@
+import _req from "@3-/req/_req.js";
 import headerMake from "./header.js";
 
-const TIMEOUT_MS = 15000,
+const TIMEOUT = 15000,
   API_URL = "https://api.cline.bot/api/v1/chat/completions";
 
 export default async (prompt_text, token, model_li) => {
   const headers = headerMake(token);
 
   for (const model of model_li) {
-    const res = await fetch(API_URL, {
-      method: "POST",
+    const res = await _req(API_URL, {
       headers,
-      body: JSON.stringify({
+      body: {
         model,
         messages: [{ role: "user", content: prompt_text }],
-      }),
-      signal: AbortSignal.timeout(TIMEOUT_MS),
+      },
+      timeout: TIMEOUT,
     }).catch(() => null);
 
-    if (!res || !res.ok) {
+    if (!res) {
       continue;
     }
 
@@ -27,7 +27,7 @@ export default async (prompt_text, token, model_li) => {
         data?.choices?.[0]?.message?.content;
 
     if (content && typeof content === "string") {
-      return content.trim();
+      return content.replace(/^`+|`+$/g, "").trim();
     }
   }
 

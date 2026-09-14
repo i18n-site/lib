@@ -1,3 +1,5 @@
+import reqJson from "@3-/req/reqJson.js";
+
 const DEFAULT_MODEL_LI = [
   "deepseek/deepseek-v4-flash",
   "z-ai/glm-5.3-flash",
@@ -8,15 +10,11 @@ const DEFAULT_MODEL_LI = [
 ];
 
 export default async () => {
-  const url = "https://api.cline.bot/api/v1/ai/cline/recommended-models",
-    res = await fetch(url).catch(() => null);
-  if (!res || !res.ok) {
-    return DEFAULT_MODEL_LI;
-  }
-  const data = await res.json().catch(() => null),
+  const data = await reqJson(
+      "https://api.cline.bot/api/v1/ai/cline/recommended-models",
+    ).catch(() => null),
     free_li = data?.free || [];
-  if (free_li.length > 0) {
-    return free_li.map((item) => item.id);
-  }
-  return DEFAULT_MODEL_LI;
+  return free_li.length > 0
+    ? free_li.map((item) => item.id)
+    : DEFAULT_MODEL_LI;
 };
