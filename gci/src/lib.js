@@ -4,30 +4,11 @@ import { gray } from "@3-/log/GRAY.js";
 import { green } from "@3-/log/GREEN.js";
 import ERR from "@3-/log/ERR.js";
 import ai from "./ai.js";
+import repoInit from "./git/init.js";
+import pushRetry from "./git/push.js";
+import commitVerify from "./git/verify.js";
 
-const repoInit = async (git, git_url, dir, repo, outHandler) => {
-    if (!repo) {
-      if (git_url) {
-        await simpleGit().outputHandler(outHandler).clone(git_url, dir);
-      } else {
-        await git.init();
-      }
-    }
-  },
-  commitVerify = async (git, commit_hash) => {
-    const log = await git.log({ maxCount: 1 }).catch(() => null),
-      latest_hash = log?.latest?.hash,
-      status = await git.status().catch(() => null),
-      hash_matched =
-        latest_hash &&
-        commit_hash &&
-        (latest_hash.startsWith(commit_hash) ||
-          commit_hash.startsWith(latest_hash)),
-      staged_clean = status?.staged?.length === 0;
-
-    return Boolean(hash_matched && staged_clean);
-  },
-  commitFirst = async (git, git_url, branch, logStep) => {
+const commitFirst = async (git, git_url, branch, logStep) => {
     logStep("正在暂存文件...");
     const cur = branch || "main";
     await git.checkoutLocalBranch(cur).catch(() => null);
@@ -49,7 +30,7 @@ const repoInit = async (git, git_url, dir, repo, outHandler) => {
     logStep("正在推送初始版本到远程...");
     await git.push("origin", cur, ["--set-upstream"]).catch(() => null);
   },
-  commitNormal = async (git, branch, retryPush, logStep, msg, dir) => {
+  commitNormal = async (git, branch, logStep, msg, dir) => {
     logStep("正在暂存改动...");
     await git.add(".");
 
@@ -104,7 +85,7 @@ const repoInit = async (git, git_url, dir, repo, outHandler) => {
 
     logStep("正在推送代码到远程...");
     if (!process.env.NO_PUSH && branch) {
-      await retryPush();
+      await pushRetry(git, branch);
     }
   };
 
@@ -146,23 +127,11 @@ export default async (git_url, dir, msg) => {
 
   const status = await git.status(),
     branch = status.current,
-    has_commit = !!(await git.log().catch(() => null)),
-    retryPush = async (from, to) => {
-      const target_li = from && to ? [from + ":" + to] : [],
-        pushed = await git.push("origin", ...target_li).catch(() => null);
-      if (!pushed) {
-        const dest = to || branch;
-        await git.fetch("origin", dest).catch(() => null);
-        await git
-          .merge(["--ff", "--no-edit", "origin/" + dest])
-          .catch(() => null);
-        await git.push("origin", ...target_li).catch(() => null);
-      }
-    };
+    has_commit = !!(await git.log().catch(() => null));
 
   if (!has_commit) {
     await commitFirst(git, git_url, branch, logStep);
   } else {
-    await commitNormal(git, branch, retryPush, logStep, msg, dir);
+    await commitNormal(git, branch, logStep, msg, dir);
   }
 };
