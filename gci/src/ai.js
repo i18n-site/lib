@@ -18,20 +18,27 @@ const confLoad = async () => {
 };
 
 export default async (git, diff_text, dir) => {
-  const log = await git.log({ maxCount: 1 }).catch(() => null),
-    last_msg = log?.latest?.message,
-    has_cn = !last_msg || /[\u4e00-\u9fa5]/.test(last_msg),
+  const log = await git.log({ maxCount: 10 }).catch(() => null),
+    msg_li = log?.all?.map((item) => item.message).filter(Boolean) || [],
+    has_cn =
+      msg_li.length === 0 || msg_li.some((msg) => /[\u4e00-\u9fa5]/.test(msg)),
     fmt =
       "`type: commit msg`" +
       (has_cn
         ? "`\\n类型: 中文说明`。这里『类型』，是type的中文翻译，不要直接写『类型』"
         : ""),
+    log_hint =
+      msg_li.length > 0
+        ? "\n\n参考最近提交日志的风格与格式：\n" +
+          msg_li.map((msg) => "- " + msg).join("\n")
+        : "",
     prompt_text =
       (process.env.GCI_PROMPT ||
         "根据以下代码改动，生成一句话的git提交消息，格式如" +
           fmt +
           "。不要返回其他多余的说明，仅返回提交消息即可。") +
-      "\n\n" +
+      log_hint +
+      "\n\n代码改动如下：\n" +
       diff_text,
     token = await authRead();
 
