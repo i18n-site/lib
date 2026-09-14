@@ -1,3 +1,4 @@
+import retry from "@3-/retry";
 import chat from "cersei_rs";
 import { join } from "node:path";
 import { homedir } from "node:os";
@@ -5,60 +6,43 @@ import { existsSync } from "node:fs";
 import authRead from "./cline/auth.js";
 import modelLi from "./cline/modelLi.js";
 import clineChat from "./cline/chat.js";
+import promptMake from "./prompt.js";
 
 const confLoad = async () => {
-  const path = join(homedir(), ".config", "OPENAI.js");
-  if (existsSync(path)) {
-    const config = (await import(path)).default;
-    if (Array.isArray(config) && config.length >= 3) {
-      return config;
+    const path = join(homedir(), ".config", "OPENAI.js");
+    if (existsSync(path)) {
+      const config = (await import(path)).default;
+      if (Array.isArray(config) && config.length >= 3) {
+        return config;
+      }
     }
-  }
-  return null;
-};
+    return null;
+  },
+  aiCall = async (prompt_text, dir) => {
+    const token = await authRead();
+    if (token) {
+      const model_li = await modelLi(),
+        reply = await clineChat(prompt_text, token, model_li);
+      if (reply) {
+        return reply.replace(/^`+|`+$/g, "").trim();
+      }
+    }
+
+    const conf = await confLoad();
+    if (conf) {
+      const [base_url, api_key, model] = conf,
+        agent = chat(base_url, api_key, model),
+        reply = await agent(prompt_text, dir);
+      if (reply) {
+        return reply.replace(/^`+|`+$/g, "").trim();
+      }
+    }
+
+    throw new Error("AI 生成未返回有效内容");
+  },
+  aiRetry = retry(aiCall, 3);
 
 export default async (git, diff_text, dir) => {
-  const log = await git.log({ maxCount: 10 }).catch(() => null),
-    msg_li = log?.all?.map((item) => item.message).filter(Boolean) || [],
-    has_cn =
-      msg_li.length === 0 || msg_li.some((msg) => /[\u4e00-\u9fa5]/.test(msg)),
-    fmt =
-      "`type: commit msg`" +
-      (has_cn
-        ? "`\\n类型: 中文说明`。这里『类型』，是type的中文翻译，不要直接写『类型』"
-        : ""),
-    log_hint =
-      msg_li.length > 0
-        ? "\n\n参考最近提交日志的风格与格式：\n" +
-          msg_li.map((msg) => "- " + msg).join("\n")
-        : "",
-    prompt_text =
-      (process.env.GCI_PROMPT ||
-        "根据以下代码改动，生成一句话的git提交消息，格式如" +
-          fmt +
-          "。不要返回其他多余的说明，仅返回提交消息即可。") +
-      log_hint +
-      "\n\n代码改动如下：\n" +
-      diff_text,
-    token = await authRead();
-
-  if (token) {
-    const model_li = await modelLi(),
-      reply = await clineChat(prompt_text, token, model_li);
-    if (reply) {
-      return reply.replace(/^`+|`+$/g, "").trim();
-    }
-  }
-
-  const conf = await confLoad();
-  if (conf) {
-    const [base_url, api_key, model] = conf,
-      agent = chat(base_url, api_key, model),
-      reply = await agent(prompt_text, dir);
-    return reply.replace(/^`+|`+$/g, "").trim();
-  }
-
-  throw new Error(
-    "未检测到可用的 LLM 配置或 Cline 免费模型配额，请检查 Cline 登录或 ~/.config/OPENAI.js",
-  );
+  const prompt_text = await promptMake(git, diff_text);
+  return await aiRetry(prompt_text, dir);
 };

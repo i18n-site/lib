@@ -14,6 +14,19 @@ const repoInit = async (git, git_url, dir, repo, outHandler) => {
       }
     }
   },
+  commitVerify = async (git, commit_hash) => {
+    const log = await git.log({ maxCount: 1 }).catch(() => null),
+      latest_hash = log?.latest?.hash,
+      status = await git.status().catch(() => null),
+      hash_matched =
+        latest_hash &&
+        commit_hash &&
+        (latest_hash.startsWith(commit_hash) ||
+          commit_hash.startsWith(latest_hash)),
+      staged_clean = status?.staged?.length === 0;
+
+    return Boolean(hash_matched && staged_clean);
+  },
   commitFirst = async (git, git_url, branch, logStep) => {
     logStep("正在暂存文件...");
     const cur = branch || "main";
@@ -21,7 +34,12 @@ const repoInit = async (git, git_url, dir, repo, outHandler) => {
     await git.add(".");
 
     logStep("正在提交初始版本...");
-    await git.commit("init");
+    const res = await git.commit("init"),
+      verified = await commitVerify(git, res?.commit);
+    if (!verified) {
+      ERR("初始版本提交校验失败");
+      process.exit(1);
+    }
 
     logStep("正在关联远程仓库...");
     if (git_url) {
@@ -62,6 +80,13 @@ const repoInit = async (git, git_url, dir, repo, outHandler) => {
     if (!res || !res.commit) {
       process.exit(1);
     }
+
+    const verified = await commitVerify(git, res.commit);
+    if (!verified) {
+      ERR("Git 提交校验失败：最新提交与暂存区状态不一致");
+      process.exit(1);
+    }
+
     const { branch: b, commit: c, summary: s } = res;
     console.log(
       gray("[" + b + " " + c + "] ") +
@@ -88,7 +113,12 @@ export default async (git_url, dir, msg) => {
     outHandler = (command, stdout, stderr, args) => {
       const sub = (args && args[0]) || command,
         prefix = command === "git" && sub ? "git " + sub : command;
-      if (sub === "diff" || sub === "status" || sub === "log" || sub === "rev-parse") {
+      if (
+        sub === "diff" ||
+        sub === "status" ||
+        sub === "log" ||
+        sub === "rev-parse"
+      ) {
         return;
       }
       const lineLog = (stream, isError) => {
@@ -123,7 +153,9 @@ export default async (git_url, dir, msg) => {
       if (!pushed) {
         const dest = to || branch;
         await git.fetch("origin", dest).catch(() => null);
-        await git.merge(["--ff", "--no-edit", "origin/" + dest]).catch(() => null);
+        await git
+          .merge(["--ff", "--no-edit", "origin/" + dest])
+          .catch(() => null);
         await git.push("origin", ...target_li).catch(() => null);
       }
     };

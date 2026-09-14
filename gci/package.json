@@ -29,6 +29,7 @@
   },
   "scripts": {},
   "dependencies": {
+    "@3-/retry": "^0.0.4",
     "@napi_rs/cersei_rs-darwin-arm64": "^1.0.28",
     "cersei_rs": "^1.0.28"
   },
