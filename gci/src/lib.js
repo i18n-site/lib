@@ -5,7 +5,7 @@ import { green } from "@3-/log/GREEN.js";
 import ERR from "@3-/log/ERR.js";
 import ai from "./ai.js";
 import repoInit from "./git/init.js";
-import pushRetry from "./git/push.js";
+import branchPush from "./git/push.js";
 import commitVerify from "./git/verify.js";
 
 const commitFirst = async (git, git_url, branch, logStep) => {
@@ -85,7 +85,7 @@ const commitFirst = async (git, git_url, branch, logStep) => {
 
     logStep("正在推送代码到远程...");
     if (!process.env.NO_PUSH && branch) {
-      await pushRetry(git, branch);
+      await branchPush(git, branch);
     }
   };
 
